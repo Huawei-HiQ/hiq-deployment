@@ -1,0 +1,113 @@
+# Maintainer: Damien Nguyen <damien@ND-Huawei-MBP.local>
+
+pkgbase=python-hiq-circuit
+_name=${pkgbase#python-}
+pkgname=('python3-hiq-circuit' 'python-hiq-circuit')
+
+pkgver=0.0.2.post4
+pkgrel=1
+pkgdesc="A high performance distributed quantum simulator"
+arch=('i686' 'x86_64')
+url="https://hiq.huaweicloud.com/en/"
+license=('Apache-2.0')
+depends=('boost-libs'
+	 'gflags'
+	 'google-glog'
+	 'hwloc'
+	 'openmpi'
+	 'python')
+makedepends=('cmake'
+	     'boost'
+	     'gflags'
+	     'google-glog'
+	     'hwloc'
+	     'openmpi'
+	     'python'
+	     'python-setuptools')
+checkdepends=('boost'
+	      'gflags'
+	      'google-glog'
+	      'hwloc'
+	      'openmpi'
+	      'python'
+	      'python-pytest')
+license=('Apache 2')
+arch=('i686' 'x86_64')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('09cbbba91635bfc7b015fe66af4f46c4ceafb1a936affc98b1c273e4b7bc57ef')
+groups=(python-hiq)
+
+prepare() {
+  cd "$srcdir/$_name-$pkgver"
+  # patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+}
+
+build() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py build
+}
+
+check() {
+  cd "$srcdir/$_name-$pkgver"
+  do_check=0
+  if [[ -d examples ]]; then
+    do_check=1
+  fi
+
+  if [ $do_check -eq 1 ]; then
+    python setup.py build_ext --inplace
+
+    python examples/BV_algorithm_constant_mpi.py
+    python examples/exactgrover_mpi.py
+    python examples/grover_mpi.py
+    python examples/maximum_search_constant_mpi.py
+    python examples/phase_estimation_mpi.py
+    python examples/qecc9_sta.py
+    python examples/SymMatrixSolver_mpi.py
+    python examples/teleport_mpi.py
+    python examples/ToeplitzSimplify_constant.py
+    python examples/grover_mpi.py
+    python examples/unknown_num_search_constant_mpi.py
+  fi
+}
+
+package_python3-hiq-circuit() {
+  depends+=("python3-hiq-projectq")
+  check_depends+=("python3-hiq-projectq")
+
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
+
+  # Remove files that are already in python3-hiq-projectq
+  cd "$pkgdir/usr/lib/"python3.*/site-packages/projectq
+  rm -fv __init__.py
+  rm -fv __pycache__/__init__.*.pyc
+  rm -fv backends/__init__.py
+  rm -fv backends/__pycache__/__init__.*.pyc
+  rm -fv cengines/__init__.py
+  rm -fv cengines/__pycache__/__init__.*.pyc
+  rm -fv ops/__init__.py
+  rm -fv ops/__pycache__/__init__.*.pyc
+}
+
+package_python-hiq-circuit() {
+  depends+=("python-hiq-projectq")
+  check_depends+=("python-hiq-projectq")
+
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
+
+  # Remove files that are already in python-hiq-projectq
+  cd "$pkgdir/usr/lib/"python*/site-packages/projectq
+  rm -fv __init__.py
+  rm -fv __pycache__/__init__.*.pyc
+  rm -fv backends/__init__.py
+  rm -fv backends/__pycache__/__init__.*.pyc
+  rm -fv cengines/__init__.py
+  rm -fv cengines/__pycache__/__init__.*.pyc
+  rm -fv ops/__init__.py
+  rm -fv ops/__pycache__/__init__.*.pyc
+}
+
+
+# vim:set ts=2 sw=2 et:

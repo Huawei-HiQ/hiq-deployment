@@ -12,5 +12,5 @@ software:
 
 | Project      | Mac OS Homebrew | Mac OS MacPorts | Linux (RPM) | Linux (AUR) | Linux (DEB) | Windows (Chocolatey) |
 |--------------|-----------------|-----------------|-------------|-------------|-------------|----------------------|
-| HiQ ProjectQ | ✅              | ❌ (planned)    | ✅          | ❌ (WIP)    | ❌ (WIP)    | ❌                   |
-| HiQ Circuit  | ✅              | ❌ (planned)    | ✅          | ❌ (WIP)    | ❌ (WIP)    | ❌                   |
+| HiQ ProjectQ | ✅              | ❌ (planned)    | ✅          | ✅          | ❌ (WIP)    | ❌                   |
+| HiQ Circuit  | ✅              | ❌ (planned)    | ✅          | ✅          | ❌ (WIP)    | ❌                   |
