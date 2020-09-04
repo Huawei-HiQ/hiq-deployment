@@ -4,7 +4,7 @@ This repository contains the code necessary to build DEB source and binary packa
 
 ## Environment setup
 
- Make sure that you have all the basic dependencies installed on your system:
+Make sure that you have all the basic dependencies installed on your system:
 
   - build-essential
   - devscripts

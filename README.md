@@ -19,4 +19,5 @@ software:
 
 Here are some links to other README files within this repository
 
+  - [AUR (ArchLinux) packages](aur/README.md)
   - [DEB packaging](deb/README.md)
