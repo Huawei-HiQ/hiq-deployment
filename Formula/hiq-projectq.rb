@@ -21,7 +21,7 @@ class HiqProjectq < Formula
 
   desc "Huawei-HiQ ProjectQ"
   homepage "https://hiq.huaweicloud.com/en/"
-  url "https://files.pythonhosted.org/packages/4c/9f/1e7014d3e23fd7ab15e423025af134b723b34b2a33bc2dc726cdc81fcd46/hiq-projectq-0.6.4.post2.tar.gz"
+  url "https://pypi.io/packages/source/h/hiq-projectq/hiq-projectq-0.6.4.post2.tar.gz"
   version "0.6.4"
   sha256 "f404e530cea8a1741062626ca7ebe23e9a3bde1198cd0bf602fde0fe2c9359fe"
   license "Apache-2.0"

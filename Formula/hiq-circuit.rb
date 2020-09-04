@@ -21,7 +21,7 @@ class HiqCircuit < Formula
 
   desc "Huawei-HiQ HiQSimulator"
   homepage "https://hiq.huaweicloud.com/en/"
-  url "https://files.pythonhosted.org/packages/45/c1/39453dd9e61db6e14cb5116f86788b18ca15c9794593fee46fc258715283/hiq-circuit-0.0.2.tar.gz"
+  url "https://pypi.io/packages/source/h/hiq-circuit/hiq-circuit-0.0.2.tar.gz"
   version "0.0.2"
   sha256 "1c0d28f4ff0f51f3314f047e3a0bf874238c519d1c24153afa45f3e2c6256541"
   license "Apache-2.0"
