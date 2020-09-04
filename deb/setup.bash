@@ -101,7 +101,7 @@ fi
 
 cd $dst_dir
 
-if python3 -m pip download $pkg_name --no-deps; then
+if python3 -m pip download --no-binary ":all:" $pkg_name --no-deps; then
     pkg_targz=$(ls $pkg_name-*.tar.gz | sort | tail -n1)
     pkg_ver=${pkg_targz/$pkg_name-}
     pkg_ver=${pkg_ver/.tar.gz}

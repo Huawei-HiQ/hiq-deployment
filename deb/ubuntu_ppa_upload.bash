@@ -177,9 +177,7 @@ fi
 # Handle GPG key if present
 if [ -n "$gpg_key" ]; then
     # Test that GPG key exists
-    if gpg -k $GPG_KEY > /dev/null 2> /dev/null ; then
-	:
-    else
+    if ! gpg -k $GPG_KEY > /dev/null 2> /dev/null ; then
 	die "Unable to find GPG key $GPG_KEY"
     fi
     
