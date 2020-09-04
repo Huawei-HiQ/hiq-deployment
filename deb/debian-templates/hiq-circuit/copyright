@@ -1,0 +1,278 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: package
+Source: https://github.com/Huawei-HiQ/HiQSimulator
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     MANIFEST.in
+           PKG-INFO
+           README.rst
+           _setup.py
+           cmake/FindBPython.cmake
+           cmake/FindNOpenMP.cmake
+           cmake/FindPythonSupport.cmake
+	   debian/changelog
+           debian/compat
+           debian/control
+	   debian/copyright
+           debian/files
+           debian/rules
+           debian/source/format
+           debian/source/options
+	   debian/watch
+           pybind11/include/pybind11/common.h
+           pybind11/pybind11/__init__.py
+           pybind11/pybind11/__main__.py
+           pybind11/pybind11/_version.py
+           pybind11/tools/FindCatch.cmake
+           pybind11/tools/check-style.sh
+           pybind11/tools/libsize.py
+           pybind11/tools/mkdoc.py
+           pybind11/tools/pybind11Config.cmake.in
+           python/hiq/mitigation/__init__.py
+           python/hiq/mitigation/_extrapolation.py
+           python/hiq/noise/_kraus_error.py
+           python/projectq/cengines/_noisegenerator.py
+           requirements.txt
+           setup.cfg
+           setup.py
+           src/CMakeLists.txt
+           src/simulator-mpi/GlogSingleton.cpp
+           src/simulator-mpi/GlogSingleton.hpp
+           src/simulator-mpi/dummy.cpp
+           src/test/CMakeLists.txt
+	   CMakeLists.txt
+           _cppsim_mpi.cpp
+           _cppstabsim.cpp
+           _sched_cpp.cpp
+           _version.py
+           cmake/FindSphinx.cmake
+           cmake/Findgflags.cmake
+           cmake/Findglog.cmake
+           cmake/Findhwloc.cmake
+           cmake/Findxsimd.cmake
+           cmake/compiler_flags.cmake
+           cmake/macros.cmake
+           cmake/macros_more.cmake
+           cmake/options.cmake
+           cmake/os_detection.cmake
+           cmake/packages.cmake
+           python/hiq/__init__.py
+           python/hiq/libs/__init__.py
+           python/hiq/libs/_get_expectation_value.py
+           python/hiq/noise/__init__.py
+           python/hiq/noise/_noise_model.py
+           python/hiq/noise/_quantum_errors_zoo.py
+	   python/projectq/__init__.py
+           python/projectq/backends/__init__.py
+           python/projectq/backends/_hiqsim/__init__.py
+           python/projectq/backends/_hiqsim/_simulator_mpi.py
+           python/projectq/backends/_hiqsim/_stabilizer_simulator.py
+           python/projectq/backends/_resource_counter_mod.py
+           python/projectq/cengines/__init__.py
+           python/projectq/cengines/_dummybackend.py
+           python/projectq/cengines/_greedyscheduler.py
+           python/projectq/cengines/_hiq_main_engine.py
+           python/projectq/cengines/_merger_engine.py
+           python/projectq/ops/__init__.py
+           python/projectq/ops/_hiq_gates.py
+           src/scheduler/cluster_scheduler.cpp
+           src/scheduler/cluster_scheduler.h
+           src/scheduler/convertors.cpp
+           src/scheduler/convertors.h
+           src/scheduler/definitions.h
+           src/scheduler/swap_scheduler.cpp
+           src/scheduler/swap_scheduler.h
+           src/simulator-mpi/SimulatorMPI.cpp
+           src/simulator-mpi/SimulatorMPI.hpp
+           src/simulator-mpi/SwapArrays.hpp
+           src/simulator-mpi/SwapperMT.cpp
+           src/simulator-mpi/SwapperMT.hpp
+           src/simulator-mpi/alignedallocator.hpp
+           src/simulator-mpi/funcs.cpp
+           src/simulator-mpi/fusion_mpi.hpp
+           src/simulator-mpi/kernels/intrin/cintrin.hpp
+           src/simulator-mpi/kernels/intrin/kernel1.hpp
+           src/simulator-mpi/kernels/intrin/kernel2.hpp
+           src/simulator-mpi/kernels/intrin/kernel3.hpp
+           src/simulator-mpi/kernels/intrin/kernel4.hpp
+           src/simulator-mpi/kernels/intrin/kernel4_cf.hpp
+           src/simulator-mpi/kernels/intrin/kernel5.hpp
+           src/simulator-mpi/kernels/intrin/kernels.hpp
+           src/simulator-mpi/kernels/intrin/kernels_diag.hpp
+           src/simulator-mpi/kernels/nointrin/kernel1.hpp
+           src/simulator-mpi/kernels/nointrin/kernel2.hpp
+           src/simulator-mpi/kernels/nointrin/kernel3.hpp
+           src/simulator-mpi/kernels/nointrin/kernel4.hpp
+           src/simulator-mpi/kernels/nointrin/kernel5.hpp
+           src/simulator-mpi/kernels/nointrin/kernels.hpp
+           src/simulator-mpi/kernels/nointrin/kernels_diag.hpp
+           src/simulator-mpi/mpi_ext.hpp
+           src/simulator-mpi/swapping.hpp
+           src/stabilizer-simulator/StabilizerSimulator.hpp
+           src/stabilizer-simulator/details/helper_functions.hpp
+           src/stabilizer-simulator/details/popcnt32.hpp
+           src/test/stabilizer_simulator_test.cpp
+           src/xsimd_fallback/xsimd_fallback_batch_impl.hpp
+           src/xsimd_include.hpp
+	   src/simulator-mpi/funcs.hpp
+	   src/xsimd_fallback/xsimd_fallback.hpp
+           src/xsimd_fallback/xsimd_fallback_details.hpp
+	   src/test/xsimd_fallback_test.cpp
+	   src/xsimd_fallback/xsimd_fallback_instruction_set.hpp
+Copyright: 2012 Andreas Hehn  <hehn@phys.ethz.ch>.
+           2017 ProjectQ-Framework (www.projectq.ch)
+           2019 Huawei Technologies Co., Ltd.
+           2019-2020 <Huawei Technologies Co., Ltd>
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     xsimd/include/xsimd/config/xsimd_align.hpp
+           xsimd/include/xsimd/config/xsimd_config.hpp
+           xsimd/include/xsimd/config/xsimd_include.hpp
+           xsimd/include/xsimd/config/xsimd_instruction_set.hpp
+           xsimd/include/xsimd/math/xsimd_basic_math.hpp
+           xsimd/include/xsimd/math/xsimd_error.hpp
+           xsimd/include/xsimd/math/xsimd_exp_reduction.hpp
+           xsimd/include/xsimd/math/xsimd_exponential.hpp
+           xsimd/include/xsimd/math/xsimd_fp_manipulation.hpp
+           xsimd/include/xsimd/math/xsimd_fp_sign.hpp
+           xsimd/include/xsimd/math/xsimd_gamma.hpp
+           xsimd/include/xsimd/math/xsimd_horner.hpp
+           xsimd/include/xsimd/math/xsimd_hyperbolic.hpp
+           xsimd/include/xsimd/math/xsimd_invtrigo.hpp
+           xsimd/include/xsimd/math/xsimd_logarithm.hpp
+           xsimd/include/xsimd/math/xsimd_math.hpp
+           xsimd/include/xsimd/math/xsimd_math_complex.hpp
+           xsimd/include/xsimd/math/xsimd_numerical_constant.hpp
+           xsimd/include/xsimd/math/xsimd_power.hpp
+           xsimd/include/xsimd/math/xsimd_rem_pio2.hpp
+           xsimd/include/xsimd/math/xsimd_rounding.hpp
+           xsimd/include/xsimd/math/xsimd_scalar.hpp
+           xsimd/include/xsimd/math/xsimd_trigo_reduction.hpp
+           xsimd/include/xsimd/math/xsimd_trigonometric.hpp
+           xsimd/include/xsimd/memory/xsimd_aligned_allocator.hpp
+           xsimd/include/xsimd/memory/xsimd_aligned_stack_buffer.hpp
+           xsimd/include/xsimd/memory/xsimd_alignment.hpp
+           xsimd/include/xsimd/memory/xsimd_load_store.hpp
+           xsimd/include/xsimd/stl/algorithms.hpp
+           xsimd/include/xsimd/stl/iterator.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_bool.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_complex.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_conversion.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_double.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_float.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_int16.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_int32.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_int64.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_int8.hpp
+           xsimd/include/xsimd/types/xsimd_avx512_int_base.hpp
+           xsimd/include/xsimd/types/xsimd_avx_complex.hpp
+           xsimd/include/xsimd/types/xsimd_avx_conversion.hpp
+           xsimd/include/xsimd/types/xsimd_avx_double.hpp
+           xsimd/include/xsimd/types/xsimd_avx_float.hpp
+           xsimd/include/xsimd/types/xsimd_avx_int16.hpp
+           xsimd/include/xsimd/types/xsimd_avx_int32.hpp
+           xsimd/include/xsimd/types/xsimd_avx_int64.hpp
+           xsimd/include/xsimd/types/xsimd_avx_int8.hpp
+           xsimd/include/xsimd/types/xsimd_avx_int_base.hpp
+           xsimd/include/xsimd/types/xsimd_base.hpp
+           xsimd/include/xsimd/types/xsimd_base_bool.hpp
+           xsimd/include/xsimd/types/xsimd_complex_base.hpp
+           xsimd/include/xsimd/types/xsimd_fallback.hpp
+           xsimd/include/xsimd/types/xsimd_int_conversion.hpp
+           xsimd/include/xsimd/types/xsimd_neon_bool.hpp
+           xsimd/include/xsimd/types/xsimd_neon_complex.hpp
+           xsimd/include/xsimd/types/xsimd_neon_conversion.hpp
+           xsimd/include/xsimd/types/xsimd_neon_double.hpp
+           xsimd/include/xsimd/types/xsimd_neon_float.hpp
+           xsimd/include/xsimd/types/xsimd_neon_int16.hpp
+           xsimd/include/xsimd/types/xsimd_neon_int32.hpp
+           xsimd/include/xsimd/types/xsimd_neon_int64.hpp
+           xsimd/include/xsimd/types/xsimd_neon_int8.hpp
+           xsimd/include/xsimd/types/xsimd_neon_uint16.hpp
+           xsimd/include/xsimd/types/xsimd_neon_uint32.hpp
+           xsimd/include/xsimd/types/xsimd_neon_uint64.hpp
+           xsimd/include/xsimd/types/xsimd_neon_uint8.hpp
+           xsimd/include/xsimd/types/xsimd_neon_utils.hpp
+           xsimd/include/xsimd/types/xsimd_sse_complex.hpp
+           xsimd/include/xsimd/types/xsimd_sse_conversion.hpp
+           xsimd/include/xsimd/types/xsimd_sse_double.hpp
+           xsimd/include/xsimd/types/xsimd_sse_float.hpp
+           xsimd/include/xsimd/types/xsimd_sse_int16.hpp
+           xsimd/include/xsimd/types/xsimd_sse_int32.hpp
+           xsimd/include/xsimd/types/xsimd_sse_int64.hpp
+           xsimd/include/xsimd/types/xsimd_sse_int8.hpp
+           xsimd/include/xsimd/types/xsimd_sse_int_base.hpp
+           xsimd/include/xsimd/types/xsimd_traits.hpp
+           xsimd/include/xsimd/types/xsimd_types_include.hpp
+           xsimd/include/xsimd/types/xsimd_utils.hpp
+           xsimd/include/xsimd/xsimd.hpp
+	   pybind11/CMakeLists.txt
+           pybind11/include/pybind11/attr.h
+           pybind11/include/pybind11/buffer_info.h
+           pybind11/include/pybind11/cast.h
+           pybind11/include/pybind11/chrono.h
+           pybind11/include/pybind11/complex.h
+           pybind11/include/pybind11/detail/class.h
+           pybind11/include/pybind11/detail/common.h
+           pybind11/include/pybind11/detail/descr.h
+           pybind11/include/pybind11/detail/init.h
+           pybind11/include/pybind11/detail/internals.h
+           pybind11/include/pybind11/detail/typeid.h
+           pybind11/include/pybind11/eigen.h
+           pybind11/include/pybind11/embed.h
+           pybind11/include/pybind11/eval.h
+           pybind11/include/pybind11/functional.h
+           pybind11/include/pybind11/iostream.h
+           pybind11/include/pybind11/numpy.h
+           pybind11/include/pybind11/operators.h
+           pybind11/include/pybind11/options.h
+           pybind11/include/pybind11/pybind11.h
+           pybind11/include/pybind11/pytypes.h
+           pybind11/include/pybind11/stl.h
+           pybind11/include/pybind11/stl_bind.h
+           pybind11/tools/pybind11Tools.cmake
+	   pybind11/tools/FindPythonLibsNew.cmake
+Copyright: Johan Mabille, Sylvain Corlay, Wolf Vollprecht and Martin Renou
+           QuantStack
+	   2015 Wenzel Jakob <wenzel@inf.ethz.ch>
+           2016 Klemens Morgenstern <klemens.morgenstern@ed-chemnitz.de> and Wenzel Jakob <wenzel.jakob@epfl.ch>
+           2016 Sergey Lyskov and Wenzel Jakob
+           2016 Trent Houliston <trent@houliston.me> and Wenzel Jakob <wenzel.jakob@epfl.ch>
+           2016-2017 Wenzel Jakob <wenzel.jakob@epfl.ch>
+           2017 Henry F. Schreiner
+           2017 Jason Rhinelander <jason@imaginary.ca>
+	   2001-2009 Kitware, Inc.
+           2012 Continuum Analytics, Inc.
+License:    BSD-3-Clause
+ Distributed under the terms of the BSD 3-Clause License.
+ .
+ The full license is in the file LICENSE, distributed with this software.
+
+Files:     cmake/ClangFormat.cmake
+Copyright: 2018 Tomas Zeman
+License:   BSL-1.0
+ Distributed under the Boost Software License, Version 1.0.
+
+Files:     pybind11/tools/FindEigen3.cmake
+Copyright: 2006-2007 Montel Laurent, <montel@kde.org>
+           2008-2009 Gael Guennebaud, <g.gael@free.fr>
+           2009 Benoit Jacob <jacob.benoit.1@gmail.com>
+License:   BSD-2-Clause
+ Redistribution and use is allowed according to the terms of the 2-clause BSD license.
+
+#----------------------------------------------------------------------------

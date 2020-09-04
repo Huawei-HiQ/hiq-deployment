@@ -12,5 +12,11 @@ software:
 
 | Project      | Mac OS Homebrew | Mac OS MacPorts | Linux (RPM) | Linux (AUR) | Linux (DEB) | Windows (Chocolatey) |
 |--------------|-----------------|-----------------|-------------|-------------|-------------|----------------------|
-| HiQ ProjectQ | ✅              | ❌ (planned)    | ✅          | ✅          | ❌ (WIP)    | ❌                   |
-| HiQ Circuit  | ✅              | ❌ (planned)    | ✅          | ✅          | ❌ (WIP)    | ❌                   |
+| HiQ ProjectQ | ✅              | ❌ (planned)    | ✅          | ✅          | ✅          | ❌                   |
+| HiQ Circuit  | ✅              | ❌ (planned)    | ✅          | ✅          | ✅          | ❌                   |
+
+# Table of contents
+
+Here are some links to other README files within this repository
+
+  - [DEB packaging](deb/README.md)

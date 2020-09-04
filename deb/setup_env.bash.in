@@ -1,0 +1,7 @@
+# Rename this file to setup_env.bash and edit the two lines below
+
+DEBEMAIL="john.doe@example.com"
+DEBFULLNAME="John Doe"
+GPG_KEY="ABCDEF"
+
+export DEBEMAIL DEBFULLNAME GPG_KEY
