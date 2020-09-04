@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ==============================================================================
 #
 # Copyright 2020 <Huawei Technologies Co., Ltd>
@@ -37,7 +39,7 @@ class HiqProjectq < Formula
 
     venv = virtualenv_create(libexec, Formula["python@3.8"].opt_bin/"python3")
 
-    llvm_bin = @Formula["llvm"].opt_bin
+    llvm_bin = Formula["llvm"].opt_bin
 
     ENV["CC"] = "#{llvm_bin}/clang"
     ENV["CXX"] = "#{llvm_bin}/clang++"
@@ -53,7 +55,7 @@ class HiqProjectq < Formula
     system Formula["python@3.8"].opt_bin/"python3", "-c", <<~EOS
       from projectq import MainEngine
       import projectq.cengines
-      from projectq.ops import X, H, Rxa
+      from projectq.ops import X, H, Rx
       
       eng = MainEngine()
       qubit = eng.allocate_qubit()

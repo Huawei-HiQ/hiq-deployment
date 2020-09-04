@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ==============================================================================
 #
 # Copyright 2020 <Huawei Technologies Co., Ltd>
@@ -30,7 +32,7 @@ class HiqCircuit < Formula
   depends_on "boost-mpi"
   depends_on "cmake"
   depends_on "glog"
-  depends_on "huawei-hiq/hiq-deployment/hiq-projectq"
+  depends_on "huawei/hiq/hiq-projectq"
   depends_on "hwloc"
   depends_on "mpi4py"
 
@@ -40,7 +42,7 @@ class HiqCircuit < Formula
 
     virtualenv_create(libexec, Formula["python@3.8"].opt_bin/"python3")
 
-    llvm_bin = @Formula["llvm"].opt_bin
+    llvm_bin = Formula["llvm"].opt_bin
 
     ENV["CC"] = "#{llvm_bin}/clang"
     ENV["CXX"] = "#{llvm_bin}/clang++"
