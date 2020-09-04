@@ -31,12 +31,6 @@ class HiqProjectq < Formula
   depends_on "numpy"
   depends_on "scipy"
 
-  # Fix setup.py
-  patch do
-    url "http://localhost:8080/brew_cmd_setup_py.patch"
-    sha256 "cd900ba7ec9d80c31b752dac533f21a6d10f4ce364efd5a7d343b9a53d0fe91b"
-  end
-
   def install
     version = Language::Python.major_minor_version Formula["python@3.8"].opt_bin/"python3"
     site_packages = "lib/python#{version}/site-packages"
