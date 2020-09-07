@@ -1,0 +1,7 @@
+# Archives
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+# Backup files
+*.bak
