@@ -10,10 +10,14 @@ software:
 
 # Status
 
-| Project      | Mac OS Homebrew | Mac OS MacPorts | Linux (RPM) | Linux (AUR) | Linux (DEB) | Windows (Chocolatey) |
-|--------------|-----------------|-----------------|-------------|-------------|-------------|----------------------|
-| HiQ ProjectQ | ✅              | ❌ (planned)    | ✅          | ✅          | ✅          | ❌                   |
-| HiQ Circuit  | ✅              | ❌ (planned)    | ✅          | ✅          | ✅          | ❌                   |
+| Project      | Mac OS Homebrew | Mac OS MacPorts | Linux (RPM)  | Linux (AUR)  | Linux (DEB)  | Windows (Chocolatey) |
+|--------------|-----------------|-----------------|--------------|--------------|--------------|----------------------|
+| HiQ Circuit  | ✅              | ❌ (planned)    | ✅           | ✅           | ✅           | ❌                   |
+| HiQ Fermion  | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| HiQ Jupyter  | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| HiQ Lab      | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| HiQ ProjectQ | ✅              | ❌ (planned)    | ✅           | ✅           | ✅           | ❌                   |
+| HiQ Pulse    | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
 
 # Table of contents
 
