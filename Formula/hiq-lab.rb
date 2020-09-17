@@ -18,23 +18,18 @@
 #
 # ==============================================================================
 
-class HiqCircuit < Formula
+class HiqLab < Formula
   include Language::Python::Virtualenv
 
-  desc "Huawei-HiQ HiQSimulator"
+  desc "Huawei-HiQ Lab hardware interface"
   homepage "https://hiq.huaweicloud.com/en/"
-  url "https://pypi.io/packages/source/h/hiq-circuit/hiq-circuit-0.0.2.tar.gz"
-  version "0.0.2"
-  sha256 "1c0d28f4ff0f51f3314f047e3a0bf874238c519d1c24153afa45f3e2c6256541"
+  url "https://pypi.io/packages/source/h/hiq-lab/hiq-lab-0.0.1.tar.gz"
+  version "0.0.1"
+  sha256 "XXXXXXXXX"
   license "Apache-2.0"
   revision 0
 
-  depends_on "boost-mpi"
   depends_on "cmake" => :build
-  depends_on "glog"
-  depends_on "huawei/hiq/hiq-projectq"
-  depends_on "hwloc"
-  depends_on "mpi4py"
   depends_on "python@3.8"
 
   def install
@@ -55,21 +50,8 @@ class HiqCircuit < Formula
   end
 
   test do
-    system "mpirun", "-np", "2", Formula["python@3.8"].opt_bin/"python3", "-c", <<~EOS
-      from projectq.ops import H, Measure
-      from hiq.projectq.backends import SimulatorMPI
-      from hiq.projectq.cengines import GreedyScheduler, HiQMainEngine
-
-      from mpi4py import MPI
-
-      eng = HiQMainEngine(SimulatorMPI(gate_fusion=True, num_local_qubits=4))
-
-      q1 = eng.allocate_qubit()
-      H | q1
-      Measure | q1
-      eng.flush()
-
-      print("Measured: {}".format(int(q1)))
+    system Formula["python@3.8"].opt_bin/"python3", "-c", <<~EOS
+      from hiqlab import XXX
     EOS
   end
 end

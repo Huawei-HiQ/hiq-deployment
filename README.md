@@ -10,14 +10,15 @@ software:
 
 # Status
 
-| Project      | Mac OS Homebrew | Mac OS MacPorts | Linux (RPM)  | Linux (AUR)  | Linux (DEB)  | Windows (Chocolatey) |
-|--------------|-----------------|-----------------|--------------|--------------|--------------|----------------------|
-| HiQ Circuit  | ✅              | ❌ (planned)    | ✅           | ✅           | ✅           | ❌                   |
-| HiQ Fermion  | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
-| HiQ Jupyter  | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
-| HiQ Lab      | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
-| HiQ ProjectQ | ✅              | ❌ (planned)    | ✅           | ✅           | ✅           | ❌                   |
-| HiQ Pulse    | ❌ (planned)    | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| Project          | Mac OS Homebrew | Mac OS MacPorts | Linux (RPM)  | Linux (AUR)  | Linux (DEB)  | Windows (Chocolatey) |
+|------------------|-----------------|-----------------|--------------|--------------|--------------|----------------------|
+| HiQ Circuit      | ✅              | ❌ (planned)    | ✅           | ✅           | ✅           | ❌                   |
+| HiQ Fermion      | 🚧 (wip)        | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| HiQ Jupyter      | 🚧 (wip)        | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| HiQ Lab          | 🚧 (wip)        | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| HiQ ProjectQ     | ✅              | ❌ (planned)    | ✅           | ✅           | ✅           | ❌                   |
+| HiQ ProjectQ-C++ | 🚧 (wip)        | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
+| HiQ Pulse        | 🚧 (wip)        | ❌ (planned)    | ❌ (planned) | ❌ (planned) | ❌ (planned) | ❌                   |
 
 # Table of contents
 

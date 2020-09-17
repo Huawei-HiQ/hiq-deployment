@@ -1,0 +1,16 @@
+diff -up pybind11-2.5.0/pybind11/__init__.py.hpath pybind11-2.5.0/pybind11/__init__.py
+--- pybind11-2.5.0/pybind11/__init__.py.hpath	2020-04-01 08:30:49.562640795 +0200
++++ pybind11-2.5.0/pybind11/__init__.py	2020-04-01 08:31:53.176754407 +0200
+@@ -2,11 +2,4 @@ from ._version import version_info, __ve
+ 
+ 
+ def get_include(user=False):
+-    import os
+-    d = os.path.dirname(__file__)
+-    if os.path.exists(os.path.join(d, "include")):
+-        # Package is installed
+-        return os.path.join(d, "include")
+-    else:
+-        # Package is from a source directory
+-        return os.path.join(os.path.dirname(d), "include")
++    return '/usr/include/pybind11'
