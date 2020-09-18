@@ -16,10 +16,10 @@
 #
 # ==============================================================================
 
-%global hiq_circuit_version 0.0.2.post4
-%global hiq_circuit_release 0
-%global sha256 09cbbba91635bfc7b015fe66af4f46c4ceafb1a936affc98b1c273e4b7bc57ef
-%global pypi_name hiq-circuit
+%global hiq_projectq_cxx_version 1.0.0
+%global hiq_projectq_cxx_release 0
+%global sha256 XXXXXXXXXX
+%global pypi_name hiq-projectqcxx
 
 %global py3_prefix /usr/local/hiq
 %global py3_sitelib %(%{__python3} -Ic "from distutils.sysconfig import get_python_lib; print(get_python_lib(0, 0, '%{py3_prefix}'))")
@@ -41,19 +41,14 @@
 # ==============================================================================
 
 Name: python-%{pypi_name}
-Version: %{hiq_circuit_version}
-Release: %{hiq_circuit_release}%{?dist}
+Version: %{hiq_projectq_cxx_version}
+Release: %{hiq_projectq_cxx_release}%{?dist}
 License: Apache-2.0
 URL: https://hiq.huaweicloud.com/en/
 Source0: %{pypi_source}
 
-# Disable debug package
-%define debug_package %nil
-
 %if 0%{?rhel} && 0%{?rhel} < 8
 # CentOS 7
-BuildRequires:  boost169-openmpi-devel
-BuildRequires:	boost169-python3-devel
 BuildRequires:  cmake3
 BuildRequires:	devtoolset-8-gcc-c++
 BuildRequires:  python3-setuptools
@@ -62,8 +57,6 @@ BuildRequires:	python36-pytest
 %endif
 %else
 # Fedora > 30 && CentOS > 7
-BuildRequires:	boost-openmpi-devel
-BuildRequires:	boost-python3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  python3dist(setuptools)
@@ -73,13 +66,6 @@ BuildRequires:  python3dist(pytest)
 %endif
 
 BuildRequires:  make
-BuildRequires:	eigen3-devel
-BuildRequires:	gflags-devel
-BuildRequires:	glog-devel
-BuildRequires:	hwloc-devel
-BuildRequires:	lapack-devel
-BuildRequires:	openblas-devel
-BuildRequires:	openmpi-devel
 BuildRequires:  python3-devel
 
 # ==============================================================================
@@ -89,47 +75,22 @@ BuildRequires:  python3-devel
 # CentOS 7					\
 Requires:	devtoolset-8			\
 %endif						\
-Requires:	python3-mpi4py-openmpi		\
-						\
-%if 0%{?rhel} && 0%{?rhel} < 8			\
-# CentOS 7					\
-Requires:	boost169-openmpi		\
-Requires:	boost169-program-options	\
-Requires:	boost169-python3		\
-Requires:	boost169-system			\
-Requires:	boost169-thread			\
-%else						\
-# Fedora > 30 && CentOS > 7			\
-Requires:	boost-openmpi			\
-Requires:	boost-program-options		\
-Requires:	boost-python3			\
-Requires:	boost-system			\
-Requires:	boost-thread			\
-%endif						\
-Requires:	gflags				\
-Requires:	glog				\
-Requires:	hwloc				\
-Requires:	lapack				\
-Requires:	openblas			\
-Requires:	openmpi				\
-Requires:	python3
+Requires:	python3				\
+Requires:       python3-hiq-site-files		\
+Requires:       python3-hiq-projectq
+
+%global _description \
+C++ processing backend for HiQ-ProjectQ
 
 # ==============================================================================
 
-Summary:	A high performance distributed quantum simulator
+Summary:	C++ processing backend for HiQ-ProjectQ
 Provides:	python-%{pypi_name} = %{version}-%{release}
 %{?python_provide:%python_provide python-%{pypi_name}}
 
-Requires:	python-hiq-site-files
-Requires:       python-hiq-projectq
 %requirements
 
-%description
-Huawei HiQsimulator Huawei HiQ is an open-source software framework for quantum
-computing. It is based on and compatible with ProjectQ <>__. It aims at
-providing tools which facilitate inventing, implementing, testing, debugging,
-and running quantum algorithms using either classical hardware or actual
-quantum devices.
+%description %_description
 
 # ------------------------------------------------------------------------------
 
@@ -138,16 +99,9 @@ Summary:        %{summary}
 Provides:	python3-%{pypi_name} = %{version}-%{release}
 %{?python_provide:%python_provide python3-%{pypi_name}}
 
-Requires:	python3-hiq-site-files
-Requires:       python3-hiq-projectq
 %requirements
 
-%description -n python3-%{pypi_name}
-Huawei HiQsimulator Huawei HiQ is an open-source software framework for quantum
-computing. It is based on and compatible with ProjectQ <>__. It aims at
-providing tools which facilitate inventing, implementing, testing, debugging,
-and running quantum algorithms using either classical hardware or actual
-quantum devices.
+%description -n python3-%{pypi_name} %_description
 
 # ==============================================================================
 
@@ -155,7 +109,7 @@ quantum devices.
 echo "%sha256  %SOURCE0" | sha256sum -c -
 %autosetup -n %{pypi_name}-%{version} -p1
 # Remove bundled egg-info
-rm -rf $(echo %{pypi_name} | tr - _).egg-info
+rm -rf %{pypi_name}.egg-info
 
 # --------------------------------------
 
@@ -173,27 +127,22 @@ alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake3 20 \
 %set_build_flags
 %endif
 
-%{_openmpi_load}
-
 %if 0%{?rhel} && 0%{?rhel} < 8
 scl enable devtoolset-8 -- <<\EOF
 %endif
 
 %py3_build
 
-%if %{with tests}
-mkdir cmake_build
-cd cmake_build
-cmake .. -DBUILD_TESTING=ON -DIS_PYTHON_BUILD=1
-make -j$(nproc) build_all_tests
-%endif
-
+# %if %{with tests}
+# mkdir -p cmake_build
+# cd cmake_build
+# cmake .. -DBUILD_TESTING=ON -DIS_PYTHON_BUILD=1
+# make -j$(nproc) build_all_tests
+# %endif
 
 %if 0%{?rhel} && 0%{?rhel} < 8
 EOF
 %endif
-
-%{_openmpi_unload}
 
 # --------------------------------------
 
@@ -208,8 +157,23 @@ EOF
 %if %{with tests}
 %check
 
-cd cmake_build
-make test
+# cd cmake_build
+# make test
+
+cat << \EOF > matplotlibrc
+backend: Agg
+EOF
+
+# Make sure there is always at least one test to be found by pytest
+mkdir -p tests
+cat << \EOF > tests/rpm_test.py
+def test_dummy():
+    pass
+EOF
+
+%{__python3} -m pytest -p no:warnings tests
+
+rm -f tests/rpm_test.py
 
 %endif
 
@@ -219,37 +183,26 @@ make test
 %defattr(-,root,root,-)
 %license LICENSE
 %doc README.rst
-%{py3_sitearch}/hiq_circuit-%{version}-py%{python3_version}.egg-info
-%{py3_sitearch}/hiq
+%{python3_sitearch}/hiq_projectqcxx-%{version}-py%{python3_version}.egg-info
 %{py3_sitearch}/projectq/__pycache__
 %exclude %{py3_sitearch}/projectq/__init__.py
 %exclude %{py3_sitearch}/projectq/__pycache__/__init__*
 %{py3_sitearch}/projectq/backends/__pycache__
 %exclude %{py3_sitearch}/projectq/backends/__init__.py
 %exclude %{py3_sitearch}/projectq/backends/__pycache__/__init__*
-%{py3_sitearch}/projectq/backends/_hiqsim
-%{py3_sitearch}/projectq/backends/_resource_counter_mod.py*
+%{python3_sitearch}/projectq/backends/_cpp2python_bridge.py
+%{python3_sitearch}/projectq/backends/_cppresource_counter*.so
+%{py3_sitearch}/projectq/cengines/__pycache__
 %exclude %{py3_sitearch}/projectq/cengines/__init__.py
 %exclude %{py3_sitearch}/projectq/cengines/__pycache__/__init__*
-%{py3_sitearch}/projectq/cengines/__pycache__
-%{py3_sitearch}/projectq/cengines/_dummybackend.py
-%{py3_sitearch}/projectq/cengines/_greedyscheduler.py
-%{py3_sitearch}/projectq/cengines/_hiq_main_engine.py
-%{py3_sitearch}/projectq/cengines/_merger_engine.py
-%{py3_sitearch}/projectq/cengines/_noisegenerator.py
-%{py3_sitearch}/projectq/cengines/_sched_cpp.*.so
-%{py3_sitearch}/projectq/ops/__pycache__
-%exclude %{py3_sitearch}/projectq/ops/__init__.py
-%exclude %{py3_sitearch}/projectq/ops/__pycache__/__init__*
-%{py3_sitearch}/projectq/ops/_hiq_gates.py
-%exclude %{py3_sitelib}/__pycache__
-%exclude %{py3_sitearch}/__pycache__
+%{python3_sitearch}/projectq/cengines/_cpp2python_bridge.py
+%{python3_sitearch}/projectq/cengines/*.so
+%{python3_sitearch}/projectq/cengines/_cppmain.py
+%{python3_sitearch}/projectq/cengines/_customgate.py
+%{python3_sitearch}/projectq/cengines/_py2cpp.py
 
 # ==============================================================================
 
 %changelog
-* Thu Sep 10 2020 Damien Nguyen <damien1@huawei.com> - 0.6.4.post2-6%{?dist}
-- Install all python packages in /usr/local/hiq instead of /usr/
-
-* Thu Aug 20 2020 Damien Nguyen <damien1@huawei.com> - 0.0.2.post4-0%{?dist}
+* Thu Aug 17 2020 Damien Nguyen <damien1@huawei.com> - 1.0.0-0%{?dist}
 - Initial build
