@@ -30,7 +30,8 @@ License:        ASL 2.0
 URL:            http://www.cython.org
 Source:         https://github.com/cython/cython/archive/%{upver}/%{srcname}-%{version}.tar.gz
 # Python 3.9 compatibility
-Patch1:         https://github.com/cython/cython/commit/1cd24026e9cf6d63d539b359f8ba5155fd48ae21.patch
+# Patch1:         https://github.com/cython/cython/commit/1cd24026e9cf6d63d539b359f8ba5155fd48ae21.patch
+Patch1:		cython_python39.patch
 
 %if 0%{?rhel} && 0%{?rhel} < 8
 # CentOS 7

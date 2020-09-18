@@ -1,0 +1,35 @@
+From 1cd24026e9cf6d63d539b359f8ba5155fd48ae21 Mon Sep 17 00:00:00 2001
+From: Stefan Behnel <stefan_ml@behnel.de>
+Date: Fri, 15 Mar 2019 00:10:05 +0100
+Subject: [PATCH] Import "Iterable" ABC class from "collections.abc" in Py3
+ instead of deprecated "collections" package.
+
+---
+ Cython/Build/Dependencies.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/Cython/Build/Dependencies.py b/Cython/Build/Dependencies.py
+index a4e5c60bee..eb03004e24 100644
+--- a/Cython/Build/Dependencies.py
++++ b/Cython/Build/Dependencies.py
+@@ -18,6 +18,11 @@
+ from distutils.util import strtobool
+ import zipfile
+ 
++try:
++    from collections.abc import Iterable
++except ImportError:
++    from collections import Iterable
++
+ try:
+     import gzip
+     gzip_open = gzip.open
+@@ -749,7 +754,7 @@ def create_extension_list(patterns, exclude=None, ctx=None, aliases=None, quiet=
+         exclude = []
+     if patterns is None:
+         return [], {}
+-    elif isinstance(patterns, basestring) or not isinstance(patterns, collections.Iterable):
++    elif isinstance(patterns, basestring) or not isinstance(patterns, Iterable):
+         patterns = [patterns]
+     explicit_modules = set([m.name for m in patterns if isinstance(m, Extension)])
+     seen = set()
