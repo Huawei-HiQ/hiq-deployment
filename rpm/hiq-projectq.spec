@@ -21,10 +21,33 @@
 %global sha256 f404e530cea8a1741062626ca7ebe23e9a3bde1198cd0bf602fde0fe2c9359fe
 %global pypi_name hiq-projectq
 
+%global py3_prefix /usr/local/hiq
+%global py3_sitelib %(%{__python3} -Ic "from distutils.sysconfig import get_python_lib; print(get_python_lib(0, 0, '%{py3_prefix}'))")
+%global py3_sitearch %(%{__python3} -Ic "from distutils.sysconfig import get_python_lib; print(get_python_lib(1, 0, '%{py3_prefix}'))")
+
+%if 0%{?rhel} && 0%{?rhel} < 8
+%define __python %{__python3}
+%else
+%if 0%{?py_byte_compile}
+# Turn off the brp-python-bytecompile automagic
+%global _python_bytecompile_extra 0
+%endif
+%endif
+
+# Enable automatic download
+%undefine _disable_source_fetch
+
+# Disable debug package
+%define debug_package %nil
+
 # ==============================================================================
 
 # This can be used to disable all tests for faster bootstrapping
 %bcond_without tests
+# Remove dependency for python*-hiq-projectq-matplotlib
+%global __requires_exclude ^libpng16-cfdb1654\\.so.*$
+# Disable binary stripping
+%define __strip /bin/true
 
 # ==============================================================================
 
@@ -33,76 +56,99 @@ Version: %{hiq_projectq_version}
 Release: %{hiq_projectq_release}%{?dist}
 License: Apache-2.0
 URL: https://hiq.huaweicloud.com/en/
-%undefine _disable_source_fetch
-Source0: %{pypi_source}
-
-# Disable debug package
-%define debug_package %nil
-
-%if 0%{?rhel} && 0%{?rhel} < 8
-# CentOS 7
-BuildRequires:  centos-release-scl
-BuildRequires:  devtoolset-8
-BuildRequires:	devtoolset-8-gcc-c++
-BuildRequires:  epel-release
-BuildRequires:	python3-setuptools
-# NB: pybind11 is installed via pip during %build
-# NB: numpy, scipy, sympy are installed via pip during %check
-%if %{with tests}
-BuildRequires:	python36-numpy
-BuildRequires:	python36-scipy
-BuildRequires:	python36-requests
-BuildRequires:	python36-pytest
-# NB: sympy, matplotlib and networkx are installed via pip during %check
-%endif
-%else
-# Fedora > 30 && CentOS > 7
-BuildRequires:	gcc-c++
-%if 0%{?rhel} == 8
-BuildRequires:  epel-release
-%endif
-BuildRequires:  python3dist(setuptools)
-BuildRequires:  python3dist(pybind11)
-# NB: pybind11 is installed via pip during %build for CentOS 8
-%if %{with tests}
-BuildRequires:  python3dist(pytest)
-BuildRequires:  python3dist(networkx)
-BuildRequires:  python3dist(numpy)
-BuildRequires:  python3dist(requests)
-BuildRequires:  python3dist(scipy)
-%if ! 0%{?rhel}
-BuildRequires:  python3dist(matplotlib) >= 2.2.3
-BuildRequires:  python3dist(sympy)
-%endif
-# NB: sympy and matplotlib are installed via pip during %check for CentOS 8
-%endif
-%endif
+Source0: https://files.pythonhosted.org/packages/source/h/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildRequires:  python3-devel
+BuildRequires:  pybind11-devel >= 2.2.0
+%if 0%{?rhel} && 0%{?rhel} < 8
+# CentOS 7
+# NB: need to have epel-relase and centos-release-scl *already installed*
+#     in order to install devtoolset-8.
+BuildRequires:  devtoolset-8
+BuildRequires:	devtoolset-8-gcc-c++
+BuildRequires: 	python3-setuptools
+BuildRequires:  python36-pybind11 >= 2.2.0
+%else
+BuildRequires:	gcc-c++
+%if 0%{?is_opensuse}
+# OpenSUSE
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-pybind11 >= 2.2.0
+%else
+# Fedora > 30 && CentOS > 7
+BuildRequires:  python3dist(setuptools)
+BuildRequires:  python3dist(pybind11) >= 2.2.0
+%endif
+%endif
+
+%if %{with tests}
+%if 0%{?rhel} && 0%{?rhel} < 8
+# CentOS 7
+BuildRequires:	python36-matplotlib >= 2.2.3
+BuildRequires:	python36-networkx
+BuildRequires:	python36-numpy
+BuildRequires:	python36-pytest
+BuildRequires:	python36-requests
+BuildRequires:	python36-scipy
+BuildRequires:	python36-sympy
+%else
+%if 0%{?is_opensuse}
+# OpenSUSE
+BuildRequires:  python3-matplotlib >= 2.2.3
+BuildRequires:  python3-networkx
+BuildRequires:  python3-numpy
+BuildRequires:  python3-pytest
+BuildRequires:  python3-requests
+BuildRequires:  python3-scipy
+BuildRequires:  python3-sympy
+%else
+# Fedora > 30 && CentOS > 7
+BuildRequires:  python3dist(matplotlib) >= 2.2.3
+BuildRequires:  python3dist(networkx)
+BuildRequires:  python3dist(numpy)
+BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(requests)
+BuildRequires:  python3dist(scipy)
+BuildRequires:  python3dist(sympy)
+%endif
+%endif
+%endif
 
 # ==============================================================================
 
 %define requirements						\
+Requires:       python3-hiq-site-files				\
 %if 0%{?rhel} && 0%{?rhel} < 8					\
 # CentOS 7							\
+# NB: need to have epel-relase and centos-release-scl		\
+#     *already installed* in order to install devtoolset-8.	\
 Requires:	devtoolset-8					\
+Requires:       python36-matplotlib				\
+Requires:       python36-networkx >= 2.0			\
 Requires:       python36-numpy					\
-Requires:       python36-scipy					\
 Requires:       python36-requests				\
-# NB: missing packages: sympy, pybind11, networkx, matplotlib	\
+Requires:       python36-scipy					\
+Requires:       python36-sympy					\
+%else								\
+%if 0%{?is_opensuse}						\
+# OpenSUSE							\
+Requires:       python3-matplotlib >= 2.2.3			\
+Requires:       python3-networkx >= 2.0				\
+Requires:       python3-numpy					\
+Requires:       python3-requests				\
+Requires:       python3-scipy					\
+Requires:       python3-sympy					\
 %else								\
 # Fedora > 30 && CentOS > 7					\
 Requires:       python3dist(matplotlib) >= 2.2.3		\
-Requires:       python3dist(networkx)				\
+Requires:       python3dist(networkx) >= 2.0			\
 Requires:       python3dist(numpy)				\
 Requires:       python3dist(requests)				\
 Requires:       python3dist(scipy)				\
-%if ! 0%{?rhel}							\
 Requires:       python3dist(sympy)				\
-%endif								\
-# NB: missing sympy package on CentOS 8				\
 								\
 Conflicts:      python3dist(projectq)				\
+%endif								\
 %endif
 
 # ==============================================================================
@@ -120,7 +166,6 @@ It is however based on a development version that may contain some
 changes/bugfixes in order to better
 
 # ------------------------------------------------------------------------------
-
 %package -n     python3-%{pypi_name}
 Summary:        %{summary}
 Provides:	python3-%{pypi_name} = %{version}-%{release}
@@ -140,7 +185,7 @@ changes/bugfixes in order to better
 echo "%sha256  %SOURCE0" | sha256sum -c -
 %autosetup -n %{pypi_name}-%{version} -p1
 # Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+rm -rf $(echo %{pypi_name} | tr - _).egg-info
 
 # --------------------------------------
 
@@ -148,10 +193,10 @@ rm -rf %{pypi_name}.egg-info
 
 %if 0%{?rhel} && 0%{?rhel} < 8
 scl enable devtoolset-8 -- <<\EOF
-# CentOS 7 does not have a python3-pybind11 package
-%{__python3} -m pip install pybind11
 %else
+%if ! 0%{?is_opensuse}
 %set_build_flags
+%endif
 %endif
 
 %py3_build
@@ -164,7 +209,14 @@ EOF
 
 %install
 
+%if 0%{?is_opensuse}
+%global _prefix %{py3_prefix}
 %py3_install
+%else
+%py3_install -- --prefix %{py3_prefix}
+%endif
+
+%{?py_byte_compile:%py_byte_compile %{__python3} %{buildroot}%{py3_sitearch}}
 
 # --------------------------------------
 
@@ -181,48 +233,54 @@ def test_dummy():
     pass
 EOF
 
-%if 0%{?rhel}
-%{__python3} -m pip install sympy matplotlib
-%if 0%{?rhel} < 8
-%{__python3} -m pip install networkx
-%endif
-%endif
+user_site=$(%{__python3} -m site --user-site)
+delete_user_site=0
+if [ ! -d "$user_site" ]; then
+   delete_user_site=1
+   mkdir -p "$user_site"
+fi
+
+cat << \EOF > "$user_site/hiq.pth"
+%{buildroot}%{py3_sitelib}
+%{buildroot}%{py3_sitearch}
+EOF
 
 %{__python3} -m pytest -p no:warnings projectq
 
 rm -f projectq/rpm_test.py
-
+if [ $delete_user_site -eq 1 ]; then
+   rm -rf "$user_site"
+fi
 %endif
 
 # ==============================================================================
 
-%define hiq_projectq_files							\
-%license LICENSE								\
-%doc README.rst									\
-%{python3_sitearch}/hiq_projectq-%{version}-py%{python3_version}.egg-info	\
-%{python3_sitearch}/projectq/*.py*						\
-%{python3_sitearch}/projectq/__pycache__					\
-%{python3_sitearch}/projectq/backends						\
-%{python3_sitearch}/projectq/cengines						\
-%{python3_sitearch}/projectq/libs						\
-%{python3_sitearch}/projectq/meta						\
-%{python3_sitearch}/projectq/ops						\
-%{python3_sitearch}/projectq/setups						\
-%{python3_sitearch}/projectq/tests						\
-%{python3_sitearch}/projectq/types
-
-# ------------------------------------------------------------------------------
-
-%files
-%defattr(-,root,root,-)
-%hiq_projectq_files
-
 %files -n python3-%{pypi_name}
 %defattr(-,root,root,-)
-%hiq_projectq_files
+%license LICENSE
+%doc README.rst
+%{py3_sitearch}/hiq_projectq-%{version}-py%{python3_version}.egg-info
+%{py3_sitearch}/projectq/*.py*
+%{py3_sitearch}/projectq/__pycache__
+%{py3_sitearch}/projectq/backends
+%{py3_sitearch}/projectq/cengines
+%{py3_sitearch}/projectq/libs
+%{py3_sitearch}/projectq/meta
+%{py3_sitearch}/projectq/ops
+%{py3_sitearch}/projectq/setups
+%{py3_sitearch}/projectq/tests
+%{py3_sitearch}/projectq/types
+%exclude %{py3_sitelib}/__pycache__
+%exclude %{py3_sitearch}/__pycache__
 
 # ==============================================================================
 
 %changelog
+* Thu Sep 10 2020 Damien Nguyen <damien1@huawei.com> - 0.6.4.post2-6%{?dist}
+- Install all python packages in /usr/local/hiq instead of /usr/
+
+* Tue Sep  8 2020 Damien Nguyen <damien1@huawei.com> - 0.6.4.post2-6%{?dist}
+- Add subpackages for (potential) unmet Python dependencies
+
 * Thu Aug 20 2020 Damien Nguyen <damien1@huawei.com> - 0.6.4.post2-6%{?dist}
 - Initial build

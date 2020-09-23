@@ -1,0 +1,37 @@
+diff --git a/lzf/lzf_filter.c b/lzf/lzf_filter.c
+index 1b973be..67af783 100644
+--- a/lzf/lzf_filter.c
++++ b/lzf/lzf_filter.c
+@@ -26,7 +26,7 @@
+ #include <stdio.h>
+ #include <errno.h>
+ #include "hdf5.h"
+-#include "lzf/lzf.h"
++#include "lzf.h"
+ #include "lzf_filter.h"
+ 
+ /* Our own versions of H5Epush_sim, as it changed in 1.8 */
+diff --git a/setup_build.py b/setup_build.py
+index c0e9a28..30ec420 100644
+--- a/setup_build.py
++++ b/setup_build.py
+@@ -33,9 +33,7 @@ MODULES =  ['defs','_errors','_objects','_proxy', 'h5fd', 'h5z',
+             'h5pl']
+ 
+ 
+-EXTRA_SRC = {'h5z': [ localpath("lzf/lzf_filter.c"),
+-              localpath("lzf/lzf/lzf_c.c"),
+-              localpath("lzf/lzf/lzf_d.c")]}
++EXTRA_SRC = {'h5z': [ localpath("lzf/lzf_filter.c")]}
+ 
+ FALLBACK_PATHS = {
+     'include_dirs': [],
+@@ -43,7 +41,7 @@ FALLBACK_PATHS = {
+ }
+ 
+ COMPILER_SETTINGS = {
+-   'libraries'      : ['hdf5', 'hdf5_hl'],
++   'libraries'      : ['hdf5', 'hdf5_hl', 'lzf'],
+    'include_dirs'   : [localpath('lzf')],
+    'library_dirs'   : [],
+    'define_macros'  : [('H5_USE_16_API', None)]

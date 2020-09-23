@@ -1,0 +1,51 @@
+--- sympy-sympy-1.4/sympy/utilities/autowrap.py.orig	2019-04-09 18:29:25.000000000 -0600
++++ sympy-sympy-1.4/sympy/utilities/autowrap.py	2019-04-17 14:34:26.580374579 -0600
+@@ -229,6 +229,8 @@ except ImportError:
+     from distutils.extension import Extension
+ from Cython.Build import cythonize
+ cy_opts = {cythonize_options}
++if 'language_level' not in cy_opts or cy_opts['language_level'] == None:
++    cy_opts['language_level'] = 3
+ {np_import}
+ ext_mods = [Extension(
+     {ext_args},
+--- sympy-sympy-1.4/sympy/utilities/_compilation/compilation.py.orig	2019-04-09 18:29:25.000000000 -0600
++++ sympy-sympy-1.4/sympy/utilities/_compilation/compilation.py	2019-04-17 14:34:26.581374576 -0600
+@@ -291,6 +291,8 @@ def simple_cythonize(src, destdir=None,
+     try:
+         cy_options = CompilationOptions(default_options)
+         cy_options.__dict__.update(cy_kwargs)
++        if cy_options.__dict__['language_level'] == None:
++            cy_options.__dict__['language_level'] = 3
+         cy_result = cy_compile([src], cy_options)
+         if cy_result.num_errors > 0:
+             raise ValueError("Cython compilation failed.")
+--- sympy-sympy-1.4/sympy/utilities/tests/test_autowrap.py.orig	2019-04-09 18:29:25.000000000 -0600
++++ sympy-sympy-1.4/sympy/utilities/tests/test_autowrap.py	2019-04-17 14:34:26.581374576 -0600
+@@ -100,6 +100,8 @@ except ImportError:
+     from distutils.extension import Extension
+ from Cython.Build import cythonize
+ cy_opts = {}
++if 'language_level' not in cy_opts or cy_opts['language_level'] == None:
++    cy_opts['language_level'] = 3
+ 
+ ext_mods = [Extension(
+     'wrapper_module_%(num)s', ['wrapper_module_%(num)s.pyx', 'wrapped_code_%(num)s.c'],
+@@ -138,6 +140,8 @@ except ImportError:
+     from distutils.extension import Extension
+ from Cython.Build import cythonize
+ cy_opts = {'compiler_directives': {'boundscheck': False}}
++if 'language_level' not in cy_opts or cy_opts['language_level'] == None:
++    cy_opts['language_level'] = 3
+ 
+ ext_mods = [Extension(
+     'wrapper_module_%(num)s', ['wrapper_module_%(num)s.pyx', 'wrapped_code_%(num)s.c'],
+@@ -164,6 +168,8 @@ except ImportError:
+     from distutils.extension import Extension
+ from Cython.Build import cythonize
+ cy_opts = {'compiler_directives': {'boundscheck': False}}
++if 'language_level' not in cy_opts or cy_opts['language_level'] == None:
++    cy_opts['language_level'] = 3
+ import numpy as np
+ 
+ ext_mods = [Extension(

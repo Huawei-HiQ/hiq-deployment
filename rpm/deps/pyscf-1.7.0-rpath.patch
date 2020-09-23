@@ -1,0 +1,21 @@
+diff -up pyscf-1.7.0/pyscf/lib/CMakeLists.txt.rpath pyscf-1.7.0/pyscf/lib/CMakeLists.txt
+--- pyscf-1.7.0/pyscf/lib/CMakeLists.txt.rpath	2020-01-02 09:51:51.000000000 +0200
++++ pyscf-1.7.0/pyscf/lib/CMakeLists.txt	2020-01-22 12:00:17.241885886 +0200
+@@ -105,17 +105,6 @@ configure_file(
+ # to find config.h
+ include_directories("${PROJECT_BINARY_DIR}")
+ 
+-# See also https://gitlab.kitware.com/cmake/community/wikis/doc/cmake/RPATH-handling
+-if (WIN32)
+-  #?
+-elseif (APPLE)
+-  #TODO: test me set(CMAKE_MACOSX_RPATH On)
+-else ()
+-  set(CMAKE_SKIP_BUILD_RPATH  True)
+-  set(CMAKE_BUILD_WITH_INSTALL_RPATH True)
+-  set(CMAKE_INSTALL_RPATH "\$ORIGIN:\$ORIGIN/deps/lib")
+-endif ()
+-
+ add_subdirectory(np_helper)
+ add_subdirectory(gto)
+ add_subdirectory(vhf)

@@ -31,6 +31,8 @@ class HiqProjectq < Formula
 
   depends_on "llvm"
   depends_on "numpy"
+  depends_on "pybind11" => :build
+  depends_on "python@3.8"
   depends_on "scipy"
 
   def install
@@ -44,7 +46,7 @@ class HiqProjectq < Formula
     ENV["CC"] = "#{llvm_bin}/clang"
     ENV["CXX"] = "#{llvm_bin}/clang++"
 
-    venv.pip_install "pybind11"
+    venv.pip_install "matplotlib"
     system libexec/"bin/pip3", "install", "-v", buildpath
 
     pth_contents = "import site; site.addsitedir('#{libexec/site_packages}')\n"
