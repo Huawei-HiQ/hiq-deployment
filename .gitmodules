@@ -10,3 +10,7 @@
 	path = aur/hiq-projectq
 	url = https://aur.archlinux.org/python-hiq-projectq.git
 	branch = master
+[submodule "aur/hiq-circuit"]
+	path = aur/hiq-circuit
+	url = https://aur.archlinux.org/python-hiq-circuit.git
+	branch = master

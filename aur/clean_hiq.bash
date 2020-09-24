@@ -23,54 +23,19 @@ root=$HERE
 # ==============================================================================
 
 source $HERE/scripts/functions.bash
-source $HERE/scripts/packages.bash
 
 # ==============================================================================
 
-for pkg in ${build_and_install[@]}; do
+pkg_list=$(ls | grep hiq-)
+
+for pkg in $pkg_list; do
     pkgs=$(get_pkg_fnames $pkg)
-    if [ -z "$pkgs" ]; then
-	pkb_builddep $pkg
-	pkg_build $pkg
-	pkg_copy $pkg
-
-	pkgs=$(get_pkg_fnames $pkg)
-	if [ -z "$pkgs" ]; then
-	    echo "Unable to find build packages in $pkg" 1>&2
-	    exit 1
-	else
-	    if [ -n "$(echo $pkgs | grep python3)" ]; then
-		pkgs=$(get_pkg_fnames $pkg | grep python3)
-	    fi
-	fi
+    if [ -n "$pkgs" ]; then
+	rm -rf $pkg/src
+	rm -rf $pkg/pkg
+	rm -f $pkg/*.tar.gz
+	rm -f $pkg/*.tar.zst
     fi
-
-    pkg_install $pkgs -dd
 done
 
-tmp="${build[@]}"
-if [[ -n "$tmp" ]]; then
-    pkgbuilds=""
-    for pkg in ${build[@]}; do
-	pkgbuilds="$pkgbuilds $root/$pkg/PKGBUILD"
-    done
-else
-    pkgbuilds=$(ls $root/*/PKGBUILD)
-fi
-
-for pkgbuild in $pkgbuilds; do
-    dirname=$(dirname $pkgbuild)
-    pkg=$(basename $dirname)
-
-    pkgs=$(get_pkg_fnames $pkg)
-    if [ $? -ne 0 ]; then
-	exit 1
-    fi
-    if [ -z "$pkgs" ]; then
-	if ! in_array $pkg build_and_install; then
-	    pkg_builddep $pkg
-	    pkg_build $pkg
-	    pkg_copy $pkg
-	fi
-    fi
-done
+# ==============================================================================

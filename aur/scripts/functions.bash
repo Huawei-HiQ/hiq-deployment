@@ -28,6 +28,17 @@ function makepkg_func()
     fi
 }
 
+function yay_func()
+{
+    local var="$@"
+
+    if [ -f /usr/local/bin/yay ]; then
+	/usr/local/bin/yay $var
+    else
+	sudo -u notroot -- sh -c "yay $var"
+    fi
+}
+
 # ==============================================================================
 
 function in_array()
@@ -95,7 +106,8 @@ function pkg_builddep()
 {
     local pkg_root=$1
 
-    sudo -u notroot -- sh -c "yay -Sy --noconfirm $(pacman --deptest $(source $pkg_root/PKGBUILD && echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}) | tr '\n' ' ')"
+    yay_func -Sy --noconfirm \
+	     $(pacman --deptest $(source $pkg_root/PKGBUILD && echo ${depends[@]} ${makedepends[@]} ${checkdepends[@]}) | tr '\n' ' ')
 }
 
 # ------------------------------------------------------------------------------
@@ -119,7 +131,17 @@ function pkg_build()
 
 function pkg_install()
 {
-    pacman -U --noconfirm "$@"
+    pargs=()
+    fargs=()
+    for pkg in "$@"; do
+	if [ -f $pkg ]; then
+	    fargs+=($pkg)
+	else
+	    pargs+=($pkg)
+	fi
+    done
+    pacman -S --noconfirm "${pargs[@]}"
+    pacman -U --noconfirm "${fargs[@]}"
 }
 
 # ------------------------------------------------------------------------------
