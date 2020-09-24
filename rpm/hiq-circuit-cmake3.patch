@@ -1,0 +1,25 @@
+diff --unified --recursive --text hiq-circuit-0.0.2.post4/_setup.py hiq-circuit-0.0.2.post4.new/_setup.py
+--- hiq-circuit-0.0.2.post4/_setup.py	2020-08-20 14:47:31.000000000 +0200
++++ hiq-circuit-0.0.2.post4.new/_setup.py	2020-09-24 20:22:24.000000000 +0200
+@@ -27,13 +27,14 @@
+ 
+ def get_cmake_command():
+     with open(os.devnull, 'w') as devnull:
+-        try:
+-            subprocess.check_call(['cmake', '--version'],
+-                                  stdout=devnull,
+-                                  stderr=devnull)
+-            return ['cmake']
+-        except (OSError, subprocess.CalledProcessError):
+-            pass
++        for cmd in ['cmake3', 'cmake']:
++            try:
++                subprocess.check_call([cmd, '--version'],
++                                      stdout=devnull,
++                                      stderr=devnull)
++                return [cmd]
++            except (OSError, subprocess.CalledProcessError):
++                pass
+ 
+         # CMake not in PATH, should have installed Python CMake module
+         # -> try to find out where it is

@@ -48,6 +48,10 @@ Release: %{hiq_circuit_release}%{?dist}
 License: Apache-2.0
 URL: https://hiq.huaweicloud.com/en/
 Source0: https://files.pythonhosted.org/packages/source/h/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+%if 0%{?rhel} && 0%{?rhel} < 8
+# CentOS 7
+Patch0: hiq-circuit-cmake3.patch
+%endif
 
 %if 0%{?rhel} && 0%{?rhel} < 8
 # CentOS 7
@@ -198,12 +202,9 @@ rm -rf $(echo %{pypi_name} | tr - _).egg-info
 
 %if 0%{?rhel} && 0%{?rhel} < 8
 # CentOS 7
-alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake3 20 \
-	--slave /usr/local/bin/ctest ctest /usr/bin/ctest3 \
-	--slave /usr/local/bin/cpack cpack /usr/bin/cpack3 \
-	--slave /usr/local/bin/ccmake ccmake /usr/bin/ccmake3 \
-	--family cmake
+%global cmake cmake3
 %else
+%global cmake cmake
 %if 0%{?is_opensuse}
 %global _openmpi_load \
  . /etc/profile.d/modules.sh; \
