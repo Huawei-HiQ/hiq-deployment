@@ -21,7 +21,7 @@
 
 Name:           python-%{srcname}
 Version:        2.5
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Creates and Manipulates Graphs and Networks
 License:        BSD
 URL:            http://networkx.github.io/
@@ -45,6 +45,16 @@ study of the structure, dynamics, and functions of complex networks.
 %package -n python3-%{srcname}
 Summary:        Creates and Manipulates Graphs and Networks
 %{?python_provide:%python_provide python3-%{srcname}}
+
+%if 0%{?rhel} && 0%{?rhel} < 8
+Requires:	python36-decorator
+%else
+%if 0%{?is_opensuse}
+Requires:	python3-decorator
+%else
+Requires:	python3dist(decorator)
+%endif
+%endif
 
 %description -n python3-%{srcname}
 NetworkX is a Python 3 package for the creation, manipulation, and
