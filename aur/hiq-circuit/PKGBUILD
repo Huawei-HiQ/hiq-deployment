@@ -18,16 +18,15 @@
 #
 # ==============================================================================
 
-pkgbase=python-hiq-circuit
-_name=${pkgbase#python-}
-pkgname=('python3-hiq-circuit' 'python-hiq-circuit')
+pkgname=python-hiq-circuit
+_name=${pkgname#python-}
 
 pkgver=0.0.2.post4
 pkgrel=1
-pkgdesc="A high performance distributed quantum simulator"
-arch=('i686' 'x86_64')
+pkgdesc="Huawei HiQ: A high performance distributed quantum simulator"
+arch=('x86_64')
 url="https://hiq.huaweicloud.com/en/"
-license=('Apache-2.0')
+license=('Apache')
 depends=('boost-libs'
 	 'gflags'
 	 'google-glog'
@@ -35,24 +34,18 @@ depends=('boost-libs'
 	 'openmpi'
 	 'python')
 makedepends=('cmake'
+	     'gcc'
 	     'boost'
-	     'gflags'
-	     'google-glog'
-	     'hwloc'
-	     'openmpi'
-	     'python'
 	     'python-setuptools')
-checkdepends=('boost'
+checkdepends=('boost-libs'
 	      'gflags'
 	      'google-glog'
 	      'hwloc'
 	      'openmpi'
 	      'python'
 	      'python-pytest')
-license=('Apache 2')
-arch=('i686' 'x86_64')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('09cbbba91635bfc7b015fe66af4f46c4ceafb1a936affc98b1c273e4b7bc57ef')
+sha512sums=('a890fb3c62e03f40840c8cd097a5bc03e439f2061407095c8dfcc824c4b7a725ba33da9028ac15a74e2de56bc714f20d2aaac2d0d075b59dd03dce73a32089fa')
 groups=(python-hiq)
 
 prepare() {
@@ -63,18 +56,20 @@ prepare() {
 build() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py build
+
+  if [[ -d examples ]]; then
+    python setup.py build_ext --inplace
+  fi
+  
+  if [ -d doc ]; then
+    cd doc && make html
+  fi
 }
 
 check() {
   cd "$srcdir/$_name-$pkgver"
-  do_check=0
+
   if [[ -d examples ]]; then
-    do_check=1
-  fi
-
-  if [ $do_check -eq 1 ]; then
-    python setup.py build_ext --inplace
-
     python examples/BV_algorithm_constant_mpi.py
     python examples/exactgrover_mpi.py
     python examples/grover_mpi.py
@@ -89,34 +84,15 @@ check() {
   fi
 }
 
-package_python3-hiq-circuit() {
-  depends+=("python3-hiq-projectq")
-  check_depends+=("python3-hiq-projectq")
-
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
-
-  # Remove files that are already in python3-hiq-projectq
-  cd "$pkgdir/usr/lib/"python3.*/site-packages/projectq
-  rm -fv __init__.py
-  rm -fv __pycache__/__init__.*.pyc
-  rm -fv backends/__init__.py
-  rm -fv backends/__pycache__/__init__.*.pyc
-  rm -fv cengines/__init__.py
-  rm -fv cengines/__pycache__/__init__.*.pyc
-  rm -fv ops/__init__.py
-  rm -fv ops/__pycache__/__init__.*.pyc
-}
-
-package_python-hiq-circuit() {
+package() {
   depends+=("python-hiq-projectq")
   check_depends+=("python-hiq-projectq")
 
   cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   # Remove files that are already in python-hiq-projectq
-  cd "$pkgdir/usr/lib/"python*/site-packages/projectq
+  pushd "$pkgdir/usr/lib/"python*/site-packages/projectq
   rm -fv __init__.py
   rm -fv __pycache__/__init__.*.pyc
   rm -fv backends/__init__.py
@@ -125,6 +101,19 @@ package_python-hiq-circuit() {
   rm -fv cengines/__pycache__/__init__.*.pyc
   rm -fv ops/__init__.py
   rm -fv ops/__pycache__/__init__.*.pyc
+  popd
+
+  install -d "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm 644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
+
+  if [ -d doc ]; then
+    cp -r docs/_build/html "$pkgdir"/usr/share/doc/$pkgname
+  fi
+
+  if [ -d examples ]; then
+    cp -r examples "$pkgdir"/usr/share/doc/$pkgname
+    find "$pkgdir"/usr/share/doc/$pkgname/examples -type f -exec chmod 644 {} +
+  fi
 }
 
 

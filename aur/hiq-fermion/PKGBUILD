@@ -1,0 +1,71 @@
+# Maintainer: Damien Nguyen <damien1@Nhuawei.com>
+
+# ==============================================================================
+#
+# Copyright 2020 <Huawei Technologies Co., Ltd>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# ==============================================================================
+
+pkgname=python-hiq-fermion
+_name=${pkgname#python-}
+
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Huawei HiQ sub-project for quantum chemistry."
+arch=('any')
+url="https://hiq.huaweicloud.com/en/"
+license=('Apache')
+depends=('python-numpy'
+	 'python-scipy'
+	 'python-h5py'
+	 # AUR dependencies
+	 'python-pyscf')
+makedepends=('python'
+	     'python-setuptools')
+checkdepends=('python-numpy'
+	      'python-scipy'
+	      'python-h5py'
+	      # AUR dependencies
+	      'python-pyscf')
+groups=(python-hiq)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('XXXXX')
+
+prepare() {
+  cd "$srcdir/$_name-$pkgver"
+  # patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+}
+
+build() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py build
+}
+
+# check() {
+#   cd "$srcdir/$_name-$pkgver"
+# }
+
+package() {
+  # Both of these are AUR dependencies
+  depends+=('python-hiq-projectq'
+	    'python-openfermionprojectq-hiq')
+  check_depends+=('python-hiq-projectq'
+		  'python-openfermionprojectq-hiq')
+
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+# vim:set ts=2 sw=2 et:

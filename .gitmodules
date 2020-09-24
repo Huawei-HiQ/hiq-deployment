@@ -1,0 +1,12 @@
+[submodule "aur/openfermion"]
+	path = aur/openfermion
+	url = https://aur.archlinux.org/python-openfermion.git
+	branch = master
+[submodule "aur/openfermionprojectq"]
+	path = aur/openfermionprojectq
+	url = https://aur.archlinux.org/python-openfermionprojectq.git
+	branch = master
+[submodule "aur/hiq-projectq"]
+	path = aur/hiq-projectq
+	url = https://aur.archlinux.org/python-hiq-projectq.git
+	branch = master

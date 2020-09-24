@@ -1,0 +1,29 @@
+pkgbase = python-hiq-fermion
+	pkgdesc = Huawei HiQ sub-project for quantum chemistry.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://hiq.huaweicloud.com/en/
+	arch = any
+	groups = python-hiq
+	license = Apache
+	checkdepends = python-numpy
+	checkdepends = python-scipy
+	checkdepends = python-h5py
+	checkdepends = python-pyscf
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-h5py
+	depends = python-pyscf
+	source = https://files.pythonhosted.org/packages/source/h/hiq-fermion/hiq-fermion-0.0.1.tar.gz
+	sha256sums = XXXXX
+
+pkgname = python-hiq-fermion
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-h5py
+	depends = python-pyscf
+	depends = python-hiq-projectq
+	depends = python-openfermionprojectq-hiq
+

@@ -17,9 +17,9 @@
 #
 # ==============================================================================
 
-pacman --noconfirm -S archlinux-keyring
-pacman --noconfirm -S base-devel git
 pacman --noconfirm -Syu
+pacman --noconfirm -S archlinux-keyring
+pacman --noconfirm -S base-devel git namcap
 
 useradd notroot
 echo "notroot ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/notroot
@@ -30,6 +30,38 @@ makepkg_func()
     var="$@"
     sudo -u notroot -- sh -c "makepkg $var"
 }
-alias makepkg="makepkg_func"
+alias makepkg=makepkg_func
 
-makepkg --syncdeps --noconfirm
+# Auto-fetch GPG keys (for checking signatures):
+mkdir ~/.gnupg && \
+    touch ~/.gnupg/gpg.conf && \
+    echo "keyserver-options auto-key-retrieve" > ~/.gnupg/gpg.conf
+
+mkdir -p /home/notroot
+chown -R notroot /home/notroot
+
+cat << \EOF > /usr/local/bin/makepkg
+#! /bin/bash
+var="$@"
+sudo -u notroot -- sh -c "/usr/bin/makepkg $var"
+EOF
+chmod 755 /usr/local/bin/makepkg
+
+# ------------------------------------------------------------------------------
+
+pushd /tmp
+# Install yay (for building AUR dependencies):
+git clone https://aur.archlinux.org/yay-bin.git && \
+    chown -R notroot yay-bin && cd yay-bin && \
+    makepkg --noconfirm --syncdeps --rmdeps --install --clean && \
+    cd .. && rm -rf yay-bin
+popd
+
+cat << \EOF > /usr/local/bin/yay
+#! /bin/bash
+var="$@"
+sudo -u notroot -- sh -c "/usr/sbin/yay $var"
+EOF
+chmod 755 /usr/local/bin/yay
+
+# ==============================================================================
