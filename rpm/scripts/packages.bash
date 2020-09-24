@@ -24,6 +24,7 @@ elif [ "$os_name" == "opensuse-leap" ]; then
 	build+=(networkx sympy mpi4py matplotlib)
     elif [ "$os_ver" == "15.2" ]; then
 	build_and_install+=(numpy pybind11)
+	build+=(matplotlib)
     else
 	echo "Unsupported OpenSUSE/leap version: $os_ver"
     fi

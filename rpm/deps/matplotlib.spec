@@ -38,7 +38,7 @@
 
 Name:           python-matplotlib
 Version:        3.0.3
-Release:        2%{?rctag:.%{rctag}}%{?dist}
+Release:        3%{?rctag:.%{rctag}}%{?dist}
 Summary:        Python 2D plotting library
 # qt4_editor backend is MIT
 License:        Python and MIT
@@ -161,6 +161,18 @@ Requires:       dejavu-sans-fonts
 Requires:       dvipng
 %endif
 Requires:       python3-matplotlib-data = %{version}-%{release}
+%if 0%{?is_opensuse}
+%if 0%{?sle_version}
+# OpenSUSE/leap
+Requires:	libqhull7-7_2_0
+%else
+# OpenSUSE Tumbleweed
+Requires:	libqhull7
+%endif
+%else
+# CentOS && Fedora
+Requires:       libqhull
+%endif
 %if 0%{?rhel} && 0%{?rhel} < 8
 # CentOS 7
 Requires:       python3-numpy

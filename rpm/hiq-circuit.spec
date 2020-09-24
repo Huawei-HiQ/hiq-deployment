@@ -108,7 +108,7 @@ BuildRequires:  python3-devel
 # CentOS 7						\
 Requires:	devtoolset-8				\
 %endif							\
-%if 0%{?is_opensuse} && 0%{sle_version} == 150200	\
+%if 0%{?is_opensuse} && 0%{?sle_version} == 150200	\
 Requires:	python3-mpi4py				\
 %else							\
 Requires:	python3-mpi4py-openmpi			\

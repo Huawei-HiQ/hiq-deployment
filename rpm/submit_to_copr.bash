@@ -20,6 +20,7 @@
 
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+dry_run=0
 srpms_root=$HERE/srpms
 
 os_name=$(cat /etc/os-release | grep ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
@@ -52,10 +53,67 @@ function copr_build()
 	shift
     done
 
+    if [ $dry_run -ne 0 ]; then
+	args+=(--dry-run)
+    fi
+
     $HERE/scripts/copr_build.bash \
 	--os-name=$os_name --os-ver=$os_ver "${args[@]}"\
 	"$copr_repo" "${repo_chroot[*]}" "$@"
 }
+
+# ==============================================================================
+
+die() { echo "$*" >&2; exit 2; }  # complain to STDERR and exit with error
+no_arg() {
+    if [ -n "$OPTARG" ]; then die "No arg allowed for --$OPT option"; fi; }
+needs_arg() { if [ -z "$OPTARG" ]; then die "No arg for --$OPT option"; fi; }
+
+python_setup() { python3 setup.py $1 2> /dev/null; }
+
+help_message() {
+    echo -e '\nUsage:'
+    echo "  " `basename $0` "[options] packages"
+    echo -e '\nOptions:'
+    echo '  -h,--help        Show this help message and exit'
+    echo '  -n,--dry-run     Do not actually submit the jobs'
+    echo '                   (only print the commands)'
+}
+
+# ------------------------------------------------------------------------------
+
+while getopts hn-: OPT; do
+  if [ "$OPT" = "-" ]; then   # long option: reformulate OPT and OPTARG
+    OPT="${OPTARG%%=*}"       # extract long option name
+    OPTARG="${OPTARG#$OPT}"   # extract long option argument (may be empty)
+    OPTARG="${OPTARG#=}"      # if long option argument, remove assigning `=`
+  fi
+
+  case "$OPT" in
+      h | help )           no_arg;
+		           help_message >&2
+		           exit 1 ;;
+      n | dry-run )        no_arg;
+		           dry_run=1
+		           ;;
+      parallel | nowait )  no_arg;
+		           nowait=1
+			   ;;
+      background )         no_arg;
+			   background=1
+			   ;;
+      os-name )            needs_arg;
+			   os_name=$OPTARG
+			   ;;
+      os-ver )             needs_arg;
+			   os_ver=$OPTARG
+			   ;;
+      ??* )                die "Illegal option --OPT: $OPT" ;;
+      \? )                 exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
 
 # ==============================================================================
 
@@ -144,17 +202,23 @@ repo_chroot=("${centos[@]}")
 os_name='centos'
 os_ver=7
 copr_build --parallel --background scipy
-scipy_build_id=$(copr-cli list-builds $copr_repo | head -n1 | cut -f1)
+if [ $dry_run -eq 0 ]; then
+    scipy_build_id=$(copr-cli list-builds $copr_repo | head -n1 | cut -f1)
+fi
 
 repo_chroot=("${centos[7]}")
 os_name='centos'
 os_ver=7
 copr_build --parallel --background h5py requests cycler kiwisolver qhull
-pandas_build_id=$(copr-cli list-builds $copr_repo | head -n1 | cut -f1)
+if [ $dry_run -eq 0 ]; then
+    pandas_build_id=$(copr-cli list-builds $copr_repo | head -n1 | cut -f1)
+fi
 
 # Pandas build takes the longest
-copr-cli watch-build $pandas_build_id
-copr-cli watch-build $scipy_build_id
+if [ $dry_run -eq 0 ]; then
+    copr-cli watch-build $pandas_build_id
+    copr-cli watch-build $scipy_build_id
+fi
 repo_chroot=("${centos[7]}" "${opensuse[@]}")
 copr_build matplotlib
 
@@ -168,5 +232,11 @@ copr_build --parallel openfermion
 
 repo_chroot=("${centos[@]}" "${opensuse[@]}")
 copr_build --parallel pyscf
+
+# ==============================================================================
+
+repo_chroot=("${centos[@]}" "${fedora[@]}" "${opensuse[@]}")
+copr_build hiq-projectq
+copr_build --parallel --background hiq-circuit hiq-fermion hiq-pulse
 
 # ==============================================================================

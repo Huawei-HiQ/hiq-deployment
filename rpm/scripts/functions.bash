@@ -182,6 +182,14 @@ function pkg_install()
 	    fi
 	done
 
+	exclude_cmd=(grep -Fv)
+	if [ -n "${fargs[*]}" ]; then
+	    for rpm in "${fargs[@]}"; do
+		for name in $(rpm --provides -qp $rpm); do
+		    exclude_cmd+=(-e "$name")
+		done
+	    done
+	fi
 	if [ -n "${zargs}" ]; then
 	    rm -rf /tmp/rpms/*
 	    zypper --pkg-cache-dir /tmp/rpms install -yd "${zargs[@]}"
@@ -189,7 +197,11 @@ function pkg_install()
 		fargs+=($rpm)
 	    done
 	fi
-	if [ -n "${fargs}" ]; then
+	if [ -n "${fargs[*]}" ]; then
+	    tmp=$(rpm --requires -qp "${fargs[@]}" | "${exclude_cmd[@]}")
+	    if [ -n "$tmp" ]; then
+		zypper install -y $tmp
+	    fi
 	    rpm -i --force "${fargs[@]}"
 	fi
     else

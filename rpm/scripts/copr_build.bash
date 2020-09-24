@@ -8,6 +8,7 @@ os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 srpms_root=$HERE/../srpms
 nowait=0
 background=0
+dry_run=0
 
 # ==============================================================================
 
@@ -23,6 +24,8 @@ help_message() {
     echo "  " `basename $0` "[options] packages"
     echo -e '\nOptions:'
     echo '  -h,--help        Show this help message and exit'
+    echo '  -n,--dry-run     Do not actually submit the jobs'
+    echo '                   (only print the commands)'
     echo '  --os-name [name] Use [name] instead of deduced OS name'
     echo '  --os-ver [ver]   Use [ver] instead of deduced OS version'
     echo '  --parallel       Execute build in parallel (implies --nowait)'
@@ -34,7 +37,7 @@ help_message() {
 
 # ------------------------------------------------------------------------------
 
-while getopts h-: OPT; do
+while getopts hn-: OPT; do
   if [ "$OPT" = "-" ]; then   # long option: reformulate OPT and OPTARG
     OPT="${OPTARG%%=*}"       # extract long option name
     OPTARG="${OPTARG#$OPT}"   # extract long option argument (may be empty)
@@ -45,6 +48,9 @@ while getopts h-: OPT; do
       h | help )           no_arg;
 		           help_message >&2
 		           exit 1 ;;
+      n | dry-run )        no_arg;
+		           dry_run=1
+		           ;;
       parallel | nowait )  no_arg;
 		           nowait=1
 			   ;;
@@ -104,7 +110,11 @@ for rpm in "$@"; do
 done
 
 if [ -n "${pkg_args[*]}" ]; then
-    echo copr-cli build "${args[@]}" "${pkg_args[@]}"
+    ECHO=
+    if [ $dry_run -ne 0 ]; then
+	ECHO=echo
+    fi
+    $ECHO copr-cli build "${args[@]}" "${pkg_args[@]}"
 fi
 
 # ==============================================================================

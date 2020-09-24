@@ -83,13 +83,13 @@ install_hiq_site_files()
 build_hiq_projectq()
 {
     install_hiq_site_files
-    
+
     pkg=hiq-projectq
     deps=(python$py-matplotlib python$py-networkx python$py-numpy
 	  python$py-requests python$py-pytest python$py-scipy
 	  python$py-sympy python$py-hiq-site-files
 	  # Need to manually take care of the dependencies of the dependencies
-	  python$py-kiwisolver python$py-decorator
+	  python$py-kiwisolver python$py-decorator pybind11-devel python$py-pybind11
 	  python$py-mpmath)
 
     if [ "$os_name" == "opensuse-leap" ]; then
@@ -97,7 +97,6 @@ build_hiq_projectq()
     else
 	deps+=(python$py-cycler)
     fi
-
 
     args=()
     for pkg_deps in ${deps[@]}; do
