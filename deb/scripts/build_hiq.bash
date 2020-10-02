@@ -45,7 +45,7 @@ python_setup() { python3 setup.py $1 2> /dev/null; }
 
 help_message() {
     echo -e '\nUsage:'
-    echo "  " `basename $0` "[options] pkg_name"
+    echo "  " `basename $0` "[options] pkg_name [debuild options]"
     echo -e '\nOptions:'
     echo '  -h,--help          Show this help message and exit'
     echo '  -c,--clean         (optional) start from clean folder'
@@ -56,9 +56,12 @@ help_message() {
     echo '                     files'
     echo "                     Defaults to: $root/"
     echo '  -y,--yes           Assume yes to all prompts'
+    echo ''
+    echo 'Any options passede *after* the package name will be forwarded to'
+    echo '`debuild`'
     echo -e '\nExample calls:'
-    echo "$0 -d eoan -y urllib3"
-    echo "$0 -d xenial -o /tmp/data cython"
+    echo "$0 -d eoan -y hiq-circuit"
+    echo "$0 -d xenial -o /tmp/data hiq-projectq -S -sd"
 }
 
 # ------------------------------------------------------------------------------

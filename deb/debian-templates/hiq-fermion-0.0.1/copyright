@@ -1,0 +1,284 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: hiq-fermion
+Upstream-Contact: <preferred name and address to reach the upstream project>
+Source: <url://example.com>
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     MANIFEST.in
+           README.md
+           examples/get_probability.ipynb
+           examples/h2o_projectq_without_opt.ipynb
+           examples/h2o_pyscf_without_opt.ipynb
+           hiq_fermion.egg-info/SOURCES.txt
+           hiq_fermion.egg-info/dependency_links.txt
+           hiq_fermion.egg-info/requires.txt
+           hiq_fermion.egg-info/top_level.txt
+           hiqfermion/__init__.py
+           hiqfermion/ansatzes/__init__.py
+           hiqfermion/ansatzes/_vqe_hardware_efficient_test.py
+           hiqfermion/ansatzes/ansatz_ite_based.py
+           hiqfermion/ansatzes/ansatz_optimized_sequence.py
+           hiqfermion/ansatzes/ansatz_pairwise.py
+           hiqfermion/ansatzes/ansatz_rxry.py
+           hiqfermion/ansatzes/ansatz_rxrz.py
+           hiqfermion/ansatzes/ansatz_rxrz_test.py
+           hiqfermion/ansatzes/ansatz_ry.py
+           hiqfermion/ansatzes/ansatz_ry_test.py
+           hiqfermion/ansatzes/ansatz_ryrz.py
+           hiqfermion/ansatzes/ansatz_ryrz_test.py
+           hiqfermion/ansatzes/ansatz_rzrxrz.py
+           hiqfermion/ansatzes/ansatz_swaprz.py
+           hiqfermion/ansatzes/ansatz_swaprz_test.py
+           hiqfermion/ansatzes/ansatz_uccsd_test.py
+           hiqfermion/ansatzes/applyansatz.py
+           hiqfermion/ansatzes/hardware_efficient_method_template_test.py
+           hiqfermion/ansatzes/hardware_efficient_template_depth_test.py
+           hiqfermion/ansatzes/hartree_fock_state.py
+           hiqfermion/ansatzes/uccsd_LiH_optimizer_test.py
+           hiqfermion/ansatzes/uccsd_optimizer_template_LiH_grident_test.py
+           hiqfermion/ansatzes/uccsd_optimizer_template_LiH_no_grident_test.py
+           hiqfermion/ansatzes/variational_ansatz.py
+           hiqfermion/ansatzes/vqe_hardware_efficient.py
+           hiqfermion/dataset/C1_O1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/C1_O1_sto-3g_singlet.txt
+           hiqfermion/dataset/Cl2_sto-3g_singlet.hdf5
+           hiqfermion/dataset/Cl2_sto-3g_singlet.txt
+           hiqfermion/dataset/H1-Li1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H1-Li1_sto-3g_singlet_1.45.hdf5
+           hiqfermion/dataset/H1_Cl1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H1_Cl1_sto-3g_singlet.txt
+           hiqfermion/dataset/H1_Li1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H1_Li1_sto-3g_singlet.txt
+           hiqfermion/dataset/H1_Na1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H1_Na1_sto-3g_singlet.txt
+           hiqfermion/dataset/H2-Be1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H2-O1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H2_6-31g_singlet_0.75.hdf5
+           hiqfermion/dataset/H2_O1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H2_O1_sto-3g_singlet.txt
+           hiqfermion/dataset/H2_sto-3g_singlet.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet.txt
+           hiqfermion/dataset/H2_sto-3g_singlet_0.1.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.2.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.3.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.4.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.5.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.6.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.7.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.7414.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.8.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_0.9.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.0.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.1.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.2.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.3.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.4.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.5.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.6.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.7.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.8.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_1.9.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.0.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.1.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.2.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.3.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.4.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.5.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.6.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.7.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.8.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_2.9.hdf5
+           hiqfermion/dataset/H2_sto-3g_singlet_3.0.hdf5
+           hiqfermion/dataset/N2_sto-3g_singlet.hdf5
+           hiqfermion/dataset/N2_sto-3g_singlet.txt
+           hiqfermion/dataset/Na1_Cl1_sto-3g_singlet.hdf5
+           hiqfermion/dataset/Na1_Cl1_sto-3g_singlet.txt
+           hiqfermion/dataset/O2_sto-3g_singlet.hdf5
+           hiqfermion/dataset/O2_sto-3g_singlet.txt
+           hiqfermion/drivers/__init__.py
+           hiqfermion/drivers/_calculator.py
+           hiqfermion/drivers/_generate_molecular_data_test.py
+           hiqfermion/drivers/_hifermion_molecular_data.py
+           hiqfermion/drivers/_init_test.py
+           hiqfermion/drivers/gaussian_calculator.py
+           hiqfermion/drivers/nwchem_calculator.py
+           hiqfermion/drivers/nwchem_inputfile_generator.py
+           hiqfermion/drivers/psi4_calculator.py
+           hiqfermion/drivers/psi4_inputfile_generator.py
+           hiqfermion/drivers/pyscf_calculator.py
+           hiqfermion/ops/__init__.py
+           hiqfermion/ops/polynomial_tensor.py
+           hiqfermion/ops/time_evolution.py
+           hiqfermion/optimizers/__init__.py
+           hiqfermion/optimizers/_nakanizhi_optimizer_test.py
+           hiqfermion/optimizers/minimize.py
+           hiqfermion/optimizers/optimize.py
+           hiqfermion/optimizers/sequential_minimize_optimization.py
+           hiqfermion/tests/_circuit_level_count_test.py
+           hiqfermion/tests/_h2_smo.py
+           hiqfermion/tests/_taylor_lcu_test.py
+           hiqfermion/tests/_test.py
+           hiqfermion/tests/ansatz_pairwise_test.py
+           hiqfermion/tests/ansatz_rxry_test.py
+           hiqfermion/tests/ansatz_rzrxrz_test.py
+           hiqfermion/tests/count_gates_and_terms_test.py
+           hiqfermion/tests/hardware_efficient_VQE_test.py
+           hiqfermion/tests/moleculardata_test.py
+           hiqfermion/transforms/__init__.py
+           hiqfermion/transforms/_transform_test.py
+           hiqfermion/transforms/transform.py
+           hiqfermion/transforms/transform_simple_test.py
+           hiqfermion/utils/__init__.py
+           hiqfermion/utils/_circuit_level_count.py
+           hiqfermion/utils/_hamiltonian_simplify.py
+           hiqfermion/utils/_save_read_hamiltonian.py
+           hiqfermion/utils/generategroup.py
+           hiqfermion/utils/generatejsonbypr.py
+           hiqfermion/utils/graph_isomorphism.py
+           hiqfermion/utils/monitor.py
+           hiqfermion/utils/paralleltask.py
+           hiqfermion/utils/processrecorder.py
+           hiqfermion/utils/taylor_lcu_simulation.py
+           imag_time/get_individual_hamiltonian.py
+           imag_time/get_pauli.py
+           imag_time/get_pauli_test.py
+           imag_time/ite.py
+           imag_time/iteall.py
+           imag_time/iteallcw.py
+           imag_time/iteallcwlw.py
+           imag_time/itecw.py
+           imag_time/itefast.py
+           imag_time/itefrozen.py
+           imag_time/molecule.py
+           imag_time/test_ite_BeH2_14q_rankcw.py
+           imag_time/test_ite_H2_4q.py
+           imag_time/test_ite_H2_4q_com.py
+           imag_time/test_ite_H2_4q_cw.py
+           imag_time/test_ite_H2_4q_frozen.py
+           imag_time/test_ite_H2_4q_hf.py
+           imag_time/test_ite_H2_8q_all.py
+           imag_time/test_ite_H2_8q_com.py
+           imag_time/test_ite_H2_8q_cw.py
+           imag_time/test_ite_H2_8q_frozen.py
+           imag_time/test_ite_H2_8q_frozenZ.py
+           imag_time/test_ite_H2_8q_hf.py
+           imag_time/test_ite_H2_8q_mpi.py
+           imag_time/test_ite_H2_8q_sample.py
+           imag_time/test_ite_H2_8q_uccbased.py
+           imag_time/test_ite_LiH_10q.py
+           imag_time/test_ite_LiH_10q_com.py
+           imag_time/test_ite_LiH_10q_cw.py
+           imag_time/test_ite_LiH_10q_frozen.py
+           imag_time/test_ite_LiH_10q_frozenZ.py
+           imag_time/test_ite_LiH_12q_cw1.py
+           imag_time/test_ite_LiH_12q_cwlw.py
+           imag_time/test_ite_LiH_12q_rankcw.py
+           imag_time/test_ite_LiH_12q_uccbased.py
+           imag_time/test_ite_LiH_6q.py
+           imag_time/test_ite_LiH_6q_com.py
+           imag_time/test_ite_LiH_6q_cw.py
+           imag_time/test_ite_LiH_6q_frozen.py
+           imag_time/test_ite_LiH_8q.py
+           imag_time/test_ite_LiH_8q_com.py
+           imag_time/test_ite_LiH_8q_frozen.py
+           imag_time/test_ite_ansatz.py
+           imag_time/test_ite_eval_H2_8q.py
+           imag_time/test_ite_eval_H2_8q_par.py
+           imag_time/test_vqe_ite_ansatz.py
+           imag_time/test_vqe_ite_bfgsparallel.py
+           optimization_PB/Geometrical Optimization/GeoOpt_statistics.py
+           optimization_PB/Geometrical Optimization/problem.py
+           optimization_PB/Geometrical Optimization/solver.py
+           optimization_PB/molecular_data/Molecules.py
+           optimization_PB/molecular_data/Molecules/Molecules.py
+           optimization_PB/molecular_data/Molecules/Molecules_short_test.py
+           optimization_PB/optimizers/Adam_optimizer.py
+           optimization_PB/optimizers/compute_lambda_min.py
+           optimization_PB/optimizers/opt_class_test.py
+           optimization_PB/optimizers/optimization_classes.py
+           optimization_PB/optimizers/optimization_functions.py
+           optimization_PB/optimizers/optimizers.py
+           optimization_PB/results/_Warm_Start_results/Warm_Start_search_member_IBM_H2.py
+           optimization_PB/results/_Warm_Start_results/Warm_Start_search_member_IBM_LiH.py
+           requirements.txt
+           setup.cfg
+           setup.py
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:   __NO_COPYRIGHT_NOR_LICENSE__
+
+Files:     hiqfermion/_version.py
+           hiqfermion/ansatzes/ansatz_quccsd.py
+           hiqfermion/ansatzes/ansatz_uccsd.py
+           hiqfermion/ops/fermion_operator.py
+           hiqfermion/ops/fermion_operator_test.py
+           hiqfermion/ops/interaction_rdm.py
+           hiqfermion/ops/polynomial_tensor_test.py
+           hiqfermion/ops/qubit_operator.py
+           hiqfermion/ops/qubit_operator_test.py
+           hiqfermion/utils/fenwick_tree.py
+           hiqfermion/utils/utils_basis.py
+           hiqfermion/utils/utils_operator.py
+           hiqfermion/utils/utils_ucc.py
+Copyright: __NO_COPYRIGHT__ in: hiqfermion/_version.py
+           __NO_COPYRIGHT__ in: hiqfermion/ansatzes/ansatz_quccsd.py
+           __NO_COPYRIGHT__ in: hiqfermion/ansatzes/ansatz_uccsd.py
+           __NO_COPYRIGHT__ in: hiqfermion/ops/fermion_operator.py
+           __NO_COPYRIGHT__ in: hiqfermion/ops/fermion_operator_test.py
+           __NO_COPYRIGHT__ in: hiqfermion/ops/interaction_rdm.py
+           __NO_COPYRIGHT__ in: hiqfermion/ops/polynomial_tensor_test.py
+           __NO_COPYRIGHT__ in: hiqfermion/ops/qubit_operator.py
+           __NO_COPYRIGHT__ in: hiqfermion/ops/qubit_operator_test.py
+           __NO_COPYRIGHT__ in: hiqfermion/utils/fenwick_tree.py
+           __NO_COPYRIGHT__ in: hiqfermion/utils/utils_basis.py
+           __NO_COPYRIGHT__ in: hiqfermion/utils/utils_operator.py
+           __NO_COPYRIGHT__ in: hiqfermion/utils/utils_ucc.py
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     PKG-INFO
+           hiq_fermion.egg-info/PKG-INFO
+Copyright: __NO_COPYRIGHT__ in: PKG-INFO
+           __NO_COPYRIGHT__ in: hiq_fermion.egg-info/PKG-INFO
+License:   __UNKNOWN__
+ Description: This is HiQfermion project, a module which is compatiable with openfermion and implements more
+ quantum chemistry functions.
+
+Files:     hiqfermion/ops/interaction_operator.py
+Copyright: __NO_COPYRIGHT__ in: hiqfermion/ops/interaction_operator.py
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ This is the class that to store the non-zero coefficient of the molecular Hamiltonian. It can be
+ further used to construct the molecular Hamiltonian.
+ Note this module, we did not modify much of the origin file
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.

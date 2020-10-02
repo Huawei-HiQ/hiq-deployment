@@ -1,40 +1,35 @@
-Source: hiq-circuit
+Source: hiq-fermion
 Section: python
 Priority: optional
 Maintainer: Damien Nguyen <damien1@huawei.com>
 Build-Depends: debhelper-compat (= 12),
 	       dh-python,
-	       cmake,
 	       python3-all,
 	       python3-all-dev,
 	       python3-setuptools,
-	       libboost-all-dev,
-	       libgflags-dev,
-	       libgoogle-glog-dev,
-	       libhwloc-dev,
-	       libopenmpi-dev,
 	       python3-pytest,
+	       python3-numpy,
+	       python3-scipy,
+	       python3-h5py,
+	       python3-pyscf,
+	       python3-openfermionprojectq,
 	       python3-hiq-projectq,
-	       python3-mpi4py
 Standards-Version: 4.3.0
 Homepage: https://hiq.huaweicloud.com/en
 X-Python3-Version: >= 3.5
 
-Package: python3-hiq-circuit
+Package: python3-hiq-fermion
 Architecture: any
 Depends: ${shlibs:Depends},
 	 ${misc:Depends},
 	 ${python3:Depends},
-	 libboost-system1.71.0,
-	 libboost-thread1.71.0,
-	 libboost-mpi1.71.0,
-	 libboost-program-options1.71.0,
-	 libgflags2.2,
-	 libgoogle-glog0v5,
-	 libhwloc15,
-	 libopenmpi3,
+	 python3-numpy,
+	 python3-scipy,
+	 python3-h5py,
+	 python3-pyscf,
+	 python3-hiq-openfermionprojectq,
 	 python3-hiq-projectq,
-	 python3-mpi4py
-Description: High performance distributed quantum simulator
- Huawei HiQsimulator
+Description: HiQfermion is a module which is comparable with openfermion and
+ implements more quantum chemistry functions.
+ .
  This package installs the library for Python 3.

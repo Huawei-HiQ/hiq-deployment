@@ -2,15 +2,16 @@
 
 # export DH_VERBOSE = 1
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-pie
+export DEB_BUILD_MAINT_OPTIONS += nocheck
 # export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
 # export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
-export PYBUILD_NAME=hiq-circuit
-export PYBUILD_DESTDIR_python3=debian/python3-hiq-circuit
+export PYBUILD_NAME=hiq-pulse
+export PYBUILD_DESTDIR_python3=debian/python3-hiq-pulse
 
 export PYBUILD_TEST_PYTEST=1
 export PYBUILD_TEST_ARGS_python3=-p no:warnings
-export PYBUILD_BEFORE_TEST=echo "def test_dummy():\n\tpass" > {build_dir}/projectq/deb_test.py && echo "backend: Agg" > {build_dir}/matplotlibrc
+export PYBUILD_BEFORE_TEST=echo "def test_dummy():\n\tpass" > {build_dir}/src/hiqpulse/deb_test.py && echo "backend: Agg" > {build_dir}/matplotlibrc
 export PYBUILD_AFTER_TEST=rm -rf {build_dir}/python/deb_test.py {build_dir}/matplotlibrc
 
 %:

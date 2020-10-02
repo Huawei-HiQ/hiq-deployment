@@ -1,0 +1,263 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: hiq-pulse
+Upstream-Contact: <preferred name and address to reach the upstream project>
+Source: <url://example.com>
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     examples/CRAB/crab1_closed_gate.py
+           examples/CRAB/crab2_closed_sts.py
+           examples/CRAB/crab3_open_gate.py
+           examples/CRAB/crab4_open_sts.py
+           examples/CRAB/crab5_mpi_closed.py
+           examples/CRAB/crab6_mpi_open.py
+           examples/CRAB/crabtask_dissipative.py
+           examples/CRAB/crabtask_dissipative_stoch.py
+           examples/GOAT/goat1_closed_gate.py
+           examples/GOAT/goat2_closed_sts.py
+           examples/GRAPE/grape1_closed_gate.py
+           examples/GRAPE/grape2_closed_sts.py
+           examples/GRAPE/grape3_closed_gate_n_levels.py
+           examples/GRAPE/grape4_open_gate_dens.py
+           examples/GRAPE/grape5_open_sts_dens.py
+           examples/GRAPE/grape6_task_dissipative.py
+           examples/GRAPE/grape7_closed_gate_mpi.py
+           examples/GRAPE/grape8_open_gate_dens_mpi.py
+           setup.py
+           src/hiqpulse/__init__.py
+           src/hiqpulse/pulselib/__init__.py
+           src/hiqpulse/pulselib/base/__init__.py
+           src/hiqpulse/pulselib/base/constant.py
+           src/hiqpulse/pulselib/base/error.py
+           src/hiqpulse/pulselib/base/interval.py
+           src/hiqpulse/pulselib/base/schedule.py
+           src/hiqpulse/pulselib/base/schema.py
+           src/hiqpulse/pulselib/base/type.py
+           src/hiqpulse/pulselib/command/__init__.py
+           src/hiqpulse/pulselib/command/command.py
+           src/hiqpulse/pulselib/config/__init__.py
+           src/hiqpulse/pulselib/config/user_config.py
+           src/hiqpulse/pulselib/examples/dynamic_decoupling_sequence_test.py
+           src/hiqpulse/pulselib/examples/single_gate_sequence_test.py
+           src/hiqpulse/pulselib/pulse/__init__.py
+           src/hiqpulse/pulselib/pulse/continuous_pulse.py
+           src/hiqpulse/pulselib/pulse/discrete_pulse.py
+           src/hiqpulse/pulselib/sequences/__init__.py
+           src/hiqpulse/pulselib/sequences/relaxation_time_measurement_sequence.py
+           src/hiqpulse/pulselib/sequences/sequence.py
+           src/hiqpulse/pulselib/sequences/single_gate_sequence.py
+           src/hiqpulse/pulselib/sequences/two_gate_sequence.py
+           src/hiqpulse/pulseopt/__init__.py
+           src/hiqpulse/pulseopt/control/__init__.py
+           src/hiqpulse/pulseopt/control/_mpi_control.py
+           src/hiqpulse/pulseopt/control/_single_control.py
+           src/hiqpulse/pulseopt/control/crab/__init__.py
+           src/hiqpulse/pulseopt/control/crab/_crab.py
+           src/hiqpulse/pulseopt/control/crab/_crab_mpi_control.py
+           src/hiqpulse/pulseopt/control/crab/_crab_single_control.py
+           src/hiqpulse/pulseopt/control/functionals/__init__.py
+           src/hiqpulse/pulseopt/control/functionals/_fid_comp.py
+           src/hiqpulse/pulseopt/control/functionals/fid_comp_mpi.py
+           src/hiqpulse/pulseopt/control/functionals/fid_comp_single.py
+           src/hiqpulse/pulseopt/control/goat/__init__.py
+           src/hiqpulse/pulseopt/control/goat/_goat.py
+           src/hiqpulse/pulseopt/control/goat/_goat_single_control.py
+           src/hiqpulse/pulseopt/control/goat/_goat_support_functions.py
+           src/hiqpulse/pulseopt/control/goat/_grad_fid_comp_single.py
+           src/hiqpulse/pulseopt/control/grape/__init__.py
+           src/hiqpulse/pulseopt/control/grape/_grad_fid_comp_mpi.py
+           src/hiqpulse/pulseopt/control/grape/_grad_fid_comp_single.py
+           src/hiqpulse/pulseopt/control/grape/_grape.py
+           src/hiqpulse/pulseopt/control/grape/_grape_mpi_control.py
+           src/hiqpulse/pulseopt/control/grape/_grape_single_control.py
+           src/hiqpulse/pulseopt/control/grape/_grape_support_functions.py
+           src/hiqpulse/pulseopt/control/sannealling/compare_for_3qubit.py
+           src/hiqpulse/pulseopt/control/sannealling/sannealing.py
+           src/hiqpulse/pulseopt/control/sannealling/xiaobo_class.py
+           src/hiqpulse/pulseopt/control/system/__init__.py
+           src/hiqpulse/pulseopt/control/system/pulse.py
+           src/hiqpulse/pulseopt/control/system/result.py
+           src/hiqpulse/pulseopt/control/system/target.py
+           src/hiqpulse/pulseopt/control/utils/__init__.py
+           src/hiqpulse/pulseopt/control/utils/funcs_for_gates.py
+           src/hiqpulse/pulseopt/control/utils/wrappers.py
+           src/hiqpulse/pulseopt/dynamics/_DynamicsBase.py
+           src/hiqpulse/pulseopt/dynamics/_DynamicsClosed.py
+           src/hiqpulse/pulseopt/dynamics/_DynamicsOpenLindblad.py
+           src/hiqpulse/pulseopt/dynamics/_DynamicsOpenStoch.py
+           src/hiqpulse/pulseopt/dynamics/__init__.py
+           src/hiqpulse/pulseopt/dynamics/_evolution.py
+           src/hiqpulse/pulseopt/odeint/__init__.py
+           src/hiqpulse/pulseopt/odeint/runge_kutta.py
+           src/hiqpulse/pulseopt/optimize/__init__.py
+           src/hiqpulse/pulseopt/optimize/mpi_minimize.py
+           src/hiqpulse/pulseopt/propagators/__init__.py
+           src/hiqpulse/pulseopt/propagators/_expm_propagator.py
+           src/hiqpulse/pulseopt/propagators/_odeint_propagator.py
+           src/hiqpulse/pulseopt/propagators/_propagator.py
+           src/hiqpulse/pulseopt/propagators/_sdeint_propagator.py
+           src/hiqpulse_contrib/pulseopt/utils/__init__.py
+           src/hiqpulse_contrib/pulseopt/utils/plot_functions.py
+           src/hiqpulse_contrib/pulseopt/utils/transmon12_lib.py
+Copyright: 2020 Huawei Technologies Co., Ltd.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     MANIFEST.in
+           PKG-INFO
+           README.rst
+           requirements.txt
+           setup.cfg
+           src/HiQPulse.egg-info/PKG-INFO
+           src/HiQPulse.egg-info/SOURCES.txt
+           src/HiQPulse.egg-info/dependency_links.txt
+           src/HiQPulse.egg-info/requires.txt
+           src/HiQPulse.egg-info/top_level.txt
+           tests/cpp/CMakeLists.txt
+           tests/cpp/propagator_test.cpp
+           tests/cpp/test_use_allocated_buffer_with_vector.cpp
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:   __NO_COPYRIGHT_NOR_LICENSE__
+
+Files:     tests/cpp/Faddeeva.cc
+Copyright: 2012 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ (Note that this file can be compiled with either C++, in which
+ case it uses C++ std::complex<double>, or C, in which case it
+ uses C99 double complex.)
+ .
+ Available at: http://ab-initio.mit.edu/Faddeeva
+ .
+ Computes various error functions (erf, erfc, erfi, erfcx),
+ including the Dawson integral, in the complex plane, based
+ on algorithms for the computation of the Faddeeva function
+
+Files:     tests/cpp/Faddeeva.hh
+Copyright: 2012 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Available at: http://ab-initio.mit.edu/Faddeeva
+ .
+ Header file for Faddeeva.cc; see that file for more information.
+
+Files:     tests/cpp/catch.hpp
+Copyright: 2020 Two Blue Cubes Ltd.
+License:   BSL-1.0
+ Distributed under the Boost Software License, Version 1.0. (See accompanying
+
+Files:     src/hiqpulse/pulseopt/control/sannealling/annealing-slice-update-nb-slice-xiaobo-Copy3.py
+Copyright: 2020 Huawei Technologies Co., Ltd.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ !/usr/bin/env python
+ coding: utf-8
+ .
+ In[1]:
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     src/hiqpulse/pulseopt/optimize/hiq_lbfgsb.py
+Copyright: 2020 Huawei Technologies Co., Ltd.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ License for the Python wrapper
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     src/hiqpulse/pulseopt/control/sannealling/xiaobo_class2.py
+Copyright: 2020 Huawei Technologies Co., Ltd.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Generalized tensor product
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.
