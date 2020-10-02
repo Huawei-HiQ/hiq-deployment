@@ -2,11 +2,11 @@
 
 This repository contains the code necessary to build DEB source and binary packages.
 
-## PPA
+## Huawei-HiQ PPA
 
 The Huawei-HiQ PPA can be found at the following address: https://launchpad.net/~huawei-hiq/+archive/ubuntu/ppa.
 
-It contains all the packages required to run the most recetn version of HiQ packages on supported Ubuntu distributions.
+It contains all the packages required to run the most recent version of HiQ packages on supported Ubuntu distributions.
 
 ### Using the PPA
 

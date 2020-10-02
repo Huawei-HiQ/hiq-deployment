@@ -2,6 +2,10 @@
 
 This repository contains the code necessary to build packages for ArchLinux/Manjaro (and particularly AUR).
 
+## Huawei-HiQ on AUR
+
+All the Huawei-HiQ packages can be found on AUR: https://aur.archlinux.org/packages/
+
 ## Environment setup
 
 Make sure that you have all the basic dependencies instaslled on your system
