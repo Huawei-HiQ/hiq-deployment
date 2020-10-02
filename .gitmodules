@@ -14,3 +14,6 @@
 	path = aur/hiq-circuit
 	url = https://aur.archlinux.org/python-hiq-circuit.git
 	branch = master
+[submodule "Formula"]
+	path = Formula
+	url = ssh://git@code-cbu.huawei.com:2233/huawei-hiq/deployment/homebrew.git
