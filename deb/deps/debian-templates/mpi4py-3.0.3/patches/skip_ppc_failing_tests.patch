@@ -1,0 +1,28 @@
+--- a/test/test_datatype.py
++++ b/test/test_datatype.py
+@@ -2,6 +2,9 @@
+ import mpiunittest as unittest
+ import sys
+ 
++import platform
++test_machine = platform.machine()
++
+ datatypes_c = [
+ MPI.CHAR, MPI.WCHAR,
+ MPI.SIGNED_CHAR, MPI.SHORT, MPI.INT, MPI.LONG,
+@@ -299,6 +302,7 @@
+     @unittest.skipMPI('openmpi(<3.0.0)')
+     @unittest.skipMPI('msmpi')
+     @unittest.skipMPI('SpectrumMPI')
++    @unittest.skipIf('ppc' in test_machine, "testCreateF90RealDouble fails on ppc arches (with OpenMPI 4)")
+     def testCreateF90RealDouble(self):
+         (p, r) = (15, 300)
+         factory = MPI.Datatype.Create_f90_real
+@@ -317,6 +321,7 @@
+     @unittest.skipMPI('openmpi(<3.0.0)')
+     @unittest.skipMPI('msmpi')
+     @unittest.skipMPI('SpectrumMPI')
++    @unittest.skipIf('ppc' in test_machine, "testCreateF90ComplexDouble fails on ppc arches (with OpenMPI 4)")
+     def testCreateF90ComplexDouble(self):
+         (p, r) = (15, 300)
+         factory = MPI.Datatype.Create_f90_complex

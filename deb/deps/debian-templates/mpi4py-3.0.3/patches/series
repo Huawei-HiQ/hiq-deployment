@@ -1,0 +1,8 @@
+up_libm
+up_no_modlibs
+up_tests_network_attr
+docs_sphinx_python3.patch
+fix_docs.patch
+fix_pytest4.patch
+skip_ppc_failing_tests.patch
+skip_failing_test_rma.patch

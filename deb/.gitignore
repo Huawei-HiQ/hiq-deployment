@@ -1,3 +1,15 @@
 *.dsc
+*.deb
+*.ddeb
+*_source.changes*
+*_amd64.changes
+*_source.ppa.upload
 *.build*
-*.changes
+*.tar.xz
+deps/backup
+deps/ppa
+setup_env.bash
+*.key
+
+hiq-projectq-0.6.4.post2/
+hiq-circuit-0.0.2.post4/

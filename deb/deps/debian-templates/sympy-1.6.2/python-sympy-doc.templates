@@ -1,0 +1,19 @@
+Template: python-sympy-doc/live-sympy
+Type: boolean
+Default: false
+_Description: Activate live.sympy.org service
+ One can activate the service provided by https://live.sympy.org,
+ which can improve one's experience by providing the "Sympy Live
+ Shell" inside documentation pages.
+ .
+ However one must know that even if the button "Sympy Live Shell" is
+ not triggered, when one is browsing enabled documentation pages, HTTP
+ requests are sent to the website https://live.sympy.org, so there is
+ a privacy breach.
+ .
+ When the parameter python-sympy-doc/live-sympy is true, links to
+ https://live.sympy.org are active. When this parameter is false,
+ those links are replaced by links to http://localhost, so there is
+ no privacy breach.
+ .
+ You can safely keep the default 'false' value for this parameter.

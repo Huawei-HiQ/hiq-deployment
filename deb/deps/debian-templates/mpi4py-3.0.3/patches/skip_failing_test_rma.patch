@@ -1,0 +1,108 @@
+Index: mpi4py/test/test_rma.py
+===================================================================
+--- mpi4py.orig/test/test_rma.py	2020-08-08 09:09:49.396734470 +0800
++++ mpi4py/test/test_rma.py	2020-08-08 09:09:49.396734470 +0800
+@@ -39,6 +39,7 @@
+         if self.mpi_memory:
+             MPI.Free_mem(self.mpi_memory)
+ 
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testPutGet(self):
+         typemap = MPI._typedict
+         group = self.WIN.Get_group()
+@@ -88,6 +89,7 @@
+                             self.assertNotEqual(rbuf[i], -1)
+                         self.assertEqual(rbuf[-1], -1)
+ 
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testAccumulate(self):
+         group = self.WIN.Get_group()
+         size = group.Get_size()
+@@ -110,6 +112,7 @@
+                             self.assertEqual(rbuf[-1], -1)
+ 
+     @unittest.skipMPI('openmpi(>=1.10,<1.11)')
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testGetAccumulate(self):
+         group = self.WIN.Get_group()
+         size = group.Get_size()
+@@ -156,6 +159,7 @@
+                             self.assertEqual(rbuf[-1], -1)
+                             self.assertEqual(gbuf[-1], -1)
+ 
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testFetchAndOp(self):
+         group = self.WIN.Get_group()
+         size = group.Get_size()
+@@ -189,6 +193,7 @@
+                             self.WIN.Unlock(rank)
+                             self.assertEqual(rbuf[1], -1)
+ 
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testCompareAndSwap(self):
+         group = self.WIN.Get_group()
+         size = group.Get_size()
+@@ -237,6 +242,7 @@
+         self.WIN.Get(None, MPI.PROC_NULL, None)
+         self.WIN.Fence()
+ 
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testAccumulateProcNullReplace(self):
+         self.WIN.Fence()
+         zeros = mkzeros(8)
+@@ -246,6 +252,7 @@
+         self.WIN.Accumulate([zeros, MPI.INT], MPI.PROC_NULL, None, MPI.REPLACE)
+         self.WIN.Fence()
+ 
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testAccumulateProcNullSum(self):
+         self.WIN.Fence()
+         zeros = mkzeros(8)
+@@ -312,6 +319,7 @@
+         win.Fence()
+ 
+     @unittest.skipMPI('openmpi(==1.8.6)')
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testStartComplete(self):
+         self.WIN.Start(MPI.GROUP_EMPTY)
+         self.WIN.Complete()
+Index: mpi4py/test/test_rma_nb.py
+===================================================================
+--- mpi4py.orig/test/test_rma_nb.py	2020-07-19 23:07:12.975698323 +0800
++++ mpi4py/test/test_rma_nb.py	2020-08-08 09:12:34.419559287 +0800
+@@ -41,6 +41,7 @@
+         if self.mpi_memory:
+             MPI.Free_mem(self.mpi_memory)
+ 
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testPutGet(self):
+         group = self.WIN.Get_group()
+         size = group.Get_size()
+@@ -65,6 +66,7 @@
+                         self.assertEqual(rbuf[-1], -1)
+ 
+     @unittest.skipMPI('openmpi(>=1.10.0,<1.11.0)')
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testAccumulate(self):
+         group = self.WIN.Get_group()
+         size = group.Get_size()
+@@ -96,6 +98,7 @@
+                             self.assertEqual(rbuf[-1], -1)
+ 
+     @unittest.skipMPI('openmpi(>=1.10,<1.11)')
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testGetAccumulate(self):
+         group = self.WIN.Get_group()
+         size = group.Get_size()
+Index: mpi4py/test/test_win.py
+===================================================================
+--- mpi4py.orig/test/test_win.py	2020-07-19 23:07:12.975698323 +0800
++++ mpi4py/test/test_win.py	2020-08-08 09:19:35.467205152 +0800
+@@ -192,6 +192,7 @@
+         self.assertEqual(size, 0)
+ 
+     @unittest.skipMPI('msmpi(<9.1.0)')
++    @unittest.skipMPI('openmpi(==4.0.4)')
+     def testAttachDetach(self):
+         mem1 = MPI.Alloc_mem(8)
+         mem2 = MPI.Alloc_mem(16)

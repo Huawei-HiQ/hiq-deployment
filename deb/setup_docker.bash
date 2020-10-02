@@ -17,6 +17,10 @@
 #
 # ==============================================================================
 
+HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+os_name=$(cat /etc/os-release | grep ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
+os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
+
 # You might need to rename and edit setup_env.bash.in 
 . setup_env.bash
 
@@ -24,9 +28,66 @@ apt update
 apt upgrade -y
 apt dist-upgrade -y
 
-apt install -y build-essential devscripts pbuilder lintian sbuild cdbs debhelper quilt dh-make dh-python fakeroot
+apt install -y curl software-properties-common
+add-apt-repository -y -u ppa:huawei-hiq/ppa
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9071AE544115FB0C
+apt update
 
-alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+ln -snf /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
+apt install -y tzdata
+
+apt install -y build-essential devscripts pbuilder lintian sbuild cdbs debhelper quilt dh-make dh-python fakeroot apt-src python3-pip equivs git
+
+if [[ "$os_name" == "ubuntu" ]]; then
+    if [[ "$os_ver" == 16.04 ]]; then
+	apt install -y gnupg2
+	sudo mv /usr/bin/gpg /usr/bin/gpg1
+	sudo update-alternatives --verbose --install /usr/bin/gpg gnupg /usr/bin/gpg2 50
+
+    fi
+fi
+
+if [ -f $HERE/private.key ]; then
+    gpg --import $HERE/private.key
+fi
+
+python3 - << \EOF
+import re
+import os
+
+def add_deb_src(fname):
+    lines_new = []
+    with open(fname, 'r') as fd:
+        lines = fd.readlines()
+        for line in lines:
+            if line.startswith('#'):
+                lines_new.append(line)
+            else:
+                if line not in lines_new:
+                    lines_new.append(line)
+
+                line_new = re.sub('^deb(?!-src)', 'deb-src', line)
+                if line_new != line:
+                    lines_new.append(line_new)
+
+    with open(fname, 'w') as fd:
+        fd.writelines(lines_new)
+            
+
+add_deb_src('/etc/apt/sources.list')
+
+apt_source_d = '/etc/apt/sources.list.d'
+for apt_source in os.listdir('/etc/apt/sources.list.d'):
+    add_deb_src(os.path.join(apt_source_d, apt_source))
+EOF
+
+apt-src update
+
+cat << \EOF > /usr/local/bin/dquilt
+quilt --quiltrc=${HOME}/.quiltrc-dpkg "$@"
+EOF
+chmod 755 /usr/local/bin/dquilt
+
 complete -F _quilt_completion $_quilt_complete_opt dquilt
 
 cat << \EOF > ~/.quiltrc-dpkg
@@ -39,8 +100,7 @@ if [ -d $d/debian ] && [ -z $QUILT_PATCHES ]; then
     QUILT_PATCH_OPTS="--reject-format=unified"
     QUILT_DIFF_ARGS="-p ab --no-timestamps --no-index --color=auto"
     QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
-    QUILT_COLORS="diff_hdr=1;32:diff_add=1;34:" + \
-            "diff_rem=1;31:diff_hunk=1;33:diff_ctx=35:diff_cctx=33"
+    QUILT_COLORS="diff_hdr=1;32:diff_add=1;34:diff_rem=1;31:diff_hunk=1;33:diff_ctx=35:diff_cctx=33"
     if ! [ -d $d/debian/patches ]; then mkdir $d/debian/patches; fi
 fi
 EOF

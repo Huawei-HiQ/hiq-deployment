@@ -1,0 +1,18 @@
+Document: mpi4py
+Title: MPI for Python (mpi4py) User Manual
+Author: Lisandro Dalcin <dalcinl@gmail.com>
+Abstract: This user manual describes the MPI for Python package,
+ its design and interface overview, generic installation instructions,
+ and a tutorial.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/python-mpi4py-doc/html/index.html
+Files: /usr/share/doc/python-mpi4py-doc/html/*.html
+
+Format: PDF
+Files: /usr/share/doc/python-mpi4py-doc/mpi4py.pdf*
+
+Format: Info
+Index: /usr/share/info/mpi4py.info.gz
+Files: /usr/share/info/mpi4py.info*

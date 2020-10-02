@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+cp -r tests "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP/tests"
+rm test_examplefiles.py test_lexers_other.py
+
+for python in $(py3versions -s); do
+	$python ./run.py --verbose 2>&1
+done

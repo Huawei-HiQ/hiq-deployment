@@ -1,0 +1,11 @@
+--- a/test/test_spawn.py
++++ b/test/test_spawn.py
+@@ -40,6 +40,8 @@
+     if MPI.APPNUM == MPI.KEYVAL_INVALID: return None
+     return MPI.COMM_WORLD.Get_attr(MPI.APPNUM)
+ 
++from nose.plugins.attrib import attr
++@attr('network')
+ @unittest.skipMPI('MPI(<2.0)')
+ @unittest.skipMPI('openmpi(<3.0.0)')
+ @unittest.skipMPI('openmpi(==4.0.0)')

@@ -1,0 +1,2 @@
+Tests: import3
+Depends: cython3, python3-all

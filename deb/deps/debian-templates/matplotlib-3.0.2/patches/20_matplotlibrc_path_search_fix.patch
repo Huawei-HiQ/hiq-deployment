@@ -1,0 +1,31 @@
+From: Sandro Tosi <morph@debian.org>
+Date: Thu, 8 Oct 2015 09:47:11 -0700
+Subject: Fixes the path to search for matplotlibrc file
+
+Forwarded: not-needed
+
+Patch-Name: 20_matplotlibrc_path_search_fix.patch
+---
+ lib/matplotlib/__init__.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+--- a/lib/matplotlib/__init__.py
++++ b/lib/matplotlib/__init__.py
+@@ -663,6 +663,8 @@ def _get_data_path():
+                                'directory')
+         return path
+ 
++    return '/usr/share/matplotlib/mpl-data'
++
+     def get_candidate_paths():
+         yield Path(__file__).with_name('mpl-data')
+         # setuptools' namespace_packages may highjack this init file
+@@ -741,7 +743,7 @@ def matplotlib_fname():
+             yield matplotlibrc
+             yield os.path.join(matplotlibrc, 'matplotlibrc')
+         yield os.path.join(get_configdir(), 'matplotlibrc')
+-        yield os.path.join(get_data_path(), 'matplotlibrc')
++        yield '/etc/matplotlibrc'
+ 
+     for fname in gen_candidates():
+         if os.path.exists(fname):

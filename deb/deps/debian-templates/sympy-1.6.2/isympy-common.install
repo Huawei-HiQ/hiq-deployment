@@ -1,0 +1,2 @@
+doc/src/_static/*.png usr/share/pixmaps
+debian/isympy.xpm usr/share/pixmaps

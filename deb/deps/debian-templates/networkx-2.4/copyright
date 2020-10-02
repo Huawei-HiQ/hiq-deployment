@@ -1,0 +1,266 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: networkx
+Upstream-Contact: Aric Hagberg <aric.hagberg@gmail.com>
+Source: git://github.com/networkx/networkx.git
+
+Files: *
+Copyright: (c) 2004-2019, NetworkX Developers
+           (c) Aric Hagberg <hagberg@lanl.gov>
+           (c) Dan Schult <dschult@colgate.edu>
+           (c) Pieter Swart <swart@lanl.gov>
+ With additional Authors having left their copyrights to the Upstream Authors
+ and Copyright Holders listed just above:
+  A. L. BarabÃ¡si and R. Albert
+  A. Steger and N. Wormald
+  Brendt Wohlberg
+  C. Gkantsidis, M. Mihail, and E. Zegura
+  Coen Bron and Joep Kerbosch
+  Fan Chung and L. Lu
+  Jean-Loup Guillaume and Matthieu Latapy
+  Jeong Han Kim and Van H. Vu
+  Katy Bold
+  Lun Li, David Alderson, Reiko Tanaka, John C. Doyle, and Walter Willinger
+  M. E. J. Newman
+  P. Holme and B. J. Kim
+  P. L. Krapivsky and S. Redner
+  Robert Sedgewick
+  Russel Merris
+  Eben Kenah
+  Sasha Gutfraind <ag362@cornell.edu>
+  Drew Conway <drew.conway@nyu.edu>
+License: BSD-3-clause
+
+Files: debian/*
+Copyright: (c) 2006-2009, Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>
+           (c) 2010-2019, Sandro Tosi <morph@debian.org>
+           (c) 2014, Thomas Goirand <zigo@debian.org>
+License: GPL-3
+
+Files: networkx/algorithms/approximation/clustering_coefficient.py
+Copyright: Copyright (C) 2013 by Fred Morstatter <fred.morstatter@asu.edu> Jordi Torrents <jtorrents@milnou.net>
+License: BSD-3-clause
+
+Files: networkx/algorithms/approximation/clique.py
+ networkx/algorithms/matching.py
+ networkx/algorithms/approximation/dominating_set.py
+ networkx/algorithms/approximation/independent_set.py
+ networkx/algorithms/approximation/matching.py
+ networkx/algorithms/approximation/ramsey.py
+ networkx/algorithms/approximation/vertex_cover.py
+Copyright: (c) 2011-2019 Nicholas Mancuso <nick.mancuso@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/approximation/tests/test_treewidth.py
+Copyright: Copyright (C) 2018 by Rudolf-Andreas Floren <rudi.floren@gmail.com> Dominik Meier <dominik.meier@rwth-aachen.de>
+License: BSD-3-clause
+
+Files: networkx/algorithms/approximation/connectivity.py
+ networkx/algorithms/approximation/kcomponents.py
+Copyright: Copyright (C) 2015 by Jordi Torrents <jtorrents@milnou.net>
+License: BSD-3-clause
+
+Files: networkx/algorithms/assortativity/connectivity.py
+ networkx/algorithms/assortativity/neighbor_degree.py
+ networkx/algorithms/bipartite/centrality.py
+ networkx/algorithms/bipartite/cluster.py
+ networkx/algorithms/bipartite/redundancy.py
+Copyright: Copyright (C) 2011 by Jordi Torrents <jtorrents@milnou.net> Aric Hagberg <hagberg@lanl.gov>
+License: BSD-3-clause
+
+Files: networkx/algorithms/bipartite/tests/test_redundancy.py
+Copyright: Copyright 2015 Jeffrey Finkelstein <jeffrey.finkelstein@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/bipartite/matching.py
+ networkx/algorithms/bipartite/tests/test_matching.py
+Copyright: Copyright 2015 Jeffrey Finkelstein <jeffrey.finkelstein@gmail.com>,
+ Copyright 2019 Søren Fuglede Jørgensen
+License: BSD-3-clause
+
+Files: networkx/algorithms/bipartite/covering.py
+ networkx/algorithms/bipartite/tests/test_covering.py
+ networkx/algorithms/covering.py
+ networkx/algorithms/tests/test_covering.py
+Copyright: Copyright 2016-2019 NetworkX developers.
+ Copyright (C) 2016 by Nishant Nikhil <nishantiam@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/centrality/harmonic.py
+Copyright: Copyright (C) 2015 by Alessandro Luongo
+License: BSD-3-clause
+
+Files: networkx/algorithms/centrality/percolation.py
+Copyright: Copyright (C) 2018 by Pranay Kanwar <pranay.kanwar@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/centrality/second_order.py
+Copyright: Copyright (c) 2015 – Thomson Licensing, SAS
+License: BSD-3-clause
+
+Files: networkx/algorithms/centrality/voterank_alg.py
+Copyright: opyright (C) 2017 by Fredrik Erlandsson <fredrik.e@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/chordal.py
+Copyright: Copyright (C) 2010 by Jesus Cerquides <cerquide@iiia.csic.es>
+License: BSD-3-clause
+
+Files: networkx/algorithms/coloring/equitable_coloring.py
+Copyright: Copyright (C) 2018 by Utkarsh Upadhyay <musically.ut@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/community/kernighan_lin.py
+ networkx/algorithms/community/tests/test_kernighan_lin.py
+ networkx/algorithms/community/community_utils.py
+ networkx/algorithms/cuts.py
+Copyright: Copyright 2011 Ben Edwards <bedwards@cs.unm.edu>.
+ Copyright 2011 Aric Hagberg <hagberg@lanl.gov>
+ Copyright 2015 NetworkX developers.
+License: BSD-3-clause
+
+Files: networkx/algorithms/community/label_propagation.py
+Copyright: Copyright (C) 2015-2019 Aitor Almeida
+License: BSD-3-clause
+
+Files: networkx/algorithms/community/modularity_max.py
+ networkx/utils/tests/test_mapped_queue.py
+Copyright: Copyright 2018 Edward L. Platt
+License: BSD-3-clause
+
+Files: networkx/algorithms/connectivity/stoerwagner.py
+ networkx/algorithms/flow/capacityscaling.py
+ networkx/algorithms/flow/edmondskarp.py
+ networkx/algorithms/flow/preflowpush.py
+ networkx/algorithms/flow/shortestaugmentingpath.py
+ networkx/algorithms/flow/utils.py
+ networkx/linalg/algebraicconnectivity.py
+Copyright: Copyright (C) 2014 ysitu <ysitu@users.noreply.github.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/flow/mincost.py
+ networkx/algorithms/flow/networksimplex.py
+Copyright: Copyright (C) 2010 Loïc Séguin-C. <loicseguin@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/minors.py
+ networkx/algorithms/tests/test_minors.py
+Copyright: Copyright 2015 Jeffrey Finkelstein <jeffrey.finkelstein@gmail.com>.
+ Copyright 2010 Drew Conway <drew.conway@nyu.edu>
+ Copyright 2010 Aric Hagberg <hagberg@lanl.gov>
+License: BSD-3-clause
+
+Files: networkx/algorithms/sparsifiers.py
+ networkx/algorithms/tests/test_sparsifiers.py
+Copyright: Copyright (C) 2018 Robert Gmyr <robert@gmyr.net>
+License: BSD-3-clause
+
+Files: networkx/algorithms/triads.py
+ networkx/generators/triads.py
+Copyright: Copyright 2015 NetworkX developers.
+ Copyright 2011 Reya Group <http://www.reyagroup.com>
+ Copyright 2011 Alex Levenson <alex@isnotinvain.com>
+ Copyright 2011 Diederik van Liere <diederik.vanliere@rotman.utoronto.ca>
+License: BSD-3-clause
+
+Files: networkx/algorithms/lowest_common_ancestors.py
+Copyright: Copyright (C) 2013 by Alex Roper <aroper@umich.edu>
+ Copyright (C) 2017 by Aric Hagberg <hagberg@lanl.gov> Dan Schult <dschult@colgate.edu> Pieter Swart <swart@lanl.gov>
+License: BSD-3-clause
+
+Files: networkx/algorithms/matching.py
+Copyright: Copyright 2016 NetworkX developers.
+ Copyright (C) 2004-2019 by Aric Hagberg <hagberg@lanl.gov> Dan Schult <dschult@colgate.edu> Pieter Swart <swart@lanl.gov> Copyright (C) 2008 by Joris van Rantwijk.
+ Copyright (C) 2011 by Nicholas Mancuso <nick.mancuso@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/moral.py
+Copyright: Copyright (C) 2011-2019 by Julien Klaus <julien.klaus@uni-jena.de>
+ Copyright 2016-2019 NetworkX developers.
+License: BSD-3-clause
+
+Files: networkx/algorithms/simple_paths.py
+Copyright: Copyright (C) 2012 by Sergio Nery Simoes <sergionery@gmail.com>
+License: BSD-3-clause
+
+Files: networkx/algorithms/smallworld.py
+Copyright: Copyright (C) 2017 by Romain Fontugne <romain@iij.ad.jp>
+License: BSD-3-clause
+
+Files: networkx/generators/tests/test_expanders.py
+ networkx/generators/expanders.py
+Copyright:Copyright 2014 "cheebee7i".
+ Copyright 2014 "alexbrc".
+ Copyright 2014 Jeffrey Finkelstein <jeffrey.finkelstein@gmail.com>.
+License: BSD-3-clause
+
+Files: networkx/generators/directed.py
+Copyright: Copyright (C) 2006-2019 by Aric Hagberg <hagberg@lanl.gov> Dan Schult <dschult@colgate.edu> Pieter Swart <swart@lanl.gov>
+ Copyright (C) 2009 by Willem Ligtenberg <W.P.A.Ligtenberg@tue.nl>
+License: BSD-3-clause
+
+Files: networkx/generators/spectral_graph_forge.py
+ networkx/generators/internet_as_graphs.py
+Copyright: Copyright (C) 2017-2019 by Luca Baldesi
+License: BSD-3-clause
+
+Files: networkx/generators/trees.py
+Copyright: Copyright (C) 2015-2019 by Jeffrey Finkelstein <jeffrey.finkelstein@gmail.com> NetworkX developers
+License: BSD-3-clause
+
+Files: examples/subclass/plot_antigraph.py
+Copyright: Copyright (C) 2015-2019 by Jordi Torrents <jtorrents@milnou.net>
+License: BSD-3-clause
+
+Files: examples/applications/plot_circuits.py
+Copyright: Copyright 2016 Jeffrey Finkelstein <jeffrey.finkelstein@gmail.com>.
+License: BSD-3-clause
+
+Files: networkx/generators/harary_graph.py
+Copyright: Copyright (C) 2018-2019 by Weisheng Si <w.si@westernsydney.edu.au>
+License: BSD-3-clause
+
+Files: networkx/generators/joint_degree_seq.py 
+Copyright: Copyright (C) 2016-2019 by Minas Gjoka Balint Tillman
+License: BSD-3-clause
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+  * Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+ .
+  * Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+ .
+  * Neither the name of the NetworkX Developers nor the names of its
+    contributors may be used to endorse or promote products derived from this
+    software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: GPL-3
+ This program is free software; you can redistribute it and/or modify it under
+ the terms of the GNU General Public License as published by the Free Software
+ Foundation; either version 3 of the License.
+ .
+ This program is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along with
+ this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
+ St, Fifth Floor, Boston, MA 02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU General Public License v2
+ (GPL) can be found in /usr/share/common-licenses/GPL-3.

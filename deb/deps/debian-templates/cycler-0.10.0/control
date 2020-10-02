@@ -1,0 +1,51 @@
+Source: python-cycler
+Section: python
+Priority: optional
+Maintainer: Sandro Tosi <morph@debian.org>
+Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>,
+Build-Depends: debhelper-compat (= 9),
+               dh-python,
+               ipython3,
+               python3-all,
+               python3-matplotlib,
+               python3-nose,
+               python3-numpydoc,
+               python3-setuptools,
+               python3-six,
+               python3-sphinx,
+Standards-Version: 4.4.1
+Homepage: http://matplotlib.org/cycler/
+Vcs-Git: https://salsa.debian.org/python-team/modules/python-cycler.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/python-cycler
+
+Package: python3-cycler
+Multi-Arch: foreign
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+Suggests: python-cycler-doc,
+Description: composable kwarg iterator (Python 3)
+ When using matplotlib and plotting more than one line, it is common to want to
+ be able to cycle over one  or more artist styles; but the plotting logic can
+ quickly become very involved.
+ .
+ To address this and allow easy cycling over arbitrary 'kwargs' the `Cycler`
+ class, a composable kwarg iterator, was developed.
+ .
+ This package contains the Python 3 version of Cycler.
+
+Package: python-cycler-doc
+Section: doc
+Architecture: all
+Depends: libjs-mathjax,
+         ${misc:Depends},
+         ${sphinxdoc:Depends},
+Description: composable kwarg iterator (documentation)
+ When using matplotlib and plotting more than one line, it is common to want to
+ be able to cycle over one  or more artist styles; but the plotting logic can
+ quickly become very involved.
+ .
+ To address this and allow easy cycling over arbitrary 'kwargs' the `Cycler`
+ class, a composable kwarg iterator, was developed.
+ .
+ This package contains the documentation for Cycler.

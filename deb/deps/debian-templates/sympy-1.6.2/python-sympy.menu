@@ -1,0 +1,4 @@
+?package(python-sympy):needs="text" section="Applications/Science/Mathematics"\
+	title="sympy (Python2)"\
+	icon="/usr/share/pixmaps/isympy.xpm"\
+	command="python2 /usr/bin/isympy"

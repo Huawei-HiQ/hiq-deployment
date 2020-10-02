@@ -1,0 +1,12 @@
+Name: pandas
+Repository: https://github.com/pydata/pandas
+Documentation: https://pandas.pydata.org/pandas-docs/stable
+Bug-Database: https://github.com/pydata/pandas/issues
+Contact: https://pandas.pydata.org/community.html
+Reference:
+  Title: "pandas: a Foundational Python Library for Data Analysis and Statistics"
+  Eprint: https://www.scribd.com/doc/71048089/pandas-a-Foundational-Python-Library-for-Data-Analysis-and-Statistics
+  Author: McKinney, Wes
+  Booktitle: presented at PyHPC
+  Year: 2011
+Other-References: https://pandas.pydata.org/talks.html

@@ -1,0 +1,7 @@
+use_local_object.inv_files.patch
+python3-soabi.patch
+adapt_swig_docs_to_debian.patch
+0005-Dont-fail-if-we-cant-import-mingw32.patch
+0006-disable-asserts-on-ppc-with-broken-malloc-only-longd.patch
+debian_skip_tests.patch
+removec99flag.diff

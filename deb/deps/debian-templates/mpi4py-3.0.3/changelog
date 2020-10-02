@@ -1,0 +1,349 @@
+mpi4py (3.0.3-6) unstable; urgency=medium
+
+  * Team upload.
+  * debian patch skip_failing_test_rma.patch skips
+    tests in test_rma.py, test_rma_nb.py and test_win.py which
+    segfault or fail with OpenMPI 4.0.4
+    See Bug#965352 and upstream Issue #171.
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 08 Aug 2020 09:32:42 +0800
+
+mpi4py (3.0.3-5) unstable; urgency=medium
+
+  * Team upload.
+  * use verbose output with pytest in debian/tests (autopkgtest)
+  * debhelper compatibility level 13
+
+ -- Drew Parsons <dparsons@debian.org>  Sun, 19 Jul 2020 23:23:42 +0800
+
+mpi4py (3.0.3-4) unstable; urgency=medium
+
+  * Team upload.
+  * debian patch skip_ppc_failing_tests.patch skips tests
+    testCreateF90RealDouble and testCreateF90ComplexDouble in
+    test_datatype.py on all ppc arches, where they fail with OpenMPI 4.
+    These tests pass on other arches. See Bug#948655.
+  * Standards-Version: 4.5.0
+
+ -- Drew Parsons <dparsons@debian.org>  Sun, 26 Jan 2020 06:22:02 +0800
+
+mpi4py (3.0.3-3) unstable; urgency=medium
+
+  * Team upload.
+  * restore installation of python3-dbg module libs in python3-mpi4py-dbg
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 11 Jan 2020 19:34:48 +0800
+
+mpi4py (3.0.3-2) unstable; urgency=medium
+
+  * Team upload.
+  * drop python-mpi4py (remove python2). Closes: #937088.
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 10 Jan 2020 15:33:23 +0800
+
+mpi4py (3.0.3-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Standards-Version: 4.4.1
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 15 Nov 2019 12:36:15 +0800
+
+mpi4py (3.0.2-13) unstable; urgency=medium
+
+  * Team upload.
+  * fix override_dh_strip to ignore missing debug .so files (not
+    installed in doc arch-indep builds). Closes: #938970.
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 31 Aug 2019 01:39:45 +0800
+
+mpi4py (3.0.2-12) unstable; urgency=medium
+
+  * Team upload.
+  * source-only upload to let python3-mpi4py-dbg migrate into testing
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 30 Aug 2019 13:45:46 +0800
+
+mpi4py (3.0.2-11) unstable; urgency=medium
+
+  * Team upload.
+  * provide python3-mpi4py-dbg built with python3-dbg
+    (and python-mpi4py-dbg for python-dbg)
+
+ -- Drew Parsons <dparsons@debian.org>  Sun, 18 Aug 2019 19:48:16 +0800
+
+mpi4py (3.0.2-10) unstable; urgency=medium
+
+  * Team upload.
+  * debian patch fix_pytest4.patch updates [pytest] to [tool:pytest]
+    for pytest4.
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 09 Aug 2019 08:56:32 +0800
+
+mpi4py (3.0.2-9) unstable; urgency=medium
+
+  * Team upload.
+  * debian/tests: run with --color=no to make debci logs easier to read
+
+ -- Drew Parsons <dparsons@debian.org>  Thu, 25 Jul 2019 20:36:43 +0800
+
+mpi4py (3.0.2-8) unstable; urgency=medium
+
+  * Team upload.
+  * install pdf, info, man and bib documentation files
+  * debian/rules: set ARCH_IGNORE_FAILED_TESTS=hurd-i386 to ignore
+    test failures on hurd.
+  * debian patch fix_docs.patch repositions ellipses (...) which
+    at the beginning of the line corrupted the man page.
+
+ -- Drew Parsons <dparsons@debian.org>  Wed, 24 Jul 2019 17:59:26 +0800
+
+mpi4py (3.0.2-7) unstable; urgency=medium
+
+  * Team upload.
+  * debian/tests:
+    - run with mpiexec -n 5 (recommended by upstream)
+    - Restrictions: allow-stderr (to ignore a warning about
+      MPI_THREAD_MULTIPLE on non-RMA/Infiniband hardware)
+
+ -- Drew Parsons <dparsons@debian.org>  Mon, 22 Jul 2019 17:47:35 +0800
+
+mpi4py (3.0.2-6) unstable; urgency=medium
+
+  * Team upload.
+  * set OMPI_MCA_rmaps_base_oversubscribe=yes in debian/tests/control
+    to allow MPI spawn tests. Run tests with mpiexec -n 3.
+  * update debian patch up_libm with upstream commit 89f86e9.
+
+ -- Drew Parsons <dparsons@debian.org>  Sun, 21 Jul 2019 21:47:42 +0800
+
+mpi4py (3.0.2-5) unstable; urgency=medium
+
+  * Team upload.
+  * don't build docs during arch binary builds:
+    split override_dh_auto_build into -arch and -indep
+  * debian/tests Depends: python3-nose
+  * update Homepage: https://bitbucket.org/mpi4py/mpi4py
+
+ -- Drew Parsons <dparsons@debian.org>  Sun, 21 Jul 2019 13:53:53 +0800
+
+mpi4py (3.0.2-4) unstable; urgency=medium
+
+  * Team upload.
+  * mark python-mpi4py-doc as Multi-Arch: foreign
+  * add python module dependencies for debian/tests
+
+ -- Drew Parsons <dparsons@debian.org>  Sun, 21 Jul 2019 08:09:00 +0800
+
+mpi4py (3.0.2-3) unstable; urgency=medium
+
+  * Team upload.
+  * drop fix-dlopen.patch again. libm.so fixes for test_dl.py belong in
+    debian patch up_libm.
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 20 Jul 2019 01:23:37 +0800
+
+mpi4py (3.0.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * skip build tests on x32 (they consistently time out)
+  * add debian/tests to support autopkgtest
+  * reinstate debian patch fix-dlopen.patch and use
+    ctypes.util.find_library to find the system's libm.so.
+    Needed for systems without lib.so.6 (alpha, ia64).
+    Closes: #840817.
+  * reinstate build test failures as errors not warnings.
+    Tests are now expected to pass. Closes: #856349.
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 20 Jul 2019 00:47:26 +0800
+
+mpi4py (3.0.2-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release. Closes: #897956.
+    - deprecates debian patch fix-dlopen.patch
+  * Move mpi4py packaging to the Debian Science Team.
+  * Standards-Version: 4.4.0
+  * debhelper compatibility level 12
+    - drop autoreconf from dh addons (now applied automatically)
+    - dh_dwz has been deactivated since it generates an error:
+      ".debug_line reference above end of section"
+    - docs now placed in /usr/share/doc/python-mpi4py not
+      .../python-mpi4py-doc
+  * Use pybuild, cython3, python3-sphinx to build.
+    - debian patch docs_sphinx_python3.patch invokes python3-sphinx
+  * python3-mpi4py Depends: mpi-default-bin. Closes: #821466.
+  * add debian/missing-sources to satisfy lintian errors for
+    redirect.html, jquery.js, underscore.js
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 19 Jul 2019 00:31:51 +0800
+
+mpi4py (2.0.0-3) unstable; urgency=medium
+
+  * Team Upload
+  
+  [ Stuart Prescott ]
+  * Fix sover list used in dlopen so that current libmpi.so is found
+    (Closes: #860476)
+
+  [ Andreas Tille ]
+  * Fix homepage
+  * Priority: optional
+  * Fix watch file
+  * cme fix dpkg-control
+  * Standards-Version: 4.1.0
+  * Drop -dbg packages
+
+ -- Andreas Tille <tille@debian.org>  Thu, 07 Sep 2017 08:27:21 +0200
+
+mpi4py (2.0.0-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * In debian/rules:override_dh_auto_test, treat test errors as warnings.
+    Closes: #856349.
+
+ -- Drew Parsons <dparsons@debian.org>  Wed, 08 Mar 2017 16:18:00 +0800
+
+mpi4py (2.0.0-2) unstable; urgency=medium
+
+  * Point to libm.so.6 in the test, not libm.so (Closes: #817884)
+    (Thanks Alastair McKinstry)
+  * Removed dangling symlink /usr/include/mpi4py.  include/ is symlinked
+    for each python version under /usr/include/python*.*/mpi4py/
+    (Closes: #805301)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 02 Aug 2016 10:42:00 -0400
+
+mpi4py (2.0.0-1) unstable; urgency=medium
+
+  * New upstream release
+    - should be compatible with python 3.5 (Closes: 793839)
+  * debian/watch adjusted to monitor bitbucket
+  * debian/control
+    - boosted policy to 3.9.7
+  * debian/rules
+    - hardcode sphinx date for reproducible build (Closes: #788476)
+      Thanks Juan Picca
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 29 Feb 2016 08:23:56 -0500
+
+mpi4py (1.3.1+hg20131106-2) unstable; urgency=medium
+
+  * debian/rules
+    - assure absent reliance on network via http*_proxy env var
+  * debian/patches
+    - up_tests_network_attr tag BaseTestSpawn tests as relying on network
+      access and exclude them from running at pkg build time (Closes: #769801)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 16 Nov 2014 15:06:21 -0500
+
+mpi4py (1.3.1+hg20131106-1) unstable; urgency=low
+
+  * Fresh upstream snapshot which includes 1.3.1 stable release
+  * debian/rules:
+    - get-orig-dev-source to generate snapshot tarballs out from HG
+  * debian/rules,control:
+    - use dh_autoreconf and rebuild Cython extensions if cython is newer
+      than 0.19.1
+    - use dh_sphinxdoc (build-depends version for sphinx boosted to
+      1.0.7+dfsg~) and remove manual symlinking of jquery.js
+      (Closes: #725601)
+  * debian/control
+    - boost policy to 3.9.4
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 06 Nov 2013 13:22:56 -0500
+
+mpi4py (1.3+hg20130509-1) unstable; urgency=low
+
+  * Fresh upstream snapshot:
+    - fixes Cython 0.19 compatibility (Closes: #707314)
+    - incorporates patches cython_version_check.patch,
+      up_test_win_python3.3.patch)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 09 May 2013 12:33:57 -0400
+
+mpi4py (1.3+hg20120611-3) unstable; urgency=medium
+
+  * Create a suffixed (e.g. python3.2mu) python3 directory matching the
+    one present on the system for the given version of python3  (Closes:
+    #700995)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 20 Feb 2013 14:51:54 -0500
+
+mpi4py (1.3+hg20120611-2) unstable; urgency=low
+
+  * Cherry-picked patch from upstream for python3.3 compatibility (failing
+    unittests) (Closes: #691244)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 23 Oct 2012 10:23:29 -0400
+
+mpi4py (1.3+hg20120611-1) unstable; urgency=low
+
+  [ Bradley M. Froehle ]
+  * New snapshot from the upstream's release-1.3 branch in HG, revision
+    4f6ac1ea8b9d.  Includes post-release bugfixes for kFreeBSD, pickling
+    etc.
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 11 Jun 2012 21:47:41 -0400
+
+mpi4py (1.3-1) unstable; urgency=low
+
+  [ Bradley M. Froehle ]
+  * New upstream release (Closes: #675520)
+  * Import "Safer Cython version check" from upstream to allow building
+    against pre-release versions of Cython
+  * Fix FTBFS issues on some platforms where the default MPI implementation
+    is not OpenMPI
+  * python-mpi executables are not packaged; they are not required by OpenMPI
+    or MPICH2
+
+  [ Yaroslav Halchenko ]
+  * Boosted mpi-default-bin into Depends from Recommends since according
+    to tireless Bradley otherwise it is useless (Closes: #670768)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 06 Jun 2012 16:15:51 -0400
+
+mpi4py (1.2.2-4) unstable; urgency=low
+
+  [ Bradley M. Froehle ]
+  * Build using dh_python2
+  * Add package for Python 3 (Closes: #673911)
+
+  [ Yaroslav Halchenko ]
+  * Guard all for loops with 'set -e' to guarantee failure if any
+    iteration fails
+  * up_no_modlibs patch to exclude seems unneeded linking against MODLIBS
+    which carry unnecessary -lffi on recent debian systems preventing correct
+    build
+  * debian/copyright: adjusted for dep5 and list Bradley 
+  * Boosted policy to 3.9.3 -- no further changes
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 22 May 2012 13:24:18 -0400
+
+mpi4py (1.2.2-3) unstable; urgency=low
+
+  [ Bradley M. Froehle ]
+  * Symbolic link /usr/include/mpi4py ->
+    /usr/share/pyshared/mpi4py/include/mpi4py (Closes: #650329)
+
+  [ Yaroslav Halchenko ]
+  * Boosted policy to 3.9.2 -- no changes
+  * Adjusted gbp.conf to do overlay build
+  * Ajudsted debian/copyright to comply with changes in DEP5
+  * Added python-support to build-depends (Closes: #642451)
+  * pyshared -> pymodules for -dbg package
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 28 Nov 2011 17:09:46 -0500
+
+mpi4py (1.2.2-2) unstable; urgency=low
+
+  * Use mpi-default-{dev,bin} as *Depends to allow building on platforms
+    without openmpi implementation available
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 07 Apr 2011 09:26:13 -0400
+
+mpi4py (1.2.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #604161)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 06 Apr 2011 15:09:51 -0400

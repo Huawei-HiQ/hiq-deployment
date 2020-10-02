@@ -1,0 +1,12 @@
+disable_js_version_check.diff
+no_snowballstemmer.diff
+skip_tests_network.diff
+no_external_css.diff
+no_require_setuptools.diff
+no_external_image.diff
+remove_contrib_references.diff
+skip_tests_jsmath.diff
+use_packaged_mathjax.diff
+skip_tests_serializinghtml.diff
+move_sphinxcontrib_to_extras_require.diff
+intersphinx_local.diff

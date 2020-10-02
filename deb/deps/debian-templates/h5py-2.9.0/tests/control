@@ -1,0 +1,11 @@
+Tests: python2
+Depends: python-all,
+         python-all-dbg,
+         python-h5py,
+         python-h5py-dbg
+
+Tests: python3
+Depends: python3-all,
+         python3-all-dbg,
+         python3-h5py,
+         python3-h5py-dbg

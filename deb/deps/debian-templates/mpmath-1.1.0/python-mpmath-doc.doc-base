@@ -1,0 +1,13 @@
+Document: python-mpmath-doc
+Title: mpmath’s documentation
+Author: Fredrik Johansson
+Abstract: Mpmath is a Python library for arbitrary-precision floating-point arithmetic. These pages documents mpmath’s main features, with extensive use of examples that can be run in the interactive Python interpreter.
+Section: Science/Mathematics
+
+Format: HTML
+Index: /usr/share/doc/python-mpmath-doc/html/index.html
+Files: /usr/share/doc/python-mpmath-doc/html/*
+
+Format: Text
+Index: /usr/share/doc/python-mpmath-doc/txt/index.txt
+Files: /usr/share/doc/python-mpmath-doc/txt/*

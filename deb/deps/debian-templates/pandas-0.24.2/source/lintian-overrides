@@ -1,0 +1,6 @@
+# nothing to do with the html files with lenthy lines.
+very-long-line-length-in-source-file
+# False positive triggered by very-long-line-length-in-source-file.
+#   https://lintian.debian.org/tags/source-is-missing.html
+# Anyway let's override this "feature".
+source-is-missing

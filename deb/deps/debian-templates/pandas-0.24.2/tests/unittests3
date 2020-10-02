@@ -1,0 +1,29 @@
+#!/bin/bash
+set -eu
+set -x
+
+arch=$(dpkg --print-architecture)
+pys="$(py3versions -r 2>/dev/null)"
+sourcetestroot="$PWD/pandas/tests"
+
+# Debian: Enable "slow" tests on x86 to keep the code coverage.
+# Ubuntu: Disable "slow" tests on ALL architectures.
+if (echo amd64 i386 | grep $arch >/dev/null) && [ "Debian" = $(dpkg-vendor --query vendor) ]; then
+	marker=''
+else
+	marker='not slow'
+fi
+
+cd "$AUTOPKGTEST_TMP"
+# Run in sections to avoid out-of-memory crash (#943732)
+# exit code 5 means no tests in this file
+TEST_SUCCESS=true
+for py in $pys; do
+	echo "=== $py ==="
+	modpath=$($py -c 'import pandas as pd; print(pd.__path__[0])')
+	for TEST_SUBSET in $modpath/tests/* ; do
+        LC_ALL=C.UTF-8 xvfb-run --auto-servernum --server-args="-screen 0 1024x768x24" \
+        $py -m pytest --tb=long -s -v -m "$marker" --deb-data-root-dir=$sourcetestroot --strict-data-files --confcutdir=$modpath $TEST_SUBSET 2>&1 || test $? == 5 || TEST_SUCCESS=false
+    done
+done
+$TEST_SUCCESS

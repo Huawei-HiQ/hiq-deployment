@@ -1,0 +1,18 @@
+--- a/numpy/distutils/tests/test_system_info.py
++++ b/numpy/distutils/tests/test_system_info.py
+@@ -223,6 +223,7 @@ class TestSystemInfoReading(object):
+         assert_equal(tsi.get_libs("libraries", [self._lib2]), [self._lib2])
+ 
+     @pytest.mark.skipif(not HAVE_COMPILER, reason="Missing compiler")
++    @pytest.mark.skip(reason="Debian: disabled as we cant properly compile")
+     def test_compile1(self):
+         # Compile source and link the first source
+         c = customized_ccompiler()
+@@ -240,6 +241,7 @@ class TestSystemInfoReading(object):
+     @pytest.mark.skipif(not HAVE_COMPILER, reason="Missing compiler")
+     @pytest.mark.skipif('msvc' in repr(ccompiler.new_compiler()),
+                          reason="Fails with MSVC compiler ")
++    @pytest.mark.skip(reason="Debian: disabled as we cant properly compile")
+     def test_compile2(self):
+         # Compile source and link the second source
+         tsi = self.c_temp2

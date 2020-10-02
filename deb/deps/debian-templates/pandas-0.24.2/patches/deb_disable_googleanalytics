@@ -1,0 +1,81 @@
+Author: Yaroslav Halchenko <debian@onerussian.com>
+        Andreas Tille <tille@debian.org>
+Last-Update: Mon, 23 Oct 2017 08:55:28 +0200
+Description: Avoid privacy breach by Google Analytics
+
+--- a/pandas/tests/io/data/spam.html
++++ b/pandas/tests/io/data/spam.html
+@@ -27,45 +27,9 @@
+ 
+ <link rel="stylesheet" href="/ndb/static/css/main.css" />
+ 
+-      	<script type="text/JavaScript">
+-		 var _gaq = _gaq || [];
+-		 // NAL
+-		  _gaq.push(['_setAccount', 'UA-28627214-1']);
+-		  _gaq.push(['_setDomainName', 'nal.usda.gov']);
+-		  _gaq.push(['_setAllowLinker', true]);
+-		  _gaq.push(['_trackPageview']);
+-		 //
+-		// _gaq.push(['_setAccount', 'UA-3876418-1']);
+-		//  _gaq.push(['_trackPageview']);
+-		  // for NDB
+-		  _gaq.push(['_setAccount', 'UA-36442725-1']);
+-		  _gaq.push(['_trackPageview']);
+-			// USDA servers
+-		  _gaq.push(['_setAccount', 'UA-466807-3']);
+-		  _gaq.push(['_setDomainName', 'usda.gov']);
+-		  _gaq.push(['_setAllowLinker', true]);
+-		  _gaq.push(['_trackPageview']);
+-		  //
+-		  _gaq.push(['a._setAccount', 'UA-27627304-18']);
+-		  _gaq.push(['a._setDomainName', 'usda.gov']);
+-		  _gaq.push(['a._setAllowLinker', true]);
+-		  _gaq.push(['a._trackPageview']);
+-			//
+-		  _gaq.push(['b._setAccount', 'UA-27627304-1']);
+-		  _gaq.push(['b._setDomainName', 'usda.gov']);
+-		  _gaq.push(['b._setAllowLinker', true]);
+-		  _gaq.push(['b._trackPageview']);
+-
+-		  (function() {
+-		    var ga = document.createElement('script'); ga.type =
+-		'text/javascript'; ga.async = true;
+-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+-		'http://www') + '.google-analytics.com/ga.js';
+-		    var s = document.getElementsByTagName('script')[0];
+-		s.parentNode.insertBefore(ga, s);
+-		  })();
+-	</script>
+-
++<!-- google analytics snippet was completely removed by Debian maintainers.
++     See http://lintian.debian.org/tags/privacy-breach-google-adsense.html
++     for more information -->
+ 
+ 
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+@@ -794,4 +758,4 @@ handler: function() {this.cancel();},
+ 			&nbsp;&nbsp;Software v.1.2.2
+ 		</div>
+     </body>
+-</html>
+\ No newline at end of file
++</html>
+--- a/doc/source/themes/nature_with_gtoc/layout.html
++++ b/doc/source/themes/nature_with_gtoc/layout.html
+@@ -94,15 +94,4 @@ $(document).ready(function() {
+     });
+ });
+ </script>
+-<script type="text/javascript">
+-  var _gaq = _gaq || [];
+-  _gaq.push(['_setAccount', 'UA-27880019-2']);
+-  _gaq.push(['_trackPageview']);
+-
+-  (function() {
+-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+-  })();
+-</script>
+ {% endblock %}

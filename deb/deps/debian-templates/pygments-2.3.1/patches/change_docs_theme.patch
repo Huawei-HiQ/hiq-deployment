@@ -1,0 +1,22 @@
+From: SVN-Git Migration <python-modules-team@lists.alioth.debian.org>
+Date: Thu, 8 Oct 2015 10:34:58 -0700
+Subject: Change Sphinx documentation theme to 'default'
+
+Patch-Name: change_docs_theme.patch
+---
+ doc/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/conf.py b/doc/conf.py
+index 51a9161..82ae598 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -85,7 +85,7 @@ exclude_patterns = ['_build']
+ 
+ # The theme to use for HTML and HTML Help pages.  See the documentation for
+ # a list of builtin themes.
+-html_theme = 'pygments14'
++html_theme = 'default'
+ 
+ # Theme options are theme-specific and customize the look and feel of a theme
+ # further.  For a list of options available for each theme, see the

@@ -1,0 +1,927 @@
+pandas (0.24.2-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Damien Nguyen <damien1@huawei.com>  Tue, 29 Sep 2020 11:38:37 +0000
+
+pandas (0.23.3+dfsg-8) unstable; urgency=medium
+
+  * Examples dependencies: re-add statsmodels and xarray;
+    also add rpy2 and feather.
+  * Use packaged intersphinx indexes.  (Closes: #876417)
+  * Use https for intersphinx links.
+  * Remove cythonized-files*.  (They are regenerated on each build.)
+  * Remove test xfail, as statsmodels has now been fixed.
+  * Set Rules-Requires-Root: no.
+  * Make documentation Suggest the Python 3 version.
+  * Suggest statsmodels.
+  * Only use Python 3 sphinx, and mark it -Indep/nodoc.
+  * Bump debhelper compat to 12 and use debhelper-compat and pybuild.
+  * Remove pycompat and X-Python*-Version.
+  * Add missing d/copyright item.
+  * Remove obsolete TODOs.
+  * Clarify descriptions.
+  * Stop referring to examples that no longer exist.
+  * Fix typos.
+  * Remove old (no longer used) EXCLUDE_TESTS*.
+  * Deduplicate documentation files.
+  * Use Python 3 shebangs, and fix broken shebang.
+  * Add python3-ipykernel, -ipywidgets, -seaborn to
+    Build-Depends-Indep.
+  * Disable dh_auto_test: it fails, and we run the tests elsewhere.
+  * Mark test dependencies nocheck/nodoc.
+  * Remove old minimum versions / alternative dependencies.
+  * Build-depend on dh-python.
+  * Don't build on python3.8, as it will fail tests (see #931557).
+
+ -- Rebecca N. Palmer <rebecca_palmer@zoho.com>  Sun, 27 Oct 2019 11:38:37 +0000
+
+pandas (0.23.3+dfsg-7) unstable; urgency=medium
+
+  * Revert test patch and use an xfail instead.
+  * Temporarily drop statsmodels+xarray Build-Depends, as they are
+    uninstallable until this is built.
+  * Add python3-xarray to autopkgtest Depends.
+  * Drop Python 2 autopkgtest (but keep build-time test).
+  * Remove duplicate Recommends.
+
+ -- Rebecca N. Palmer <rebecca_palmer@zoho.com>  Fri, 20 Sep 2019 08:01:37 +0100
+
+pandas (0.23.3+dfsg-6) unstable; urgency=medium
+
+  * Team upload
+  * Avoid FTBFS with statsmodels 0.9.0
+  * Add python3-statsmodels to autopkgtest Depends
+
+ -- Graham Inggs <ginggs@debian.org>  Wed, 18 Sep 2019 13:46:01 +0000
+
+pandas (0.23.3+dfsg-5) unstable; urgency=medium
+
+  * Team upload
+  * Add locales-all to Build-Depends and autopkgtest Depends in order to
+    consistently test in all avalable locales
+  * Add crh_UA to skip_noencoding_locales.patch
+  * Fix wrong debian/source/options exclude, thanks Steve Langasek
+
+ -- Graham Inggs <ginggs@debian.org>  Wed, 18 Sep 2019 05:57:44 +0000
+
+pandas (0.23.3+dfsg-4) unstable; urgency=medium
+
+  * Add self to Uploaders.
+  * Recommend .xls format support also in Python 3.  (Closes: #880125)
+  * Tests: don't call fixtures, as this is an error in pytest 4+.
+  * Don't test datetime in locales with no encoding.
+    (These are broken by a Python stdlib bug.)
+
+ -- Rebecca N. Palmer <rebecca_palmer@zoho.com>  Sat, 14 Sep 2019 16:37:43 +0100
+
+pandas (0.23.3+dfsg-3) unstable; urgency=medium
+
+  * Team upload.
+  * Make np.array @ Series act the right way round.  (Closes: #923708)
+  * Replace #918206 fix with a fix that doesn't change the return type
+    and inplace-ness of np.array += DataFrame.  (Closes: #923707)
+  * Fix missing page in documentation.
+
+ -- Rebecca N. Palmer <rebecca_palmer@zoho.com>  Wed, 06 Mar 2019 22:19:34 +0000
+
+pandas (0.23.3+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * Don't fail the build on +dfsg versions.
+  * Fix another d/copyright issue.
+  * Add d/upstream/metadata.
+
+ -- Rebecca N. Palmer <rebecca_palmer@zoho.com>  Sat, 02 Mar 2019 14:57:12 +0000
+
+pandas (0.23.3+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * Fix DataFrame @ np.array matrix multiplication.  (Closes: #918206)
+  * Fix documentation build (Sphinx now defaults to Python 3).
+    (Closes: #804552, LP: #1803018)
+  * Add documentation examples dependencies.
+  * Update d/copyright.
+  * Remove unlicensed files.
+
+ -- Rebecca N. Palmer <rebecca_palmer@zoho.com>  Fri, 01 Mar 2019 23:02:18 +0000
+
+pandas (0.23.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/patches
+    - many upstreamed patches are removed and others refreshed
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sat, 28 Jul 2018 00:39:32 -0400
+
+pandas (0.22.0-8) unstable; urgency=medium
+
+  * Team Upload.
+  * patches:
+    + Add patch: deb_dont_call_py2_in_py3_test.patch
+      During python3 unit test, command 'python' is called by one of
+      the tests.  When there is no python2 installation, tests such as
+      autopkgtest would fail.
+    * Put the conditionally applied patch to series' comment to avoid
+      lintianW: patch-file-present-but-not-mentioned-in-series.
+  * Trying to fix the autopkgtest:
+    + Leave a comment about the way to run unittest in the test control file.
+    + Synchronize B-D and autopkgtest depends.
+    + Allow output to stderr during test.
+    * Switch from nosetest to pytest.
+    * Synchronize pytest argument for rules and autopkgtest.
+    - Replace tests/unittest with the symlink pointed to tests/unittest3.
+      That scripts is smart enough to tell from py2 and py3, so we won't
+      need to write the same thing twice.
+    - Filter out intel tests on non-x86 architectures.
+    - Only enable "slow" tests on (Debian + x86) tester. "slow" tests may
+      consume too much memory to cause memory error or trigger OOM killer.
+  * control:
+    + Add missing python3 dependencies and sort the B-D list.
+    * Point Vcs-* fields to Salsa.
+    * Update Homepage to https://pandas.pydata.org/ .
+  * rules:
+    * Reverse the architecture filtering logic.
+    * Disable "slow" tests during build for non-x86 architectures.
+      This may significantly reduce the build time on those weak architectures.
+    * Don't specify the pytest marker expression twice.
+      The first expression will be overridden.
+    * Fix hardening flags.
+    - Cleanup the mess of unused nosetest exclusion expressions.
+  * Update lintian overrides.
+    + Override source-is-missing error, which is a false-positive triggered
+      by insane-line-length-in-source-file.
+    + Override insane-line-length-in-source-file because we have nothing
+      todo with lenghy lines in html.
+  * TODO: Point out that the unittest speed can be boosted with pytest-xdist.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sun, 17 Jun 2018 16:01:16 +0000
+
+pandas (0.22.0-7) unstable; urgency=medium
+
+  * Team Upload.
+
+  [ Mo Zhou ]
+  * Remove patch: deb_fix_test_failure_test_basic_indexing, which is
+    unneeded for pandas >= 0.21 . (Closes: #900061)
+
+  [ Graham Inggs ]
+  * Add riscv64 to the list of "not intel" architectures
+  * Update mark_tests_working_on_intel_armhf.patch
+
+ -- Graham Inggs <ginggs@debian.org>  Tue, 29 May 2018 13:50:59 +0000
+
+pandas (0.22.0-6) unstable; urgency=medium
+
+  * Team upload
+  * Fix FTBFS with Sphinx 1.7, thanks Dmitry Shachnev!
+
+ -- Graham Inggs <ginggs@debian.org>  Tue, 24 Apr 2018 19:09:20 +0000
+
+pandas (0.22.0-5) unstable; urgency=medium
+
+  * Team upload
+  * Add compatibility with Matplotlib 2.2 (Closes: #896673)
+
+ -- Graham Inggs <ginggs@debian.org>  Mon, 23 Apr 2018 13:56:12 +0000
+
+pandas (0.22.0-4) unstable; urgency=medium
+
+  * Team upload
+  * Fix more tests expecting little-endian results
+  * Fix heap corruption in read_csv on 32-bit, big-endian architectures
+    (Closes: #895890)
+
+ -- Graham Inggs <ginggs@debian.org>  Sun, 22 Apr 2018 21:48:27 +0000
+
+pandas (0.22.0-3) unstable; urgency=medium
+
+  * Team upload
+  * Refresh and re-enable mark_tests_working_on_intel.patch
+  * Fix test__get_dtype tests expecting little-endian results
+
+ -- Graham Inggs <ginggs@debian.org>  Thu, 12 Apr 2018 11:04:21 +0000
+
+pandas (0.22.0-2) unstable; urgency=medium
+
+  * debian/patches
+    - as upstream moved over to pytest from nose, no more nose imports were
+      in the code. Just adjusted patches to import nose where needed
+  * debian/rules
+    - specify LC_ALL=C locale to avoid crash while building docs
+    - add the 0001-TST-pytest-deprecation-warnings-GH17197-17253-reversed.patch
+      to the series if building on a system with an old pytest
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 21 Feb 2018 23:44:58 -0500
+
+pandas (0.22.0-1) unstable; urgency=medium
+
+  * Upstream release
+  * debian/patches
+    - refreshed many
+    - updated some
+    - added
+      - up_moto_optional  to skip tests requiring moto (#777089)
+      - deb_skip_difffailingtests to skip  two failing tests
+        (see https://github.com/pandas-dev/pandas/issues/19774)
+      - up_xlwt_optional to skip a test requiring xlwt
+      - deb_ndsphinx_optional to make nbsphinx optional.
+        Make nbsphinx not required in build-depends on systems with
+        older python-sphinx
+      - mark_tests_failing_on_386.patch
+        see https://github.com/pandas-dev/pandas/issues/19814
+    - removed adopted upstream:
+  	  - dateutil-2.6.1-fixed-ambiguous-tz-dst-be.patch
+      - up_tst_np_argsort_comparison2
+    - disabled for now:
+      - mark_tests_working_on_intel.patch
+      - up_tst_dont_assert_that_a_bug_exists_in_numpy
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 21 Feb 2018 10:30:06 -0500
+
+pandas (0.20.3-11) unstable; urgency=medium
+
+  * Team upload.
+  * Cherry-pick upstream commit 5f2b96bb637f6ddeec169c5ef8ad20013a03c853
+    to workaround a numpy bug. (Closes: #884294)
+    + patches/up_tst_dont_assert_that_a_bug_exists_in_numpy
+  * Cherry-pick upstream commits to fix test failure caused by test_argsort().
+    + patches/up_tst_np_argsort_comparison2
+  * Workaround test failure of test_basic_indexing() in file
+    pandas/tests/series/test_indexing.py .
+    + patches/deb_fix_test_failure_test_basic_indexing
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sat, 20 Jan 2018 09:00:31 +0000
+
+pandas (0.20.3-10) unstable; urgency=medium
+
+  * Team upload.
+  * Exclude more tests failing on mips, armhf and powerpc
+
+ -- Andreas Tille <tille@debian.org>  Tue, 24 Oct 2017 21:26:02 +0200
+
+pandas (0.20.3-9) unstable; urgency=medium
+
+  * Team upload.
+  * Add missing "import pytest" to two patched tests
+  * Secure URI in watch file
+
+ -- Andreas Tille <tille@debian.org>  Tue, 24 Oct 2017 08:18:54 +0200
+
+pandas (0.20.3-8) unstable; urgency=medium
+
+  * Team upload.
+  * Exclude one more test and de-activate non-working ignore of test errors
+
+ -- Andreas Tille <tille@debian.org>  Mon, 23 Oct 2017 21:32:24 +0200
+
+pandas (0.20.3-7) unstable; urgency=medium
+
+  * Team upload.
+  * debhelper 9
+  * Use Debian packaged mathjax
+  * Do not Recommends python3-six since it is mentioned in Depends
+  * Remove redundant/outdated XS-Testsuite: autopkgtest
+  * Exclude one more test and de-activate non-working ignore of test errors
+
+ -- Andreas Tille <tille@debian.org>  Mon, 23 Oct 2017 17:33:55 +0200
+
+pandas (0.20.3-6) unstable; urgency=medium
+
+  * Team upload.
+  * Ignore test errors on some architectures
+    (Concerns bug #877419)
+  * Remove __pycache__ remainings from testing
+  * Standards-Version: 4.1.1
+  * DEP3 for Google Analytics patch
+  * Complete Google Analytics patch
+
+ -- Andreas Tille <tille@debian.org>  Mon, 23 Oct 2017 09:05:27 +0200
+
+pandas (0.20.3-5) unstable; urgency=medium
+
+  * Make sure remainings of nose tests will not fail. That's a pretty stupid
+    patch since the tests are not using nose any more only some remaining
+    exceptions.  Hope it will work anyway.
+    (Concerns bug #877419)
+
+ -- Andreas Tille <tille@debian.org>  Mon, 16 Oct 2017 21:57:45 +0200
+
+pandas (0.20.3-4) unstable; urgency=medium
+
+  * Mark those tests @pytest.mark.intel that pass only on Intel architectures
+  * d/rules: try to exclude tests that were marked "intel"
+    (Concerns bug #877419)
+
+ -- Andreas Tille <tille@debian.org>  Sat, 14 Oct 2017 19:49:01 +0200
+
+pandas (0.20.3-3) unstable; urgency=medium
+
+  * Team upload.
+  * Moved packaging from pkg-exppsy to Debian Science
+  * Exclude certain tests on certain architectures
+    (Concerns bug #877419)
+
+ -- Andreas Tille <tille@debian.org>  Fri, 13 Oct 2017 20:52:53 +0200
+
+pandas (0.20.3-2) unstable; urgency=medium
+
+  * debian/control
+    - boosted policy to 4.0.0 (I think we should be ok)
+    - drop statsmodels from build-depends to altogether avoid the circular
+      build-depends (Closes: #875805)
+  * Diane Trout:
+    - Add dateutil-2.6.1-fixed-ambiguous-tz-dst-be.patch (Closes: #875807)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 21 Sep 2017 16:11:29 -0400
+
+pandas (0.20.3-1) unstable; urgency=medium
+
+  * Fresh upstream release
+  * debian/patches
+    - updated some, removed changeset*, and disabled possibly fixed upstream
+      ones
+  * debian/{control,rules}
+    - upstream switched to use pytest instead of nose
+    - enabled back all the tests for now
+    - added python-nbsphinx for b-depends, needed for docs
+  * debian/*.install
+    - no .so at the first level of subdirectories, now present on the third
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 10 Jul 2017 20:00:59 -0400
+
+pandas (0.19.2-5.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Apply patch by Rebecca N. Palmer
+    Closes: #858260
+
+ -- Andreas Tille <tille@debian.org>  Sun, 02 Apr 2017 07:06:36 +0200
+
+pandas (0.19.2-5) unstable; urgency=medium
+
+  * And one more test to skip on non-amd64 -- test_round_trip_valid_encodings
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 12 Jan 2017 13:10:11 -0500
+
+pandas (0.19.2-4) unstable; urgency=medium
+
+  * Exclude few more "plotting" tests on non-amd64 which cause FTBFS
+    on s390
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 12 Jan 2017 11:43:13 -0500
+
+pandas (0.19.2-3) unstable; urgency=medium
+
+  * Brought back changeset_0699c89882133a41c250abdac02796fec84512e8.diff
+    which should resolve tests failures on BE platforms (wasn't yet
+    upstreamed within 0.19.x releases)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 12 Jan 2017 09:44:52 -0500
+
+pandas (0.19.2-2) unstable; urgency=medium
+
+  * Exclude a number of tests while running on non-amd64 platforms
+    due to bugs in numpy/pandas
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 11 Jan 2017 12:13:05 -0500
+
+pandas (0.19.2-1) unstable; urgency=medium
+
+  * Fresh upstream minor release -- supposed to be bugfix but interacts
+    with current beta (1:1.12.0~b1-1) numpy leading to various failed tests
+  * debian/patches
+    - changeset_ae6a0a51cf41223394b7ef1038c210045d486cc8.diff
+      to guarantee the same Series dtype as of cut regardless of architecture
+    - up_buggy_overflows
+      workaround for inconsistent overflows while doing pow operation on big
+      ints
+  * debian/rules
+    - exclude more tests which are due to known issues in numpy beta and thus
+      not to be addressed directly in pandas
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 04 Jan 2017 10:19:52 -0500
+
+pandas (0.19.1+git174-g81a2f79-1) experimental; urgency=medium
+
+  * New upstream snapshot from v0.19.0-174-g81a2f79
+    - lots of bugfixes since 0.19.1, so decided to test snapshot
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sat, 10 Dec 2016 22:43:19 -0500
+
+pandas (0.19.1-3) unstable; urgency=medium
+
+  * Require cython >= 0.23 or otherwise use pre-cythoned sources
+    (should resolve https://github.com/pandas-dev/pandas/issues/14699
+    on jessie)
+  * debian/control
+    - Build-Conflicts with python-tables 3.3.0-4 since that one leads to FTBFS
+    - boosted policy to 3.9.8
+  * debian/rules
+    - Exclude few more tests which fail on big endian and other platforms
+      test_(msgpack|read_dta18)
+  * debian/patches
+    - changeset_0699c89882133a41c250abdac02796fec84512e8.diff
+      to compare in the tests against native endianness
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 09 Dec 2016 15:49:50 -0500
+
+pandas (0.19.1-2) unstable; urgency=medium
+
+  * debian/control
+    - Moved statsmodels build-depend (optional) under build-depends-indep
+      to break circular dependency.  Thanks Stuart Prescott for the analysis
+  * debian/patches/
+    - changeset_1309346c08945cd4764a549ec63cf51089634a45.diff
+      to not mask problem reading json leading to use of undefined variable
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 27 Nov 2016 21:49:40 -0500
+
+pandas (0.19.1-1) unstable; urgency=medium
+
+  * Fresh upstream release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 18 Nov 2016 12:19:54 -0500
+
+pandas (0.19.0+git14-ga40e185-1) unstable; urgency=medium
+
+  * New upstream post-release (includes some bugfixes) snapshot
+  * debian/patches
+    - dropped changeset_ and up_ patches adopted upstream, refreshed the rest
+  * debian/rules,patches
+    - save debian-based version into __version.py, so doesn't conflict with
+      upstream tests of public API
+    - exclude for now test_expressions on python3
+      (see https://github.com/pydata/pandas/issues/14269)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 13 Oct 2016 10:26:18 -0400
+
+pandas (0.18.1-1) unstable; urgency=medium
+
+  * Fresh upstream release
+  * debian/patches/
+    - changeset_46af7cf0f8e0477f6cc7454aa786a573228f0ac3.diff
+      to allow also AttributeError exception being thrown in the tests
+      (Closes: #827938)
+    - debian/patches/deb_skip_test_precision_i386
+      removed (upstreamed)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 13 Jul 2016 10:42:00 -0400
+
+pandas (0.18.0+git114-g6c692ae-1) unstable; urgency=medium
+
+  * debian/control
+    - added python{,3}-pkg-resources to direct Depends for the packages
+      (Closes: #821076)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 17 Apr 2016 20:49:25 -0400
+
+pandas (0.17.1-3) unstable; urgency=medium
+
+  * debian/tests/unittest*
+    - set LC_ALL=C.UTF-8 for the tests run to prevent failure of test_set_locale
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 08 Dec 2015 08:31:30 -0500
+
+pandas (0.17.1-2) unstable; urgency=medium
+
+  * debian/control
+    - make -statsmodels and -tables optional build-depends on those platforms
+      where they are N/A atm.  Added bdepends on python3-tables since available
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 06 Dec 2015 12:58:26 -0500
+
+pandas (0.17.1-1) unstable; urgency=medium
+
+  * Fresh upstream bugfix release
+  * debian/rules
+    - fixed deletion of moved away .so files
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 27 Nov 2015 10:52:49 -0500
+
+pandas (0.17.0+git8-gcac4ad2-2) unstable; urgency=medium
+
+  * Bug fix: install also msgpack/*.so extensions to -lib packages
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sat, 10 Oct 2015 13:52:54 -0400
+
+pandas (0.17.0+git8-gcac4ad2-1) unstable; urgency=medium
+
+  * New upstream snapshot post release to pick up few bugfixes
+    - Started to trigger failures of test_constructor_compound_dtypes and
+      test_invalid_index_types -- disabled those for now, see
+      https://github.com/pydata/pandas/issues/11169
+  * debian/rules
+    - Generate pandas/version.py if not present out of debian/changelog
+      upstream version information (versioneer wouldn't know since relies on
+      git)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 09 Oct 2015 21:35:23 -0400
+
+pandas (0.16.2+git65-g054821d-1) unstable; urgency=medium
+
+  * Fresh upstream post-release snapshot (to pick up recent fixes etc)
+    (Closes: #787432)
+  * debian/{control,rules}
+    - build -doc package (Closes: #660900)
+    - add ipython (or alternative new ones from neurodebian) into
+      Build-Depends-Indep to build docs
+    - add python{,3}-{lxml,html5lib} to Build-Depends and Recommends
+    - use LC_ALL=C.UTF-8 while running tests
+    - exclude also test_set_locale since it fails ATM
+      see https://github.com/pydata/pandas/issues/10471
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 30 Jun 2015 17:26:54 -0400
+
+pandas (0.16.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release candidate
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 13 Mar 2015 14:21:39 -0400
+
+pandas (0.15.2-1) unstable; urgency=medium
+
+  * Fresh upstream release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 11 Dec 2014 09:51:57 -0500
+
+pandas (0.15.1+git125-ge463818-1) unstable; urgency=medium
+
+  * New upstream snapshot from v0.15.1-125-ge463818.
+  * Upload to unstable during freeze since previous one in sid didn't make it
+    to jessie anyways
+  * debian/control
+    - remove versioning demand for cython (it would use pre-cythonized code on
+      older ones and there is no longer need in sid/jessie to enforce version).
+      As a consecuence -- removed all dsc patches pointing to
+      nocython3-dsc-patch, since no longer needed
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 30 Nov 2014 21:09:36 -0500
+
+pandas (0.15.0-2) unstable; urgency=medium
+
+  * debian/control
+    - specify minimal numpy to be 1.7
+  * debian/patches
+    - deb_skip_stata_on_bigendians   skip test_stata again on BE platforms
+    - deb_skip_test_precision_i386   skip test_precision_conversion on 32bit
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 30 Oct 2014 23:09:13 -0400
+
+pandas (0.15.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control
+    - restrict statsmodels and matplotlib from being required on the ports
+      which do not have them
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 26 Oct 2014 11:30:23 -0400
+
+pandas (0.14.1-2) unstable; urgency=medium
+
+  * debian/patches/changeset_314012d.diff
+    - Fix converter test for MPL1.4 (Closes: #763709)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 06 Oct 2014 11:53:42 -0400
+
+pandas (0.14.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 10 Jul 2014 23:38:49 -0400
+
+pandas (0.14.0+git393-g959e3e4-1) UNRELEASED; urgency=medium
+
+  * New upstream snapshot from v0.14.0-345-g8cd3dd6
+  * debian/rules
+    - disable running disabled tests to prevent clipboard tests failures
+      under kfreebsd kernels
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 07 Jul 2014 12:29:50 -0400
+
+pandas (0.14.0+git213-g741b2fa-1) experimental; urgency=medium
+
+  * New upstream snapshot from v0.14.0-213-g741b2fa.
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 19 Jun 2014 10:30:42 -0400
+
+pandas (0.14.0+git17-g3849d5d-1) unstable; urgency=medium
+
+  * New upstream snapshot from v0.14.0-17-g3849d5d -- has resolved a number
+    of bugs sneaked into 0.14.0 release, and caused FTBFS on some platforms
+    and backports
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 01 Jun 2014 00:54:34 -0400
+
+pandas (0.14.0-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 30 May 2014 08:45:35 -0400
+
+pandas (0.14.0~rc1+git79-g1fa5dd4-1) experimental; urgency=medium
+
+  * New upstream snapshot from v0.14.0rc1-73-g8793356
+  * debian/patches:
+    - dropped CPed changeset_*s
+    - added deb_disable_googleanalytics
+  * debian/control:
+    - boosted policy compliance to 3.9.5
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 27 May 2014 16:00:00 -0400
+
+pandas (0.13.1-2) unstable; urgency=low
+
+  * debian/patches/changeset_6d56e7300d66d3ba76684334bbb44b6cd0ea9f61.diff
+    to fix FTBFS of statsmodels due to failing tests (Closes: #735804)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sat, 08 Feb 2014 12:46:42 -0500
+
+pandas (0.13.1-1) unstable; urgency=low
+
+  * Fresh upstream release
+  * debian/patches
+    - deb_skip_test_pytables_failure to mitigate error while testing on
+      amd64 wheezy and ubuntu 12.04
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 04 Feb 2014 12:09:29 -0500
+
+pandas (0.13.0+git464-g15a8ff7-1) experimental; urgency=low
+
+  * Fresh pre-release snapshot
+  * debian/patches
+    - removed all cherry-picked patches (should have been upstreamed)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 29 Jan 2014 21:27:45 -0500
+
+pandas (0.13.0-2) unstable; urgency=low
+
+  * debian/patches
+    - 0001-BLD-fix-cythonized-msgpack-extension-in-setup.py-GH5.patch
+      to resolve issue with building C++ Cython extension using
+      pre-generated sources
+    - 0001-Add-division-future-import-everywhere.patch
+      0002-remove-explicit-truediv-kwarg.patch
+      to resolve compatibility issues with elderly Numexpr
+    - 0001-BUG-Yahoo-finance-changed-ichart-url.-Fixed-here.patch
+    - deb_skip_sequencelike_on_armel to prevent FTBFS on armel due to failing
+      test: https://github.com/pydata/pandas/issues/4473
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 03 Jan 2014 23:13:48 -0500
+
+pandas (0.13.0-1) unstable; urgency=low
+
+  * Fresh upstream release
+    - resolved compatibility with matplotlib 1.3 (Closes: #733848)
+  * debian/{control,rules}
+    - use xvfb (added to build-depends together with xauth, and xclip)
+      for tests
+    - define http*_proxy to prevent downloads
+    - install .md files not .rst for docs -- were renamed upstream
+    - include .cpp Cython generated files into debian/cythonized-files*
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 01 Jan 2014 18:08:22 -0500
+
+pandas (0.12.0-2) unstable; urgency=low
+
+  [ Dmitry Shachnev ]
+  * DEP-8 tests improvements:
+    - Use Xvfb for running tests.
+    - Increase verbosity using -v flag.
+    - Fix printing interpreter version in unittests3.
+  * Fix indentaion in debian/control.
+
+  [ Yaroslav Halchenko ]
+  * debian/control
+    - place python3-matplotlib ahead of elderly python-matplotlib without
+      python3 support since now we have python3-matplotlib in sid
+  * debian/copyright
+    - go through reported missing copyright/license statements (Closes:
+      #700564) Thanks Luca Falavigna for the report
+  * debian/rules,patches
+    - exclude test test_bar_log due to incompatibility with matplotlib 1.3.0 (test
+      adjusted upstream and would be re-enabled for the new release).
+    - debian/patches/changeset_952c5f0bc433622d21df20ed761ee4cb728370eb.diff
+      adds matplotlib 1.3.0 compatibility
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sat, 14 Sep 2013 20:02:58 -0400
+
+pandas (0.12.0-1) unstable; urgency=low
+
+  * New upstream release:
+    - should address failed tests on 32bit platforms
+  * debian/patches
+    - neurodebian: allow to build for jessie with outdated cython
+  * debian/control
+    - build for Python2 >= 2.7 due to some (probably temporary) incompatibilities
+      in tests with 2.6
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 24 Jul 2013 23:29:03 -0400
+
+pandas (0.12.0~rc1+git127-gec8920a-1) experimental; urgency=low
+
+  * New upstream snapshot from origin/master at v0.12.0rc1-127-gec8920a
+    - should address FTBFS due to failing tests on big endians
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sat, 20 Jul 2013 09:23:04 -0400
+
+pandas (0.12.0~rc1+git112-gb79996c-1) experimental; urgency=low
+
+  * Fresh git snapshot of upstream candidate release. Experimental build
+    to verify functioning across the ports.
+  * debian/control
+    - dedented last "paragraph" to break it away from the 2nd one.
+      Thanks Beatrice Torracca for the detailed report (Closes: #712260)
+    - Depends on python-six now
+  * debian/{,tests/}control
+    - added python{,3}-bs4, python-html5lib to Build-Depends for more
+      thorough testing
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 18 Jul 2013 13:15:19 -0400
+
+pandas (0.11.0-2) unstable; urgency=low
+
+  [ Yaroslav Halchenko ]
+  * Upload to unstable -- this upstream release addressed Cython 0.19
+    compatibility issue (Closes: #710608)
+  * Recommends numexpr
+  * Re-cythonized using Cython 0.19
+
+  [ Dmitry Shachnev ]
+  * debian/tests/unittests3: use nosetests3 instead of nosetests-3.x.
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 03 Jun 2013 11:57:43 -0400
+
+pandas (0.11.0-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 23 Apr 2013 22:40:15 -0400
+
+pandas (0.10.1-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 22 Jan 2013 13:07:31 -0500
+
+pandas (0.10.0-1) experimental; urgency=low
+
+  * New upstream release
+    - drops python 2.5 support (we are dropping pyversions in favor of
+      X-Python-Version)
+  * debian/patches:
+    - all previous are in upstream now, dropped locally
+    - added -dsc-patch'es for systems without cython3
+  * debian/control:
+    - added python-statsmodels for the extended tests coverage
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 17 Dec 2012 12:27:25 -0500
+
+pandas (0.9.1-2) unstable; urgency=low
+
+  [ Julian Taylor ]
+  * Provide python3 packages
+  * Add autopkgtests
+  * debian/patches:
+    - relax-float-tests.patch:
+      replace float equality tests with almost equal
+    - fix-endian-tests.patch:
+      patch from upstream to fix the test failure on big endian machines
+
+  [ Yaroslav Halchenko ]
+  * Upload to unstable
+  * Dropping pysupport
+  * debian/rules:
+    - slight reduction of code duplication between python 2 and 3
+    - cythonize for both python 2 and 3 into separate directories
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sat, 01 Dec 2012 22:57:47 -0500
+
+pandas (0.9.1-1) experimental; urgency=low
+
+  * New upstream release
+  * Boosted policy to 3.9.3 (no due changes)
+  * debian/rules
+    - Fixed up cleaning up of cythonized files
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 14 Nov 2012 09:44:14 -0500
+
+pandas (0.9.0-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 07 Oct 2012 21:26:23 -0400
+
+pandas (0.9.0~rc2-1) experimental; urgency=low
+
+  * New upstream release candidate
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 21 Sep 2012 10:27:52 -0400
+
+pandas (0.8.1-1) unstable; urgency=low
+
+  * Primarily a bugfix upstream release.
+  * up_tag_yahoo_test_requiring_network patch removed.
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 22 Jul 2012 20:13:16 -0400
+
+pandas (0.8.0-2) unstable; urgency=medium
+
+  * up_tag_yahoo_test_requiring_network patch cherry-picked from upstream
+    GIT so that tests would not be excercised at package build time
+    (Closes: #681449)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 13 Jul 2012 08:54:41 -0400
+
+pandas (0.8.0-1) unstable; urgency=low
+
+  * Fresh upstream release
+  * debian/control
+    - drop python-statsmodels from Build-Depends since it might not be yet
+      available on some architectures and is not critical for the test
+    - recommend python-statsmodels instead of deprecated
+      python-scikits.statsmodels
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 29 Jun 2012 13:02:28 -0400
+
+pandas (0.8.0~rc2+git26-g76c6351-1) experimental; urgency=low
+
+  * Fresh upstream release candidate
+    - all patches dropped (upstreamed)
+    - requires numpy >= 1.6
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 12 Jun 2012 13:23:27 -0400
+
+pandas (0.7.3-1) unstable; urgency=low
+
+  * Fresh upstream release
+    - few post-release patches (submitted upstream) to exclude unittests
+  	  requiring network access
+  * debian/control:
+    - python-openpyxl, python-xlwt, python-xlrd into Build-Depends
+      and Recommends
+  * debian/rules:
+    - exclude running tests marked with @network
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 12 Apr 2012 11:27:31 -0400
+
+pandas (0.7.1+git1-ga2e86c2-1) unstable; urgency=low
+
+  * New upstream release with a bugfix which followed
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Thu, 01 Mar 2012 22:28:10 -0500
+
+pandas (0.7.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Updated pre-cythoned .c files for older Debian/Ubuntu releases.
+    Added a stamp file with upstream version to assure up-to-dateness
+    of the generated files
+  * Dropped all exclusions of unittests and patches -- shouldn't be necessary
+    any longer
+  * Build only for requested versions (not all supported) of Python
+  * Do nothing for build operation, rely on overloaded install
+    (to avoid undesired re-cythonization on elderly Ubuntus)
+  * Adjusted url in watch due to migration of repository under pydata
+    organization
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 16 Jan 2012 19:31:50 -0500
+
+pandas (0.6.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * python-tk into Build-Depends
+  * Create matplotlibrc with backend: Agg to allow tests run without $DISPLAY
+  * Carry pre-cythonized .c files for systems with older Cython
+  * Skip few tests known to fail
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 13 Dec 2011 18:36:11 -0500
+
+pandas (0.5.0+git7-gcf32be2-1) unstable; urgency=low
+
+  * New upstream release with post-release fixes
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 01 Nov 2011 21:15:06 -0400
+
+pandas (0.4.3-1) unstable; urgency=low
+
+  * New upstream release(s): primarily bugfixes and optimizations but also
+    with some minor API changes and new functionality
+  * Adjusted debian/watch to match new layout on github
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 18 Oct 2011 11:27:50 -0400
+
+pandas (0.4.1-1) unstable; urgency=low
+
+  * New upstream bugfix release
+    - incorporated all debian/patches
+  * debian/rules: 'clean' removes generated pandas/version.py
+  * debian/copyright: adjusted to become DEP-5 compliant
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Sun, 25 Sep 2011 21:48:30 -0400
+
+pandas (0.4.0-1) unstable; urgency=low
+
+  * Initial Debian release (Closes: #641464)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 13 Sep 2011 12:24:05 -0400

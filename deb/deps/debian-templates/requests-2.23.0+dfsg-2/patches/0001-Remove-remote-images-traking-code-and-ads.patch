@@ -1,0 +1,601 @@
+From: Daniele Tricoli <eriol@debian.org>
+Date: Thu, 26 Mar 2020 01:57:09 +0100
+Subject: Remove remote images, traking code and ads
+
+---
+ docs/_static/konami.js             | 116 -------------------------------------
+ docs/_templates/hacks.html         |  83 --------------------------
+ docs/_templates/sidebarintro.html  |  42 --------------
+ docs/_templates/sidebarlogo.html   |  15 -----
+ docs/community/faq.rst             |   2 -
+ docs/community/out-there.rst       |   2 -
+ docs/community/recommended.rst     |   2 -
+ docs/community/release-process.rst |   2 -
+ docs/community/support.rst         |   2 -
+ docs/community/updates.rst         |   2 -
+ docs/community/vulnerabilities.rst |   2 -
+ docs/conf.py                       |   2 +-
+ docs/dev/authors.rst               |   2 -
+ docs/dev/contributing.rst          |   2 -
+ docs/dev/philosophy.rst            |   6 --
+ docs/dev/todo.rst                  |   2 -
+ docs/index.rst                     |  13 -----
+ docs/user/advanced.rst             |   2 -
+ docs/user/authentication.rst       |   2 -
+ docs/user/install.rst              |   2 -
+ docs/user/intro.rst                |   2 -
+ docs/user/quickstart.rst           |   2 -
+ 22 files changed, 1 insertion(+), 306 deletions(-)
+ delete mode 100644 docs/_static/konami.js
+
+diff --git a/docs/_static/konami.js b/docs/_static/konami.js
+deleted file mode 100644
+index d72cf9d..0000000
+--- a/docs/_static/konami.js
++++ /dev/null
+@@ -1,116 +0,0 @@
+-/*
+- * Konami-JS ~
+- * :: Now with support for touch events and multiple instances for
+- * :: those situations that call for multiple easter eggs!
+- * Code: http://konami-js.googlecode.com/
+- * Examples: http://www.snaptortoise.com/konami-js
+- * Copyright (c) 2009 George Mandis (georgemandis.com, snaptortoise.com)
+- * Version: 1.4.2 (9/2/2013)
+- * Licensed under the MIT License (http://opensource.org/licenses/MIT)
+- * Tested in: Safari 4+, Google Chrome 4+, Firefox 3+, IE7+, Mobile Safari 2.2.1 and Dolphin Browser
+- */
+-
+-var Konami = function (callback) {
+-	var konami = {
+-		addEvent: function (obj, type, fn, ref_obj) {
+-			if (obj.addEventListener)
+-				obj.addEventListener(type, fn, false);
+-			else if (obj.attachEvent) {
+-				// IE
+-				obj["e" + type + fn] = fn;
+-				obj[type + fn] = function () {
+-					obj["e" + type + fn](window.event, ref_obj);
+-				};
+-				obj.attachEvent("on" + type, obj[type + fn]);
+-			}
+-		},
+-		input: "",
+-		pattern: "38384040373937396665",
+-		load: function (link) {
+-			this.addEvent(document, "keydown", function (e, ref_obj) {
+-				if (ref_obj) konami = ref_obj; // IE
+-				konami.input += e ? e.keyCode : event.keyCode;
+-				if (konami.input.length > konami.pattern.length)
+-					konami.input = konami.input.substr((konami.input.length - konami.pattern.length));
+-				if (konami.input == konami.pattern) {
+-					konami.code(link);
+-					konami.input = "";
+-					e.preventDefault();
+-					return false;
+-				}
+-			}, this);
+-			this.iphone.load(link);
+-		},
+-		code: function (link) {
+-			window.location = link
+-		},
+-		iphone: {
+-			start_x: 0,
+-			start_y: 0,
+-			stop_x: 0,
+-			stop_y: 0,
+-			tapTolerance: 8,
+-			capture: false,
+-			orig_keys: "",
+-			keys: ["UP", "UP", "DOWN", "DOWN", "LEFT", "RIGHT", "LEFT", "RIGHT", "TAP", "TAP"],
+-			code: function (link) {
+-				konami.code(link);
+-			},
+-      touchCapture: function(evt) {
+-				konami.iphone.start_x = evt.changedTouches[0].pageX;
+-				konami.iphone.start_y = evt.changedTouches[0].pageY;
+-				konami.iphone.capture = true;        
+-      },
+-			load: function (link) {
+-				this.orig_keys = this.keys;
+-				konami.addEvent(document, "touchmove", function (e) {
+-					if (e.touches.length == 1 && konami.iphone.capture == true) {
+-						var touch = e.touches[0];
+-						konami.iphone.stop_x = touch.pageX;
+-						konami.iphone.stop_y = touch.pageY;
+-						konami.iphone.check_direction();
+-					}
+-				});
+-				konami.addEvent(document, "touchend", function (evt) {
+-					konami.touchCapture(evt);
+-					konami.iphone.check_direction(link);
+-				}, false);
+-				konami.addEvent(document, "touchstart", function (evt) {
+-					konami.touchCapture(evt);
+-				});
+-			},
+-			check_direction: function (link) {
+-				var x_magnitude = Math.abs(this.start_x - this.stop_x);
+-				var y_magnitude = Math.abs(this.start_y - this.stop_y);
+-				var hasMoved = (x_magnitude > this.tapTolerance || y_magnitude > this.tapTolerance);
+-				var result;
+-				if (this.capture === true && hasMoved) {
+-					this.capture = false;
+-					var x = ((this.start_x - this.stop_x) < 0) ? "RIGHT" : "LEFT";
+-					var y = ((this.start_y - this.stop_y) < 0) ? "DOWN" : "UP";
+-					var result = (x_magnitude > y_magnitude) ? x : y;
+-				}
+-				else if (this.capture === false && !hasMoved) {
+-					result = (this.tap == true) ? "TAP" : result;
+-					result = "TAP";
+-				}
+-				if (result) {
+-					if (result == this.keys[0]) this.keys = this.keys.slice(1, this.keys.length);
+-					else this.keys = this.orig_keys;
+-				}
+-				if (this.keys.length == 0) {
+-					this.keys = this.orig_keys;
+-					this.code(link);
+-				}
+-			}
+-		}
+-	}
+-
+-	typeof callback === "string" && konami.load(callback);
+-	if (typeof callback === "function") {
+-		konami.code = callback;
+-		konami.load();
+-	}
+-
+-	return konami;
+-};
+diff --git a/docs/_templates/hacks.html b/docs/_templates/hacks.html
+index 3af2e57..8820a4e 100644
+--- a/docs/_templates/hacks.html
++++ b/docs/_templates/hacks.html
+@@ -25,86 +25,3 @@
+   }
+ 
+ </style>
+-
+-
+-<!-- Analytics tracking for Kenneth. -->
+-<script type="text/javascript">
+-  var _gauges = _gauges || [];
+-  (function() {
+-    var t   = document.createElement('script');
+-    t.type  = 'text/javascript';
+-    t.async = true;
+-    t.id    = 'gauges-tracker';
+-    t.setAttribute('data-site-id', '56ca7a57c88d9011080024dd');
+-    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+-    t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+-    var s = document.getElementsByTagName('script')[0];
+-    s.parentNode.insertBefore(t, s);
+-  })();
+-</script>
+-
+-
+-<!-- There are no more hacks. -->
+-<!--         இڿڰۣ-ڰۣ—         -->
+-<!--   Love, Kenneth Reitz    -->
+-
+-<script src="{{ pathto('_static/', 1) }}/konami.js"></script>
+-<script>
+-  var easter_egg = new Konami('http://fortunes.herokuapp.com/random/raw');
+-</script>
+-
+-<!-- That was not a hack. That was art. -->
+-
+-<!-- Native CPC by BuySellAds -->
+-
+-<script type="text/javascript" src="//m.servedby-buysellads.com/monetization.js"></script>
+-
+-<div id="native-ribbon">
+-</div>
+-
+-<script>
+-_bsa.init('custom', 'CK7D62JU', 'placement:pythonrequestsorg',
+-    {
+-      target: '#native-ribbon',
+-      template: `
+-<div class="native-sponsor">Sponsored by ##company## — Learn More</div>
+-  <a href="##link##" class="native-flex">
+-    <style>
+-    #native-ribbon #_custom_ {
+-      background: linear-gradient(-30deg, ##backgroundColor##E5, ##backgroundColor##E5 45%, ##backgroundColor## 45%) #fff;
+-    }
+-
+-    .native-details,
+-    .native-sponsor,
+-    .native-bsa {
+-      color: ##textColor## !important;
+-    }
+-
+-    .native-details:hover {
+-      color: ##textColorHover## !important;
+-    }
+-
+-    .native-cta {
+-      color: ##ctaTextColor##;
+-      background-color: ##ctaBackgroundColor##;
+-    }
+-
+-    .native-cta:hover {
+-      color: ##ctaTextColorHover##;
+-      background-color: ##ctaBackgroundColorHover##;
+-    }
+-    </style>
+-    <div class="native-main">
+-      <img class="native-img" src="##logo##">
+-      <div class="native-details">
+-        <span class="native-company">##title##</span>
+-        <span class="native-desc">##description##</span>
+-      </div>
+-    </div>
+-    <span class="native-cta">##callToAction##</span>
+-  </a>
+-</div>
+-`
+-    }
+-  );
+-</script>
+diff --git a/docs/_templates/sidebarintro.html b/docs/_templates/sidebarintro.html
+index 57911a5..19f43cc 100644
+--- a/docs/_templates/sidebarintro.html
++++ b/docs/_templates/sidebarintro.html
+@@ -1,53 +1,12 @@
+-<p class="logo">
+-  <a href="{{ pathto(master_doc) }}">
+-    <img class="logo" src="{{ pathto('_static/requests-sidebar.jpg', 1) }}" title="https://kennethreitz.org/tattoos" />
+-  </a>
+-</p>
+-
+-<p>
+-  <iframe src="https://ghbtns.com/github-btn.html?user=psf&repo=requests&type=watch&count=true&size=large"
+-    allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+-</p>
+-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+-<style>
+-  .algolia-autocomplete {
+-    width: 100%;
+-    height: 1.5em
+-  }
+-
+-  .algolia-autocomplete a {
+-    border-bottom: none !important;
+-  }
+-
+-  #doc_search {
+-    width: 100%;
+-    height: 100%;
+-  }
+-</style>
+-<input id="doc_search" placeholder="Search the doc" autofocus />
+-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+-  apiKey: 'f177061e2354c50a97bfc635e827ffab',
+-  indexName: 'python-requests',
+-  inputSelector: '#doc_search',
+-  debug: false // Set debug to true if you want to inspect the dropdown
+-})" async></script>
+-
+ <p>
+   Requests is an elegant and simple HTTP library for Python, built for
+   human beings.
+ </p>
+ <p>Sponsored by <strong><a href="https://www.govcert.lu">CERT Gouvernemental - GOVCERT.LU</a></strong>.</p>
+ 
+-<script async type="text/javascript"
+-  src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=CKYI5K3E&placement=pythonrequestsorg"
+-  id="_carbonads_js"></script>
+-
+ <h3>Stay Informed</h3>
+ <p>Receive updates on new releases and upcoming projects.</p>
+ 
+-<p><iframe src="https://ghbtns.com/github-btn.html?user=kennethreitz&type=follow&count=false" allowtransparency="true"
+-    frameborder="0" scrolling="0" width="200" height="20"></iframe></p>
+-
+ <h3>Useful Links</h3>
+ <ul>
+   <li><a href="https://requests.readthedocs.io/en/latest/community/recommended/">Recommended Packages and Extensions</a>
+@@ -75,5 +34,4 @@
+   <li><a href="https://es.python-requests.org/">Spanish</a></li>
+ </ul>
+ 
+-<div id="native-ribbon">
+ </div>
+diff --git a/docs/_templates/sidebarlogo.html b/docs/_templates/sidebarlogo.html
+index af66973..fac0cbb 100644
+--- a/docs/_templates/sidebarlogo.html
++++ b/docs/_templates/sidebarlogo.html
+@@ -3,11 +3,6 @@
+     <img class="logo" src="{{ pathto('_static/requests-sidebar.jpg', 1) }}" title="https://kennethreitz.org/tattoos" />
+   </a>
+ </p>
+-<p>
+-  <iframe src="https://ghbtns.com/github-btn.html?user=psf&repo=requests&type=watch&count=true&size=large"
+-    allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+-</p>
+-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+ <style>
+   .algolia-autocomplete {
+     width: 100%;
+@@ -24,12 +19,6 @@
+   }
+ </style>
+ <input id="doc_search" placeholder="Search the doc" autofocus />
+-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+-  apiKey: 'f177061e2354c50a97bfc635e827ffab',
+-  indexName: 'python-requests',
+-  inputSelector: '#doc_search',
+-  debug: false // Set debug to true if you want to inspect the dropdown
+-})" async></script>
+ 
+ <p>
+   Requests is an elegant and simple HTTP library for Python, built for
+@@ -46,10 +35,6 @@
+ 
+   <hr />
+ 
+-  <script async type="text/javascript"
+-    src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=pythonrequestsorg"
+-    id="_carbonads_js"></script>
+-
+ 
+   <h3>Translations</h3>
+ 
+diff --git a/docs/community/faq.rst b/docs/community/faq.rst
+index 9a20728..a851455 100644
+--- a/docs/community/faq.rst
++++ b/docs/community/faq.rst
+@@ -3,8 +3,6 @@
+ Frequently Asked Questions
+ ==========================
+ 
+-.. image:: https://farm5.staticflickr.com/4290/35294660055_42c02b2316_k_d.jpg
+-
+ This part of the documentation answers common questions about Requests.
+ 
+ Encoded Data?
+diff --git a/docs/community/out-there.rst b/docs/community/out-there.rst
+index 79b21c6..c33ab3c 100644
+--- a/docs/community/out-there.rst
++++ b/docs/community/out-there.rst
+@@ -1,8 +1,6 @@
+ Integrations
+ ============
+ 
+-.. image:: https://farm5.staticflickr.com/4239/34450900674_15863ddea0_k_d.jpg
+-
+ Python for iOS
+ --------------
+ 
+diff --git a/docs/community/recommended.rst b/docs/community/recommended.rst
+index 045e533..04387bc 100644
+--- a/docs/community/recommended.rst
++++ b/docs/community/recommended.rst
+@@ -3,8 +3,6 @@
+ Recommended Packages and Extensions
+ ===================================
+ 
+-.. image:: https://farm5.staticflickr.com/4218/35224319272_cfc0e621fb_k_d.jpg
+-
+ Requests has a great variety of powerful and useful third-party extensions.
+ This page provides an overview of some of the best of them.
+ 
+diff --git a/docs/community/release-process.rst b/docs/community/release-process.rst
+index 18f7116..4aa98f7 100644
+--- a/docs/community/release-process.rst
++++ b/docs/community/release-process.rst
+@@ -1,8 +1,6 @@
+ Release Process and Rules
+ =========================
+ 
+-.. image:: https://farm5.staticflickr.com/4215/34450901614_b74ae720db_k_d.jpg
+-
+ .. versionadded:: v2.6.2
+ 
+ Starting with the version to be released after ``v2.6.2``, the following rules
+diff --git a/docs/community/support.rst b/docs/community/support.rst
+index 23e3586..45fdbab 100644
+--- a/docs/community/support.rst
++++ b/docs/community/support.rst
+@@ -3,8 +3,6 @@
+ Support
+ =======
+ 
+-.. image:: https://farm5.staticflickr.com/4198/34080352913_5c13ffb336_k_d.jpg
+-
+ If you have questions or issues about Requests, there are several options:
+ 
+ Stack Overflow
+diff --git a/docs/community/updates.rst b/docs/community/updates.rst
+index ee08cdc..0411c9b 100644
+--- a/docs/community/updates.rst
++++ b/docs/community/updates.rst
+@@ -4,8 +4,6 @@
+ Community Updates
+ =================
+ 
+-.. image:: https://farm5.staticflickr.com/4244/34080354873_516c283ad0_k_d.jpg
+-
+ If you'd like to stay up to date on the community and development of Requests,
+ there are several options:
+ 
+diff --git a/docs/community/vulnerabilities.rst b/docs/community/vulnerabilities.rst
+index ba3a993..a900349 100644
+--- a/docs/community/vulnerabilities.rst
++++ b/docs/community/vulnerabilities.rst
+@@ -1,8 +1,6 @@
+ Vulnerability Disclosure
+ ========================
+ 
+-.. image:: https://farm5.staticflickr.com/4211/34709353644_b041e9e1c2_k_d.jpg
+-
+ If you think you have found a potential security vulnerability in requests,
+ please email `sigmavirus24 <mailto:graffatcolmingov@gmail.com>`_ and
+ `Nate <mailto:nate.prewitt@gmail.com>`_ directly. **Do not file a public issue.**
+diff --git a/docs/conf.py b/docs/conf.py
+index eb556a8..692092e 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -128,7 +128,7 @@ html_theme_options = {
+     "show_powered_by": False,
+     "github_user": "requests",
+     "github_repo": "requests",
+-    "github_banner": True,
++    "github_banner": False,
+     "show_related": False,
+     "note_bg": "#FFF59C",
+ }
+diff --git a/docs/dev/authors.rst b/docs/dev/authors.rst
+index 4cdd14c..e9799a9 100644
+--- a/docs/dev/authors.rst
++++ b/docs/dev/authors.rst
+@@ -1,6 +1,4 @@
+ Authors
+ =======
+ 
+-.. image:: https://static1.squarespace.com/static/533ad9bde4b098d084a846b1/t/534f6e1ce4b09b70f38ee6c1/1432265542589/DSCF3147.jpg?format=2500w
+-
+ .. include:: ../../AUTHORS.rst
+diff --git a/docs/dev/contributing.rst b/docs/dev/contributing.rst
+index 308fdd2..0294c4c 100644
+--- a/docs/dev/contributing.rst
++++ b/docs/dev/contributing.rst
+@@ -3,8 +3,6 @@
+ Contributor's Guide
+ ===================
+ 
+-.. image:: https://farm5.staticflickr.com/4237/35550408335_7671fde302_k_d.jpg
+-
+ If you're reading this, you're probably interested in contributing to Requests.
+ Thank you very much! Open source projects live-and-die based on the support
+ they receive from others, and the fact that you're even considering
+diff --git a/docs/dev/philosophy.rst b/docs/dev/philosophy.rst
+index 1dc20b8..41859a4 100644
+--- a/docs/dev/philosophy.rst
++++ b/docs/dev/philosophy.rst
+@@ -1,8 +1,6 @@
+ Development Philosophy
+ ======================
+ 
+-.. image:: https://farm5.staticflickr.com/4231/34484831073_636008a23d_k_d.jpg
+-
+ Requests is an open but opinionated library, created by an open but opinionated developer.
+ 
+ 
+@@ -33,10 +31,6 @@ Standard Library?
+ 
+ Requests has no *active* plans to be included in the standard library. This decision has been discussed at length with Guido as well as numerous core developers.
+ 
+-.. raw:: html
+-
+-    <script async class="speakerdeck-embed" data-id="68f22f0841734d848315c618111b13ea" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+-
+ Essentially, the standard library is where a library goes to die. It is appropriate for a module to be included when active development is no longer necessary.
+ 
+ Linux Distro Packages
+diff --git a/docs/dev/todo.rst b/docs/dev/todo.rst
+index d09fce3..9c076ff 100644
+--- a/docs/dev/todo.rst
++++ b/docs/dev/todo.rst
+@@ -1,8 +1,6 @@
+ How to Help
+ ===========
+ 
+-.. image:: https://farm5.staticflickr.com/4290/34450900104_bc1d424213_k_d.jpg
+-
+ Requests is under active development, and contributions are more than welcome!
+ 
+ #. Check for open issues or open a fresh issue to start a discussion around a bug.
+diff --git a/docs/index.rst b/docs/index.rst
+index ade42a7..88630e9 100644
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -8,19 +8,6 @@ Requests: HTTP for Humans™
+ 
+ Release v\ |version|. (:ref:`Installation <install>`)
+ 
+-
+-.. image:: https://pepy.tech/badge/requests
+-    :target: https://pepy.tech/project/requests
+-    
+-.. image:: https://img.shields.io/pypi/l/requests.svg
+-    :target: https://pypi.org/project/requests/
+-
+-.. image:: https://img.shields.io/pypi/wheel/requests.svg
+-    :target: https://pypi.org/project/requests/
+-
+-.. image:: https://img.shields.io/pypi/pyversions/requests.svg
+-    :target: https://pypi.org/project/requests/
+-
+ **Requests** is an elegant and simple HTTP library for Python, built for human beings.
+ 
+ -------------------
+diff --git a/docs/user/advanced.rst b/docs/user/advanced.rst
+index f0b94b4..c9dd1f6 100644
+--- a/docs/user/advanced.rst
++++ b/docs/user/advanced.rst
+@@ -3,8 +3,6 @@
+ Advanced Usage
+ ==============
+ 
+-.. image:: https://farm5.staticflickr.com/4263/35163665790_d182d84f5e_k_d.jpg
+-
+ This document covers some of Requests more advanced features.
+ 
+ .. _session-objects:
+diff --git a/docs/user/authentication.rst b/docs/user/authentication.rst
+index bff8098..4d4040e 100644
+--- a/docs/user/authentication.rst
++++ b/docs/user/authentication.rst
+@@ -3,8 +3,6 @@
+ Authentication
+ ==============
+ 
+-.. image:: https://farm5.staticflickr.com/4258/35550409215_3b08d49d22_k_d.jpg
+-
+ This document discusses using various kinds of authentication with Requests.
+ 
+ Many web services require authentication, and there are many different types.
+diff --git a/docs/user/install.rst b/docs/user/install.rst
+index 6cd6d65..7e1c1e1 100644
+--- a/docs/user/install.rst
++++ b/docs/user/install.rst
+@@ -3,8 +3,6 @@
+ Installation of Requests
+ ========================
+ 
+-.. image:: https://farm5.staticflickr.com/4230/35550376215_da1bf77a8c_k_d.jpg
+-
+ 
+ This part of the documentation covers the installation of Requests.
+ The first step to using any software package is getting it properly installed.
+diff --git a/docs/user/intro.rst b/docs/user/intro.rst
+index be9dfaa..3f7b541 100644
+--- a/docs/user/intro.rst
++++ b/docs/user/intro.rst
+@@ -3,8 +3,6 @@
+ Introduction
+ ============
+ 
+-.. image:: https://farm5.staticflickr.com/4317/35198386374_1939af3de6_k_d.jpg
+-
+ Philosophy
+ ----------
+ 
+diff --git a/docs/user/quickstart.rst b/docs/user/quickstart.rst
+index ca95a02..70d223c 100644
+--- a/docs/user/quickstart.rst
++++ b/docs/user/quickstart.rst
+@@ -3,8 +3,6 @@
+ Quickstart
+ ==========
+ 
+-.. image:: https://farm5.staticflickr.com/4259/35163667010_8bfcaef274_k_d.jpg
+-
+ .. module:: requests.models
+ 
+ Eager to get started? This page gives a good introduction in how to get started

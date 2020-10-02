@@ -1,0 +1,35 @@
+# According to pandas/doc/source/install.rst, running the unit tests looks like:
+# `py.test-3 --skip-slow --skip-network /usr/lib/python3/dist-packages/pandas/ -v -rs`
+# Or simply `python3 -c "import pandas as pd; pd.test()"`, which doesn't require
+# us to specify the path (pandas.__path__) in command line.
+# See: pandas/util/_tester.py
+
+Tests: unittests3
+Depends: locales-all,
+         python3-all,
+         python3-bs4,
+         python3-dateutil,
+         python3-html5lib,
+         python3-hypothesis,
+         python3-lxml,
+         python3-matplotlib [!hurd-i386],
+         python3-nose,
+         python3-numpy (>= 1:1.15~),
+         python3-openpyxl,
+         python3-pandas,
+         python3-pytest (>= 4.0.2~),
+         python3-pytest-forked,
+         python3-scipy,
+         python3-six,
+         python3-statsmodels,
+         python3-tables (>= 3.4.2~) [!m68k !sh4 !x32],
+         python3-tk,
+         python3-tz,
+         python3-xarray,
+         python3-xlrd,
+         python3-xlsxwriter,
+         python3-xlwt,
+         xauth,
+         xvfb,
+         xclip,
+Restrictions: allow-stderr

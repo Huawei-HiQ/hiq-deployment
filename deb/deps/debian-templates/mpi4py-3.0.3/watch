@@ -1,0 +1,4 @@
+version=4
+
+opts="uversionmangle=s/-([ab])/~$1/g" \
+  https://bitbucket.org/mpi4py/mpi4py/downloads .*/mpi4py-@ANY_VERSION@@ARCHIVE_EXT@

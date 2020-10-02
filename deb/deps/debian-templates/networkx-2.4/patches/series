@@ -1,0 +1,5 @@
+10_doc_relocation
+use_local_object.inv_files.patch
+0005-use-debian-mathjax.js.patch
+0006-skip-plot_football-from-sphinx-gallery-requires-netw.patch
+docs-remove-expected_failing_examples.patch

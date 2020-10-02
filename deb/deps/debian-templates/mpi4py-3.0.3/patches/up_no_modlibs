@@ -1,0 +1,22 @@
+From: Yaroslav Halchenko <debian@onerussian.com>
+Subject: Somewhat blind patch: removing 'MODLIBS' from link_args for exec's
+
+ As Jakub guessed it seems to help to resolve not only -lffi issues with
+ broken python3.2 pkg in debian sid, but with other build problems as well
+
+ Needs more verification if this is a safe thing to do ;)
+
+Origin: Debian
+Last-Update: 2012-06-01
+
+--- a/setup.py
++++ b/setup.py
+@@ -353,7 +353,7 @@
+     for var in ('LIBDIR', 'LIBPL'):
+         library_dirs += split_quoted(cfg_vars.get(var, ''))
+     for var in ('LDFLAGS',
+-                'LIBS', 'MODLIBS', 'SYSLIBS',
++                'LIBS', 'SYSLIBS',
+                 'LDLAST'):
+         link_args += split_quoted(cfg_vars.get(var, ''))
+     exe.libraries += libraries

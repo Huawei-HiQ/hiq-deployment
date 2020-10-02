@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sympy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sympy\n"
+"Report-Msgid-Bugs-To: sympy@packages.debian.org\n"
+"POT-Creation-Date: 2020-06-15 10:11+0200\n"
+"PO-Revision-Date: 2020-06-15 10:12+0200\n"
+"Last-Translator: Georges Khaznadar <georgesk@debian.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../python-sympy-doc.templates:1001
+msgid "Activate live.sympy.org service"
+msgstr "Activer le service live.sympy.org"
+
+#. Type: boolean
+#. Description
+#: ../python-sympy-doc.templates:1001
+msgid ""
+"One can activate the service provided by https://live.sympy.org, which can "
+"improve one's experience by providing the \"Sympy Live Shell\" inside "
+"documentation pages."
+msgstr ""
+"On peut activer le service fourni par https://live.sympy.org, ce qui peut "
+"améliorer l'usage en fournissant le « Shell Sympy en Direct » dans les pages "
+"de documentation."
+
+#. Type: boolean
+#. Description
+#: ../python-sympy-doc.templates:1001
+msgid ""
+"However one must know that even if the button \"Sympy Live Shell\" is not "
+"triggered, when one is browsing enabled documentation pages, HTTP requests "
+"are sent to the website https://live.sympy.org, so there is a privacy breach."
+msgstr ""
+"Cependant il faut savoir que même si on ne clique pas le bouton « Sympy Live "
+"Shell », en naviguant dans les pages de documentation activées pour cela, "
+"des requêtes HTTP sont envoyées quand même au site web  https://live.sympy."
+"org, donc il y a des fuites de données personnelles."
+
+#. Type: boolean
+#. Description
+#: ../python-sympy-doc.templates:1001
+msgid ""
+"When the parameter python-sympy-doc/live-sympy is true, links to https://"
+"live.sympy.org are active. When this parameter is false, those links are "
+"replaced by links to http://localhost, so there is no privacy breach."
+msgstr ""
+"Quand le paramètre python-sympy-doc/live-sympy vaut 'true', les liens à "
+"https://live.sympy.org sont actifs. Quand ce paramètre vaut 'false', ces "
+"liens sont remplacés par des liens à http://localhost, donc il n'y a pas de "
+"fuites de données personnelles."
+
+#. Type: boolean
+#. Description
+#: ../python-sympy-doc.templates:1001
+msgid "You can safely keep the default 'false' value for this parameter."
+msgstr ""
+"On peut conserver la valeur par défaut 'false' pour ce paramètre, en toute "
+"sécurité."

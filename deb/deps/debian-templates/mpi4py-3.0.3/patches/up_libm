@@ -1,0 +1,45 @@
+From 89f86e9e60e1006fdf2a0b80ac0c91350ffca60c Mon Sep 17 00:00:00 2001
+From: Lisandro Dalcin <dalcinl@gmail.com>
+Date: Sun, 21 Jul 2019 16:09:37 +0300
+Subject: [PATCH] test: Refactor dlopen() tests using libm (Thanks to Drew
+ Parsons)
+
+---
+ test/test_dl.py | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/test/test_dl.py b/test/test_dl.py
+index 20d72d6..7609d66 100644
+--- a/test/test_dl.py
++++ b/test/test_dl.py
+@@ -8,19 +8,23 @@
+ pypy_lt_510 = (hasattr(sys, 'pypy_version_info') and
+                sys.pypy_version_info < (5, 10))
+ 
++try:
++    if pypy_lt_510:
++        ctypes = None
++    else:
++        import ctypes
++except ImportError:
++    ctypes = None
++
+ @unittest.skipIf(dl is None, 'mpi4py-dl')
+ class TestDL(unittest.TestCase):
+ 
++    @unittest.skipIf(ctypes is None, 'ctypes')
+     def testDL1(self):
+-        if sys.platform == 'darwin':
+-            libm = 'libm.dylib'
+-        else:
+-            libm = 'libm.so'
++        from ctypes.util import find_library
++        libm = find_library('m')
+ 
+         handle = dl.dlopen(libm, dl.RTLD_LOCAL|dl.RTLD_LAZY)
+-        if handle == 0 and sys.platform.startswith('linux'):
+-            self.assertTrue(dl.dlerror() is not None)
+-            handle = dl.dlopen('libm.so.6', dl.RTLD_LOCAL|dl.RTLD_LAZY)
+         self.assertTrue(handle != 0)
+         self.assertTrue(dl.dlerror() is None)
+ 

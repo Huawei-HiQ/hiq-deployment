@@ -1,0 +1,2 @@
+chardet.egg-info/*
+.pytest_cache/

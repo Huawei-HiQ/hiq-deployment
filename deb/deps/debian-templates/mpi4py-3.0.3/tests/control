@@ -1,0 +1,15 @@
+# testing on 5 processes is recommended by upstream where possible
+# and is safe to oversubscribe with OpenMPI
+# but oversubscribing might be a problem (runs slow) with mpich
+
+Test-Command: OMPI_MCA_rmaps_base_oversubscribe=yes mpiexec -n 5 pytest-3 --color=no --verbose
+Depends: python3-mpi4py,
+    python3-pytest,
+    python3-cffi,
+    python3-dill,
+    python3-distutils,
+    python3-nose,
+    python3-numpy,
+    python3-simplejson,
+    python3-yaml
+Restrictions: allow-stderr

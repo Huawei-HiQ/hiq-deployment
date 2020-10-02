@@ -1,0 +1,91 @@
+#!/bin/sh
+set -efu
+
+PYS=$(py3versions -r 2>/dev/null)
+
+cd "$AUTOPKGTEST_TMP"
+
+cat << EOF > setup.py
+def configuration(parent_package='', top_path=None):
+    from numpy.distutils.misc_util import Configuration
+
+    config = Configuration('npufunc_directory', parent_package, top_path)
+    config.add_extension('npufunc', ['ufunc.c'])
+
+    return config
+
+if __name__ == "__main__":
+    from numpy.distutils.core import setup
+    setup(configuration=configuration)
+EOF
+
+
+cat << EOF > ufunc.c
+#include "Python.h"
+#include "numpy/ndarraytypes.h"
+#include "numpy/ufuncobject.h"
+
+static PyMethodDef LogitMethods[] = {
+        {NULL, NULL, 0, NULL}
+};
+
+static void double_logit(char **args, npy_intp *dimensions,
+                         npy_intp* steps, void* data)
+{
+}
+
+PyUFuncGenericFunction funcs[1] = {&double_logit};
+static char types[4] = {NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE, NPY_DOUBLE};
+static void *data[1] = {NULL};
+
+static void setupmodule(PyObject * m)
+{
+    PyObject * logit, * d;
+    import_array();
+    import_umath();
+    logit = PyUFunc_FromFuncAndData(funcs, data, types, 4, 3, 1,
+                                    PyUFunc_Zero, "logit",
+                                    "logit_docstring", 0);
+    d = PyModule_GetDict(m);
+    PyDict_SetItemString(d, "logit", logit);
+    Py_DECREF(logit);
+}
+
+#if PY_VERSION_HEX >= 0x03000000
+static struct PyModuleDef moduledef = {
+    PyModuleDef_HEAD_INIT,
+    "npufunc", NULL, -1,
+    LogitMethods, NULL, NULL, NULL, NULL
+};
+
+PyMODINIT_FUNC PyInit_npufunc(void)
+{
+    PyObject * m = PyModule_Create(&moduledef);
+    if (m == NULL) {
+        return;
+    }
+    setupmodule(m);
+    return m;
+}
+#else
+PyMODINIT_FUNC initnpufunc(void)
+{
+    PyObject *m = Py_InitModule("npufunc", LogitMethods);
+    if (m == NULL) {
+        return;
+    }
+    setupmodule(m);
+}
+#endif
+EOF
+
+for py in $PYS; do
+    echo "=== $py ==="
+    $py setup.py build 2>&1
+    $py-dbg setup.py build 2>&1
+    $py setup.py install --prefix $PWD/inst 2>&1
+    $py-dbg setup.py install --prefix $PWD/inst 2>&1
+    export PYTHONPATH=$PWD/inst/lib/$py/site-packages/npufunc_directory
+    $py -c "import npufunc; print(npufunc.logit(1,2,3))" 2>&1
+    $py-dbg -c "import npufunc; print(npufunc.logit(1,2,3))" 2>&1
+done

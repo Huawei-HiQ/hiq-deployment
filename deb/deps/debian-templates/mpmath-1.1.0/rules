@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export PYBUILD_NAME=mpmath
+export PYBUILD_AFTER_BUILD_python3=cd doc ; PYTHONPATH={build_dir} {interpreter} build.py
+
+%:
+	dh $@ --with sphinxdoc,python3 --buildsystem=pybuild
+
+override_dh_auto_test:
+	PYBUILD_SYSTEM=custom PYBUILD_TEST_ARGS="cd mpmath ; PYTHONPATH={build_dir} {interpreter} tests/runtests.py -strict -py -local ; cd .." dh_auto_test
+
+override_dh_auto_install:
+	dh_auto_install
+
+	# remove files not compatible with Python 3.x
+	find debian/python3-mpmath -name "exec_py2.py" -delete
+
+	# move generated documentation under subdir to keep doc/ dir clean
+	cp -arp doc/build/* $(CURDIR)/debian/python-mpmath-doc/usr/share/doc/python-mpmath-doc/html/
+	cp -arp doc/source/* $(CURDIR)/debian/python-mpmath-doc/usr/share/doc/python-mpmath-doc/txt/
+
+override_dh_installchangelogs:
+	dh_installchangelogs    CHANGES
+
+override_dh_installexamples:
+	dh_installexamples      -ppython-mpmath-doc demo/*
+
+override_dh_compress:
+	dh_compress             -X.py -X.js -Xobjects.inv -X.txt
+
+override_dh_clean:
+	dh_clean
+	rm -rf .cache
+	rm -rf doc/build

@@ -1,0 +1,21 @@
+Source: pubchempy
+Section: python
+Priority: optional
+Maintainer: Damien Nguyen <damien1@huawei.com>
+Build-Depends: debhelper-compat (= 12),
+               dh-python,
+               python3-setuptools,
+               python3-all
+Standards-Version: 4.5.0
+Homepage: https://pubchempy.readthedocs.io/
+X-Python3-Version: >= 3.2
+
+Package: python3-pubchempy
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: PubChemPy is a wrapper around the PubChem PUG REST API that
+ provides a way to interact with PubChem in Python. It allows chemical searches
+ (including by name, substructure and similarity), chemical standardization,
+ conversion between chemical file formats, depiction and retrieval of chemical
+ properties.

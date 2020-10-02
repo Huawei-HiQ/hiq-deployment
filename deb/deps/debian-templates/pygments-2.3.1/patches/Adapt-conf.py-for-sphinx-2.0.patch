@@ -1,0 +1,29 @@
+From: Christian Kastner <ckk@kvr.at>
+Date: Tue, 21 Apr 2020 19:31:08 +0200
+Subject: Adapt conf.py for sphinx >= 2.0
+
+html_sidebars dict values must now be a list.
+
+Resolves a TemplateNotFound exception raised when building the documentation
+with sphinx 2.4, as encountered when building the Debian packages.
+
+http://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_sidebars
+---
+ doc/conf.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/doc/conf.py b/doc/conf.py
+index 82ae598..a424a9e 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -125,8 +125,8 @@ html_static_path = ['_static']
+ #html_use_smartypants = True
+ 
+ # Custom sidebar templates, maps document names to template names.
+-html_sidebars = {'index': 'indexsidebar.html',
+-                 'docs/*': 'docssidebar.html'}
++html_sidebars = {'index': ['indexsidebar.html'],
++                 'docs/*': ['docssidebar.html']}
+ 
+ # Additional templates that should be rendered to pages, maps page names to
+ # template names.

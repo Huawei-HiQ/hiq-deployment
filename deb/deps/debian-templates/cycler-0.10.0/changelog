@@ -1,0 +1,49 @@
+python-cycler (0.10.0-3) unstable; urgency=medium
+
+  * debian/patches/doc-fix-code-input-with-no-code.patch
+    - fix failure with updated ipython sphinx directive; Closes: #950145
+  * Drop python2 support; Closes: #937681
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 16 Feb 2020 22:42:06 -0500
+
+python-cycler (0.10.0-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * Convert git repository from git-dpm to gbp layout
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Sandro Tosi ]
+  * debian/control
+    - mark module binary packages as Multi-Arch: foreign; Closes: #929045
+    - bump Standards-Version to 4.4.1 (no changes needed)
+    - wrap-and-sort
+  * Build documentation with py3k sphinx
+  * debian/patches/remove-mpl-only-directives.patch
+    - ensure compat with new matplotlit removing only_directives sphinx ext
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 20 Dec 2019 22:48:41 -0500
+
+python-cycler (0.10.0-1) unstable; urgency=medium
+
+  [ Sandro Tosi ]
+  * New upstream release
+  * debian/control
+    - update Homepage
+    - bump Standards-Version to 3.9.7 (no changes needed)
+  * debian/{control, rules}
+    - run tests at build time; Closes: #800908
+  * Build and provide documentation; Closes: #800907
+
+  [ Ondřej Nový ]
+  * Fixed homepage (https)
+  * Fixed VCS URL (https)
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 09 Apr 2016 14:03:20 +0100
+
+python-cycler (0.9.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #791376)
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 04 Oct 2015 12:53:26 +0100

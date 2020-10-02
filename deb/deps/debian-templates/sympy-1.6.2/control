@@ -1,0 +1,83 @@
+Source: sympy
+Section: python
+Priority: optional
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Georges Khaznadar <georgesk@debian.org>
+Build-Depends: debhelper-compat (= 12),
+ dh-python, python3-all (>= 3.1.3-3),
+ python3-distutils,
+ python3-mpmath,
+ python3-matplotlib,
+ python3-sphinx,
+ texlive-latex-base, texlive-latex-extra,
+ librsvg2-bin, imagemagick, inkscape, graphviz, dvipng,
+ faketime
+Standards-Version: 4.5.0
+Homepage: http://sympy.org/
+Vcs-Git: https://salsa.debian.org/science-team/sympy.git
+Vcs-Browser: https://salsa.debian.org/science-team/sympy
+Rules-Requires-Root: no
+
+Package: isympy3
+Architecture: all
+Depends: isympy-common, python3-sympy, ${python3:Depends}, ${misc:Depends}
+Enhances: ipython3
+Provides: isympy
+Description: Python3 shell for SymPy
+ SymPy is a Python library for symbolic mathematics (manipulation). It aims to
+ become a full-featured computer algebra system (CAS) while keeping the code as
+ simple as possible in order to be comprehensible and easily extensible. SymPy
+ is written entirely in Python and does not require any external libraries,
+ except optionally for plotting support.
+ .
+ This package contains a Python 3 shell (IPython shell if you have the
+ ipython3 package installed) wrapper for SymPy.
+
+Package: isympy-common
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Recommends: isympy3
+Conflicts: isympy (<< 1.0-2)
+Breaks: python-sympy (<< 0.7.5-4)
+Description: Python shell for SymPy
+ SymPy is a Python library for symbolic mathematics (manipulation). It aims to
+ become a full-featured computer algebra system (CAS) while keeping the code as
+ simple as possible in order to be comprehensible and easily extensible. SymPy
+ is written entirely in Python and does not require any external libraries,
+ except optionally for plotting support.
+ .
+ This support package contains the common isympy Python script,
+ a wrapper for SymPy which can be invoked with python3.
+ .
+ Install the isympy3 package to ensure all required dependencies
+ are loaded.
+
+Package: python3-sympy
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-mpmath
+Recommends: python3-pil, python3-numpy
+Enhances: isympy3, ipython3
+Suggests: texlive-fonts-extra, dvipng, python-sympy-doc
+Breaks: octave-symbolic (<< 2.7.0~git.2018.07.13-1~)
+Description: Computer Algebra System (CAS) in Python (Python 3)
+ SymPy is a Python library for symbolic mathematics (manipulation). It aims to
+ become a full-featured computer algebra system (CAS) while keeping the code as
+ simple as possible in order to be comprehensible and easily extensible. SymPy
+ is written entirely in Python and does not require any external libraries,
+ except optionally for plotting support.
+ .
+ This package contains the Python 3 version of sympy.
+
+Package: python-sympy-doc
+Architecture: all
+Section: doc
+Depends: libjs-mathjax, ${misc:Depends}, ${sphinxdoc:Depends}
+Suggests: python3-sympy
+Description: Computer Algebra System (CAS) in Python - Documentation
+ SymPy is a Python library for symbolic mathematics (manipulation). It aims to
+ become a full-featured computer algebra system (CAS) while keeping the code as
+ simple as possible in order to be comprehensible and easily extensible. SymPy
+ is written entirely in Python and does not require any external libraries,
+ except optionally for plotting support.
+ .
+ This package contains the documentation for sympy Python module.

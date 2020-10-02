@@ -1,0 +1,12 @@
+Document: python-requests-doc
+Title: Python Requests Documentation
+Author: Kenneth Reitz
+Section: Programming/Python
+Abstract: Requests allow you to send HTTP/1.1 requests. You can add headers,
+ form data, multipart files, and parameters with simple Python dictionaries,
+ and access the response data in the same way. It's powered by httplib and
+ urllib3, but it does all the hard work and crazy hacks for you.
+
+Format: html
+Index: /usr/share/doc/python-requests-doc/html/index.html
+Files: /usr/share/doc/python-requests-doc/html/*.html

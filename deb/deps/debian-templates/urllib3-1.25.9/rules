@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=urllib3
+export PYTHONWARNINGS=d
+export PYBUILD_BEFORE_TEST=rm -f test/conftest.py
+export PYBUILD_TEST_PYTEST=1
+export PYBUILD_TEST_ARGS=\
+	--ignore=test/appengine \
+	--ignore=test/with_dummyserver \
+	--ignore=test/test_connectionpool.py \
+	--ignore=test/test_ssl.py \
+	--ignore=test/contrib/test_pyopenssl.py \
+	--ignore=test/contrib/test_securetransport.py \
+	--ignore=test/contrib/test_socks.py \
+	-k-test_recent_date
+# Skip timing tests
+export TRAVIS=1
+export LC_ALL=C.UTF-8
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_clean:
+	dh_clean
+	find . -type d -name .pytest_cache -exec rm -rf {} +
+
+override_dh_auto_configure:
+	rm -f src/urllib3/packages/six.py
+
+override_dh_installchangelogs:
+	dh_installchangelogs CHANGES.rst

@@ -1,0 +1,463 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: openfermion
+Upstream-Contact: Kevin J. Sung
+Source: https://github.com/quantumlib/OpenFermion
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     examples/_examples_test.py
+           examples/performance_benchmarks.py
+           setup.py
+           src/openfermion/__init__.py
+           src/openfermion/config.py
+           src/openfermion/hamiltonians/__init__.py
+           src/openfermion/hamiltonians/_chemical_series.py
+           src/openfermion/hamiltonians/_chemical_series_test.py
+           src/openfermion/hamiltonians/_general_hubbard.py
+           src/openfermion/hamiltonians/_general_hubbard_test.py
+           src/openfermion/hamiltonians/_hubbard.py
+           src/openfermion/hamiltonians/_hubbard_test.py
+           src/openfermion/hamiltonians/_jellium.py
+           src/openfermion/hamiltonians/_jellium_test.py
+           src/openfermion/hamiltonians/_mean_field_dwave.py
+           src/openfermion/hamiltonians/_mean_field_dwave_test.py
+           src/openfermion/hamiltonians/_molecular_data.py
+           src/openfermion/hamiltonians/_molecular_data_test.py
+           src/openfermion/hamiltonians/_plane_wave_hamiltonian.py
+           src/openfermion/hamiltonians/_plane_wave_hamiltonian_test.py
+           src/openfermion/measurements/__init__.py
+           src/openfermion/measurements/_equality_constraint_projection.py
+           src/openfermion/measurements/_equality_constraint_projection_test.py
+           src/openfermion/measurements/_prony.py
+           src/openfermion/measurements/_prony_test.py
+           src/openfermion/measurements/_qubit_partitioning.py
+           src/openfermion/measurements/_qubit_partitioning_test.py
+           src/openfermion/measurements/_rdm_equality_constraints.py
+           src/openfermion/measurements/_rdm_equality_constraints_test.py
+           src/openfermion/ops/__init__.py
+           src/openfermion/ops/_binary_code.py
+           src/openfermion/ops/_binary_code_test.py
+           src/openfermion/ops/_binary_polynomial.py
+           src/openfermion/ops/_binary_polynomial_test.py
+           src/openfermion/ops/_boson_operator.py
+           src/openfermion/ops/_boson_operator_test.py
+           src/openfermion/ops/_diagonal_coulomb_hamiltonian.py
+           src/openfermion/ops/_diagonal_coulomb_hamiltonian_test.py
+           src/openfermion/ops/_fermion_operator.py
+           src/openfermion/ops/_fermion_operator_test.py
+           src/openfermion/ops/_givens_rotations.py
+           src/openfermion/ops/_givens_rotations_test.py
+           src/openfermion/ops/_indexing.py
+           src/openfermion/ops/_interaction_operator.py
+           src/openfermion/ops/_interaction_operator_test.py
+           src/openfermion/ops/_interaction_rdm.py
+           src/openfermion/ops/_interaction_rdm_test.py
+           src/openfermion/ops/_ising_operator.py
+           src/openfermion/ops/_ising_operator_test.py
+           src/openfermion/ops/_majorana_operator.py
+           src/openfermion/ops/_majorana_operator_test.py
+           src/openfermion/ops/_polynomial_tensor.py
+           src/openfermion/ops/_polynomial_tensor_test.py
+           src/openfermion/ops/_quad_operator.py
+           src/openfermion/ops/_quad_operator_test.py
+           src/openfermion/ops/_quadratic_hamiltonian.py
+           src/openfermion/ops/_quadratic_hamiltonian_test.py
+           src/openfermion/ops/_qubit_operator.py
+           src/openfermion/ops/_qubit_operator_test.py
+           src/openfermion/ops/_symbolic_operator.py
+           src/openfermion/ops/_symbolic_operator_test.py
+           src/openfermion/tests/_hydrogen_integration_test.py
+           src/openfermion/tests/_lih_integration_test.py
+           src/openfermion/transforms/__init__.py
+           src/openfermion/transforms/_binary_code_transform.py
+           src/openfermion/transforms/_binary_code_transform_test.py
+           src/openfermion/transforms/_binary_codes.py
+           src/openfermion/transforms/_binary_codes_test.py
+           src/openfermion/transforms/_bksf.py
+           src/openfermion/transforms/_bksf_test.py
+           src/openfermion/transforms/_bravyi_kitaev.py
+           src/openfermion/transforms/_bravyi_kitaev_test.py
+           src/openfermion/transforms/_bravyi_kitaev_tree.py
+           src/openfermion/transforms/_bravyi_kitaev_tree_test.py
+           src/openfermion/transforms/_conversion.py
+           src/openfermion/transforms/_conversion_test.py
+           src/openfermion/transforms/_fenwick_tree.py
+           src/openfermion/transforms/_fenwick_tree_test.py
+           src/openfermion/transforms/_jordan_wigner.py
+           src/openfermion/transforms/_jordan_wigner_test.py
+           src/openfermion/transforms/_qubit_operator_transforms.py
+           src/openfermion/transforms/_qubit_operator_transforms_test.py
+           src/openfermion/transforms/_remove_symmetry_qubits.py
+           src/openfermion/transforms/_remove_symmetry_qubits_test.py
+           src/openfermion/transforms/_reverse_jordan_wigner.py
+           src/openfermion/transforms/_reverse_jordan_wigner_test.py
+           src/openfermion/transforms/_verstraete_cirac.py
+           src/openfermion/transforms/_verstraete_cirac_test.py
+           src/openfermion/transforms/_weyl_ordering.py
+           src/openfermion/transforms/_weyl_ordering_test.py
+           src/openfermion/utils/__init__.py
+           src/openfermion/utils/_bch_expansion.py
+           src/openfermion/utils/_bch_expansion_test.py
+           src/openfermion/utils/_channel_state.py
+           src/openfermion/utils/_channel_state_test.py
+           src/openfermion/utils/_commutator_diagonal_coulomb_operator.py
+           src/openfermion/utils/_commutator_diagonal_coulomb_operator_test.py
+           src/openfermion/utils/_commutators.py
+           src/openfermion/utils/_commutators_test.py
+           src/openfermion/utils/_davidson.py
+           src/openfermion/utils/_davidson_test.py
+           src/openfermion/utils/_diagonal_coulomb_trotter_error.py
+           src/openfermion/utils/_diagonal_coulomb_trotter_error_test.py
+           src/openfermion/utils/_grid.py
+           src/openfermion/utils/_grid_test.py
+           src/openfermion/utils/_hubbard_trotter_error.py
+           src/openfermion/utils/_hubbard_trotter_error_test.py
+           src/openfermion/utils/_jellium_hf_state.py
+           src/openfermion/utils/_lattice.py
+           src/openfermion/utils/_lattice_test.py
+           src/openfermion/utils/_lcu_util.py
+           src/openfermion/utils/_lcu_util_test.py
+           src/openfermion/utils/_linear_qubit_operator.py
+           src/openfermion/utils/_linear_qubit_operator_test.py
+           src/openfermion/utils/_low_depth_trotter_error.py
+           src/openfermion/utils/_low_depth_trotter_error_test.py
+           src/openfermion/utils/_low_rank.py
+           src/openfermion/utils/_low_rank_test.py
+           src/openfermion/utils/_operator_utils.py
+           src/openfermion/utils/_operator_utils_test.py
+           src/openfermion/utils/_pubchem.py
+           src/openfermion/utils/_pubchem_test.py
+           src/openfermion/utils/_qubit_tapering_from_stabilizer.py
+           src/openfermion/utils/_qubit_tapering_from_stabilizer_test.py
+           src/openfermion/utils/_rdm_mapping_functions.py
+           src/openfermion/utils/_rdm_mapping_functions_test.py
+           src/openfermion/utils/_slater_determinants.py
+           src/openfermion/utils/_slater_determinants_test.py
+           src/openfermion/utils/_sparse_tools.py
+           src/openfermion/utils/_sparse_tools_test.py
+           src/openfermion/utils/_special_operators.py
+           src/openfermion/utils/_special_operators_test.py
+           src/openfermion/utils/_testing_utils.py
+           src/openfermion/utils/_testing_utils_test.py
+           src/openfermion/utils/_trotter_error.py
+           src/openfermion/utils/_trotter_error_test.py
+           src/openfermion/utils/_trotter_exp_to_qgates.py
+           src/openfermion/utils/_trotter_exp_to_qgates_test.py
+           src/openfermion/utils/_unitary_cc.py
+           src/openfermion/utils/_unitary_cc_test.py
+           src/openfermion/utils/_wedge_product.py
+Copyright: __NO_COPYRIGHT__ in: examples/_examples_test.py
+           __NO_COPYRIGHT__ in: examples/performance_benchmarks.py
+           __NO_COPYRIGHT__ in: setup.py
+           __NO_COPYRIGHT__ in: src/openfermion/__init__.py
+           __NO_COPYRIGHT__ in: src/openfermion/config.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/__init__.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_chemical_series.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_chemical_series_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_general_hubbard.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_general_hubbard_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_hubbard.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_hubbard_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_jellium.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_jellium_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_mean_field_dwave.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_mean_field_dwave_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_molecular_data.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_molecular_data_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_plane_wave_hamiltonian.py
+           __NO_COPYRIGHT__ in: src/openfermion/hamiltonians/_plane_wave_hamiltonian_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/__init__.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_equality_constraint_projection.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_equality_constraint_projection_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_prony.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_prony_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_qubit_partitioning.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_qubit_partitioning_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_rdm_equality_constraints.py
+           __NO_COPYRIGHT__ in: src/openfermion/measurements/_rdm_equality_constraints_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/__init__.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_binary_code.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_binary_code_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_binary_polynomial.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_binary_polynomial_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_boson_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_boson_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_diagonal_coulomb_hamiltonian.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_diagonal_coulomb_hamiltonian_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_fermion_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_fermion_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_givens_rotations.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_givens_rotations_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_indexing.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_interaction_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_interaction_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_interaction_rdm.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_interaction_rdm_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_ising_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_ising_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_majorana_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_majorana_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_polynomial_tensor.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_polynomial_tensor_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_quad_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_quad_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_quadratic_hamiltonian.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_quadratic_hamiltonian_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_qubit_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_qubit_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_symbolic_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/ops/_symbolic_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/tests/_hydrogen_integration_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/tests/_lih_integration_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/__init__.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_binary_code_transform.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_binary_code_transform_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_binary_codes.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_binary_codes_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_bksf.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_bksf_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_bravyi_kitaev.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_bravyi_kitaev_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_bravyi_kitaev_tree.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_bravyi_kitaev_tree_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_conversion.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_conversion_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_fenwick_tree.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_fenwick_tree_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_jordan_wigner.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_jordan_wigner_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_qubit_operator_transforms.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_qubit_operator_transforms_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_remove_symmetry_qubits.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_remove_symmetry_qubits_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_reverse_jordan_wigner.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_reverse_jordan_wigner_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_verstraete_cirac.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_verstraete_cirac_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_weyl_ordering.py
+           __NO_COPYRIGHT__ in: src/openfermion/transforms/_weyl_ordering_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/__init__.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_bch_expansion.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_bch_expansion_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_channel_state.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_channel_state_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_commutator_diagonal_coulomb_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_commutator_diagonal_coulomb_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_commutators.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_commutators_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_davidson.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_davidson_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_diagonal_coulomb_trotter_error.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_diagonal_coulomb_trotter_error_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_grid.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_grid_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_hubbard_trotter_error.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_hubbard_trotter_error_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_jellium_hf_state.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_lattice.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_lattice_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_lcu_util.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_lcu_util_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_linear_qubit_operator.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_linear_qubit_operator_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_low_depth_trotter_error.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_low_depth_trotter_error_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_low_rank.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_low_rank_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_operator_utils.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_operator_utils_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_pubchem.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_pubchem_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_qubit_tapering_from_stabilizer.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_qubit_tapering_from_stabilizer_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_rdm_mapping_functions.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_rdm_mapping_functions_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_slater_determinants.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_slater_determinants_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_sparse_tools.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_sparse_tools_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_special_operators.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_special_operators_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_testing_utils.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_testing_utils_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_trotter_error.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_trotter_error_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_trotter_exp_to_qgates.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_trotter_exp_to_qgates_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_unitary_cc.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_unitary_cc_test.py
+           __NO_COPYRIGHT__ in: src/openfermion/utils/_wedge_product.py
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     MANIFEST.in
+           PKG-INFO
+           examples/binary_code_transforms_demo.ipynb
+           examples/bosonic_operator_tutorial.ipynb
+           examples/jordan_wigner_and_bravyi_kitaev_transforms.ipynb
+           examples/openfermion_tutorial.ipynb
+           requirements.txt
+           setup.cfg
+           src/openfermion.egg-info/PKG-INFO
+           src/openfermion.egg-info/SOURCES.txt
+           src/openfermion.egg-info/dependency_links.txt
+           src/openfermion.egg-info/requires.txt
+           src/openfermion.egg-info/top_level.txt
+           src/openfermion/_version.py
+           src/openfermion/data/H1-Li1_sto-3g_singlet_1.45.hdf5
+           src/openfermion/data/H2_6-31g_singlet_0.75.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.1.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.2.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.3.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.4.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.5.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.6.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.7.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.7414.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.8.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_0.9.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.0.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.1.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.2.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.3.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.4.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.5.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.6.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.7.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.8.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_1.9.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.0.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.1.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.2.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.3.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.4.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.5.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.6.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.7.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.8.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_2.9.hdf5
+           src/openfermion/data/H2_sto-3g_singlet_3.0.hdf5
+           src/openfermion/data/__init__.py
+           src/openfermion/data/bad_type_operator.data
+           src/openfermion/data/geometry_example.txt
+           src/openfermion/tests/phdm_H1-Li1_sto-3g_singlet_1.45.hdf5
+           src/openfermion/tests/phdm_H2_6-31g_singlet_0.75.hdf5
+           src/openfermion/tests/phdm_H2_sto-3g_singlet_1.4.hdf5
+           src/openfermion/tests/tqdm_H1-Li1_sto-3g_singlet_1.45.hdf5
+           src/openfermion/tests/tqdm_H2_6-31g_singlet_0.75.hdf5
+           src/openfermion/tests/tqdm_H2_sto-3g_singlet_1.4.hdf5
+           src/openfermion/utils/_jellium_hf_state_test.py
+           src/openfermion/utils/_wedge_product_test.py
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:   __NO_COPYRIGHT_NOR_LICENSE__
+
+Files:     NOTICE
+Copyright: 2017 The OpenFermion Developers. OpenFermion (www.openfermion.org) was developed :
+License:   Apache-2.0
+ Ryan Babbush (Google)
+ Jarrod McClean (Google)
+ Kevin J. Sung (University of Michigan)
+ Ian Kivlichan (Harvard)
+ .
+ Dave Bacon (Google)
+ Xavier Bonet-Monroig (Leiden University)
+ Yudong Cao (Harvard)
+ Chengyu Dai (University of Michigan)
+ E. Schuyler Fried (Harvard)
+ Craig Gidney (Google)
+ Brendan Gimby (University of Michigan)
+ Pranav Gokhale (University of Chicago)
+ Thomas Haener (ETH Zurich)
+ Tarini Hardikar (Dartmouth)
+ Vojtech Havlicek (Oxford)
+ Oscar Higgott (University College London)
+ Cupjin Huang (University of Michigan)
+ Josh Izaac (Xanadu)
+ Zhang Jiang (NASA)
+ William Kirby (Tufts University)
+ Xinle Liu (Google)
+ Sam McArdle (Oxford)
+ Matthew Neeley (Google)
+ Thomas O'Brien (Leiden University)
+ Bryan O'Gorman (UC Berkeley, NASA)
+ Isil Ozfidan (D-Wave Systems)
+ Max Radin (UC Santa Barbara)
+ Jhonathan Romero (Harvard)
+ Nicholas Rubin (Rigetti)
+ Daniel Sank (Google)
+ Nicolas Sawaya (Harvard)
+ Bruno Senjean (Leiden University)
+ Kanav Setia (Dartmouth)
+ Hannah Sim (Harvard)
+ Damian Steiger (ETH Zurich)
+ Mark Steudtner (Leiden University)
+ Qiming Sun (Caltech)
+ Wei Sun (Google)
+ Daochen Wang (River Lane Research)
+ Chris Winkler (University of Chicago)
+ Fang Zhang (University of Michigan)
+ .
+ OpenFermion developed as a fork of FermiLib with some code from ProjectQ.
+ Code was forked from development branches of FermiLib and ProjectQ on 9/1/2017.
+ The original notices from FermiLib and ProjectQ are reproduced below.
+ .
+ FermiLib (www.projectq.ch)
+ The first release of FermiLib (v0.1a0) was developed by:
+ Ryan Babbush (Google)
+ Jarrod McClean (LBNL*)
+ Damian Steiger (ETH Zurich)
+ Ian Kivlichan (Harvard)
+ Thomas Haener (ETH Zurich)
+ Vojtech Havlicek (Oxford)
+ Matthew Neeley (Google)
+ Wei Sun (Google)
+ .
+ *FermiLib Copyright (c) 2017, all contributors including but not limited to
+ The Regents of the University of California, through Lawrence Berkeley National
+ Laboratory (subject to receipt of any required approvals from the U.S. Dept. of
+ Energy).  This Software was developed partially under
+ funding from the U.S. Department of Energy and the U.S. Government consequently
+ retains certain rights. As such, the U.S. Government has been granted for
+ itself and others acting on its behalf a paid-up, nonexclusive, irrevocable,
+ worldwide license in the Software to reproduce, distribute copies to the public,
+ prepare derivative works, and perform publicly and display publicly, and to
+ permit others to do so. This first release (v0.1a0) is licensed under the Apache
+ License, Version 2.0 (the "License"); you may not use this file except in
+ compliance with the License. You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or
+ agreed to in writing, software distributed under the License is distributed on
+ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ or implied. See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ ProjectQ (www.projectq.ch)
+ The first release of ProjectQ (v0.1) was developed by Thomas Haener
+ (thomas@projectq.ch) and Damian S. Steiger (damian@projectq.ch)
+ at ETH Zurich in 2016.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     README.rst
+Copyright: 2017 The OpenFermion Developers.
+License:   __UNKNOWN__
+ This is not an official Google product.
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.
+
+License text available at: /usr/share/common-licenses/Apache-2.0

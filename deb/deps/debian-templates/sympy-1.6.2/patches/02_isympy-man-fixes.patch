@@ -1,0 +1,65 @@
+Description: Fix hyphen-used-as-minus-sign lintian errors.
+Author: Sergey B Kirpichev <skirpichev@gmail.com>
+
+---
+ doc/man/isympy.1 |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+Index: sympy/doc/man/isympy.1
+===================================================================
+--- sympy.orig/doc/man/isympy.1
++++ sympy/doc/man/isympy.1
+@@ -60,7 +60,7 @@ Use the specified shell (python or ipyth
+ console backend instead of the default one (ipython
+ if present or python otherwise).
+ 
+-Example: isympy -c python
++Example: isympy \-c python
+ 
+ \fISHELL\fR could be either
+ \&'ipython' or 'python'
+@@ -70,7 +70,7 @@ Setup pretty printing in SymPy. By defau
+ printing is enabled (if the terminal supports it). You can use less
+ pretty ASCII printing instead or no pretty printing at all.
+ 
+-Example: isympy -p no
++Example: isympy \-p no
+ 
+ \fIENCODING\fR must be one of 'unicode',
+ \&'ascii' or 'no'.
+@@ -94,7 +94,7 @@ SYMPY_GROUND_TYPES='gmpy')
+ The ground types can be determined interactively from the variable
+ sympy.polys.domains.GROUND_TYPES inside the isympy shell itself.
+ 
+-Example: isympy -t python
++Example: isympy \-t python
+ 
+ \fITYPE\fR must be one of 'gmpy',
+ \&'gmpy1' or 'python'.
+@@ -109,7 +109,7 @@ Note that for very large expressions, OR
+ printing considerably, with the tradeoff that the order of the terms
+ in the printed expression will have no canonical order
+ 
+-Example: isympy -o rev-lax
++Example: isympy \-o rev-lax
+ 
+ \fIORDER\fR must be one of 'lex', 'rev-lex', 'grlex',
+ \&'rev-grlex', 'grevlex', 'rev-grevlex', 'old', or 'none'.
+@@ -119,7 +119,7 @@ Print only Python's and SymPy's versions
+ .TP
+ \*(T<\fB\-d\fR\*(T>, \*(T<\fB\-\-doctest\fR\*(T>
+ Use the same format that should be used for doctests. This is
+-equivalent to '\fIisympy -c python -p no\fR'.
++equivalent to '\fIisympy \-c python \-p no\fR'.
+ .TP
+ \*(T<\fB\-C\fR\*(T>, \*(T<\fB\-\-no\-cache\fR\*(T>
+ Disable the caching mechanism. Disabling the cache may slow certain
+@@ -168,7 +168,7 @@ from the other isympy options.
+ 
+ For example, to run iSymPy without startup banner and colors:
+ 
+-isympy -q -c ipython -- --colors=NoColor
++isympy \-q \-c ipython \-\- \-\-colors=NoColor
+ .TP
+ \*(T<\fB\-h\fR\*(T>, \*(T<\fB\-\-help\fR\*(T>
+ Print help output and exit.

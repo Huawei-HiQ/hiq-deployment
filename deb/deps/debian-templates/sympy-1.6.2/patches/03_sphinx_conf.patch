@@ -1,0 +1,13 @@
+Index: sympy/doc/src/conf.py
+===================================================================
+--- sympy.orig/doc/src/conf.py
++++ sympy/doc/src/conf.py
+@@ -28,7 +28,7 @@ sys.path = ['ext'] + sys.path
+ # Add any Sphinx extension module names here, as strings. They can be extensions
+ # coming with Sphinx (named 'sphinx.addons.*') or your custom ones.
+ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.linkcode', 'sphinx_math_dollar',
+-              'sphinx.ext.mathjax', 'numpydoc', 'sympylive',
++              'sphinx.ext.imgmath', 'numpydoc', 'sympylive',
+               'sphinx.ext.graphviz', 'matplotlib.sphinxext.plot_directive']
+ 
+ # Use this to use pngmath instead

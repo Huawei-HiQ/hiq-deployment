@@ -1,0 +1,49 @@
+Source: openfermionprojectq
+Section: python
+Priority: optional
+Maintainer: Damien Nguyen <damien1@huawei.com>
+Build-Depends: debhelper-compat (= 12),
+	       dh-python,
+	       python3-all,
+	       python3-setuptools,
+	       python3-openfermion,
+	       python3-h5py,
+	       jupyter-nbformat,
+	       python3-hiq-projectq
+Standards-Version: 4.5.0
+Homepage: https://github.com/quantumlib/OpenFermion-ProjectQ/
+X-Python3-Version: >= 3.2
+
+Package: python3-openfermionprojectq
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+	 ${python3:Depends},
+	 python3-openfermion,
+	 python3-h5py,
+	 jupyter-nbformat,
+	 python3-projectq
+Description: OpenFermion is an open source library for compiling and analyzing
+ quantum algorithms to simulate fermionic systems, including quantum
+ chemistry. Among other functionalities, this version features data structures
+ and tools for obtaining and manipulating representations of fermionic and
+ qubit Hamiltonians. For more information, see our release paper.
+ .
+ This is the package that depends on python3-projectq.
+
+Package: python3-hiq-openfermionprojectq
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+	 ${python3:Depends},
+	 python3-openfermion,
+	 python3-h5py,
+	 jupyter-nbformat,
+	 python3-hiq-projectq
+Description: OpenFermion is an open source library for compiling and analyzing
+ quantum algorithms to simulate fermionic systems, including quantum
+ chemistry. Among other functionalities, this version features data structures
+ and tools for obtaining and manipulating representations of fermionic and
+ qubit Hamiltonians. For more information, see our release paper.
+ .
+ This is the package that depends on python3-hiq-projectq

@@ -36,28 +36,7 @@ global_dependencies=('${shlibs:Depends}' '${misc:Depends}' '${python3:Depends}')
 
 # ==============================================================================
 
-trim()
-{
-    if [ $# -eq 1 ]; then
-	var=$1
-    else
-	read var
-    fi
-    
-    # remove leading whitespace characters
-    var="${var#"${var%%[![:space:]]*}"}"
-    # remove trailing whitespace characters
-    var="${var%"${var##*[![:space:]]}"}"
-    echo $var
-}
-
-gen_version()
-{
-    ubuntu_num=$1
-    version=$(dpkg-parsechangelog -c 1 | grep Version | cut -d ':' -f2 | trim)
-    version=$(echo $version | sed -e 's/-[0-9]\+ubuntu[0-9]\+~ubuntu[0-9][0-9].[0-9][0-9]//')
-    echo "$version-1ubuntu$ubtu_ver_rev~ubuntu$ubuntu_num"
-}
+source $HERE/scripts/functions.bash
 
 modify_change_log()
 {
@@ -231,9 +210,9 @@ changes_file=${pkg_name}_${pkg_ver}_source.changes
 # --------------------------------------
 
 if [[ $pkg_name == "hiq-projectq"  ]]; then
-    source ../_ubuntu_ppa_upload_hiq_projectq.bash 
+    source $HERE/scripts/_ubuntu_ppa_upload_hiq_projectq.bash
 elif [[ $pkg_name == "hiq-circuit"  ]]; then
-    source ../_ubuntu_ppa_upload_hiq_circuit.bash 
+    source $HERE/scripts/_ubuntu_ppa_upload_hiq_circuit.bash
 else
     die "Unknown package: $pkg_name"
 fi

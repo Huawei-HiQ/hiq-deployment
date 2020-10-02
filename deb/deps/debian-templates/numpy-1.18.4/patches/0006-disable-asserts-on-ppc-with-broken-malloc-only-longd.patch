@@ -1,0 +1,26 @@
+From: Sandro Tosi <morph@debian.org>
+Date: Mon, 11 Jan 2016 23:51:23 +0000
+Subject: disable asserts on ppc with broken malloc only longdouble affected
+ will still work with softfaults
+
+Author: Julian Taylor <jtaylor.debian@googlemail.com>
+---
+ numpy/core/src/multiarray/lowlevel_strided_loops.c.src | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+--- a/numpy/core/src/multiarray/lowlevel_strided_loops.c.src
++++ b/numpy/core/src/multiarray/lowlevel_strided_loops.c.src
+@@ -7,6 +7,13 @@
+  *
+  * See LICENSE.txt for the license.
+  */
++#if defined(__powerpc__) & !defined(__powerpc64__)
++#ifndef NDEBUG
++// disable asserts malloc broken
++// https://sourceware.org/bugzilla/show_bug.cgi?id=6527
++#define NDEBUG
++#endif
++#endif
+ 
+ #define PY_SSIZE_T_CLEAN
+ #include "Python.h"

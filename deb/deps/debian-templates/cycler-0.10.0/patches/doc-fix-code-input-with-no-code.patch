@@ -1,0 +1,11 @@
+--- a/doc/source/index.rst
++++ b/doc/source/index.rst
+@@ -48,8 +48,6 @@ hashable (as it will eventually be used
+ 
+    from __future__ import print_function
+    from cycler import cycler
+-
+-
+    color_cycle = cycler(color=['r', 'g', 'b'])
+    color_cycle
+ 

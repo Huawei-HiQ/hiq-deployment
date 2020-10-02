@@ -1,0 +1,40 @@
+From: Sandro Tosi <morph@debian.org>
+Date: Sun, 11 Oct 2015 10:12:18 -0700
+Subject: Adapt SWIG documentation to Debian
+
+ Location of `swig` directory in Debian is specific to our distro, so the
+ documentation needs adaptation.
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2015-02-08
+Patch-Name: adapt_swig_docs_to_debian.patch
+---
+ doc/source/reference/swig.interface-file.rst | 4 ++--
+ doc/source/reference/swig.testing.rst        | 3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+--- a/doc/source/reference/swig.interface-file.rst
++++ b/doc/source/reference/swig.interface-file.rst
+@@ -166,8 +166,8 @@ assignments in lines 19 and 20.
+ Using numpy.i
+ -------------
+ 
+-The ``numpy.i`` file is currently located in the ``tools/swig``
+-sub-directory under the ``numpy`` installation directory.  Typically,
++The ``numpy.i`` file is currently located in the ``swig``
++sub-directory in the ``python-numpy-doc`` package directory.  Typically,
+ you will want to copy it to the directory where you are developing
+ your wrappers.
+ 
+--- a/doc/source/reference/swig.testing.rst
++++ b/doc/source/reference/swig.testing.rst
+@@ -11,7 +11,8 @@ for a total of 888 typemaps supported "o
+ typemaps, in turn, might require several unit tests in order to verify
+ expected behavior for both proper and improper inputs.  Currently,
+ this results in more than 1,000 individual unit tests executed when
+-``make test`` is run in the ``numpy/tools/swig`` subdirectory.
++``make test`` is run in the ``swig`` directory of ``python-numpy-doc``
++package.
+ 
+ To facilitate this many similar unit tests, some high-level
+ programming techniques are employed, including C and `SWIG`_ macros,

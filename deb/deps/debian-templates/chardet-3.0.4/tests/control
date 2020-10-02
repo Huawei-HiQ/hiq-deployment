@@ -1,0 +1,6 @@
+Tests: unittests3
+Depends:
+ python3-all,
+ python3-chardet,
+ python3-hypothesis,
+ python3-pytest,

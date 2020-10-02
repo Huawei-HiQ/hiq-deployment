@@ -1,0 +1,7 @@
+local-mathjax.patch
+02_isympy-man-fixes.patch
+03_sphinx_conf.patch
+04_doc_makefile.patch
+05_sphinx_math_dollar.patch
+no_live_sympy_org.patch
+mathrm_latex_error.patch

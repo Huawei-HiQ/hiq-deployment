@@ -1,0 +1,18 @@
+From: Sandro Tosi <morph@debian.org>
+Date: Thu, 7 Jun 2018 17:55:55 -0400
+Subject: skip plot_football from sphinx-gallery, requires network access
+
+---
+ doc/conf.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -72,6 +72,7 @@ sphinx_gallery_conf = {
+     # path where to save gallery generated examples
+     'gallery_dirs': 'auto_examples',
+     'backreferences_dir': 'modules/generated',
++    'filename_pattern': '/plot_(?!football)',
+     'expected_failing_examples': ['../examples/advanced/plot_parallel_betweenness.py']
+ }
+ 

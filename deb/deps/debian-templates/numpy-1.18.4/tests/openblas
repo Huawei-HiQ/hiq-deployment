@@ -1,0 +1,12 @@
+#!/bin/sh
+set -efu
+ma=$(dpkg-architecture -qDEB_HOST_MULTIARCH)
+blaslib=$(update-alternatives --list libblas.so.3-$ma | grep $(basename $0))
+update-alternatives --set libblas.so.3-$ma $blaslib
+
+# one python is enough
+PYS=${PYS:-"$(py3versions -d 2>/dev/null)"}
+
+#test only modules that link against libblas
+PYS=$PYS TESTPKG=numpy.core debian/tests/python3
+PYS=$PYS TESTPKG=numpy.linalg debian/tests/python3

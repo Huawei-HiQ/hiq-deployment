@@ -1,0 +1,126 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+PY3VERS=$(shell py3versions -vr)
+PY3DEF=$(shell py3versions -dv)
+PY3LIBPATH := $(shell python3 -c "from distutils.command.build import build ; from distutils.core import Distribution ; b = build(Distribution()) ; b.finalize_options() ; print (b.build_platlib)")
+
+# Look at #634012 to understand why is needed and what will happen if we set
+# compat to 9
+unexport LDFLAGS
+export ATLAS=None
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_build-arch:
+	dh_auto_build
+	set -e; for v in $(PY3VERS); do \
+		python$$v setup.py build; \
+	done
+
+override_dh_auto_build-indep: override_dh_auto_build-arch
+	# Fake doc building
+	mkdir -p doc/build/html
+
+override_dh_auto_clean:
+	rm -rf build/
+	rm -rf `find -name build -type d`
+	rm -rf `find . -name "*.pyc" -type f`
+	rm -rf doc/fontList.cache numpy/f2py/docs/usersguide/index.html
+	rm -rf doc/source/reference/generated
+	# cython generated
+	rm -f cythonize.dat
+	rm -f numpy/random/mtrand/mtrand.c
+	rm -f numpy/random/_bounded_integers.c
+	rm -f numpy/random/_bounded_integers.pxd
+	rm -f numpy/random/_bounded_integers.pyx
+	rm -f numpy/random/*.c
+
+#override_dh_installman:
+#	dh_installman -ppython3-numpy doc/f2py/f2py.1
+#	-mv debian/python3-numpy/usr/share/man/man1/f2py.1 \
+#	  debian/python3-numpy/usr/share/man/man1/f2py3.1
+#	# link manpage for versioned and dbg incarnations of f2py
+#	set -e; for v in $(PY3VERS); do \
+#		dh_link -ppython3-numpy /usr/share/man/man1/f2py3.1.gz /usr/share/man/man1/f2py$$v.1.gz; \
+#		dh_link -ppython3-numpy-dbg /usr/share/man/man1/f2py3.1.gz /usr/share/man/man1/f2py$$v-dbg.1.gz; \
+#	done
+#	dh_link -ppython3-numpy-dbg /usr/share/man/man1/f2py3.1.gz /usr/share/man/man1/f2py3-dbg.1.gz;
+
+override_dh_python3:
+	dh_python3
+
+	ENTRYPOINT=non-existant
+	# tweak the entry_points list to include all supported versions
+	if [ -f $(CURDIR)/debian/python3-numpy/usr/lib/python3/dist-packages/numpy-*.egg-info/entry_points.txt ] ; then \
+		ENTRYPOINT=$(shell ls $(CURDIR)/debian/python3-numpy/usr/lib/python3/dist-packages/numpy-*.egg-info/entry_points.txt) ; \
+		for v in $(PY3VERS); do \
+			if ! grep $$v $$ENTRYPOINT; \
+			then \
+				echo "f2py$$v = numpy.f2py.f2py2e:main" >> $$ENTRYPOINT ; \
+			fi; \
+		done \
+	fi
+
+override_dh_install:
+	# add shebang information to f2py script
+	set -e; for v in $(PY3VERS); do \
+		sed -i "1s,#!.*python[^ ]*\(.*\),#!/usr/bin/python$$v," debian/tmp/usr/bin/f2py$$v; \
+	done
+	cp -a debian/tmp/usr/bin/f2py$(PY3DEF) debian/tmp/usr/bin/f2py3
+	sed -i "1s,#!.*python[^ ]*\(.*\),#!/usr/bin/python3," debian/tmp/usr/bin/f2py3
+
+	dh_install
+
+	# create symlinks for .h files
+	set -e; for i in $(PY3VERS); do \
+	ABITAG=`python$$i -c "import sys; print(sys.abiflags)"`; \
+	[ -d $(CURDIR)/debian/python3-numpy/usr/include/python$$i$$ABITAG ] || \
+		mkdir -p $(CURDIR)/debian/python3-numpy/usr/include/python$$i$$ABITAG; \
+		dh_link -ppython3-numpy usr/lib/python3/dist-packages/numpy/core/include/numpy usr/include/python$$i$$ABITAG/numpy; \
+	done
+
+
+override_dh_gencontrol:
+	python3 debian/versions3.helper >> debian/python3-numpy.substvars
+	dh_gencontrol
+
+override_dh_compress:
+	dh_compress -X.js -Xobjects.inv -X.txt
+
+override_dh_strip:
+ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
+	dh_strip -ppython3-numpy
+endif
+
+
+override_dh_installdocs-indep:
+	dh_installdocs -i
+
+override_dh_auto_test:
+	echo "pass"
+
+override_dh_auto_install:
+	dh_auto_install
+
+	# Install for Python 3
+	set -e; for v in $(PY3VERS); do \
+		python$$v setup.py install --root=$(CURDIR)/debian/tmp --install-layout=deb; \
+	done
+
+	# yes, we need to run tests after install
+	# The reason is that numpy tries hard to not let you run it from the
+	# source directory, so we need to mess with the import order so to
+	# select the code in the installation path
+ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+	echo "TEST STARTED" `date`
+	set -e; for v in $(PY3VERS) ; do \
+		cd debian ; \
+		echo "-- running tests for "$$v" plain --" ; \
+		python$$v -c "import sys ; sys.path.insert(0, './tmp/usr/lib/python3/dist-packages/') ; import numpy; numpy.test(verbose=5)" ; \
+		cd .. ; \
+	done
+	echo "TEST ENDED" `date`
+endif

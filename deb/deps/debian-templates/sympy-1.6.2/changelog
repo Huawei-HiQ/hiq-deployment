@@ -1,0 +1,583 @@
+sympy (1.6.2-1) unstable; urgency=medium
+
+  * New upstream version 1.6.2
+  * Made a build dependency on debhelper-compat (= 12)
+
+ -- Georges Khaznadar <georgesk@debian.org>  Fri, 14 Aug 2020 17:58:31 +0200
+
+sympy (1.6.1-1) unstable; urgency=medium
+
+  * New upstream version 1.6.1
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sat, 18 Jul 2020 20:42:46 +0200
+
+sympy (1.6-4) unstable; urgency=medium
+
+  * Checked that the patch 04_doc_makefile.patch enforces the use of
+    Python3. Closes: #952251
+  * Thanks to Sébastien Villemot, Closes: #963036
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sat, 27 Jun 2020 14:19:50 +0200
+
+sympy (1.6-3) unstable; urgency=medium
+
+  * Ran `LANG=C /usr/sbin/install-docs --verbose --check
+    /usr/share/doc-base/sympy` with this result:
+    /usr/share/doc-base/sympy: No problems found.
+    So, this Closes: #943945
+  * fixed a bug in debian/sympy-live.sh, so the new configuration script
+    can enable and *also* disable the access to https://live.sympy.org
+
+ -- Georges Khaznadar <georgesk@debian.org>  Thu, 18 Jun 2020 17:42:59 +0200
+
+sympy (1.6-2) unstable; urgency=medium
+
+  * added debconf templates and a post-install script to allow one to
+    choose whether one wants to access sympy-live.org's feature, or not.
+    The default settings are to make no privacy breach.
+  * modified debian/patches/04_doc_makefile.patch to use python3 instead of
+    python.
+
+ -- Georges Khaznadar <georgesk@debian.org>  Mon, 15 Jun 2020 10:18:57 +0200
+
+sympy (1.6-1) unstable; urgency=medium
+
+  * New upstream version 1.6
+  * updated debian patches
+  * python3-sympy enhances ipython3. Closes: #885178
+  * patched /doc/ext/sympylive.py to prevent pyvacy breaches due to possible
+    connections to https://live.sympy.org
+  * patched some RST files, to repalce `\mathrm{\LaTeX}` by LaTeX.
+    Closes: #940843
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sun, 14 Jun 2020 18:20:21 +0200
+
+sympy (1.5.1-2) unstable; urgency=medium
+
+  * pulled changes coming from the previous team upload
+
+ -- Georges Khaznadar <georgesk@debian.org>  Fri, 07 Feb 2020 18:57:44 +0100
+
+sympy (1.5.1-1) unstable; urgency=medium
+
+  * new upstream version.
+
+ -- Georges Khaznadar <georgesk@debian.org>  Tue, 04 Feb 2020 19:33:22 +0100
+
+sympy (1.5-2) unstable; urgency=medium
+
+  * Team upload.
+  * Remove Python 2 module package (Closes: #938613).
+  * Rely on the libjs-mathjax package for mathjax.
+  * Use dh_sphinxdoc during package build.
+  * Add Rules-Requires-Root: no.
+  * Update Standards-Version to 4.5.0 (no changes required).
+  * Move source.lintian-overrides to updated location.
+  * Update lintian override tag to new name.
+
+ -- Stuart Prescott <stuart@debian.org>  Mon, 03 Feb 2020 06:25:39 +1100
+
+sympy (1.5-1) unstable; urgency=medium
+
+  * new upstream version
+  * created debian/patches/05_sphinx_math_dollar.patch to include the
+    sources of sphinx_math_dollar into the source tree (the sources come
+    from https://github.com/sympy/sphinx-math-dollar)
+
+ -- Georges Khaznadar <georgesk@debian.org>  Wed, 18 Dec 2019 19:16:07 +0100
+
+sympy (1.4-1) unstable; urgency=medium
+
+  * new upstream version. Updated quilt patches
+  * updated dh compatibility and Standards-Version
+  * added a build-dependency on python3-matplotlib
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sat, 27 Jul 2019 19:53:34 +0200
+
+sympy (1.3-2) unstable; urgency=medium
+
+  * added "Breaks: octave-symbolic (<< 2.7.0~git.2018.07.13-1~)" in
+    d/control for packages python-sympy and python3-sympy. Closes: #903890
+
+ -- Georges Khaznadar <georgesk@debian.org>  Fri, 11 Jan 2019 19:42:51 +0100
+
+sympy (1.3-1) unstable; urgency=medium
+
+  * Fresh upstream (Closes: #909333)
+    + fixes the issue with undefined name in exception handling
+      (NameError: global name 'sub_expr' is not defined)
+      which causes FTBFS in downstream projects (see e.g. #906388)
+  * debian/watch
+    - do not invoke debian/get_newest_source.sh to repack the tarball just
+      to rename leading dir -- should not matter
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Tue, 02 Oct 2018 10:01:44 -0400
+
+sympy (1.2-1) unstable; urgency=medium
+
+  * new upstream version
+  * reverted the ugly workaroud, as Sphinx is released with a bug fix.
+
+ -- Georges Khaznadar <georgesk@debian.org>  Fri, 13 Jul 2018 19:02:40 +0200
+
+sympy (1.1.1-7) unstable; urgency=medium
+
+  * checked again that Recommends: clause was changed into Enhances:
+    for isympy; Closes: #885178
+  * changed a build dependency: python-sphinx to python3-sphinx
+  * added an ugly workaround to prevent #896747 (file "fixSphinx");
+    Closes: #896747; additionnally reported a bug against the package
+    sphinx
+  * added a build-dependency on texlive-latex-base and
+    texlive-latex-extra, to allow sphinx to make images from math
+    formulas.
+
+ -- Georges Khaznadar <georgesk@debian.org>  Wed, 25 Apr 2018 15:39:25 +0200
+
+sympy (1.1.1-6) unstable; urgency=medium
+
+  * upgraded Standards-Version: 4.1.4
+  * changed Recommends: clauses into Enhances:
+    Closes: #882335; Closes: #885178
+
+ -- Georges Khaznadar <georgesk@debian.org>  Mon, 23 Apr 2018 15:42:07 +0200
+
+sympy (1.1.1-5) unstable; urgency=medium
+
+  * upgraded Standards-Version: 4.1.3
+  * added a build-dependency on python3-distutil. Closes: #893729
+  * changed obsolete VCS stuff to https://salsa.debian.org/science-team/sympy.git
+
+ -- Georges Khaznadar <georgesk@debian.org>  Thu, 05 Apr 2018 19:48:46 +0200
+
+sympy (1.1.1-4) unstable; urgency=medium
+
+  * Team upload
+  * debian/patches/0001-DOC-remove-duplicate-Examples-in-atom-docstring.patch
+    - to remove double Example section in one of the docstrings causing
+      sphinx to crash. Closes: #890838
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 19 Feb 2018 14:13:49 -0500
+
+sympy (1.1.1-3) unstable; urgency=medium
+
+  * modified the dependency python-imaging => python-pil. Closes: #866484
+  * introduced Enhances: isympy* stances. Closes: #882335
+  * only suggested python-sympy-doc. Closes: #882337
+  * patched the file sympy/core/function.py. Closes: #840621
+  * removed the binary package isympy, and added Provides: isympy for
+    package isympy3
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sun, 26 Nov 2017 22:39:29 +0100
+
+sympy (1.1.1-2) unstable; urgency=medium
+
+  * modified a few Recommends to become Suggests. Closes: #861741
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sun, 19 Nov 2017 18:30:35 +0100
+
+sympy (1.1.1-1) unstable; urgency=medium
+
+  * New upstream version
+  * upgraded Upstream-Version to 4.0.0
+  * modified doc/Makefile: disabled turning warning into errors
+    which prevented Sphinx to output html docs.
+
+ -- Georges Khaznadar <georgesk@debian.org>  Thu, 17 Aug 2017 01:50:25 +0200
+
+sympy (1.0-3) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Drew Parsons ]
+  * Fix broken Vcs-Browser tag.
+
+  [ Ole Streicher ]
+  * Temporarily remove python-sphinxcontrib.blockdiag build dependency
+
+ -- Ole Streicher <olebole@debian.org>  Thu, 12 Jan 2017 15:25:19 +0100
+
+sympy (1.0-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Georges Khaznadar ]
+  * added a build-dependency on python3-mpmath. Closes: #830365.
+  * Updated Standards-Version to 3.9.8
+
+  [ Drew Parsons ]
+  * Build a isympy3 package to handle python3 dependencies.
+    The common isympy script is placed in the isympy-common package.
+    Uses a /usr/bin/isympy3 wrapper script. Closes: #827740.
+  * python-sympy no longer conflicts: python-gmpy2. Closes: #829158.
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 29 Jul 2016 01:10:39 +0800
+
+sympy (1.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Updated Standards-Version to 3.9.7
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sun, 24 Apr 2016 15:40:40 +0200
+
+sympy (0.7.6.1-2) unstable; urgency=medium
+
+  * added dependencies isympy -> python-sympy | python3-sympy.
+    Closes: #815600
+
+ -- Georges Khaznadar <georgesk@debian.org>  Tue, 01 Mar 2016 18:13:45 +0100
+
+sympy (0.7.6.1-1) unstable; urgency=medium
+
+  [ georgesk ]
+  * Imported Upstream version 0.7.6.1
+
+  [ Georges Khaznadar ]
+  * Changed the way the documentation is built: the output is now
+    HTML files. Fixed a bug in Sphinx configuration.
+    Closes:  #809596
+  * Added recommends stances for python-sympy-doc. Closes: #807181
+
+ -- georgesk <georgesk@debian.org>  Sat, 02 Jan 2016 16:42:27 +0100
+
+sympy (0.7.6-4) unstable; urgency=medium
+
+  * Remove myself from uploaders
+
+ -- Sergey B Kirpichev <skirpichev@gmail.com>  Mon, 16 Nov 2015 01:27:12 +0300
+
+sympy (0.7.6-3) unstable; urgency=medium
+
+  * Refresh patch 02 with quilt refresh -pab
+    --no-index --no-timestamps --diffstat
+  * Properly remove remaining mpmath's files
+  * Try to fix latex problem with reproducible builds
+  * Use "Breaks: python-sympy" instead of Conflicts
+
+ -- Sergey B Kirpichev <skirpichev@gmail.com>  Wed, 15 Jul 2015 14:30:45 +0300
+
+sympy (0.7.6-2) experimental; urgency=medium
+
+  * fixed a copyright issue regarding static files embedded by Sphinx
+
+ -- Georges Khaznadar <georgesk@debian.org>  Wed, 11 Mar 2015 17:32:16 +0100
+
+sympy (0.7.6-1) experimental; urgency=medium
+
+  * upgraded to the new upstream version
+  * added a line in debian/rules to remove embedded mpmath files
+  * refreshed debian patches
+  * upgraded Standards-Version to 3.9.7
+
+ -- Georges Khaznadar <georgesk@debian.org>  Fri, 06 Mar 2015 16:29:20 +0100
+
+sympy (0.7.5-4) unstable; urgency=medium
+
+  [ Sergey B Kirpichev ]
+  * upgraded Standards-Version to 3.9.6
+  * Removed debian/docs and related files
+  * Build documentation package (Closes: #641471)
+  * Remove python-setuptools from Build-Depends
+  * Build sympy package for python3 (Closes: #748730)
+  * Make isympy package
+  * Added Vcs-* fields
+  * Correct Recommends field for py3 package
+  * Fix Recommends field for py2 package
+  * Add lintian overrides for --pedantic warnings
+  * Adopt dep5 copyright format
+  * Fix isympy binary (sha-bang with default python)
+  * Move the package under the Debian Science team umbrella
+  * Bump-up debhelper compat level to 9
+
+  [ Georges Khaznadar ]
+  * added myself as uploader
+  * added a build-dependency: graphviz, wich allows the build process
+    to make a better documentation
+  * declared that isympy Conflicts: python-sympy (<< 0.7.5-4) because
+    it provides the man file for isympy, which was part of the package
+    python-sympy formerly.
+
+ -- Sergey B Kirpichev <skirpichev@gmail.com>  Mon, 27 Oct 2014 02:55:15 +0300
+
+sympy (0.7.5-3) unstable; urgency=medium
+
+  * Unbundle mpmath (Closes: #541746)
+  * Recommend: python-pyglet (Closes: #459716)
+  * Add myself to Uploaders
+  * Fix I:hyphen-used-as-minus-sign lintian errors
+  * Fix Homepage
+
+ -- Sergey B Kirpichev <skirpichev@gmail.com>  Tue, 30 Sep 2014 14:37:22 +0400
+
+sympy (0.7.5-2) unstable; urgency=medium
+
+  * applied Sergey B Kirpichev's patch. Closes: #730975
+
+ -- Georges Khaznadar <georgesk@debian.org>  Thu, 06 Mar 2014 02:12:04 +0100
+
+sympy (0.7.5-1) unstable; urgency=medium
+
+  * upgraded to the newest upstream version
+  * changed d/python-sympy.install to fit the new logo's png location
+
+ -- Georges Khaznadar <georgesk@debian.org>  Thu, 06 Mar 2014 01:33:23 +0100
+
+sympy (0.7.4.1-1) unstable; urgency=medium
+
+  * updated the watch file and created a script to download and adjust the
+    newest source package
+  * upgraded to the newest upstream version. Closes: #727133
+  * upgraded Standards-Version to 3.9.5
+  * updated the homepage location (now on github.com)
+  * removed the VCS fieds from debian/control. Closes: #718370
+    - declared myself as maintainer;
+    - removed the XS-DM-Upload-Allowed field.
+  * removed the X-Python-Version field, since Python 2.5 has disappeared
+    from current Debian distributions.
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sun, 05 Jan 2014 17:47:43 +0100
+
+sympy (0.7.2-1) unstable; urgency=low
+
+  * modified my DEBEMAIL
+  * modified debian/watch to fit Googlecode's changes
+  * bumped Standards-Version to 3.9.3
+  * upgraded to the newest upstream version. Closes:#585334; Closes:#635364
+  * created debian/test-summary.txt, the test suite took half an hour.
+    presumabily Closes:#606528
+  * removed README from debian/docs, added debian/test-summary.txt
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sun, 13 Jan 2013 15:35:52 +0100
+
+sympy (0.7.1.rc1-3) unstable; urgency=low
+
+  * applied Jakub Wilk's patch. Closes: #592563.
+
+ -- Georges Khaznadar <georgesk@ofset.org>  Sun, 01 Jul 2012 11:52:17 +0200
+
+sympy (0.7.1.rc1-2) unstable; urgency=low
+
+  * added packages texlive-fonts-extra and dvipng to Recommends:
+    LP: #742658
+
+ -- Georges Khaznadar <georgesk@ofset.org>  Sun, 11 Dec 2011 20:03:06 +0100
+
+sympy (0.7.1.rc1-1) unstable; urgency=low
+
+  * upgraded to the new upstream version. Closes: #606529
+  * added recommends: python-numpy Closes: #592566
+  * changed debian/rules to use debhelper. Switched to source format 3.0 (quilt)
+  * removed a few files which are not well compiled (some mess with a mix
+    of python3 and python2.x) from the package
+  * modified the versioned dependency on debhelper to allow override_dh targets
+  * fixed the file debian/watch which was broken (general googlecode issue)
+  * bumped Standards-Version 3.8.4 --> 3.9.2
+
+ -- Georges Khaznadar <georgesk@ofset.org>  Fri, 16 Sep 2011 10:51:38 +0200
+
+sympy (0.6.7-1.1) unstable; urgency=low
+
+  * Non-maintainer upload (per Ondrej blessing).
+  * Reducing python-all build-depends  to (>=2.5) for the joy of easy porting.
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Mon, 10 May 2010 22:43:46 -0400
+
+sympy (0.6.7-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Standards-Version to 3.8.4 (no changes required)
+  * debian/rules: no need to delete /usr/bin/test and /usr/bin/doctest anymore
+    (fixed upstream)
+  * debian/rules: removed the pycentral hack (not applicable anymore)
+  * debian/control: use python-all, instead of python-all-dev (fixes a lintian
+    warning)
+
+ -- Ondrej Certik <ondrej@certik.cz>  Mon, 29 Mar 2010 15:58:52 -0700
+
+sympy (0.6.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Standards-Version to 3.8.3 (no changes required)
+  * debian/rules: delete /usr/bin/test and /usr/bin/doctest, because it
+    conflicts with other packages and it is not necessary to have it
+
+ -- Ondrej Certik <ondrej@certik.cz>  Sat, 26 Dec 2009 20:55:10 +0100
+
+sympy (0.6.4-1) unstable; urgency=low
+
+  * New upstream release
+  * New debian policy update (no changes needed)
+  * XB-Python-Version and XS-Python-Version removed, as they are not needed for
+    python-support
+
+ -- Ondrej Certik <ondrej@certik.cz>  Sun, 05 Apr 2009 22:51:18 -0700
+
+sympy (0.6.3-1) unstable; urgency=low
+
+  [ Sandro Tosi ]
+  * debian/control
+    - switch Vcs-Browser field to viewsvn
+
+  [ Ondrej Certik ]
+  * New upstream release.
+
+ -- Ondrej Certik <ondrej@certik.cz>  Wed, 19 Nov 2008 23:45:28 +0100
+
+sympy (0.6.2-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Ondrej Certik <ondrej@certik.cz>  Fri, 22 Aug 2008 12:00:37 +0200
+
+sympy (0.6.1-1) unstable; urgency=low
+
+  * New upstream version
+  * standards-version updated to 3.8.0 (no changes needed)
+
+ -- Ondrej Certik <ondrej@certik.cz>  Wed, 23 Jul 2008 11:19:17 +0200
+
+sympy (0.6.0-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Ondrej Certik <ondrej@certik.cz>  Thu, 10 Jul 2008 12:32:34 +0200
+
+sympy (0.5.15-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Ondrej Certik <ondrej@certik.cz>  Tue, 03 Jun 2008 09:41:04 +0200
+
+sympy (0.5.14-1) unstable; urgency=low
+
+  * New upstream version
+  * Depend on lower python-support version for easier rebuilds.
+
+ -- Ondrej Certik <ondrej@certik.cz>  Mon, 14 Apr 2008 09:24:49 +0200
+
+sympy (0.5.13-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Ondrej Certik <ondrej@certik.cz>  Thu, 20 Mar 2008 09:42:04 +0100
+
+sympy (0.5.12-1) unstable; urgency=low
+
+  * New upstream version (Closes: #459313)
+  * debian/copyright updated
+  * README.Debian improved
+
+ -- Ondrej Certik <ondrej@certik.cz>  Mon, 28 Jan 2008 16:49:25 +0100
+
+sympy (0.5.11-1) unstable; urgency=low
+
+  * New upstream version (Closes: #459076)
+  * ipython added to recommends (Closes: #459411)
+  * libgtkmathview-bin, python-opengl removed from recommends
+  * debian/copyright updated
+  * menu item is installed for isympy (Closes: #459316)
+
+ -- Ondrej Certik <ondrej@certik.cz>  Tue, 08 Jan 2008 21:19:16 +0100
+
+sympy (0.5.9-1) unstable; urgency=low
+
+  * New upstream version
+  * Standards version updated to 3.7.3
+  * moved from pycentral to pysupport
+
+ -- Ondrej Certik <ondrej@certik.cz>  Sat, 22 Dec 2007 14:51:21 +0100
+
+sympy (0.5.8-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Ondrej Certik <ondrej@certik.cz>  Thu, 06 Dec 2007 15:19:01 +0100
+
+sympy (0.5.7-2) unstable; urgency=low
+
+  * DM-Upload-Allowed changed to XS-DM-Upload-Allowed
+
+ -- Ondrej Certik <ondrej@certik.cz>  Tue, 04 Dec 2007 22:30:04 +0100
+
+sympy (0.5.7-1) unstable; urgency=low
+
+  [ Ondrej Certik ]
+  * New upstream version
+
+  [ Piotr Ożarowski ]
+  * Add DM-Upload-Allowed: yes
+
+ -- Ondrej Certik <ondrej@certik.cz>  Tue, 27 Nov 2007 22:13:07 +0100
+
+sympy (0.5.5-1) unstable; urgency=low
+
+  * New upstream version
+  * The long description improved to include the word "manipulation", which
+    applies to this package
+
+ -- Ondrej Certik <ondrej@certik.cz>  Sat, 20 Oct 2007 23:49:03 +0200
+
+sympy (0.5.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Homepage field added
+  * Rename XS-Vcs-* fields to Vcs-* (dpkg supports them now)
+
+ -- Ondrej Certik <ondrej@certik.cz>  Sat, 06 Oct 2007 22:33:33 +0200
+
+sympy (0.5.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ondrej Certik <ondrej@certik.cz>  Fri, 14 Sep 2007 16:54:48 +0200
+
+sympy (0.5.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Removing linda override, since it doesn't stop linda from complaining
+  * Removing tests from /usr/share/doc/python-sympy/tests (upstream ships them
+    inside the site-packages dir, we simply remove them in the Debian package)
+  * Not building man page, since upstream ships it by default
+  * Removing the dependency on python-libxslt1 and python-libxml2 since the
+    upstream no longer depends on them
+  * Added python-imaging and python-ctypes to Depends (for pyglet module)
+
+ -- Ondrej Certik <ondrej@certik.cz>  Tue, 21 Aug 2007 18:59:54 -0700
+
+sympy (0.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ondrej Certik <ondrej@certik.cz>  Sun, 08 Jul 2007 03:23:19 +0200
+
+sympy (0.4.1-1) unstable; urgency=low
+
+  * New upstream version.
+  * added tests to /usr/share/doc/python-sympy/tests/
+  * added SymPy's logo to /usr/share/pixmaps
+  * debian/python-sympy.linda-overrides: added
+  * Added python-opengl to Recommends
+
+ -- Ondrej Certik <ondrej@certik.cz>  Tue, 19 Jun 2007 11:25:37 +0200
+
+sympy (0.4.0-1) unstable; urgency=low
+
+  * New upstream version.
+  * changed the long description according to the upstream webpage
+  * put all upstream authors, the creator and the license of the SymPy's logo
+    into the copyright file
+
+ -- Ondrej Certik <ondrej@certik.cz>  Mon, 18 Jun 2007 17:41:34 +0200
+
+sympy (0.4~pre+svn780-2) unstable; urgency=low
+
+  * Added Debian Python Modules Team to Uploaders
+  * Changed "XS-Python-Version: all" to "XS-Python-Version: >=2.4"
+
+ -- Ondrej Certik <ondrej@certik.cz>  Wed, 16 May 2007 12:51:06 +0200
+
+sympy (0.4~pre+svn780-1) unstable; urgency=low
+
+  * Initial Debian release (closes: #418410)
+
+ -- Ondrej Certik <ondrej@certik.cz>  Sun, 13 May 2007 17:52:55 +0200

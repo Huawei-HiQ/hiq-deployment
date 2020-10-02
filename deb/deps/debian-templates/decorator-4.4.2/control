@@ -1,0 +1,35 @@
+Source: python-decorator
+Section: python
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Piotr Ożarowski <piotr@debian.org>
+Build-Depends:
+ debhelper (>= 10),
+ dh-python,
+ python3-all,
+ python3-setuptools
+Rules-Requires-Root: no
+Standards-Version: 4.1.1
+Vcs-Git: https://git.launchpad.net/~ubuntu-server-dev/ubuntu/+source/python-decorator
+Vcs-Browser: https://git.launchpad.net/~ubuntu-server-dev/ubuntu/+source/python-decorator
+Homepage: https://pypi.python.org/pypi/decorator
+
+Package: python3-decorator
+Architecture: all
+Multi-Arch: foreign
+Depends: ${python3:Depends}, ${misc:Depends}
+Description: simplify usage of Python decorators by programmers
+ Python 2.4 decorators have significantly changed the way Python programs are
+ structured.
+    * decorators help reduce boilerplate code;
+    * decorators help the separation of concerns;
+    * decorators enhance readability and maintainability;
+    * decorators are very explicit.
+ Still, as of now, writing custom decorators correctly requires some
+ experience and is not as easy as it could be. For instance, typical
+ implementations of decorators involve nested functions and we all know that
+ flat is better than nested.
+ The aim of the decorator module it to simplify the usage of decorators for
+ the average programmer and to popularize decorators usage giving examples of
+ useful decorators, such as memoize, tracing, redirecting_stdout, locked, etc.

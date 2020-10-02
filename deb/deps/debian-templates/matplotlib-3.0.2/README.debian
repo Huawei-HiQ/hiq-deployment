@@ -1,0 +1,57 @@
+MatplotLib Data Directory
+-------------------------
+
+For various functions to work, for example 
+
+  help() -> modules
+
+you need to set the environmental variable:
+
+  $ export MATPLOTLIBDATA=/usr/share/matplotlib/
+
+
+Change the backend
+------------------
+
+From matplotlib version 0.98.3-6 the default backend in Debian is 'TkAgg', the
+simplest backend available in most context.
+
+If you want to change it, you have two ways: system wide, changing the file
+
+  /etc/matplotlibrc
+
+or on a user basis, changing the file
+
+  $HOME/.config/matplotlib/matplotlibrc
+
+to add or modify a line like this:
+
+  backend : <backend>
+
+  # You can also deploy your own backend outside of matplotlib by
+  # referring to the module name (which must be in the PYTHONPATH) as
+  # 'module://my_backend'.
+
+  # The Agg, Ps, Pdf and SVG backends do not require external
+  # dependencies. Do not choose GTK, GTKAgg, GTKCairo, TkAgg or WXAgg if
+  # you have disabled the relevant extension modules.
+
+so usually, you can have a backend if you have the Python bindings installed:
+
+  GTK is no longer available for Debian, so use GTK3
+  Tk   -> python-tk
+  QT   -> python-qt4, python-sip
+  WX   -> python-wxgtk2.6 or python-wxgtk2.8
+  GTK3 -> gir1.2-gtk-3.0, python-gi, python-gobject
+
+
+Use MatplotLib with pkg_resources.require()
+-------------------------------------------
+
+If you want to use MatplotLib like this:
+
+  python -c 'import pkg_resources; pkg_resources.require("matplotlib")'
+
+(also in the Python3 flavour), you'll have to instal python-nose and
+python-tornado (as specified in the Suggest field) or python3-nose and
+python3-tornado if you're aiming at py3k.

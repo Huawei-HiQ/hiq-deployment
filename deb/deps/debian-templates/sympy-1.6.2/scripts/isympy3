@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# enforces a python3 invocation of isympy
+PYTHON3=python3
+ISYMPY=/usr/bin/isympy
+
+
+# first preserve quotes in command line arguments
+# i.e. replace quotes around arguments which contain whitespace
+ARGS=()
+whitespace="[[:space:]]"
+for a in "$@"
+do
+    if [[ $a =~ ${whitespace} ]]
+    then
+        a=\"$a\"
+    fi
+    ARGS+=("${a}")
+done
+
+
+${PYTHON3} ${ISYMPY} "${ARGS[@]}"
+

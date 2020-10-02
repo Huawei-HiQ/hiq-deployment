@@ -1,0 +1,141 @@
+removed `\mathrm{\LaTeX}` code snippets which Sphinx does not
+translate correctly, replaced them with LaTeX. Closes debian bug #940843
+Index: sympy/doc/src/install.rst
+===================================================================
+--- sympy.orig/doc/src/install.rst
++++ sympy/doc/src/install.rst
+@@ -20,7 +20,7 @@ more useful packages for scientific comp
+ many nice features of SymPy are only enabled when certain libraries are
+ installed.  For example, without Matplotlib, only simple text-based plotting
+ is enabled.  With the IPython notebook or qtconsole, you can get nicer
+-`\mathrm{\LaTeX}` printing by running ``init_printing()``.
++LaTeX printing by running ``init_printing()``.
+ 
+ If you already have Anaconda and want to update SymPy to the latest version,
+ use::
+Index: sympy/doc/src/modules/parsing.rst
+===================================================================
+--- sympy.orig/doc/src/modules/parsing.rst
++++ sympy/doc/src/modules/parsing.rst
+@@ -58,19 +58,19 @@ don't need to be manually added by the u
+ 
+ .. autofunction:: sympy.parsing.sympy_parser.factorial_notation
+ 
+-Experimental `\mathrm{\LaTeX}` Parsing
++Experimental LaTeX Parsing
+ --------------------------------------
+ 
+-`\mathrm{\LaTeX}` parsing was ported from
++LaTeX parsing was ported from
+ `latex2sympy <https://github.com/augustt198/latex2sympy>`_. While functional
+ and its API should remain stable, the parsing behavior or backend may change in
+ future releases.
+ 
+-`\mathrm{\LaTeX}` Parsing Caveats
++LaTeX Parsing Caveats
+ ---------------------------------
+ 
+ The current implementation is experimental. The behavior, parser backend and
+-API might change in the future. Unlike some of the other parsers, `\mathrm{\LaTeX}` is
++API might change in the future. Unlike some of the other parsers, LaTeX is
+ designed as a *type-setting* language, not a *computer algebra system* and so
+ can contain typographical conventions that might be interpreted multiple ways.
+ 
+@@ -83,12 +83,12 @@ Will simply find ``x``. What is covered
+ change between releases, and become stricter, more relaxed, or some mix.
+ 
+ 
+-`\mathrm{\LaTeX}` Parsing Functions Reference
++LaTeX Parsing Functions Reference
+ ---------------------------------------------
+ 
+ .. autofunction:: sympy.parsing.latex.parse_latex
+ 
+-`\mathrm{\LaTeX}` Parsing Exceptions Reference
++LaTeX Parsing Exceptions Reference
+ ----------------------------------------------
+ 
+ .. autoclass:: sympy.parsing.latex.LaTeXParsingError
+Index: sympy/doc/src/tutorial/intro.rst
+===================================================================
+--- sympy.orig/doc/src/tutorial/intro.rst
++++ sympy/doc/src/tutorial/intro.rst
+@@ -109,7 +109,7 @@ to do all sorts of computations symbolic
+ compute derivatives, integrals, and limits, solve equations, work with
+ matrices, and much, much more, and do it all symbolically.  It includes
+ modules for plotting, printing (like 2D pretty printed output of math
+-formulas, or `\mathrm{\LaTeX}`), code generation, physics, statistics, combinatorics,
++formulas, or LaTeX), code generation, physics, statistics, combinatorics,
+ number theory, geometry, logic, and more. Here is a small sampling of the sort
+ of symbolic power SymPy is capable of, to whet your appetite.
+ 
+@@ -173,7 +173,7 @@ spherical Bessel function `j_\nu(z)`.
+   ────────────────────
+            √π
+ 
+-Print `\int_{0}^{\pi} \cos^{2}{\left (x \right )}\, dx` using `\mathrm{\LaTeX}`.
++Print `\int_{0}^{\pi} \cos^{2}{\left (x \right )}\, dx` using LaTeX.
+ 
+   >>> latex(Integral(cos(x)**2, (x, 0, pi)))
+   \int\limits_{0}^{\pi} \cos^{2}{\left(x \right)}\, dx
+Index: sympy/doc/src/tutorial/preliminaries.rst
+===================================================================
+--- sympy.orig/doc/src/tutorial/preliminaries.rst
++++ sympy/doc/src/tutorial/preliminaries.rst
+@@ -47,7 +47,7 @@ the tutorial to experiment.
+ To show or hide the SymPy Live shell at any time, just click the green button
+ on the bottom right of the screen.
+ 
+-By default, the SymPy Live shell uses `\mathrm{\LaTeX}` for output.  If you want the
++By default, the SymPy Live shell uses LaTeX for output.  If you want the
+ output to look more like the output in the documentation, change the
+ output format to ``Str`` or ``Unicode`` in the settings.
+ 
+Index: sympy/doc/src/tutorial/printing.rst
+===================================================================
+--- sympy.orig/doc/src/tutorial/printing.rst
++++ sympy/doc/src/tutorial/printing.rst
+@@ -65,17 +65,17 @@ create some common Symbols, setup plotti
+ 
+ In any case, this is what will happen:
+ 
+-- In the IPython QTConsole, if `\mathrm{\LaTeX}` is installed, it will enable a printer
+-  that uses `\mathrm{\LaTeX}`.
++- In the IPython QTConsole, if LaTeX is installed, it will enable a printer
++  that uses LaTeX.
+ 
+   .. image:: ../pics/ipythonqtconsole.png
+      :height: 500
+ 
+-  If `\mathrm{\LaTeX}` is not installed, but Matplotlib is installed, it will use the
++  If LaTeX is not installed, but Matplotlib is installed, it will use the
+   Matplotlib rendering engine. If Matplotlib is not installed, it uses the
+   Unicode pretty printer.
+ 
+-- In the IPython notebook, it will use MathJax to render `\mathrm{\LaTeX}`.
++- In the IPython notebook, it will use MathJax to render LaTeX.
+ 
+   .. image:: ../pics/ipythonnotebook.png
+      :height: 250
+@@ -92,7 +92,7 @@ In any case, this is what will happen:
+   .. image:: ../pics/consoleascii.png
+      :width: 700
+ 
+-To explicitly not use `\mathrm{\LaTeX}`, pass ``use_latex=False`` to ``init_printing()``
++To explicitly not use LaTeX, pass ``use_latex=False`` to ``init_printing()``
+ or ``init_session()``.  To explicitly not use Unicode, pass
+ ``use_unicode=False``.
+ 
+@@ -183,10 +183,10 @@ pass ``use_unicode=True`` to force it to
+ 
+ .. _LaTeX:
+ 
+-`\mathrm{\LaTeX}`
++LaTeX
+ -----------------
+ 
+-To get the `\mathrm{\LaTeX}` form of an expression, use ``latex()``.
++To get the LaTeX form of an expression, use ``latex()``.
+ 
+     >>> print(latex(Integral(sqrt(1/x), x)))
+     \int \sqrt{\frac{1}{x}}\, dx

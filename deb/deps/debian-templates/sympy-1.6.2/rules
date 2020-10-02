@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+
+export PYBUILD_DESTDIR_python3=debian/python3-sympy/
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh  $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_auto_build:
+	dh_auto_build
+	faketime "`dpkg-parsechangelog -S date`" \
+		sh -c '(cd doc/; make html)'
+
+override_dh_auto_install:
+	dh_auto_install
+	mv debian/python3-sympy/usr/bin/isympy debian/isympy-common/usr/bin/
+	mv debian/python3-sympy/usr/share/man/man1/* \
+		debian/isympy-common/usr/share/man/man1/
+	rm -rf debian/python*-sympy/usr/bin/
+	rm -rf debian/python*-sympy/usr/share/man/
+	# Get rid of embedded mpmath.  Unfortunately, we
+	# can't remove all files with quilt (empty files, for example).
+	rm -rf debian/python*-sympy/usr/lib/python*/dist-packages/sympy/mpmath/
+
+override_dh_auto_clean:
+	dh_auto_clean
+	(cd doc/; make clean)
+	rm -rf sympy.egg-info
+
+override_dh_auto_test:

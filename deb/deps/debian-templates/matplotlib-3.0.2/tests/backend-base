@@ -1,0 +1,37 @@
+#!/bin/sh
+set -efu
+
+DEBUG=${DEBUG:-yes}
+
+export HOME=$AUTOPKGTEST_TMP
+cd $AUTOPKGTEST_TMP
+
+echo "=== $BACKEND ==="
+
+cat << EOF > test.py
+# https://github.com/matplotlib/matplotlib/issues/3505
+import sys
+sys.ps1 = 'SOMETHING'
+import matplotlib
+matplotlib.use("$BACKEND")
+import matplotlib.pyplot as plt
+
+plt.ion()
+plt.plot(range(5), range(5))
+plt.show()
+plt.gca().figure.canvas.draw()
+plt.savefig('test.png')
+EOF
+
+for py in $pys; do
+    echo "=== $py ==="
+    xvfb-run -a -s "-screen 0 1280x1024x24 -noreset" $py test.py
+    rm test.png
+
+    if [ "$DEBUG" = "yes" ]; then
+      echo "=== $py-dbg ==="
+      xvfb-run -a -s "-screen 0 1280x1024x24 -noreset" $py-dbg test.py 2>&1
+      rm test.png
+    fi
+done
+

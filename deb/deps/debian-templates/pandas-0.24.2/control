@@ -1,0 +1,152 @@
+Source: pandas
+Section: python
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Yaroslav Halchenko <debian@onerussian.com>,
+           Michael Hanke <michael.hanke@gmail.com>,
+           Rebecca N. Palmer <rebecca_palmer@zoho.com>
+Build-Depends:
+ debhelper-compat (= 12),
+ dh-python,
+ locales-all,
+ quilt,
+ python3-all-dev,
+ python3-setuptools,
+ cython3 (>= 0.29.13~),
+ python3-bs4 <!nocheck> <!nodoc>,
+ python3-dateutil,
+ python3-hypothesis <!nocheck> <!nodoc>,
+ python3-html5lib <!nocheck> <!nodoc>,
+ python3-lxml <!nocheck> <!nodoc>,
+ python3-matplotlib [!hurd-i386],
+ python3-nose <!nocheck> <!nodoc>,
+ python3-numpy,
+ python3-openpyxl <!nocheck> <!nodoc>,
+ python3-pytest (>= 4.0.2~) <!nocheck> <!nodoc>,
+ python3-pytest-xdist <!nocheck> <!nodoc>,
+ python3-pytest-forked <!nocheck> <!nodoc>,
+ python3-scipy,
+ python3-six,
+ python3-tables (>= 3.4.2~) [!m68k !sh4 !x32] <!nocheck> <!nodoc>,
+ python3-tk <!nocheck> <!nodoc>,
+ python3-tz <!nocheck> <!nodoc>,
+ python3-xlsxwriter <!nocheck> <!nodoc>,
+ python3-xlrd <!nocheck> <!nodoc>,
+ python3-xlwt <!nocheck> <!nodoc>,
+ xvfb <!nocheck>,
+ xauth <!nocheck>,
+ xclip <!nocheck>,
+Build-Depends-Indep:
+ python3-sphinx <!nodoc>,
+ python3-nbsphinx <!nodoc>,
+ python3-ipykernel <!nodoc>,
+ python3-numpydoc <!nodoc>,
+ python3-nbconvert (>= 5.4.1~) <!nodoc>,
+ ipython3 <!nodoc>,
+ jdupes <!nodoc>,
+# for style.ipynb
+ pandoc <!nodoc>,
+# for intersphinx inventories
+ python3-doc <!nodoc>,
+ python-numpy-doc <!nodoc>,
+ python-scipy-doc <!nodoc>,
+ python-matplotlib-doc <!nodoc>,
+ python-statsmodels-doc <!nodoc>,
+# these are for not having (as many) exception messages in documentation examples
+# so may be temporarily removed if they are broken or to break bootstrap cycles
+# not in Debian (not to be confused with python3-arrow) python3-pyarrow <!nodoc>,
+ python3-rpy2 <!nodoc>,
+ python3-sqlalchemy <!nodoc>,
+ python3-statsmodels <!nodoc>,
+ python3-xarray <!nodoc>,
+ python3-ipywidgets <!nodoc>,
+ python3-seaborn <!nodoc>
+Standards-Version: 4.1.1
+# TODO for 4.4.1: release notes install (Policy 12.7)
+Rules-Requires-Root: no
+Homepage: https://pandas.pydata.org/
+Vcs-Browser: https://salsa.debian.org/science-team/pandas
+Vcs-Git: https://salsa.debian.org/science-team/pandas.git
+
+Package: python3-pandas
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends},
+         python3-numpy (>= 1:1.15~),
+         python3-dateutil,
+         python3-pandas-lib(>= ${source:Version}),
+         python3-pkg-resources,
+         python3-six,
+Recommends: python3-scipy,
+            python3-matplotlib,
+            python3-numexpr,
+            python3-tables,
+            python3-tz,
+            python3-xlrd,
+            python3-openpyxl, python3-xlwt,
+            python3-bs4,
+            python3-html5lib,
+            python3-lxml,
+Suggests: python-pandas-doc,
+          python3-statsmodels
+# 0.23 -> 0.25 API breaks, #931557 - assumes the not-yet-fixed ones are fixed on next upload, but is better than nothing
+Breaks: cnvkit (<< 0.9.6-1.1),
+        python3-feather-format (<< 0.3.1+dfsg1-2.1),
+        python3-skbio (<< 0.5.5-2.1),
+        python3-statsmodels (<< 0.10.0~),
+        q2-types (<< 2019.7.0-1.1)
+Description: data structures for "relational" or "labeled" data
+ pandas is a Python package providing fast, flexible, and expressive
+ data structures designed to make working with "relational" or
+ "labeled" data both easy and intuitive. It aims to be the fundamental
+ high-level building block for doing practical, real world data
+ analysis in Python. pandas is well suited for many different kinds of
+ data:
+ .
+  - Tabular data with heterogeneously-typed columns, as in an SQL
+    table or Excel spreadsheet
+  - Ordered and unordered (not necessarily fixed-frequency) time
+    series data.
+  - Arbitrary matrix data (homogeneously typed or heterogeneous) with
+    row and column labels
+  - Any other form of observational / statistical data sets. The data
+    actually need not be labeled at all to be placed into a pandas
+    data structure
+ .
+ This package contains the Python 3 version.
+
+Package: python-pandas-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends},
+         libjs-jquery,
+         libjs-requirejs,
+         libjs-mathjax
+Suggests: python3-pandas
+Description: data structures for "relational" or "labeled" data - documentation
+ pandas is a Python package providing fast, flexible, and expressive
+ data structures designed to make working with "relational" or
+ "labeled" data both easy and intuitive. It aims to be the fundamental
+ high-level building block for doing practical, real world data
+ analysis in Python. pandas is well suited for many different kinds of
+ data:
+ .
+  - Tabular data with heterogeneously-typed columns, as in an SQL
+    table or Excel spreadsheet
+  - Ordered and unordered (not necessarily fixed-frequency) time
+    series data.
+  - Arbitrary matrix data (homogeneously typed or heterogeneous) with
+    row and column labels
+  - Any other form of observational / statistical data sets. The data
+    actually need not be labeled at all to be placed into a pandas
+    data structure
+ .
+ This package contains the documentation.
+
+Package: python3-pandas-lib
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, python3-numpy (>=1:1.15~)
+Description: low-level implementations and bindings for pandas
+ This is a low-level package for python3-pandas providing
+ architecture-dependent extensions.
+ .
+ Users should not need to install it directly.

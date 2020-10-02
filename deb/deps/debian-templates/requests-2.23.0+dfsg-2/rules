@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=requests
+
+BUILD_DATE  = $(shell LC_ALL=C date -u "+%B %d, %Y" -d "@$(SOURCE_DATE_EPOCH)")
+SPHINXOPTS := -D html_last_updated_fmt="$(BUILD_DATE)"
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+# The test suite is disabled.
+# Test requires fixed version of pytest-httpbin and
+# doesn't work with newer one
+override_dh_auto_test:
+
+override_dh_installchangelogs:
+	dh_installchangelogs HISTORY.md
+
+override_dh_sphinxdoc:
+ifeq (,$(findstring nodocs, $(DEB_BUILD_OPTIONS)))
+	PYTHONPATH=. python3 -m sphinx $(SPHINXOPTS) -N -bhtml docs/ \
+		debian/python-requests-doc/usr/share/doc/python-requests-doc/html/
+
+	dh_sphinxdoc
+endif

@@ -1,0 +1,360 @@
+From: Dmitry Shachnev <mitya57@debian.org>
+Date: Sun, 8 Jul 2018 16:15:31 +0300
+Subject: Replace snowballstemmer usage with PyStemmer
+
+The snowballstemmer module uses PyStemmer (bindings for libstemmer_c)
+when it is available, and falls back to its own pure Python implementation
+otherwise.
+
+To avoid an extra dependency we can use PyStemmer directly.
+---
+ Sphinx.egg-info/requires.txt | 1 -
+ setup.py                     | 1 -
+ sphinx/search/da.py          | 4 ++--
+ sphinx/search/de.py          | 4 ++--
+ sphinx/search/es.py          | 4 ++--
+ sphinx/search/fi.py          | 4 ++--
+ sphinx/search/fr.py          | 4 ++--
+ sphinx/search/hu.py          | 4 ++--
+ sphinx/search/it.py          | 4 ++--
+ sphinx/search/nl.py          | 4 ++--
+ sphinx/search/no.py          | 4 ++--
+ sphinx/search/pt.py          | 4 ++--
+ sphinx/search/ro.py          | 4 ++--
+ sphinx/search/ru.py          | 4 ++--
+ sphinx/search/sv.py          | 4 ++--
+ sphinx/search/tr.py          | 4 ++--
+ 16 files changed, 28 insertions(+), 30 deletions(-)
+
+diff --git a/Sphinx.egg-info/requires.txt b/Sphinx.egg-info/requires.txt
+index d1270c0..b4fa1e6 100644
+--- a/Sphinx.egg-info/requires.txt
++++ b/Sphinx.egg-info/requires.txt
+@@ -7,7 +7,6 @@ sphinxcontrib-qthelp
+ Jinja2>=2.3
+ Pygments>=2.0
+ docutils>=0.12
+-snowballstemmer>=1.1
+ babel>=1.3
+ alabaster<0.8,>=0.7
+ imagesize
+diff --git a/setup.py b/setup.py
+index a427d54..685092d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -24,7 +24,6 @@ install_requires = [
+     'Jinja2>=2.3',
+     'Pygments>=2.0',
+     'docutils>=0.12',
+-    'snowballstemmer>=1.1',
+     'babel>=1.3',
+     'alabaster>=0.7,<0.8',
+     'imagesize',
+diff --git a/sphinx/search/da.py b/sphinx/search/da.py
+index b04679e..2a3fde1 100644
+--- a/sphinx/search/da.py
++++ b/sphinx/search/da.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -127,7 +127,7 @@ class SearchDanish(SearchLanguage):
+     stopwords = danish_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('danish')
++        self.stemmer = Stemmer.Stemmer('danish')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/de.py b/sphinx/search/de.py
+index ae1827b..c33dc4b 100644
+--- a/sphinx/search/de.py
++++ b/sphinx/search/de.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -310,7 +310,7 @@ class SearchGerman(SearchLanguage):
+     stopwords = german_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('german')
++        self.stemmer = Stemmer.Stemmer('german')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/es.py b/sphinx/search/es.py
+index 1009961..49a3c99 100644
+--- a/sphinx/search/es.py
++++ b/sphinx/search/es.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -370,7 +370,7 @@ class SearchSpanish(SearchLanguage):
+     stopwords = spanish_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('spanish')
++        self.stemmer = Stemmer.Stemmer('spanish')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/fi.py b/sphinx/search/fi.py
+index 67bee89..ef209f0 100644
+--- a/sphinx/search/fi.py
++++ b/sphinx/search/fi.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -120,7 +120,7 @@ class SearchFinnish(SearchLanguage):
+     stopwords = finnish_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('finnish')
++        self.stemmer = Stemmer.Stemmer('finnish')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/fr.py b/sphinx/search/fr.py
+index b152718..0f108cc 100644
+--- a/sphinx/search/fr.py
++++ b/sphinx/search/fr.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -206,7 +206,7 @@ class SearchFrench(SearchLanguage):
+     stopwords = french_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('french')
++        self.stemmer = Stemmer.Stemmer('french')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/hu.py b/sphinx/search/hu.py
+index 0857733..3dc29bd 100644
+--- a/sphinx/search/hu.py
++++ b/sphinx/search/hu.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -234,7 +234,7 @@ class SearchHungarian(SearchLanguage):
+     stopwords = hungarian_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('hungarian')
++        self.stemmer = Stemmer.Stemmer('hungarian')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/it.py b/sphinx/search/it.py
+index e76cd99..ed0d654 100644
+--- a/sphinx/search/it.py
++++ b/sphinx/search/it.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -323,7 +323,7 @@ class SearchItalian(SearchLanguage):
+     stopwords = italian_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('italian')
++        self.stemmer = Stemmer.Stemmer('italian')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/nl.py b/sphinx/search/nl.py
+index 0e2e2ef..e9af13a 100644
+--- a/sphinx/search/nl.py
++++ b/sphinx/search/nl.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -134,7 +134,7 @@ class SearchDutch(SearchLanguage):
+     stopwords = dutch_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('dutch')
++        self.stemmer = Stemmer.Stemmer('dutch')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/no.py b/sphinx/search/no.py
+index 68c1ac2..5d86205 100644
+--- a/sphinx/search/no.py
++++ b/sphinx/search/no.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -209,7 +209,7 @@ class SearchNorwegian(SearchLanguage):
+     stopwords = norwegian_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('norwegian')
++        self.stemmer = Stemmer.Stemmer('norwegian')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/pt.py b/sphinx/search/pt.py
+index 2538511..e5bc53c 100644
+--- a/sphinx/search/pt.py
++++ b/sphinx/search/pt.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -269,7 +269,7 @@ class SearchPortuguese(SearchLanguage):
+     stopwords = portuguese_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('portuguese')
++        self.stemmer = Stemmer.Stemmer('portuguese')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/ro.py b/sphinx/search/ro.py
+index cfae772..533272b 100644
+--- a/sphinx/search/ro.py
++++ b/sphinx/search/ro.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict, Set
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage
+ 
+@@ -29,7 +29,7 @@ class SearchRomanian(SearchLanguage):
+     stopwords = set()  # type: Set[str]
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('romanian')
++        self.stemmer = Stemmer.Stemmer('romanian')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/ru.py b/sphinx/search/ru.py
+index 9c0e303..501cee4 100644
+--- a/sphinx/search/ru.py
++++ b/sphinx/search/ru.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -258,7 +258,7 @@ class SearchRussian(SearchLanguage):
+     stopwords = russian_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('russian')
++        self.stemmer = Stemmer.Stemmer('russian')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/sv.py b/sphinx/search/sv.py
+index 4af7f78..a8b427f 100644
+--- a/sphinx/search/sv.py
++++ b/sphinx/search/sv.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage, parse_stop_word
+ 
+@@ -147,7 +147,7 @@ class SearchSwedish(SearchLanguage):
+     stopwords = swedish_stopwords
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('swedish')
++        self.stemmer = Stemmer.Stemmer('swedish')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())
+diff --git a/sphinx/search/tr.py b/sphinx/search/tr.py
+index 8db42f6..f6a50da 100644
+--- a/sphinx/search/tr.py
++++ b/sphinx/search/tr.py
+@@ -10,7 +10,7 @@
+ 
+ from typing import Dict, Set
+ 
+-import snowballstemmer
++import Stemmer
+ 
+ from sphinx.search import SearchLanguage
+ 
+@@ -29,7 +29,7 @@ class SearchTurkish(SearchLanguage):
+     stopwords = set()  # type: Set[str]
+ 
+     def init(self, options: Dict) -> None:
+-        self.stemmer = snowballstemmer.stemmer('turkish')
++        self.stemmer = Stemmer.Stemmer('turkish')
+ 
+     def stem(self, word: str) -> str:
+         return self.stemmer.stemWord(word.lower())

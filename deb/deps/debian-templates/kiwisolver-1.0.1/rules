@@ -1,0 +1,15 @@
+#! /usr/bin/make -f
+
+export PYBUILD_NAME=kiwisolver
+
+export PYBUILD_DESTDIR_python3=debian/python3-kiwisolver
+
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_installchangelogs:
+	dh_installchangelogs -A releasenotes.rst
+
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym

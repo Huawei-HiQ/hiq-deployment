@@ -1,0 +1,50 @@
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Tue, 20 Dec 2016 16:37:32 +0300
+Subject: Skip linkcheck tests that require network access
+
+Forwarded: not-needed
+---
+ tests/test_build_latex.py     | 1 +
+ tests/test_build_linkcheck.py | 3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/tests/test_build_latex.py b/tests/test_build_latex.py
+index 8dbe2a4..e82e862 100644
+--- a/tests/test_build_latex.py
++++ b/tests/test_build_latex.py
+@@ -1321,6 +1321,7 @@ def test_latex_raw_directive(app, status, warning):
+     assert 'LaTeX: abc def ghi' in result
+ 
+ 
++@pytest.mark.skip('Requires internet access')
+ @pytest.mark.sphinx('latex', testroot='images')
+ def test_latex_images(app, status, warning):
+     app.builder.build_all()
+diff --git a/tests/test_build_linkcheck.py b/tests/test_build_linkcheck.py
+index 7d85f10..1932f5a 100644
+--- a/tests/test_build_linkcheck.py
++++ b/tests/test_build_linkcheck.py
+@@ -14,6 +14,7 @@ from unittest import mock
+ import pytest
+ 
+ 
++@pytest.mark.skip('Requires internet access')
+ @pytest.mark.sphinx('linkcheck', testroot='linkcheck', freshenv=True)
+ def test_defaults(app, status, warning):
+     app.builder.build_all()
+@@ -35,6 +36,7 @@ def test_defaults(app, status, warning):
+     assert len(content.splitlines()) == 6
+ 
+ 
++@pytest.mark.skip('Requires internet access')
+ @pytest.mark.sphinx('linkcheck', testroot='linkcheck', freshenv=True)
+ def test_defaults_json(app, status, warning):
+     app.builder.build_all()
+@@ -87,6 +89,7 @@ def test_defaults_json(app, status, warning):
+         rowsby["https://www.google.com/image.png"]["info"]
+ 
+ 
++@pytest.mark.skip('Requires internet access')
+ @pytest.mark.sphinx(
+     'linkcheck', testroot='linkcheck', freshenv=True,
+     confoverrides={'linkcheck_anchors_ignore': ["^!", "^top$"],

@@ -1,0 +1,11 @@
+# see git-dpm(1) from git-dpm package
+6ecaab042e5bc83ead03a62d625958d760dda4bd
+6ecaab042e5bc83ead03a62d625958d760dda4bd
+6ecaab042e5bc83ead03a62d625958d760dda4bd
+6ecaab042e5bc83ead03a62d625958d760dda4bd
+python-decorator_4.3.0.orig.tar.gz
+d68f722a13e85eb97553742a5ac5bd37a07cf651
+33758
+debianTag="debian/%e%v"
+patchedTag="patched/%e%v"
+upstreamTag="upstream/%e%u"

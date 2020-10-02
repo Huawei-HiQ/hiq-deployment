@@ -1,0 +1,781 @@
+networkx (2.4-4ubuntu1) groovy; urgency=medium
+
+  * d/control: Lower Recommends to Suggests for some universe packages.
+
+ -- Corey Bryant <corey.bryant@canonical.com>  Tue, 11 Aug 2020 16:41:00 -0400
+
+networkx (2.4-4) unstable; urgency=medium
+
+  * debian/control
+    - adjust Breaks items as suggested by Adrian Bunk; Closes: #947852
+    - wrap-and-sort
+    - bump Standards-Version to 4.5.0 (no changes needed)
+    - bump compat to 12
+  * debian/patches/*
+    - refresh patches
+  * debian/patches/docs-remove-expected_failing_examples.patch
+    - remove the sphinx_gallery expected_failing_examples directive, since
+      plot_parallel_betweenness.py works just fine; Closes: #963415
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 26 Jul 2020 23:10:54 -0400
+
+networkx (2.4-3) unstable; urgency=medium
+
+  * debian/control
+    - add Breaks on current buster versions of androguard and hyperkitty, as
+      they require updates for the new networkx; Closes: #947852
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 31 Dec 2019 19:19:41 -0500
+
+networkx (2.4-2) unstable; urgency=medium
+
+  * upload to unstable
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 10 Nov 2019 16:54:24 -0500
+
+networkx (2.4-1) experimental; urgency=medium
+
+  [ Sandro Tosi ]
+  * New upstream release
+  * debian/rules
+    - install examples
+    - dont operate on networkx/tests/test.py, no longer present
+  * debian/copyright
+    - update copyright file; Closes: #941474
+  * Use pytest instead of nose
+
+  [ Ondřej Nový ]
+  * Bump Standards-Version to 4.4.1.
+  * d/control: Fix wrong Vcs-*.
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 09 Nov 2019 23:55:38 -0500
+
+networkx (2.3-1) experimental; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Sandro Tosi ]
+  * New upstream release; Closes: #940551
+  * Rename source package, tracking py3k-only releases
+  * debian/copyright
+    - extend packaging copyright years
+    - updated copyright to new upstream code
+  * Only build py3k packages
+  * debian/rules
+    - it's a pure-python module, so use purelib to get the build location; this
+      fixes doc building
+    - use the built module to run tests, and set the right switch for verbosity
+    - dont parse debian/changelog + remove other outdated variables
+    - install the right doc files + remove broken pdf symlinks; Closes: #924210
+  * debian/control
+    - have scricted versioned deps on numpy and matplotlib
+    - bump Standards-Version to 4.4.0 (no changes needed)
+    - add matplotlib, pydot, pygrpahviz to Recommends; Closes: #932682
+    - replace b-d on texlive-generic-extra with texlive-plain-generic;
+      Addresses: #933581
+  * Use objects.inv from python3/numpy -doc packages
+  * debian/README.Debian
+    - remove, outdated
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 22 Sep 2019 00:48:34 -0400
+
+python-networkx (2.2-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+
+  [ Gianfranco Costamagna ]
+  * debian/control
+    - Move python*-pkg-resources to real dependencies, needed to run the
+      python-cov testsuite (drawing/nx_pydot.py subpackage); Closes: #902540
+
+  [ Sandro Tosi ]
+  * New upstream release
+  * debian/patch
+    - refresh, remove patch merged upstream
+  * debian/control
+    - b-d on decorator >= 4.3.0
+    - bump Standards-Version to 4.2.1 (no changes needed)
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 23 Nov 2018 17:21:28 -0500
+
+python-networkx (2.1-1) unstable; urgency=medium
+
+  [ Sandro Tosi ]
+  * New upstream release; Closes: #888458
+    - references to lib2to3 have been removed upstream; Closes: #893697
+  * debian/control
+    - revert useless changes performed without any kind of coordination,
+      preserving only the bump to Standard-Version: 3.9.8, which was not
+      metioned in the changelog (and not formally released)
+    - add gdal to b-d and d
+    - add latexmk to b-d, needed to build doc and fix a FTBFS with sphinx 1.6;
+      Closes: #872241
+    - bump Standards-Version to 4.1.4 (no changes needed)
+    - add ipykernel, nb2plots, nbformat, nbconvert, sphinx-gallery, traitlets
+      to b-d-i, needed to build doc
+  * debian/copyright
+    - extend packaging copyright years
+    - update upstream copyright years
+  * refresh patches
+  * debian/patches/0003-README.txt-to-examples-needed-by-sphinx-while-buildi.patch
+    - add the missing README.txt to the examples directory
+  * debian/rules
+    - delete files removals line no longer needed
+    - update location for upstream changelog
+  * debian/patches/0004-add-copybutton.js.patch
+    - add required copybutton.js file
+  * debian/python.org_objects.inv,debian/scipy.org_numpy_objects.inv
+    - update intersphinx doc
+  * debian/patches/0005-use-debian-mathjax.js.patch
+    - use MathJax.js as provided by libjs-mathjax in Debian
+  * debian/python-networkx-doc.doc-base
+    - update doc-base to refer to index.html as doc entry point
+  * debian/patches/0006-skip-plot_football-from-sphinx-gallery-requires-netw.patch
+    - plot_football.py requires network access, so skip it
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/watch: Use https protocol
+  * d/changelog: Remove trailing whitespaces
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 07 Jun 2018 18:18:28 -0400
+
+python-networkx (1.11-2) UNRELEASED; urgency=medium
+
+  * Team upload
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+  [ Andreas Tille ]
+  * pngmath conflicts with some other shinx tool - drop it
+    Closes: #832855
+  * Add missing Build-Depends
+  * debhelper 9
+  * cme fix dpkg-control
+  * fix another shebang
+
+ -- Andreas Tille <tille@debian.org>  Sat, 06 Aug 2016 17:50:20 +0200
+
+python-networkx (1.11-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 31 Jan 2016 11:16:00 +0000
+
+python-networkx (1.11~rc2-1) unstable; urgency=medium
+
+  * New upstream release candidate
+  * debian/copyright
+    - update packaging copyright years
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 28 Jan 2016 19:52:06 +0000
+
+python-networkx (1.11~rc1-1) unstable; urgency=medium
+
+  [ Thomas Goirand ]
+  * Removed the exclude and add python-pydot as build-depends-indep.
+  * Added python3-matplotlib, python3-numpy, python3-pygraphviz as
+    build-depends-indep as well.
+
+  [ Sandro Tosi ]
+  * New upstream release candidate; Closes: #801880
+  * debian/control
+    - suggest the -doc pkg in the module pkgs; Closes: #807126
+  * debian/copyright
+    - extend packaging copyright years
+    - drop BSD-style, not used
+    - move the general copyright notice on top, helps with lintian
+  * debian/README.source
+    - removed, outdated
+  * debian/*.inv
+    - update intersphinx mapping files
+  * debian/rules
+    - dont fail if there are errors in the tests
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 10 Jan 2016 02:26:44 +0000
+
+python-networkx (1.10-1) experimental; urgency=medium
+
+  [ Sandro Tosi ]
+  * New upstream release (Closes: #800431).
+
+  [ Thomas Goirand ]
+  * Move to Build-Depends: what was in Build-Depends-Indep: but which is needed
+    for the clean target.
+  * Dropped version of packages for those already provided in Jessie.
+  * Removed now useless python-3.4.patch patch from Chuck Short.
+  * Removed do-not-use-sphinx_rtd_theme.patch patch. Build-Depends on the
+    python-sphinx-rtd-theme package instead.
+  * Exclude tests which are doing internet access and failing.
+  * Do not rename non-existing README file.
+
+ -- Thomas Goirand <zigo@debian.org>  Wed, 02 Sep 2015 13:17:15 +0000
+
+python-networkx (1.9.1-1) experimental; urgency=medium
+
+  * New upstream release
+  * debian/watch
+    - use PyPI redirector
+  * debian/rules
+    - remove the get-orig-src crap
+  * debian/copyright
+    - extend packaging copyright years
+    - drop unused paragraph
+  * debian/control
+    - update Homepage field
+    - bump Standards-Version to 3.9.6 (no changes needed)
+    - set me as Maintainer, team as Uploaders
+  * debian/patches/using-local-mathjax.js.patch
+    - updated to new upstream code
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 11 Apr 2015 17:38:17 +0100
+
+python-networkx (1.9+dfsg1-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release (Closes: #750233).
+  * Ran wrap-and-sort.
+  * debian/copyright in parseable format 1.0.
+  * Added extend-diff-ignore = "^[^/]*[.]egg-info/" in d/source/options, and
+    removed the clean of the egg-info folder.
+  * Refreshed/rebased 10_doc_relocation, 20_example_dirs_remove and
+    30_use_local_objects.inv patches.
+  * Removed 50_force_ordering_in_dict_to_numpy_array_functions.patch
+    55_fixups_to_numpy_array_functions_patch.patch
+    60_fix_tests_failure_due_to_py3.3_hash_randomization.patch applied
+    upstream.
+  * debian/control: removed python-support and added dh-python as build-dep.
+  * Added python-3.4.patch (comes from the Ubuntu package).
+  * Removed 40_no_setuptools_in_requires.txt (there's no setup_egg.py anymore
+    in upstream source code).
+  * Also cleans networkx/version.py, which is generated.
+  * Also cleans test.*, doc/source/templates/gallery.html and fontList.cache.
+  * Added do-not-use-sphinx_rtd_theme.patch.
+  * debian/rules: do not use setup_egg.py, it's gone from upstream source.
+  * Move all the doc generation stuff into the override_dh_sphinxdoc.
+  * Removed obsolete XS-Python-Version: >= 2.6 X-Python3-Version: >= 3.2.
+  * Adds using-local-mathjax.js.patch to avoid privacy breach in the doc.
+  * Added missing --with python2.
+  * Added debian/rules get-orig-src target to generate the orig.tar.xz file.
+  * Added missing build-depends: python-decorator and python-numpydoc (needed
+    for building docs).
+  * Fixed watch file to handle the +dfsg1 mangling.
+
+ -- Thomas Goirand <zigo@debian.org>  Sun, 22 Jun 2014 07:11:42 +0000
+
+python-networkx (1.8.1-1) unstable; urgency=low
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Sandro Tosi ]
+  * New upstream release
+  * debian/copyright
+    - update upstream copyright years
+    - extend packaging copyright years
+    - added decorator copyright notice
+  * debian/patches/*
+    - refreshed patches
+  * debian/patch/{50, 55, 60}*
+    - backport patches
+  * debian/control
+    - bump Standards-Version to 3.9.5 (no changes needed)
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 18 Jan 2014 12:26:47 +0100
+
+python-networkx (1.7-2) experimental; urgency=low
+
+  * debian/*_objects.inv
+    - updated intersphinx mapping files
+  * debian/rules
+    - reorganize build and test targets
+  * debian/{control, rules}
+    - provide Python 3 package; Closes: #597422
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 28 Aug 2012 18:04:48 +0200
+
+python-networkx (1.7-1) experimental; urgency=low
+
+  * New upstream release
+  * debian/patches/changeset_*
+    - removed, included upstream
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 11 Aug 2012 12:41:30 +0200
+
+python-networkx (1.7~rc1-3) unstable; urgency=low
+
+  * debian/patches/changeset_9ebe087b8bbcdeee3051e07cacd05fa07436c16e.diff
+    - Preserver order in G.nodes(), fixing a FTBFS in nipype; thanks to Yaroslav
+      Halchenko for the report and analysis; Closes: #684107
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 07 Aug 2012 22:10:21 +0200
+
+python-networkx (1.7~rc1-2) unstable; urgency=low
+
+  * debian/patches/changeset_8960521b5ae4897bdbac4ff49525d8b37bff88d2.diff
+    - Handle empty graph (all zero matrix) and null graph (raise exception) in
+      to_scipy_sparse_matrix; thanks to Yaroslav Halchenko for the report;
+      Closes: #678036
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 19 Jun 2012 21:49:24 +0200
+
+python-networkx (1.7~rc1-1) unstable; urgency=low
+
+  * New upstream release candidate
+  * debian/watch
+    - recognize rc releases
+  * debian/copyright
+    - extend upstream and packaging copyright years
+    - add Nicholas Mancuso's copyrighted files
+  * debian/control
+    - add python-numpy, python-scipy to b-d-i to enable additional tests
+  * debian/patches/*
+    - refreshed patches
+  * debian/patches/50_nosetests_verbosity_0
+    - removed, merged upstream
+  * debian/patches/changeset_fed4cb6e78dc7047c06522b0418ef5b0d8197290.diff
+    - fix an error in unittests
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 14 Jun 2012 23:46:38 +0200
+
+python-networkx (1.6-3) unstable; urgency=low
+
+  * debian/rules
+    - remove leftover from build process, so the package can be built twice in a
+      row; thanks to Jakub Wilk for the report; Closes: #671193
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 12 May 2012 13:10:30 +0200
+
+python-networkx (1.6-2) unstable; urgency=low
+
+  * debian/rules
+    - set MPLCONFIGDIR to current directory when building the doc, fixing a
+      FTBFS; thanks to Lucas Nussbaum for the report; Closes: #665038
+  * debian/control
+    - bump Standards-Version to 3.9.3 (no changes needed)
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 03 Apr 2012 20:00:02 +0200
+
+python-networkx (1.6-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/patches/10_doc_relocation
+    - refreshed for new upstream code
+  * debian/patches/40_astar_unique_shortest_path.diff
+    - removed, merged upstream
+  * debian/patches/40_no_setuptools_in_requires.txt
+    - don't add setuptools to requires.txt; Closes: #639995
+  * debian/patches/50_nosetests_verbosity_0
+    - set verbosity=0 else tests can't be run
+  * debian/{control, rules}
+    - use dh_sphinxdoc
+
+ -- Sandro Tosi <morph@debian.org>  Mon, 26 Dec 2011 16:58:36 +0100
+
+python-networkx (1.5-2) unstable; urgency=low
+
+  * debian/patches/40_astar_unique_shortest_path.diff
+    - make A* shortest paths unique; Closes: #634083
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 17 Jul 2011 13:53:32 +0200
+
+python-networkx (1.5-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control
+    - added dvipng to b-d-i, needed for math images
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 09 Jun 2011 18:13:44 +0200
+
+python-networkx (1.4-2) unstable; urgency=low
+
+  * debian/patches/10_doc_relocation
+    - write a description for this patch
+  * debian/control
+    - bump Standards-Version to 3.9.2 (no changes needed)
+    - don't use 'we' in long description
+  * debian/rules
+    - install upstream changelog
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 24 Apr 2011 17:48:53 +0200
+
+python-networkx (1.4-1) experimental; urgency=low
+
+  * New upstream release; thanks to Yaroslav Halchenko for the report;
+    Closes: #617677
+  * debian/rules
+    - don't compress objects.inv; thanks to Michael Fladischer for the report;
+      Closes: #608780
+  * debian/watch
+    - updated to point to PyPi
+  * debian/control
+    - bump python-sphinx versioned b-d-i to 1.0.1 minimum
+    - added python-pygraphviz to b-d-i, needed for doc building
+  * debian/copyright
+    - bump upstream and packaging copyright years
+  * debian/patches/{40_add_networkxcss, 50_boundary-test-fix.patch
+                    60_remove_svn_refs.diff 70_set_matplotlib_ps_backend.patch}
+    - removed since merged upstream
+  * debian/patches/{10_doc_relocation, 20_example_dirs_remove,
+                    30_use_local_objects.inv}
+    - refreshed/adapted to new upstream code
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 19 Mar 2011 12:19:16 +0100
+
+python-networkx (1.3-1) experimental; urgency=low
+
+  * New upstream release
+  * debian/patches/changeset_r1745.diff
+    - dropped, available in upstream release
+  * debian/patches/10_doc_relocation
+    - refreshed patch for new upstream code
+  * debian/control
+    - upstream code is now compatible with 2.6 or later only
+    - bump Standards-Version to 3.9.1 (no changes needed)
+  * debian/{control, rules}
+    - run unittests at build time, b-d on python-nose added
+  * debian/copyright
+    - removed reference to /usr/share/common-licenses/BSD
+  * Create a -doc package ; thanks to Yaroslav Halchenko for the report;
+    Closes: #567369
+    - (d/control) define a new binary package, and add depends on sphinx (>= 1)
+    - (d/rules) build documentation, install it into the new -doc package
+    - (d/patches/30_use_local_objects.inv) use local copy of remote objects.inv
+  * debian/{control, rules}
+    - moved to dh7 and "reduced" rules file
+  * debian/rules
+    - refer to built code when building doc
+  * debian/python-networkx-doc.doc-base
+    - added doc-base information
+  * debian/patches/40_add_networkxcss
+    - added as patch, since networkx.css is missing from the tarball, but needed
+      to display properly HTML documentation
+  * debian/patches/50_boundary-test-fix.patch
+    - upstream patch to restrict node boundary test cases to valid range
+  * debian/patches/60_remove_svn_refs.diff
+    - upstream patch to remove references to old SVN repository (now Mercurial)
+  * debian/patches/70_set_matplotlib_ps_backend.patch
+    - set matplotlib backend to 'PS', so a DISPLAY it's not required and the
+      tests can be run in a "reduced" environment
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 10 Dec 2010 23:50:27 +0100
+
+python-networkx (1.1-2) unstable; urgency=low
+
+  * debian/{control, source/format, rules}
+    - switch to '3.0 (quilt)' source format
+  * debian/rules
+    - use '-f' option of rm instead of the make-way of ignoring error
+  * debian/rules
+    - remove 2 doc files not needed (they are actually broken symlinks); thanks
+      to Ian Zimmerman for the report; Closes: #580839
+  * debian/patches/changeset_r1745.diff
+    - replace string exceptions, removed from python >= 2.6; Closes: #585307
+  * debian/{control, pyversions}
+    - removed pyversions, now using XS-P-V
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 23 Jun 2010 18:12:28 +0200
+
+python-networkx (1.1-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/copyright
+    - added Drew Conway to the list of copyright holders
+  * debian/patches/20_example_dirs_remove
+    - refreshed for new upstream code
+  * debian/control
+    - bump versioned python-support b-d to at least version 1
+  * debian/rules
+    - install ReST source for documentation, since it's not currently buildable
+
+ -- Sandro Tosi <morph@debian.org>  Mon, 26 Apr 2010 20:52:16 +0200
+
+python-networkx (1.0.1-2) unstable; urgency=low
+
+  * debian/rules
+    - use '--install-layout=deb' when installing and '*-packages' when referring
+      to installation path, to make the package be Python2.6-ready; thanks to
+      Jakub Wilk for the report; Closes: #571508
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 26 Feb 2010 23:53:35 +0100
+
+python-networkx (1.0.1-1) unstable; urgency=low
+
+  * New upstream release; thanks to Yaroslav Halchenko for the report;
+    Closes: #565319
+  * debian/control
+    - take maintainership back under DPMT umbrella; thanks to Cyril Brulebois
+      for his work
+    - adjust Vcs-{Svn, Browser} to point to DPMT location
+    - bump Standards-Version to 3.8.4
+      + added debian/README.source
+    - replace b-d-i on python-all-dev with python only
+    - use HTTP (and not HTTPS) for Homepage field
+    - rephrased short description; thanks to Rogério Brito for the report;
+      Closes: #557895
+  * debian/pyversions
+    - minimum version set to 2.5
+  * debian/copyright
+    - updated upstream copyright authors and license information
+    - update copyright notice for packaging
+  * debian/watch
+    - updated to report numerical (with dots) releases
+  * debian/patches/20_fix_broken_svn_keyboards
+    - removed, fixed upstream
+  * debian/patches/20_example_dirs_remove
+    - don't created empty dirs for examples no more present
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 26 Feb 2010 00:20:57 +0100
+
+python-networkx (1.0~rc1~svn1492-2) experimental; urgency=low
+
+  * Work around both svn's and python's broken behaviours: exporting from
+    the former is locale-dependant, and the latter can't cope with Unicode
+    out of the box (Closes: #557743):
+     + debian/patches/20_fix_broken_svn_keyboards.
+  * Self-reminder: don't touch svn ever again.
+
+ -- Cyril Brulebois <kibi@debian.org>  Tue, 24 Nov 2009 12:26:36 +0100
+
+python-networkx (1.0~rc1~svn1492-1) experimental; urgency=low
+
+  * New upstream snapshot, past 1.0~rc1, as requested by Yaroslav
+    Halchenko (Closes: #549996).
+  * Refresh patch accordingly:
+     + debian/patches/10_doc_relocation.
+  * Get rid of extra LICENSE.txt file in /usr/share/doc.
+  * Use dh_compress -Xexamples/ to avoid compressing examples, thanks to
+    Sandro Tosi (Closes: #539942).
+  * Bump Standards-Version from 3.8.0 to 3.8.3 (no changes needed).
+
+ -- Cyril Brulebois <kibi@debian.org>  Mon, 23 Nov 2009 15:44:34 +0100
+
+python-networkx (0.99-2) unstable; urgency=low
+
+  * Upload to unstable now that lenny is released (yay).
+  * Fix FTBFS with python-support 0.90.3: no longer rely on its internal
+    behaviour, and xnow set tests/test.py executable right after “setup.py
+    install” (Closes: #517065).
+  * Drop executable bits from bz2 files.
+  * Update Vcs-* fields: move from DPMT's svn to collab-maint's git.
+  * Remote DPMT from Uploaders, following Piotr Ożarowski's request.
+
+ -- Cyril Brulebois <kibi@debian.org>  Sat, 28 Feb 2009 13:36:24 +0100
+
+python-networkx (0.99-1) experimental; urgency=low
+
+  [ Sandro Tosi ]
+  * debian/control:
+     + Switch Vcs-Browser field to viewsvn.
+
+  [ Cyril Brulebois ]
+  * New upstream release.
+  * Refresh patch accordingly:
+     + debian/patches/10_doc_relocation.
+  * debian/rules:
+     + Update uneeded file list, only INSTALL.txt left.
+     + Update README renaming, using a new $(DEBIANDOC_DIR) variable.
+     + Stop removing a directory, no longer created.
+  * debian/docs:
+     + Deleted, README taken care of through debian/rules.
+  * debian/control:
+     + Bump Standards-Version from 3.7.3 to 3.8.0 (no changes needed).
+     + Update my mail address.
+  * debian/copyright:
+     + Ditto.
+
+ -- Cyril Brulebois <kibi@debian.org>  Fri, 28 Nov 2008 07:42:43 +0100
+
+python-networkx (0.36-2) unstable; urgency=low
+
+  * debian/control:
+     + Replace python-setuptools with python-pkg-resources in the
+       “Recommends:” since pkg_resources is now available in this
+       separate package, thanks Matthias Klose (Closes: #468721).
+  * debian/copyright:
+     + Use “© $years $name” instead of invalid “$name, $years” and
+       “(C) $years, $name”, thanks to lintian.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Sun, 02 Mar 2008 01:06:32 +0100
+
+python-networkx (0.36-1) unstable; urgency=low
+
+  [ Sandro Tosi ]
+  * debian/control:
+     + Uniformize Vcs-Browser field across the DPMT packages.
+
+  [ Cyril Brulebois ]
+  * New upstream release.
+  * debian/copyright:
+     + Update copyright years.
+     + Update the list of authors.
+  * Don't repack anymore, upstream no longer ships the examples that
+    weren't DFSG-compliant.
+  * debian/README.Debian:
+     + Update accordingly.
+  * debian/watch:
+     + Remove version mangling, no longer needed.
+  * debian/rules:
+     + Delete the networkx.egg-info/SOURCES.txt pristine hack.
+     + Only remove the whole networkx.egg-info directory in the
+       “clean” target since it gets generated during the build, now.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Mon, 14 Jan 2008 20:33:16 +0100
+
+python-networkx (0.35.1.dfsg-2) unstable; urgency=low
+
+  [ Piotr Ożarowski ]
+  * Add Homepage field, delete it from the long description.
+  * Rename XS-Vcs-* fields to Vcs-*.
+
+  [ Cyril Brulebois ]
+  * Add version mangling to debian/watch, stripping the “.dfsg” part of
+    the Debian version.
+  * debian/rules cleanup: Delete trailing whitespaces, delete unused
+    DEB_UPSTREAM_VERSION (which became wrong anyway, due to the “.dfsg”
+    part of the version).
+  * Bump Standards-Version from 3.7.2 to 3.7.3, no change needed.
+  * Move the build instructions from “binary-arch” to “binary-indep”,
+    per lintian.
+  * Move the section from “graphics” to “python”, per lintian.
+  * Create a pristine copy of the networkx.egg-info/SOURCES.txt file during
+    the “install” target, which gets restored during the “clean” one.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Thu, 20 Dec 2007 02:39:51 +0100
+
+python-networkx (0.35.1.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * Repack since some examples are not DFSG-free: freely distributable but no
+    modifications are allowed.
+  * debian/rules:
+     + Removed two new unneeded files: Download.txt and Install.txt.
+     + Removed the find/rm for the .cvsignore files, now deleted upstream.
+  * debian/control:
+     + Moved python-all-dev from B-D to B-D-I.
+     + Added XS-Vcs-Svn and XS-Vcs-Browser fields.
+  * debian/copyright:
+     + Updated copyright years.
+     + Added Eben Kennah as contributor.
+  * debian/watch:
+     + Updated, with the addition networkx/ directory.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Sat, 28 Jul 2007 13:23:14 +0200
+
+python-networkx (0.34-2) unstable; urgency=low
+
+  * Added a versioned B-D on python-suppport (>= 0.6.4) since #422436 is
+    fixed in this version, and on python-all-dev (>= 2.3.5-11), according
+    to the Python Policy.
+  * Dropped the manual egg renaming, which isn't needed anymore, and even
+    fails with the new python-support (Closes: #423981).
+  * Turned setup.py usage into setup_egg.py usage. 20_egg_support patch
+    dropped accordingly.
+  * Added a TODO file so as not to forget TODO items for next uploads.
+  * Added a find/rm to remove some .cvsignore files, now installed after
+    the switch to setup_egg.py.
+  * Adjusted README.Debian and Recommends:, since python-yaml is now packaged,
+    and added instructions to run the testsuite from a python interpreter.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Tue, 15 May 2007 10:59:02 +0200
+
+python-networkx (0.34-1) unstable; urgency=low
+
+  * New upstream release.
+  * Many thanks to Piotr Ożarowski for his careful review and his numerous
+    suggestions for this upload.
+  * Examples might not work out of the box due to the compression of the data
+    files, but adding support for compressed data files has been requested
+    upstream (#104), so that the data files don't have to be shipped
+    uncompressed. Should be working in the next version.
+  * Added the Debian Python Modules Team in the Uploaders field.
+  * Updated rules file to delete an empty directory (data/, under the doc/
+    directory).
+  * Adjusted the folding in the long description for the homepage.
+  * Added missing B-D on setuptools, needed for the egg installation. It is
+    versioned so that one is ensured that egg support is present (e.g. when
+    backporting).
+  * Added missing Recommends on python-matplotlib.
+  * Removed unneeded items in the rules file (e.g. CFLAGS, dh_strip, etc.) as
+    well as ${python:Provides} and ${shlibs:Depends} in the control file.
+  * Removed the lintian override and added a chmod call to +x the test script
+    after the dh_pysupport call.
+  * Dropped unneeded build-stamp, configure, configure-stamp targets in the
+    rules file.
+  * Added *.pyc cleanup in the clean target. During a normal build it
+    shouldn't be needed, but might be useful when playing around with the
+    package.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Mon, 23 Apr 2007 13:30:39 +0200
+
+python-networkx (0.33-1) unstable; urgency=low
+
+  * New upstream release.
+  * New features:
+     - draw edges with specified colormap
+     - more efficient version of Floyd's algorithm for all pairs shortest path
+     - include tests in source package (networkx/tests)
+     - include documentation in source package (doc)
+  * Bug fixes:
+     - refactored large modules into smaller code files
+     - degree(nbunch) now returns degrees in same order as nbunch
+     - degree() now works for multiedges=True
+     - update node_boundary and edge_boundary for efficiency
+     - edited documentation for graph classes, now mostly in info.py
+  * Removed python-numeric from Recommends: (obsolete, no longer supported).
+  * Added python-setuptools to Recommends: so that one can easily use the
+    following to run the testsuite.
+      import networkx
+      networkx.test()
+  * Changed watch file from sourceforge to upstream's homepage download
+    section.
+  * Changed the install rule so that there's no .pyc compilation at all, since
+    they are created during the postinst (and thus were deleted after the
+    ``setup.py install'' call).
+  * Switched from dpatch to quilt to ease patch management.
+
+
+  Thanks to Oleksandr Moskalenko and Piotr Ożarowski for the time they spent
+  on advising me about the following items.
+  * Added a B-D on python-all-dev.
+  * Added egg support:
+     - added 20_egg_support to import setup from setuptools in setup.py;
+     - added the --single-version-externally-managed option to the
+       "setup.py install" call;
+     - tweaked debian/rules to strip out the version info from the egg
+       info dir.
+  * Cleaned *.txt documentation files: license-related files are no longer
+    installed, superseded by debian/copyright, and Readme.txt is installed as
+    README.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Fri, 06 Apr 2007 19:10:42 +0200
+
+python-networkx (0.32-2) unstable; urgency=low
+
+  * Added a Recommends: on python-pygraphviz | python-pydot, thanks to Seo
+    Sanghyeon for the notice about pydot (Closes: #401657).
+  * Fixed a typo in the debian/watch file.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Wed,  6 Dec 2006 14:07:37 +0100
+
+python-networkx (0.32-1) unstable; urgency=low
+
+  * Initial release (Closes: #323398)
+  * Added an override for the tests/test.py file which is not executable due
+    to python-support (apparently). Interested users should be able to run
+    this script by prepending its name with the interpreter.
+  * Added ``2.4-'' into debian/pyversions since the installation fails when
+    byte-compiling for python2.3. Upstream will be reported that problem since
+    that release is said to be for python >= 2.3.
+  * Added Recommends: on all packages needed for the tests/test.py to run
+    almost OK. There's currently no package providing `yaml' so that having
+    ``import yaml'' in a python script is OK.
+  * Added a note about the previous point in the README.Debian file.
+  * Added Suggests: on all optional packages suggested by upstream.
+
+ -- Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>  Wed, 25 Oct 2006 17:52:26 +0200
+

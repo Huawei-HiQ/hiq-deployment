@@ -1,0 +1,35 @@
+python-snowballstemmer (2.0.0-1) unstable; urgency=medium
+  [Dmitry Shachnev]
+  * debian/control: Update homepage field.
+
+  [Josue Ortega]
+  * New upstream release (2.0.0)
+  * debian/copyright:
+    + Update Source field
+    + Update package licence BSD-2-Clause -> BSD-3-Clause
+  * debian/control: Add missing Rules-Requires-Root field
+  * Bump Standards-Version to 4.4.1. No changes needed
+
+ -- Josue Ortega <josue@debian.org>  Thu, 10 Oct 2019 19:04:02 -0600
+
+python-snowballstemmer (1.9.0-1) unstable; urgency=medium
+
+  * New upstream release (1.9.0)
+  * debian/control:
+    - Update Vcs fields to use salsa.debian.org
+    - Remove ancient python version fields
+  * Update to use debhelper-compat (= 12)
+  * Bump Standards-Version to 4.4.0:
+    - Update debian/copyright to use "https" in the Format field
+  * debian/copyright: Update maintainers email
+  * Remove python2 package
+  * debian/watch: Update to use secure URI
+  * Add Debian CI tests
+
+ -- Josue Ortega <josue@debian.org>  Fri, 02 Aug 2019 12:29:57 -0600
+
+python-snowballstemmer (1.2.1-1) unstable; urgency=low
+
+  * Initial release. Closes: #803085
+
+ -- Josue Ortega <josue@debian.org>  Sun, 19 Jun 2016 20:29:38 -0600

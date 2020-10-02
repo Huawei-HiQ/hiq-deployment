@@ -1,0 +1,43 @@
+From: Julian Taylor <jtaylor@ubuntu.com>
+Date: Sun, 11 Oct 2015 10:12:17 -0700
+Subject: adapt to python3 multiarch soabi
+
+ python3 soabi contains multiarch but does not export it via SOABI. So hardcode
+ it and disable a test. get_shared_lib_extension can't be properly fixed:
+ doko: we still want this as the default for people building extensions not
+        only for the distribution
+ Nothing in debian uses it to get the python extension.
+Forwarded: not-needed, debian specific
+Patch-Name: python3-soabi.patch
+---
+ numpy/ctypeslib.py            | 8 ++++++++
+ numpy/tests/test_ctypeslib.py | 1 +
+ 2 files changed, 9 insertions(+)
+
+--- a/numpy/ctypeslib.py
++++ b/numpy/ctypeslib.py
+@@ -136,6 +136,14 @@ else:
+             so_ext2 = get_shared_lib_extension(is_python_ext=True)
+             if not so_ext2 == so_ext:
+                 libname_ext.insert(0, libname + so_ext2)
++            try:
++                import sysconfig
++                so_ext3 = '.%s-%s.so' % (sysconfig.get_config_var('SOABI'),
++                                         sysconfig.get_config_var('MULTIARCH'))
++                libname_ext.insert(0, libname + so_ext3)
++            except (KeyError, ImportError):
++                pass
++
+         else:
+             libname_ext = [libname]
+ 
+--- a/numpy/tests/test_ctypeslib.py
++++ b/numpy/tests/test_ctypeslib.py
+@@ -33,6 +33,7 @@ else:
+     c_forward_pointer = test_cdll.forward_pointer
+ 
+ 
++@pytest.mark.skipif(True, reason='Skipped as per debian/patches/python3-soabi.patch')
+ @pytest.mark.skipif(ctypes is None,
+                     reason="ctypes not available in this python")
+ @pytest.mark.skipif(sys.platform == 'cygwin',

@@ -1,0 +1,11 @@
+#!/bin/sh
+set -efu
+
+PYS=$(py3versions -r 2>/dev/null)
+
+cd "$AUTOPKGTEST_TMP"
+
+for py in $PYS; do
+    # check distutils copes with multi arch
+    $py -c 'from numpy.distutils.system_info import get_info; get_info("fftw3", 2)'
+done

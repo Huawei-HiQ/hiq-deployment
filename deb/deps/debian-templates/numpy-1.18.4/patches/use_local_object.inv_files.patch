@@ -1,0 +1,25 @@
+From: SVN-Git Migration <python-modules-team@lists.alioth.debian.org>
+Date: Sun, 11 Oct 2015 10:12:16 -0700
+Subject: Use a local copy of object.inv from doc.python.org,
+ instead of downloading it each time from the internet
+
+Patch-Name: 10_use_local_python.org_object.inv_sphinx.diff
+---
+ doc/source/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -223,9 +223,9 @@ texinfo_documents = [
+ # Intersphinx configuration
+ # -----------------------------------------------------------------------------
+ intersphinx_mapping = {
+-    'python': ('https://docs.python.org/dev', None),
+-    'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
+-    'matplotlib': ('https://matplotlib.org', None)
++    'python': ('https://docs.python.org/dev', '/usr/share/doc/python3/html/objects.inv'),
++    'scipy': ('https://docs.scipy.org/doc/scipy/reference', '/usr/share/doc/python-scipy-doc/html/objects.inv'),
++    'matplotlib': ('https://matplotlib.org', '/usr/share/doc/python-matplotlib-doc/html/objects.inv')
+ }
+ 
+ 

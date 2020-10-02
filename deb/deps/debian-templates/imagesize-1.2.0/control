@@ -1,0 +1,22 @@
+Source: python-imagesize
+Section: python
+Priority: optional
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Dmitry Shachnev <mitya57@debian.org>
+Build-Depends: debhelper-compat (= 12),
+               dh-python,
+               python3-all,
+               python3-setuptools
+Standards-Version: 4.4.1
+Homepage: https://github.com/shibukawa/imagesize_py
+Vcs-Git: https://salsa.debian.org/python-team/modules/python-imagesize.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/python-imagesize
+
+Package: python3-imagesize
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Description: Python 3 module for getting image size from png/jpeg/jpeg2000/gif file
+ This small module parses image header and returns width and height of the
+ image. Supported formats are: PNG/JPEG/JPEG2000/GIF.
+ .
+ This is the Python 3 version of the module.

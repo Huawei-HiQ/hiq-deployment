@@ -1,0 +1,3 @@
+01_do-not-use-embedded-python-six.patch
+02_require-cert-verification.patch
+05_avoid-embedded-ssl-match-hostname.patch

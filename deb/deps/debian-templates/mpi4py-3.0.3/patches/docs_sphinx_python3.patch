@@ -1,0 +1,11 @@
+--- a/docs/source/usrman/Makefile
++++ b/docs/source/usrman/Makefile
+@@ -3,7 +3,7 @@
+ 
+ # You can set these variables from the command line.
+ SPHINXOPTS    =
+-SPHINXBUILD   = python -msphinx
++SPHINXBUILD   = python3 -msphinx
+ SPHINXPROJ    = mpi4py
+ SOURCEDIR     = .
+ BUILDDIR      = _build

@@ -1,0 +1,12 @@
+#!/bin/sh
+set -efu
+
+PYS=${PYS:-"$(py3versions -r 2>/dev/null)"}
+TESTPKG=${TESTPKG:-numpy}
+
+cd "$AUTOPKGTEST_TMP"
+
+for py in $PYS; do
+    echo "=== $py ==="
+    $py -c "import $TESTPKG; $TESTPKG.test(verbose=2)" 2>&1
+done

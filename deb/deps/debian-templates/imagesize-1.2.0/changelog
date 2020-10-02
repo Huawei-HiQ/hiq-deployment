@@ -1,0 +1,40 @@
+python-imagesize (1.2.0-2) unstable; urgency=medium
+
+  * Drop python2 support; Closes: #937830
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 27 Mar 2020 22:03:38 -0400
+
+python-imagesize (1.2.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Dmitry Shachnev ]
+  * New upstream release.
+  * Update to debhelper compat level 12.
+  * Bump Standards-Version to 4.4.1, no changes needed.
+  * Add imagesize.egg-info/SOURCES.txt to debian/clean, to fix build
+    twice in a row.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 03 Jan 2020 16:24:27 +0300
+
+python-imagesize (1.0.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+
+  [ Dmitry Shachnev ]
+  * Update debian/watch to fetch tarballs from pypi.debian.net.
+  * New upstream release.
+  * Update Source URL in debian/copyright.
+  * Drop no longer needed dh_auto_test override.
+  * Update to debhelper compat level 11.
+  * Bump Standards-Version to 4.1.4, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 18 May 2018 16:02:25 +0300
+
+python-imagesize (0.7.1-1) unstable; urgency=medium
+
+  * Initial release (closes: #819913).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 30 Apr 2016 15:42:52 +0300

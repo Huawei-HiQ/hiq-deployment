@@ -1,0 +1,10 @@
+chardet (3.0.4-6) unstable; urgency=medium
+
+  Along with the drop of the Python2 package python-chardet, python3-chardet
+  now provides the chardet and chardetect commands at /usr/bin/chardet and
+  /usr/bin/chardetect.
+
+  These commands are now Python3 commands.
+
+ -- Pierre-Elliott Bécue <peb@debian.org>  Wed, 22 Apr 2020 16:56:27 +0200
+

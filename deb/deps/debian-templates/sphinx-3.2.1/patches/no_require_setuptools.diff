@@ -1,0 +1,21 @@
+From: Dmitry Shachnev <mitya57@debian.org>
+Date: Sun, 15 Apr 2018 21:40:17 +0300
+Subject: Remove setuptools from install_requires
+
+It was added there because the entry points use pkg_resources module,
+but it is provided in a separate package in Debian, pulling setuptools
+itself is not needed.
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -28,7 +28,6 @@ install_requires = [
+     'alabaster>=0.7,<0.8',
+     'imagesize',
+     'requests>=2.5.0',
+-    'setuptools',
+     'packaging',
+ ]
+ 

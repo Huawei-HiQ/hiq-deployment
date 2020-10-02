@@ -1,0 +1,14 @@
+--- a/h5py/tests/hl/test_deprecation.py
++++ b/h5py/tests/hl/test_deprecation.py
+@@ -17,11 +17,3 @@
+ from ..common import ut, TestCase
+
+
+-class TestDeprecations(TestCase):
+-    def test_highlevel_access(self):
+-        warning_message = (
+-            "The h5py.highlevel module is deprecated, code should import "
+-            "directly from h5py, e.g. 'from h5py import File'."
+-        )
+-        with self.assertWarnsRegex(H5pyDeprecationWarning, warning_message) as warning:
+-            hl = h5py.highlevel

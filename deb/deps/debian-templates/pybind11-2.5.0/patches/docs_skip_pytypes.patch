@@ -1,0 +1,15 @@
+Index: pybind11/docs/reference.rst
+===================================================================
+--- pybind11.orig/docs/reference.rst	2020-08-17 10:16:34.788950393 +0800
++++ pybind11/docs/reference.rst	2020-08-28 10:48:43.687668334 +0800
+@@ -49,8 +49,8 @@
+ .. doxygenclass:: module
+     :members:
+ 
+-.. doxygengroup:: pytypes
+-    :members:
++.. .. doxygengroup:: pytypes
++..     :members:
+ 
+ .. _extras:
+ 

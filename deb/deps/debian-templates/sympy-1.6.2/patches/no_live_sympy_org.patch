@@ -1,0 +1,17 @@
+The modifications made here prevent connexions to https://live.sympy.org,
+which removes a feature, but prevents also privacy disclosure.
+
+Index: sympy/doc/ext/sympylive.py
+===================================================================
+--- sympy.orig/doc/ext/sympylive.py
++++ sympy/doc/ext/sympylive.py
+@@ -29,5 +29,8 @@ def builder_inited(app):
+ 
+ 
+ def setup(app):
+-    app.add_config_value('sympylive_url', 'https://live.sympy.org', False)
++    #app.add_config_value('sympylive_url', 'https://live.sympy.org', False)
++    # disable completely this feature since it implies a breach in privacy
++    # which does not comply with DFSG
++    app.add_config_value('sympylive_url', 'http://localhost', False)
+     app.connect('builder-inited', builder_inited)

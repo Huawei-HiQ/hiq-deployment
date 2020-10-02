@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=cycler
+export PYBUILD_AFTER_BUILD=PYTHONPATH={build_dir} $(MAKE) -C doc html SPHINXBUILD=/usr/share/sphinx/scripts/python3/sphinx-build
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_installdocs:
+	dh_installdocs
+	ln -s /usr/share/javascript/mathjax/MathJax.js $(CURDIR)/doc/build/html/_static/MathJax.js
+	find doc/build/html -name "*.html" -exec sed -i "s|https://cdn.mathjax.org/mathjax/latest/MathJax.js|_static/MathJax.js|" {} \;
+	dh_installdocs -ppython-cycler-doc doc/build/html

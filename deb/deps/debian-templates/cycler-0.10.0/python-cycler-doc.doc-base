@@ -1,0 +1,9 @@
+Document: python-cycler-doc
+Title: Composable cycles documentation
+Author: Matplotlib Developers
+Abstract: Composable style cycles
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-cycler-doc/html/index.html
+Files: /usr/share/doc/python-cycler-doc/html/*

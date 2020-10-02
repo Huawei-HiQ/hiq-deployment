@@ -1,0 +1,47 @@
+Test-Command: set -e
+ ; cp debian/tests/example/* "$AUTOPKGTEST_TMP"
+ ; for py in $(py3versions -r 2>/dev/null)
+ ; do cd "$AUTOPKGTEST_TMP"
+ ; echo "Testing with $py:"
+ ; CC=gcc CXX=g++ cmake -DPYTHON_EXECUTABLE=/usr/bin/$py .
+ ; cmake --build .
+ ; $py -c "import example; assert(example.add(1, 2) == 3)"
+ ; done
+Depends: cmake, g++, pybind11-dev, python3-all-dev
+Restrictions: allow-stderr
+
+Test-Command: set -e
+ ; cp debian/tests/example/* "$AUTOPKGTEST_TMP"
+ ; for py in $(py3versions -r 2>/dev/null)
+ ; do cd "$AUTOPKGTEST_TMP"
+ ; echo "Testing with $py:"
+ ; CC=clang CXX=clang++ cmake -DPYTHON_EXECUTABLE=/usr/bin/$py .
+ ; cmake --build .
+ ; $py -c "import example; assert(example.add(1, 2) == 3)"
+ ; done
+Depends: clang, cmake, pybind11-dev, python3-all-dev
+Restrictions: allow-stderr
+
+Test-Command: set -e
+ ; for py in $(py3versions -r 2>/dev/null)
+ ; do cd "$AUTOPKGTEST_TMP"
+ ; echo "Testing with $py:"
+ ; $py -m pybind11 --includes
+ ; done
+Depends: python3-all, python3-pybind11
+
+Test-Command: set -e
+ ; cp -r tests ${AUTOPKGTEST_TMP}
+ ; cd ${AUTOPKGTEST_TMP}/tests
+ ; cmake .
+ ; make
+ ; pytest-3
+Depends: python3-all-dev,
+ python3-pybind11,
+ python3-pytest,
+ python3-numpy,
+ python3-scipy,
+ cmake,
+ g++,
+ libboost-dev,
+ libeigen3-dev

@@ -1,0 +1,22 @@
+From: Sandro Tosi <morph@debian.org>
+Date: Wed, 17 Jan 2018 20:20:58 -0500
+Subject: disable intersphinx
+
+---
+ doc/conf.py | 4 ----
+ 1 file changed, 4 deletions(-)
+
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -91,11 +91,6 @@ else:
+     autodoc_default_options = {'members': None, 'undoc-members': None}
+ 
+ intersphinx_mapping = {
+-    'python': ('https://docs.python.org/3', None),
+-    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
+-    'scipy': ('https://docs.scipy.org/doc/scipy/reference/', None),
+-    'pandas': ('https://pandas.pydata.org/pandas-docs/stable', None),
+-    'cycler': ('https://matplotlib.org/cycler', None),
+ }
+ 
+ 

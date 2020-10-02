@@ -1,0 +1,68 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+PYVERS ?= $(shell py3versions -vr)
+pkgdir = $(CURDIR)/debian/python$(if $(patsubst 3.%,,$(1)),,3)-pygments
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -rf build Pygments.egg-info doc/_build
+	find . -name "*\.py[co]" -delete
+	dh_clean build-indep install-stamp $(PYVERS:%=install-python%-stamp)
+
+build: build-indep
+
+build-arch:
+
+build-indep:
+	dh_testdir
+	dh_installdirs
+	PYTHONPATH=$(CURDIR):$(CURDIR)/doc make -C doc html
+	touch $@
+
+install: build install-stamp $(PYVERS:%=install-python%-stamp)
+
+install-stamp:
+	dh_installdirs
+	install -m 644 external/pygments.bashcomp debian/python3-pygments/usr/share/bash-completion/completions/pygmentize
+	touch $@
+
+install-python%-stamp:
+	python$* setup.py install --single-version-externally-managed \
+		--root $(call pkgdir,$*) --install-layout=deb
+	touch $@
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs -i CHANGES
+	dh_installexamples -i
+	dh_installdocs -i
+	dh_link -i
+	dh_installman -i
+	dh_install -i -p python3-pygments pygmentize /usr/bin/
+	dh_sphinxdoc -i -p python-pygments-doc
+	dh_python3 -i --shebang=/usr/bin/python3
+	dh_compress -i -X.py -X.inv
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+binary-arch:
+
+binary: binary-indep binary-arch
+
+get-orig-source:
+	VER=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^+]+).*,\1,p');\
+	uscan --force-download --rename --download-version=$$VER --destdir=.;\
+	tar -zx --exclude=doc/_build --exclude=tests/examplefiles --exclude=test/test_examplefiles.py -f pygments_$$VER.orig.tar.gz;\
+	find . -name '*.pyc' -delete;\
+	tar -zcf ./pygments_$$VER+dfsg.orig.tar.gz Pygments-*;\
+	rm -f ./pygments_$$VER.orig.tar.gz;\
+	rm -rf Pygments-*
+
+.PHONY: build clean binary-indep binary-arch binary install

@@ -1,0 +1,22 @@
+No longer changing warnings into errors for the target html
+Index: sympy/doc/Makefile
+===================================================================
+--- sympy.orig/doc/Makefile
++++ sympy/doc/Makefile
+@@ -1,6 +1,6 @@
+ # Makefile for Sphinx documentation
+ #
+-PYTHON       = python
++PYTHON       = python3
+ RST2HTML     = rst2html
+ 
+ # You can set these variables from the command line.
+@@ -44,7 +44,7 @@ clean:
+ 	-rm -rf sphinx
+ 	-rm -f $(PDFFILES)
+ 
+-html: SPHINXOPTS += -W --keep-going
++#html: SPHINXOPTS += -W --keep-going
+ html: _build/logo/sympy-notailtext-favicon.ico
+ 	mkdir -p src/.static
+ 	mkdir -p _build/html

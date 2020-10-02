@@ -1,0 +1,13 @@
+--- a/docs/source/usrman/mpi4py.futures.rst
++++ b/docs/source/usrman/mpi4py.futures.rst
+@@ -360,8 +360,8 @@
+ image to disk in binary `PGM`_ format. The code starts by importing
+ :class:`MPIPoolExecutor` from the :mod:`mpi4py.futures` package. Next, some
+ global constants and functions implement the computation of the Julia set. The
+-computations are protected with the standard :code:`if __name__ == '__main__':
+-...` idiom.  The image is computed by whole scanlines submitting all these
++computations are protected with the standard :code:`if __name__ == '__main__':...`
++idiom.  The image is computed by whole scanlines submitting all these
+ tasks at once using the :class:`~MPIPoolExecutor.map` method. The result
+ iterator yields scanlines in-order as the tasks complete. Finally, each
+ scanline is dumped to disk.

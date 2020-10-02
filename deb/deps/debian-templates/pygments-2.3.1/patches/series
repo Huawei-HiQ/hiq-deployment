@@ -1,0 +1,4 @@
+change_docs_theme.patch
+0002-add-g-parameter-to-pygmentize-man-page.patch
+0003-docs-moved-to-python-pygments-doc-binary-package.patch
+Adapt-conf.py-for-sphinx-2.0.patch

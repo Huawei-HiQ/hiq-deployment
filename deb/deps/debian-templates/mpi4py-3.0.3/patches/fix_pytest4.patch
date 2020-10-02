@@ -1,0 +1,11 @@
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -9,7 +9,7 @@
+ [nosetests]
+ where = test
+ 
+-[pytest]
++[tool:pytest]
+ testpaths = test
+ 
+ [flake8]

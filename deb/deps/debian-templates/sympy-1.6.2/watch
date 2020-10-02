@@ -1,0 +1,4 @@
+version=3
+
+https://github.com/sympy/sympy/tags \
+   /sympy/sympy/archive/sympy-([.0-9]+)\.tar\.gz

@@ -1,0 +1,6 @@
+#!/bin/sh -e
+
+cp -r setup.cfg test.py tests "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP"
+
+py3versions -i | tr ' ' '\n' | xargs -I {} env {} -Wd -m pytest -v -x -rs 2>&1

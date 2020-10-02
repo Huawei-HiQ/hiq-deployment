@@ -1,0 +1,23 @@
+From: Thomas Goirand <zigo@debian.org>
+Date: Thu, 8 Oct 2015 12:34:57 -0700
+Subject: install doc in the right place for Debian
+
+Forwarded: no
+Last-Update: 2014-06-22
+
+Patch-Name: 10_doc_relocation
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -63,7 +63,7 @@ packages = ["networkx",
+             "networkx.testing",
+             "networkx.utils"]
+ 
+-docdirbase = 'share/doc/networkx-%s' % version
++docdirbase = 'share/doc/python-networkx'
+ # add basic documentation
+ data = [(docdirbase, glob("*.txt"))]
+ # add examples
