@@ -1,0 +1,150 @@
+libxc (4.3.4-2) unstable; urgency=medium
+
+  * debian/rules (override_dh_auto_configure): Add -DENABLE_XHOST=OFF in order
+    to trun off -march=native compiler flag (Closes: #961383).
+
+ -- Michael Banck <mbanck@debian.org>  Sun, 24 May 2020 11:37:23 +0200
+
+libxc (4.3.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches/testsuite_support_tmpdir.patch,
+    debian/patches/fix_static_initialisation.patch: Refreshed.
+  * debian/patches/fix_cmake_pkgconfig.patch: Removed, applied upstream.
+  * debian/patches/fix_config_h_include.patch: Likewise.
+  * debian/patches/disable_lda_c_pk09.patch: Refreshed.
+  * debian/libxc5.symbols: Updated.
+  * debian/copyright, debian/upstream/metadata: Updated project homepage to
+    Gitlab.
+
+ -- Michael Banck <mbanck@debian.org>  Sat, 02 Nov 2019 17:45:13 +0100
+
+libxc (4.2.3-3) unstable; urgency=medium
+
+  * debian/patches/disable_lda_c_pk09.patch: New patch, disables the lda_c_pk09
+    functional.
+  * debian/rules (override_dh_auto_clean): Remove lda_c_pk09-specific testsuite
+    files.
+  * debian/libxc5.symbols: Updated.
+
+ -- Michael Banck <mbanck@debian.org>  Sun, 23 Dec 2018 10:48:15 +0100
+
+libxc (4.2.3-2) unstable; urgency=medium
+
+  * debian/rules: Use -g1 in CFLAGS and FFLAGS on mips/mipsel dues to
+    autobuilder out-of-memory issues during compilation.
+
+ -- Michael Banck <mbanck@debian.org>  Fri, 21 Dec 2018 22:59:42 +0100
+
+libxc (4.2.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/watch: Updated.
+  * debian/rules: Force buildsystem to autoconf.
+  * debian/libxc-dev.install: Wildcard pkg-config files to install.
+  * debian/patches/fix_static_initialisation.patch: Refreshed.
+  * debian/patches/cmake_support.patch: Removed, no longer needed.
+  * debian/control, debian/libxc4.install, debian/libxc4.symbols: Bump to
+    libxc5 according to SONAME change.
+  * debian/libxc5.symbols: Updated.
+  * debian/patches/fix_cmake_pkgconfig.patch: New patch, fixes the installation
+    of libxc.pc in the CMake build system.
+  * debian/control (Build-Depends): Added cmake.
+  * debian/rules: Build via cmake as well.
+  * debian/rules: Enable parallel build.
+  * debian/libxc-dev.install: Ship CMake and binary support files.
+  * debian/patches/fix_config_h_include.patch: New patch, removes include of
+    config.h from xc.h, taken from upstream commit 8a7cb2e2.
+
+ -- Michael Banck <mbanck@debian.org>  Sun, 16 Dec 2018 00:53:38 +0100
+
+libxc (3.0.0-2) unstable; urgency=medium
+
+  * debian/patches/cmake_support.patch: New patch, adding CMake build support,
+    taken from the psi4 upstream fork.
+
+ -- Michael Banck <mbanck@debian.org>  Sat, 19 May 2018 17:29:37 +0200
+
+libxc (3.0.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches/fix_underlinkage.patch: Removed, no longer needed.
+  * debian/patches/fix_static_initialisation.patch: Refreshed.
+  * debian/control (libxc1): Renamed package to libxc4, adjust references.
+  * debian/libxc1.install: Renamed to ...
+  * debian/libxc4.install: ... this.
+  * debian/libxc4.symbols: New file.
+
+ -- Michael Banck <mbanck@debian.org>  Sun, 29 May 2016 13:21:17 +0200
+
+libxc (2.1.2-1) unstable; urgency=medium
+
+  * New upstream point release.
+  * The following functionals had bugs fixed:
+    - GGA: X_LB, X_LBM (bug affected unpolarized version only)
+    - MGGA: C_REVTPSS, C_M08_HX, C_M08_SO, C_M11, C_M11_L
+    - all HYB_GGA and HYB_MGGA (missing variable initialization that could
+      cause Libxc to return wrong mixing parameters) 
+  * debian/upstream/metadata: Added ArXiv PDF eprint.
+
+ -- Michael Banck <mbanck@debian.org>  Wed, 23 Sep 2015 21:15:33 +0200
+
+libxc (2.1.1-1) unstable; urgency=medium
+
+  * New upstream point release.
+  * The following functionals had bugs fixed:
+    - GGA: X_SOGGA11
+    - HYB_GGA: X_SOGGA11_X, XC_CAM_B3LYP, XC_TUNED_CAM_B3LYP 
+
+ -- Michael Banck <mbanck@debian.org>  Sat, 29 Nov 2014 18:02:57 +0100
+
+libxc (2.1.0-2) unstable; urgency=medium
+
+  * debian/patches/fix_static_initialisation.patch: New patch, fixes FTBFS
+    errors due to invalid static initialisations on some architectures.
+  * debian/rules: Removed parallel option, as it seems to lead to FTBFS errors
+    on some autobuilders.
+
+ -- Michael Banck <mbanck@debian.org>  Sun, 12 Oct 2014 20:29:27 +0200
+
+libxc (2.1.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+  [ Daniel Leidert ]
+  * debian/copyright: Updated and moved to DEP5.
+  * debian/rules: Run dh_install with --list-missing.
+  * debian/patches/fix_underlinkage.patch: Added.
+    - Add missing -lm to fix underlinkage of the library.
+  * debian/patches/testsuite_support_tmpdir.patch: Adjusted.
+  * debian/patches/series: Adjusted.
+
+  [ Michael Banck ]
+  * debian/upstream: Moved to debian/upstream/metadata.
+
+ -- Michael Banck <mbanck@debian.org>  Sun, 12 Oct 2014 00:28:14 +0200
+
+libxc (2.0.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+  [ Daniel Leidert ]
+  * debian/compat: Set to 9.
+  * debian/control: Enabled multi-arch support.
+    (Vcs-Browser, Vcs-Svn): Fixed lintian warning.
+    (Build-Depends): Increased debhelper version. Added dh-autoreconf
+    (closes: #734559).
+  * debian/copyright: Minor fix.
+  * debian/libxc1.install, debian/libxc-dev.install: Adjusted after enabling
+    multi-arch support.
+  * debian/rules: Added autoreconf addon and enabled parallel building. Export
+    FCFLAGS properly for hardening.
+  * debian/watch: Added.
+
+ -- Debichem Team <debichem-devel@lists.alioth.debian.org>  Mon, 24 Feb 2014 16:56:22 +0100
+
+libxc (2.0.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #602110).
+
+ -- Michael Banck <mbanck@debian.org>  Mon, 29 Jul 2013 10:57:27 +0200

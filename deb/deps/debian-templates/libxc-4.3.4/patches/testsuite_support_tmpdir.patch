@@ -1,0 +1,21 @@
+Author: Michael Banck <mbanck@debian.org>
+Description: Run the testsuite in where TMPDIR is set or /tmp.
+Forwarded: no
+
+Index: libxc/testsuite/xc-run_testsuite
+===================================================================
+--- libxc.orig/testsuite/xc-run_testsuite
++++ libxc/testsuite/xc-run_testsuite
+@@ -13,8 +13,10 @@ if [ -z "$srcdir" ]; then
+   srcdir="./"
+ fi
+ 
+-if [ -z "$tmpdir" ]; then
+-  tmpdir="/tmp"
++if [ -n "$TMPDIR" ]; then
++  tmpdir=$TMPDIR
++else
++  tmpdir=/tmp
+ fi
+ 
+ if [ -z "$builddir" ]; then

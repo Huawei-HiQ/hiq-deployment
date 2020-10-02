@@ -1,0 +1,43 @@
+Source: libxc
+Section: science
+Priority: optional
+Maintainer: Debichem Team <debichem-devel@lists.alioth.debian.org>
+Uploaders: Michael Banck <mbanck@debian.org>
+Build-Depends: cmake, debhelper (>> 9), dh-autoreconf, gfortran
+Standards-Version: 3.9.5
+Homepage: http://www.tddft.org/programs/octopus/wiki/index.php/Libxc
+Vcs-Browser: https://salsa.debian.org/debichem-team/libxc
+Vcs-Git: https://salsa.debian.org/debichem-team/libxc.git
+
+Package: libxc5
+Architecture: any
+Multi-Arch: same
+Section: libs
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Library of Exchange-Correlation Functionals
+ LibXC is a library of exchange-correlation (XC) functionals for
+ density-functional theory (DFT). The aim is to provide a portable, well
+ tested and reliable set of exchange and correlation functionals that
+ can be used by other codes. Supported XC functionals include:
+ .
+  * Local Density Approximation (LDA) functionals including Slater exchange,
+    and VWN, Perdew-Zunger or PADE correlation.
+  * Generalized Gradient Approximation (GGA) XC functionals including PBE,
+    PW91, BLYP, HCTH93, HCTH120, HCTH147, HCTH407, as well as B88 exchange and
+    LYP or P86 correlation.
+  * Hybrid XC functionals including B3LYP, PBE0, B97, X3LYP, BHANDH, HSE03
+    and HSE06.
+  * Meta-GGA XC functionals including TPSS, M05 and M06.
+
+Package: libxc-dev
+Architecture: any
+Section: libdevel
+Depends: libxc5 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: Library of Exchange-Correlation Functionals (development files)
+ LibXC is a library of exchange-correlation (XC) functionals for
+ density-functional theory (DFT). The aim is to provide a portable, well
+ tested and reliable set of exchange and correlation functionals that
+ can be used by other codes.
+ .
+ This package contains the static library, the C headers and the Fortran
+ modules necessary for developers.

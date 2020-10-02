@@ -1,0 +1,5 @@
+pyscf (1.7.4-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- Damien Nguyen <damien1@huawei.com>  Fri, 02 Oct 2020 15:51:11 +0200

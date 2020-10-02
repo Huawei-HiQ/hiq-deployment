@@ -1,0 +1,35 @@
+Source: libcint
+Section: libs
+Priority: optional
+Maintainer: Damien Nguyen <damien1@huawei.com>
+Build-Depends: debhelper-compat (= 12),
+	       cmake,
+	       libopenblas-openmp-dev | libopenblas-dev,
+Standards-Version: 4.5.0
+Homepage: https://github.com/sunqm/libcint
+
+Package: libcint3
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends},
+	 ${shlibs:Depends},
+	 libopenblas0-openmp | libopenblas-base,
+Description: libcint is an open source library for analytical Gaussian
+ integrals.
+ It provides C/Fortran API to evaluate one-electron / two-electron
+ integrals for Cartesian / real-spheric / spinor Gaussian type functions.
+
+Package: libcint-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libcint3 (= ${binary:Version}),
+	 ${misc:Depends},
+	 libopenblas-openmp-dev | libopenblas-dev,
+Description: libcint is an open source library for analytical Gaussian
+ integrals.
+ It provides C/Fortran API to evaluate one-electron / two-electron
+ integrals for Cartesian / real-spheric / spinor Gaussian type functions.
+ .
+ This package contains the development files for libcint3

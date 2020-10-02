@@ -1,0 +1,4011 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: pyscf
+Upstream-Contact: https://github.com/pyscf/pyscf/
+Source: https://github.com/pyscf/pyscf/
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     pyscf/__init__.py
+           pyscf/adc/test/test_N2_uadc_ea.py
+           pyscf/adc/test/test_N2_uadc_ip.py
+           pyscf/adc/test/test_OH_uadc_ea.py
+           pyscf/adc/test/test_OH_uadc_ip.py
+           pyscf/adc/test/test_P_uadc_ea.py
+           pyscf/adc/test/test_P_uadc_ip.py
+           pyscf/adc/uadc.py
+           pyscf/adc/uadc_ao2mo.py
+           pyscf/ao2mo/__init__.py
+           pyscf/ao2mo/_ao2mo.py
+           pyscf/ao2mo/addons.py
+           pyscf/ao2mo/incore.py
+           pyscf/ao2mo/outcore.py
+           pyscf/ao2mo/r_outcore.py
+           pyscf/ao2mo/semi_incore.py
+           pyscf/ao2mo/test/bz_nr.py
+           pyscf/ao2mo/test/test_addons.py
+           pyscf/ao2mo/test/test_incore.py
+           pyscf/ao2mo/test/test_init.py
+           pyscf/ao2mo/test/test_outcore.py
+           pyscf/ao2mo/test/test_r_outcore.py
+           pyscf/ao2mo/test/test_semi_incore.py
+           pyscf/cc/__init__.py
+           pyscf/cc/_ccsd.py
+           pyscf/cc/addons.py
+           pyscf/cc/ccd.py
+           pyscf/cc/ccsd.py
+           pyscf/cc/ccsd_lambda.py
+           pyscf/cc/ccsd_rdm.py
+           pyscf/cc/ccsd_rdm_slow.py
+           pyscf/cc/ccsd_t.py
+           pyscf/cc/ccsd_t_lambda_slow.py
+           pyscf/cc/ccsd_t_rdm_slow.py
+           pyscf/cc/ccsd_t_slow.py
+           pyscf/cc/dfccsd.py
+           pyscf/cc/eom_gccsd.py
+           pyscf/cc/eom_rccsd.py
+           pyscf/cc/eom_rccsd_hybrid.py
+           pyscf/cc/eom_uccsd.py
+           pyscf/cc/gccsd.py
+           pyscf/cc/gccsd_lambda.py
+           pyscf/cc/gccsd_rdm.py
+           pyscf/cc/gccsd_t.py
+           pyscf/cc/gccsd_t_lambda.py
+           pyscf/cc/gccsd_t_rdm.py
+           pyscf/cc/gccsd_t_slow.py
+           pyscf/cc/gintermediates.py
+           pyscf/cc/rccsd.py
+           pyscf/cc/rccsd_hybrid.py
+           pyscf/cc/rccsd_lambda.py
+           pyscf/cc/rccsd_slow.py
+           pyscf/cc/rintermediates.py
+           pyscf/cc/test/test_2e.py
+           pyscf/cc/test/test_addons.py
+           pyscf/cc/test/test_bz.py
+           pyscf/cc/test/test_ccsd_lambda.py
+           pyscf/cc/test/test_ccsd_t.py
+           pyscf/cc/test/test_dfccsd.py
+           pyscf/cc/test/test_eom_gccsd.py
+           pyscf/cc/test/test_eom_rccsd.py
+           pyscf/cc/test/test_eom_uccsd.py
+           pyscf/cc/test/test_gccsd.py
+           pyscf/cc/test/test_gccsd_lambda.py
+           pyscf/cc/test/test_gccsd_t.py
+           pyscf/cc/test/test_h2o.py
+           pyscf/cc/test/test_rccsd.py
+           pyscf/cc/test/test_rccsd_lambda.py
+           pyscf/cc/test/test_uccsd.py
+           pyscf/cc/test/test_uccsd_lambda.py
+           pyscf/cc/test/test_uccsd_t.py
+           pyscf/cc/uccsd.py
+           pyscf/cc/uccsd_lambda.py
+           pyscf/cc/uccsd_rdm.py
+           pyscf/cc/uccsd_slow.py
+           pyscf/cc/uccsd_t.py
+           pyscf/cc/uccsd_t_lambda.py
+           pyscf/cc/uccsd_t_rdm.py
+           pyscf/cc/uccsd_t_slow.py
+           pyscf/cc/uintermediates.py
+           pyscf/cc/uintermediates_slow.py
+           pyscf/ccn/equations.py
+           pyscf/ccn/pyscf_helpers.py
+           pyscf/ccn/test.py
+           pyscf/ccn/util.py
+           pyscf/ci/__init__.py
+           pyscf/ci/addons.py
+           pyscf/ci/cisd.py
+           pyscf/ci/gcisd.py
+           pyscf/ci/test/test_cisd.py
+           pyscf/ci/test/test_gcisd.py
+           pyscf/ci/test/test_ucisd.py
+           pyscf/ci/ucisd.py
+           pyscf/cornell_shci/__init__.py
+           pyscf/cornell_shci/shci.py
+           pyscf/cornell_shci/symmetry.py
+           pyscf/data/__init__.py
+           pyscf/data/elements.py
+           pyscf/data/gyro.py
+           pyscf/data/nist.py
+           pyscf/data/radii.py
+           pyscf/df/__init__.py
+           pyscf/df/addons.py
+           pyscf/df/df.py
+           pyscf/df/df_jk.py
+           pyscf/df/incore.py
+           pyscf/df/outcore.py
+           pyscf/df/r_incore.py
+           pyscf/df/test/test_addons.py
+           pyscf/df/test/test_df.py
+           pyscf/df/test/test_df_grad.py
+           pyscf/df/test/test_df_hessian.py
+           pyscf/df/test/test_df_jk.py
+           pyscf/df/test/test_incore.py
+           pyscf/df/test/test_outcore.py
+           pyscf/dft/__init__.py
+           pyscf/dft/dks.py
+           pyscf/dft/gen_grid.py
+           pyscf/dft/gen_libxc_param.py
+           pyscf/dft/gen_xcfun_param.py
+           pyscf/dft/gks.py
+           pyscf/dft/gks_symm.py
+           pyscf/dft/libxc.py
+           pyscf/dft/numint.py
+           pyscf/dft/r_numint.py
+           pyscf/dft/radi.py
+           pyscf/dft/rks.py
+           pyscf/dft/rks_symm.py
+           pyscf/dft/roks.py
+           pyscf/dft/test/test_dks.py
+           pyscf/dft/test/test_grids.py
+           pyscf/dft/test/test_h2o.py
+           pyscf/dft/test/test_he.py
+           pyscf/dft/test/test_libxc.py
+           pyscf/dft/test/test_numint.py
+           pyscf/dft/test/test_xcfun.py
+           pyscf/dft/uks.py
+           pyscf/dft/uks_symm.py
+           pyscf/dft/xc/utils.py
+           pyscf/dft/xcfun.py
+           pyscf/dftd3/__init__.py
+           pyscf/dftd3/itrf.py
+           pyscf/dftd3/test/test_dftd3.py
+           pyscf/dmrgscf/__init__.py
+           pyscf/dmrgscf/chemps2.py
+           pyscf/dmrgscf/dmrg_sym.py
+           pyscf/dmrgscf/dmrgci.py
+           pyscf/dmrgscf/example/nevpt2.py
+           pyscf/dmrgscf/nevpt_mpi.py
+           pyscf/dmrgscf/p_dmrg.py
+           pyscf/dmrgscf/test/test_chemps2_n2.py
+           pyscf/dmrgscf/test/test_dmrgci_n2.py
+           pyscf/dmrgscf/test/test_dmrgnevpt2.py
+           pyscf/doci/doci_mcscf.py
+           pyscf/doci/doci_slow.py
+           pyscf/eph/eph_fd.py
+           pyscf/eph/rhf.py
+           pyscf/eph/rks.py
+           pyscf/eph/test/test_rhf.py
+           pyscf/eph/test/test_rks.py
+           pyscf/eph/test/test_uhf.py
+           pyscf/eph/test/test_uks.py
+           pyscf/eph/uhf.py
+           pyscf/eph/uks.py
+           pyscf/extras/__init__.py
+           pyscf/extras/mbd/__init__.py
+           pyscf/extras/mbd/_mbd.py
+           pyscf/extras/mbd/mbd.py
+           pyscf/extras/mbd/vdw_param.py
+           pyscf/fci/__init__.py
+           pyscf/fci/addons.py
+           pyscf/fci/cistring.py
+           pyscf/fci/direct_ep.py
+           pyscf/fci/direct_nosym.py
+           pyscf/fci/direct_spin0.py
+           pyscf/fci/direct_spin0_symm.py
+           pyscf/fci/direct_spin1.py
+           pyscf/fci/direct_spin1_symm.py
+           pyscf/fci/direct_uhf.py
+           pyscf/fci/fci_slow.py
+           pyscf/fci/rdm.py
+           pyscf/fci/selected_ci.py
+           pyscf/fci/selected_ci_slow.py
+           pyscf/fci/selected_ci_spin0.py
+           pyscf/fci/selected_ci_spin0_symm.py
+           pyscf/fci/selected_ci_symm.py
+           pyscf/fci/spin_op.py
+           pyscf/fci/test/test_addons.py
+           pyscf/fci/test/test_cistring.py
+           pyscf/fci/test/test_direct_nosym.py
+           pyscf/fci/test/test_rdm.py
+           pyscf/fci/test/test_selected_ci.py
+           pyscf/fci/test/test_spin0.py
+           pyscf/fci/test/test_spin0_symm.py
+           pyscf/fci/test/test_spin1.py
+           pyscf/fci/test/test_spin1_symm.py
+           pyscf/fci/test/test_spin_op.py
+           pyscf/fci/test/test_symm_init_guess.py
+           pyscf/fci/test/test_uhf.py
+           pyscf/fciqmcscf/__init__.py
+           pyscf/fciqmcscf/fciqmc.py
+           pyscf/fciqmcscf/test/test_fciqmc_lih_dipoles.py
+           pyscf/fciqmcscf/test/test_fciqmcci_n2.py
+           pyscf/fciqmcscf/test/test_he2_state_averaged.py
+           pyscf/future/__init__.py
+           pyscf/geomopt/__init__.py
+           pyscf/geomopt/addons.py
+           pyscf/geomopt/berny_solver.py
+           pyscf/geomopt/geometric_solver.py
+           pyscf/geomopt/test/test_addons.py
+           pyscf/geomopt/test/test_berny_solver.py
+           pyscf/geomopt/test/test_geometric_solver.py
+           pyscf/grad/__init__.py
+           pyscf/grad/casci.py
+           pyscf/grad/casscf.py
+           pyscf/grad/ccsd.py
+           pyscf/grad/ccsd_slow.py
+           pyscf/grad/ccsd_t.py
+           pyscf/grad/cisd.py
+           pyscf/grad/dhf.py
+           pyscf/grad/mp2.py
+           pyscf/grad/rhf.py
+           pyscf/grad/rks.py
+           pyscf/grad/rohf.py
+           pyscf/grad/roks.py
+           pyscf/grad/test/test_ccsd.py
+           pyscf/grad/test/test_cisd.py
+           pyscf/grad/test/test_dhf.py
+           pyscf/grad/test/test_h2o.py
+           pyscf/grad/test/test_hf.py
+           pyscf/grad/test/test_mp2.py
+           pyscf/grad/test/test_rhf.py
+           pyscf/grad/test/test_rks.py
+           pyscf/grad/test/test_tdrhf_grad.py
+           pyscf/grad/test/test_tdrks_grad.py
+           pyscf/grad/test/test_tduhf_grad.py
+           pyscf/grad/test/test_tduks_grad.py
+           pyscf/grad/test/test_ucisd.py
+           pyscf/grad/test/test_uhf.py
+           pyscf/grad/test/test_uks.py
+           pyscf/grad/test/test_ump2.py
+           pyscf/grad/uccsd.py
+           pyscf/grad/uccsd_t.py
+           pyscf/grad/ucisd.py
+           pyscf/grad/uhf.py
+           pyscf/grad/uks.py
+           pyscf/grad/ump2.py
+           pyscf/gto/__init__.py
+           pyscf/gto/basis/__init__.py
+           pyscf/gto/basis/parse_bfd_pp.py
+           pyscf/gto/basis/parse_gaussian.py
+           pyscf/gto/basis/parse_molpro.py
+           pyscf/gto/basis/parse_nwchem.py
+           pyscf/gto/cmd_args.py
+           pyscf/gto/ecp.py
+           pyscf/gto/eval_gto.py
+           pyscf/gto/ft_ao.py
+           pyscf/gto/mole.py
+           pyscf/gto/moleintor.py
+           pyscf/gto/pp_int.py
+           pyscf/gto/test/test_basis_parser.py
+           pyscf/gto/test/test_ecp.py
+           pyscf/gto/test/test_eval_gto.py
+           pyscf/gto/test/test_ft_ao.py
+           pyscf/gto/test/test_mole.py
+           pyscf/gto/test/test_moleintor.py
+           pyscf/gto/test/test_tao.py
+           pyscf/gw/__init__.py
+           pyscf/gw/gw.py
+           pyscf/hci/__init__.py
+           pyscf/hci/hci.py
+           pyscf/hessian/__init__.py
+           pyscf/hessian/rhf.py
+           pyscf/hessian/rks.py
+           pyscf/hessian/test/test_rhf.py
+           pyscf/hessian/test/test_rks.py
+           pyscf/hessian/test/test_thermo.py
+           pyscf/hessian/test/test_uhf.py
+           pyscf/hessian/test/test_uks.py
+           pyscf/hessian/uhf.py
+           pyscf/hessian/uks.py
+           pyscf/icmpspt/__init__.py
+           pyscf/icmpspt/icmpspt.py
+           pyscf/lib/CMakeLists.txt
+           pyscf/lib/__init__.py
+           pyscf/lib/ao2mo/CMakeLists.txt
+           pyscf/lib/ao2mo/test/test_ao2mo.py
+           pyscf/lib/cc/CMakeLists.txt
+           pyscf/lib/chkfile.py
+           pyscf/lib/dft/CMakeLists.txt
+           pyscf/lib/diis.py
+           pyscf/lib/exceptions.py
+           pyscf/lib/gto/CMakeLists.txt
+           pyscf/lib/gto/test/test_ecp.py
+           pyscf/lib/gto/test/test_gridao.py
+           pyscf/lib/gto/test/test_int1e_pbc.py
+           pyscf/lib/hci/CMakeLists.txt
+           pyscf/lib/icmpspt/CMakeLists.txt
+           pyscf/lib/linalg_helper.py
+           pyscf/lib/localizer/CMakeLists.txt
+           pyscf/lib/logger.py
+           pyscf/lib/mcscf/CMakeLists.txt
+           pyscf/lib/misc.py
+           pyscf/lib/mpi/CMakeLists.txt
+           pyscf/lib/nao/CMakeLists.txt
+           pyscf/lib/nao/m_abramowitz.F90
+           pyscf/lib/nao/m_algebra.F90
+           pyscf/lib/nao/m_all_legendre_poly.F90
+           pyscf/lib/nao/m_alloc_identity.F90
+           pyscf/lib/nao/m_ao_eval.F90
+           pyscf/lib/nao/m_ao_hartree_lap.F90
+           pyscf/lib/nao/m_aos_libnao.F90
+           pyscf/lib/nao/m_apair_put.F90
+           pyscf/lib/nao/m_apair_size.F90
+           pyscf/lib/nao/m_arrays.F90
+           pyscf/lib/nao/m_biloc_aux.F90
+           pyscf/lib/nao/m_biloc_aux_libnao.F90
+           pyscf/lib/nao/m_bilocal_vertex.F90
+           pyscf/lib/nao/m_block_crs8.F90
+           pyscf/lib/nao/m_block_split.F90
+           pyscf/lib/nao/m_book_pb.F90
+           pyscf/lib/nao/m_bulk_uc_vecs.F90
+           pyscf/lib/nao/m_coeffs_type.F90
+           pyscf/lib/nao/m_color.F90
+           pyscf/lib/nao/m_comp_vrtx_cc.F90
+           pyscf/lib/nao/m_constr_clist_sprc.F90
+           pyscf/lib/nao/m_coul_comm.F90
+           pyscf/lib/nao/m_coul_param.F90
+           pyscf/lib/nao/m_csphar.F90
+           pyscf/lib/nao/m_csr_bloch_mat.F90
+           pyscf/lib/nao/m_define_macro.F90
+           pyscf/lib/nao/m_dens_libnao.F90
+           pyscf/lib/nao/m_dft_hsx.F90
+           pyscf/lib/nao/m_dft_wf4.F90
+           pyscf/lib/nao/m_dft_wf8.F90
+           pyscf/lib/nao/m_die.F90
+           pyscf/lib/nao/m_dm_libnao.F90
+           pyscf/lib/nao/m_dp_aux.F90
+           pyscf/lib/nao/m_dp_aux_libnao.F90
+           pyscf/lib/nao/m_expell_empty_pairs.F90
+           pyscf/lib/nao/m_fact.F90
+           pyscf/lib/nao/m_functs_l_mult_type.F90
+           pyscf/lib/nao/m_functs_m_mult_type.F90
+           pyscf/lib/nao/m_get_sizeof.F90
+           pyscf/lib/nao/m_harmonics.F90
+           pyscf/lib/nao/m_hkernel_pb_bcrs8.F90
+           pyscf/lib/nao/m_hs.F90
+           pyscf/lib/nao/m_hsx.F90
+           pyscf/lib/nao/m_hxc8.F90
+           pyscf/lib/nao/m_init_book_dp_apair.F90
+           pyscf/lib/nao/m_init_bpair_functs_vrtx.F90
+           pyscf/lib/nao/m_init_mu_sp2start_ao.F90
+           pyscf/lib/nao/m_init_pair_info.F90
+           pyscf/lib/nao/m_init_pair_info_array.F90
+           pyscf/lib/nao/m_init_vrtx_cc_apair.F90
+           pyscf/lib/nao/m_init_vrtx_cc_batch.F90
+           pyscf/lib/nao/m_input.F90
+           pyscf/lib/nao/m_interp.F90
+           pyscf/lib/nao/m_interp_coeffs.F90
+           pyscf/lib/nao/m_interpolation.F90
+           pyscf/lib/nao/m_io.F90
+           pyscf/lib/nao/m_log.F90
+           pyscf/lib/nao/m_make_book_dp_longer.F90
+           pyscf/lib/nao/m_make_vrtx_cc.F90
+           pyscf/lib/nao/m_matmul.F90
+           pyscf/lib/nao/m_mmult_normalize.F90
+           pyscf/lib/nao/m_myreshape.F90
+           pyscf/lib/nao/m_null2char.F90
+           pyscf/lib/nao/m_numint.F90
+           pyscf/lib/nao/m_orb_rspace_aux_libnao.F90
+           pyscf/lib/nao/m_orb_rspace_type.F90
+           pyscf/lib/nao/m_pack_matrix.F90
+           pyscf/lib/nao/m_pair_info.F90
+           pyscf/lib/nao/m_para_libnao.F90
+           pyscf/lib/nao/m_parallel.F90
+           pyscf/lib/nao/m_param.F90
+           pyscf/lib/nao/m_param_arr.F90
+           pyscf/lib/nao/m_param_arr_type.F90
+           pyscf/lib/nao/m_pb_c2nf.F90
+           pyscf/lib/nao/m_pb_coul_11.F90
+           pyscf/lib/nao/m_pb_coul_12.F90
+           pyscf/lib/nao/m_pb_coul_aux.F90
+           pyscf/lib/nao/m_pb_coul_bcrs8.F90
+           pyscf/lib/nao/m_pb_coul_pack8.F90
+           pyscf/lib/nao/m_pb_hkernel_pack8.F90
+           pyscf/lib/nao/m_pb_kernel_rows8.F90
+           pyscf/lib/nao/m_pb_libnao.F90
+           pyscf/lib/nao/m_pb_ls_blocks_ovrlp_all.F90
+           pyscf/lib/nao/m_pb_reexpr_comm.F90
+           pyscf/lib/nao/m_precision.F90
+           pyscf/lib/nao/m_preinit_book_dp.F90
+           pyscf/lib/nao/m_preinit_book_re.F90
+           pyscf/lib/nao/m_prod_basis_gen.F90
+           pyscf/lib/nao/m_prod_basis_list.F90
+           pyscf/lib/nao/m_prod_basis_param.F90
+           pyscf/lib/nao/m_prod_basis_type.F90
+           pyscf/lib/nao/m_prod_talman.F90
+           pyscf/lib/nao/m_rsphar.F90
+           pyscf/lib/nao/m_sc_dmatrix.F90
+           pyscf/lib/nao/m_sets.F90
+           pyscf/lib/nao/m_siesta_dipo_types.F90
+           pyscf/lib/nao/m_siesta_hsx.F90
+           pyscf/lib/nao/m_siesta_ion.F90
+           pyscf/lib/nao/m_siesta_wfsx.F90
+           pyscf/lib/nao/m_sort.F90
+           pyscf/lib/nao/m_sp2norbs.F90
+           pyscf/lib/nao/m_sparse_vec.F90
+           pyscf/lib/nao/m_sph_bes_trans.F90
+           pyscf/lib/nao/m_spin_dens_aux.F90
+           pyscf/lib/nao/m_spin_dens_fini8.F90
+           pyscf/lib/nao/m_sv_get.F90
+           pyscf/lib/nao/m_sv_libnao_orbs.F90
+           pyscf/lib/nao/m_sv_libnao_prds.F90
+           pyscf/lib/nao/m_sv_prod_log_get.F90
+           pyscf/lib/nao/m_system_vars.F90
+           pyscf/lib/nao/m_tci_ac_ac.F90
+           pyscf/lib/nao/m_tci_ac_ac_cpy.F90
+           pyscf/lib/nao/m_tci_ac_dp.F90
+           pyscf/lib/nao/m_thrj.F90
+           pyscf/lib/nao/m_thrj_nobuf.F90
+           pyscf/lib/nao/m_timing.F90
+           pyscf/lib/nao/m_uc_skeleton.F90
+           pyscf/lib/nao/m_upper.F90
+           pyscf/lib/nao/m_vertex_3cent.F90
+           pyscf/lib/nao/m_vrtx_cc_apair.F90
+           pyscf/lib/nao/m_vrtx_cc_batch.F90
+           pyscf/lib/nao/m_warn.F90
+           pyscf/lib/nao/m_wigner2.F90
+           pyscf/lib/nao/m_wigner_rotation.F90
+           pyscf/lib/nao/m_xyz.F90
+           pyscf/lib/nao/m_z2sym.F90
+           pyscf/lib/np_helper/CMakeLists.txt
+           pyscf/lib/numpy_helper.py
+           pyscf/lib/parameters.py
+           pyscf/lib/pbc/CMakeLists.txt
+           pyscf/lib/pbc/test/test_pbc_fill_int.py
+           pyscf/lib/ri/CMakeLists.txt
+           pyscf/lib/ri/test/test_df.py
+           pyscf/lib/semiempirical/CMakeLists.txt
+           pyscf/lib/shciscf/CMakeLists.txt
+           pyscf/lib/sparsetools/CMakeLists.txt
+           pyscf/lib/sparsetools/m_sparsetools.c
+           pyscf/lib/tblis_einsum.py
+           pyscf/lib/test/test_chkfile.py
+           pyscf/lib/test/test_diis.py
+           pyscf/lib/test/test_linalg_helper.py
+           pyscf/lib/test/test_misc.py
+           pyscf/lib/test/test_numpy_helper.py
+           pyscf/lib/vhf/CMakeLists.txt
+           pyscf/lib/vhf/test/test_nr_direct.py
+           pyscf/lo/__init__.py
+           pyscf/lo/boys.py
+           pyscf/lo/edmiston.py
+           pyscf/lo/iao.py
+           pyscf/lo/ibo.py
+           pyscf/lo/nao.py
+           pyscf/lo/orth.py
+           pyscf/lo/pipek.py
+           pyscf/lo/test/test_iao.py
+           pyscf/lo/test/test_ibo.py
+           pyscf/lo/test/test_localizer.py
+           pyscf/lo/test/test_nao.py
+           pyscf/lo/test/test_orth.py
+           pyscf/lo/test/test_vvo.py
+           pyscf/lo/vvo.py
+           pyscf/mcscf/PiOS.py
+           pyscf/mcscf/__init__.py
+           pyscf/mcscf/addons.py
+           pyscf/mcscf/avas.py
+           pyscf/mcscf/casci.py
+           pyscf/mcscf/casci_symm.py
+           pyscf/mcscf/df.py
+           pyscf/mcscf/dmet_cas.py
+           pyscf/mcscf/mc1step.py
+           pyscf/mcscf/mc1step_symm.py
+           pyscf/mcscf/mc2step.py
+           pyscf/mcscf/mc_ao2mo.py
+           pyscf/mcscf/newton_casscf.py
+           pyscf/mcscf/newton_casscf_symm.py
+           pyscf/mcscf/test/test_addons.py
+           pyscf/mcscf/test/test_bz.py
+           pyscf/mcscf/test/test_bz_df.py
+           pyscf/mcscf/test/test_c2h4.py
+           pyscf/mcscf/test/test_casci.py
+           pyscf/mcscf/test/test_mc1step.py
+           pyscf/mcscf/test/test_mcao2mo.py
+           pyscf/mcscf/test/test_n2.py
+           pyscf/mcscf/test/test_n2_df.py
+           pyscf/mcscf/test/test_newton_casscf.py
+           pyscf/mcscf/test/test_ucasci.py
+           pyscf/mcscf/test/test_umc1step.py
+           pyscf/mcscf/ucasci.py
+           pyscf/mcscf/umc1step.py
+           pyscf/mcscf/umc2step.py
+           pyscf/mcscf/umc_ao2mo.py
+           pyscf/mp/__init__.py
+           pyscf/mp/dfmp2.py
+           pyscf/mp/gmp2.py
+           pyscf/mp/mp2.py
+           pyscf/mp/mp2f12_slow.py
+           pyscf/mp/test/test_f12.py
+           pyscf/mp/test/test_gmp2.py
+           pyscf/mp/test/test_mp2.py
+           pyscf/mp/test/test_ump2.py
+           pyscf/mp/ump2.py
+           pyscf/mrpt/__init__.py
+           pyscf/mrpt/nevpt2.py
+           pyscf/mrpt/test/test_nevpt2.py
+           pyscf/nao/__init__.py
+           pyscf/nao/ao_log.py
+           pyscf/nao/log_mesh.py
+           pyscf/nao/lsofcsr.py
+           pyscf/nao/m_ao_eval.py
+           pyscf/nao/m_ao_eval_libnao.py
+           pyscf/nao/m_ao_log.py
+           pyscf/nao/m_ao_log_hartree.py
+           pyscf/nao/m_ao_matelem.py
+           pyscf/nao/m_aos_libnao.py
+           pyscf/nao/m_blas_wrapper.py
+           pyscf/nao/m_c2r.py
+           pyscf/nao/m_color.py
+           pyscf/nao/m_comp_coulomb_den.py
+           pyscf/nao/m_comp_coulomb_pack.py
+           pyscf/nao/m_comp_dm.py
+           pyscf/nao/m_conv_ac_dp.py
+           pyscf/nao/m_conv_yzx2xyz.py
+           pyscf/nao/m_coulomb_am.py
+           pyscf/nao/m_csphar.py
+           pyscf/nao/m_csphar_talman_libnao.py
+           pyscf/nao/m_dens_elec_vec.py
+           pyscf/nao/m_dens_libnao.py
+           pyscf/nao/m_density_cart.py
+           pyscf/nao/m_dipole_coo.py
+           pyscf/nao/m_dipole_ni.py
+           pyscf/nao/m_div_eigenenergy_cuda.py
+           pyscf/nao/m_div_eigenenergy_numba.py
+           pyscf/nao/m_dm.py
+           pyscf/nao/m_eri2c.py
+           pyscf/nao/m_eri3c.py
+           pyscf/nao/m_exc.py
+           pyscf/nao/m_fact.py
+           pyscf/nao/m_fermi_dirac.py
+           pyscf/nao/m_g297.py
+           pyscf/nao/m_gauleg.py
+           pyscf/nao/m_gaunt.py
+           pyscf/nao/m_get_atom2bas_s.py
+           pyscf/nao/m_get_sp_mu2s.py
+           pyscf/nao/m_gpaw_hsx.py
+           pyscf/nao/m_gpaw_wfsx.py
+           pyscf/nao/m_init_dens_libnao.py
+           pyscf/nao/m_init_dm_libnao.py
+           pyscf/nao/m_init_sab2dm_libnao.py
+           pyscf/nao/m_ion_log.py
+           pyscf/nao/m_kmat_den.py
+           pyscf/nao/m_laplace_am.py
+           pyscf/nao/m_libnao.py
+           pyscf/nao/m_local_vertex.py
+           pyscf/nao/m_log_mesh.py
+           pyscf/nao/m_ls_contributing.py
+           pyscf/nao/m_ls_part_centers.py
+           pyscf/nao/m_next235.py
+           pyscf/nao/m_numba_utils.py
+           pyscf/nao/m_openmx_import_scfout.py
+           pyscf/nao/m_openmx_mat.py
+           pyscf/nao/m_overlap_am.py
+           pyscf/nao/m_overlap_coo.py
+           pyscf/nao/m_overlap_lil.py
+           pyscf/nao/m_overlap_ni.py
+           pyscf/nao/m_pack2den.py
+           pyscf/nao/m_prod_basis_obsolete.py
+           pyscf/nao/m_prod_biloc.py
+           pyscf/nao/m_prod_log.py
+           pyscf/nao/m_prod_talman.py
+           pyscf/nao/m_rsphar.py
+           pyscf/nao/m_rsphar_libnao.py
+           pyscf/nao/m_rsphar_vec.py
+           pyscf/nao/m_sbt.py
+           pyscf/nao/m_siesta2blanko_csr.py
+           pyscf/nao/m_siesta2blanko_denvec.py
+           pyscf/nao/m_siesta_ang2bohr.py
+           pyscf/nao/m_siesta_eig.py
+           pyscf/nao/m_siesta_ev2ha.py
+           pyscf/nao/m_siesta_hsx.py
+           pyscf/nao/m_siesta_hsx_bloch_mat.py
+           pyscf/nao/m_siesta_ion.py
+           pyscf/nao/m_siesta_ion_add_sp2.py
+           pyscf/nao/m_siesta_ion_interp.py
+           pyscf/nao/m_siesta_ion_xml.py
+           pyscf/nao/m_siesta_utils.py
+           pyscf/nao/m_siesta_wfsx.py
+           pyscf/nao/m_siesta_xml.py
+           pyscf/nao/m_siesta_xml_print.py
+           pyscf/nao/m_simulation.py
+           pyscf/nao/m_sparse_blas.py
+           pyscf/nao/m_sparsetools.py
+           pyscf/nao/m_spline_diff2.py
+           pyscf/nao/m_spline_interp.py
+           pyscf/nao/m_sv_chain_data.py
+           pyscf/nao/m_sv_diag.py
+           pyscf/nao/m_sv_get_denmat.py
+           pyscf/nao/m_system_vars_deprecated.py
+           pyscf/nao/m_system_vars_dos.py
+           pyscf/nao/m_system_vars_gpaw.py
+           pyscf/nao/m_tddft_iter_gpu.py
+           pyscf/nao/m_thrj.py
+           pyscf/nao/m_vertex_loop.py
+           pyscf/nao/m_vhartree_coo.py
+           pyscf/nao/m_vnucele_coo.py
+           pyscf/nao/m_vnucele_coo_coulomb.py
+           pyscf/nao/m_vnucele_coo_subtract.py
+           pyscf/nao/m_vxc_lil.py
+           pyscf/nao/m_vxc_pack.py
+           pyscf/nao/m_xc_scalar_ni.py
+           pyscf/nao/m_xjl.py
+           pyscf/nao/m_xjl_numba.py
+           pyscf/nao/prod_log.py
+           pyscf/nao/test/__init__.py
+           pyscf/nao/test/nao/ae_fii/test_ae_fii.py
+           pyscf/nao/test/nao/na2/test_na2.py
+           pyscf/nao/test/nao/water/test_water.py
+           pyscf/nao/test/silver_55/test_pb_batch.py
+           pyscf/nao/test/sodium_04/pyscf.nao.tddft_iter.py
+           pyscf/nao/test/sodium_20/test_pb_batch.py
+           pyscf/nao/test/sodium_55/test_pb_batch.py
+           pyscf/nao/test/test_0001_nao.py
+           pyscf/nao/test/test_0002_prod_basis_nao.py
+           pyscf/nao/test/test_0003_na2_nao.py
+           pyscf/nao/test/test_0004_log_mesh.py
+           pyscf/nao/test/test_0005_ao_log_nao.py
+           pyscf/nao/test/test_0006_01_nao_ghost.py
+           pyscf/nao/test/test_0006_02_nao_noghost.py
+           pyscf/nao/test/test_0006_water_pp_pb_nao.py
+           pyscf/nao/test/test_0007_prdred_nao.py
+           pyscf/nao/test/test_0008_log_interp.py
+           pyscf/nao/test/test_0009_thrj.py
+           pyscf/nao/test/test_0010_csphar.py
+           pyscf/nao/test/test_0011_ao_eval_nao.py
+           pyscf/nao/test/test_0012_grid_gen_nao.py
+           pyscf/nao/test/test_0013_gpaw_overlap_nao.py
+           pyscf/nao/test/test_0014_vrtx_cc_apairs_nao.py
+           pyscf/nao/test/test_0015_ls_contributing_nao.py
+           pyscf/nao/test/test_0016_dipole_coo_nao.py
+           pyscf/nao/test/test_0017_prod_basis_for_tddft.py
+           pyscf/nao/test/test_0018_fermi_dirac.py
+           pyscf/nao/test/test_0019_tddft_polariz_nao.py
+           pyscf/nao/test/test_0020_scipy_gmres.py
+           pyscf/nao/test/test_0021_nao_after_gpaw.py
+           pyscf/nao/test/test_0022_ao_log_after_gpaw.py
+           pyscf/nao/test/test_0023_read_siesta_bulk_spin_nao.py
+           pyscf/nao/test/test_0024_sv_after_gpaw_nao.py
+           pyscf/nao/test/test_0026_dft_gto.py
+           pyscf/nao/test/test_0028_init_scf_libnao.py
+           pyscf/nao/test/test_0029_lil_vs_coo_nao.py
+           pyscf/nao/test/test_0030_dens_elec_nao.py
+           pyscf/nao/test/test_0031_rsh_vec.py
+           pyscf/nao/test/test_0032_exc.py
+           pyscf/nao/test/test_0034_tddft_iter_lda_nao.py
+           pyscf/nao/test/test_0035_bse_nonin_nao.py
+           pyscf/nao/test/test_0036_cube_nao.py
+           pyscf/nao/test/test_0037_aos_nao.py
+           pyscf/nao/test/test_0038_mo_cube_nao.py
+           pyscf/nao/test/test_0039_openmx_nao.py
+           pyscf/nao/test/test_0040_bse_rpa_nao.py
+           pyscf/nao/test/test_0042_prod_basis_sparse.py
+           pyscf/nao/test/test_0043_h2_vh_gto_vs_nao_nao.py
+           pyscf/nao/test/test_0044_h2_scf_gto_vs_nao_nao.py
+           pyscf/nao/test/test_0069_vnucele_coulomb_water_ae.py
+           pyscf/nao/test/test_0075_water_vna_ena_enl.py
+           pyscf/nao/test/test_0076_vna_vnl_li.py
+           pyscf/nao/test/test_0077_chlocal_water.py
+           pyscf/nao/test/test_0078_vhartree_pbc_water.py
+           pyscf/nao/test/test_0079_recomp_hamilt_water.py
+           pyscf/nao/test/test_0097_h2o_rf_v_tddft_iter.py
+           pyscf/nao/test/test_0098_h2_gw_pyscf.py
+           pyscf/nao/test/test_0099_h2_nao_in_tdscf.py
+           pyscf/nao/test/test_0130_h2b_uhf_nonin.py
+           pyscf/nao/test/test_0131_h2b_uhf_nonin_pb.py
+           pyscf/nao/test/test_0132_h2o_uhf_nonin_pb.py
+           pyscf/nao/test/test_0133_h2o_rhf_nonin_pb.py
+           pyscf/nao/test/test_0134_h2o_rhf_rpa_pb.py
+           pyscf/nao/test/test_0135_h2o_uhf_rpa_pb.py
+           pyscf/nao/test/test_0136_h2o_rks_rpa_pb.py
+           pyscf/nao/test/test_0137_h2o_rks_nonin_pb.py
+           pyscf/nao/test/test_0138_h2o_rks_pz_pb.py
+           pyscf/nao/test/test_0139_h2o_uks_nonin_pb.py
+           pyscf/nao/test/test_0140_h2o_uks_rpa_pb.py
+           pyscf/nao/test/test_0141_h2o_uks_pz_pb.py
+           pyscf/nao/test/test_0142_h2b_uhf_rpa_pb.py
+           pyscf/nao/test/test_0143_h2b_uks_rpa_pb.py
+           pyscf/nao/test/test_0144_h2b_uks_pz_pb.py
+           pyscf/nao/test/test_0151_bse_h2b_uhf_rpa.py
+           pyscf/nao/test/test_0152_bse_h2b_uks_pz.py
+           pyscf/nao/test/test_0153_bse_h2b_uks_rpa.py
+           pyscf/nao/test/test_0154_bse_h2b_uks_nonin.py
+           pyscf/nao/test/test_0155_tddft_h2b_uks_nonin.py
+           pyscf/nao/test/test_0156_bse_h2b_uhf_nonin.py
+           pyscf/nao/test/test_0157_bse_h2o_rhf_cis.py
+           pyscf/nao/test/test_0158_bse_h2o_uhf_cis.py
+           pyscf/nao/test/test_0159_bse_h2b_uhf_cis.py
+           pyscf/nao/test/test_0160_bse_h2b_uhf_gw.py
+           pyscf/nao/test/test_0161_bse_h2b_spin1_uhf_cis.py
+           pyscf/nao/test/test_0162_bse_h2o_spin2_uhf_cis.py
+           pyscf/nao/test/test_0163_bse_h2o_spin2_uhf_rpa.py
+           pyscf/nao/test/test_0165_bse_h2b_spin1_uhf_rpa.py
+           pyscf/nao/test/test_0170_bse_h2o_rks_pbe.py
+           pyscf/nao/test/test_0379_recomp_hamilt_oxygen.py
+           pyscf/pbc/__init__.py
+           pyscf/pbc/ao2mo/__init__.py
+           pyscf/pbc/ao2mo/eris.py
+           pyscf/pbc/cc/__init__.py
+           pyscf/pbc/cc/ccsd.py
+           pyscf/pbc/cc/eom_kccsd_ghf.py
+           pyscf/pbc/cc/eom_kccsd_rhf.py
+           pyscf/pbc/cc/eom_kccsd_rhf_ea.py
+           pyscf/pbc/cc/eom_kccsd_rhf_ip.py
+           pyscf/pbc/cc/eom_kccsd_uhf.py
+           pyscf/pbc/cc/kccsd.py
+           pyscf/pbc/cc/kccsd_rhf.py
+           pyscf/pbc/cc/kccsd_uhf.py
+           pyscf/pbc/cc/kintermediates_rhf.py
+           pyscf/pbc/cc/kuccsd_rdm.py
+           pyscf/pbc/cc/test/test_kgccsd.py
+           pyscf/pbc/cc/test/test_krccsd.py
+           pyscf/pbc/cc/test/test_krccsd_gamma.py
+           pyscf/pbc/cc/test/test_kuccsd.py
+           pyscf/pbc/ci/__init__.py
+           pyscf/pbc/ci/cisd.py
+           pyscf/pbc/ci/kcis_rhf.py
+           pyscf/pbc/df/__init__.py
+           pyscf/pbc/df/aft.py
+           pyscf/pbc/df/aft_ao2mo.py
+           pyscf/pbc/df/aft_jk.py
+           pyscf/pbc/df/df.py
+           pyscf/pbc/df/df_ao2mo.py
+           pyscf/pbc/df/df_jk.py
+           pyscf/pbc/df/fft.py
+           pyscf/pbc/df/fft_ao2mo.py
+           pyscf/pbc/df/fft_jk.py
+           pyscf/pbc/df/ft_ao.py
+           pyscf/pbc/df/incore.py
+           pyscf/pbc/df/mdf.py
+           pyscf/pbc/df/mdf_ao2mo.py
+           pyscf/pbc/df/mdf_jk.py
+           pyscf/pbc/df/outcore.py
+           pyscf/pbc/df/test/test_aft.py
+           pyscf/pbc/df/test/test_aft_ao2mo.py
+           pyscf/pbc/df/test/test_aft_jk.py
+           pyscf/pbc/df/test/test_band.py
+           pyscf/pbc/df/test/test_df.py
+           pyscf/pbc/df/test/test_df_ao2mo.py
+           pyscf/pbc/df/test/test_df_jk.py
+           pyscf/pbc/df/test/test_fft.py
+           pyscf/pbc/df/test/test_ft_ao.py
+           pyscf/pbc/df/test/test_incore.py
+           pyscf/pbc/df/test/test_mdf.py
+           pyscf/pbc/df/test/test_mdf_ao2mo.py
+           pyscf/pbc/df/test/test_mdf_jk.py
+           pyscf/pbc/df/test/test_outcore.py
+           pyscf/pbc/dft/__init__.py
+           pyscf/pbc/dft/cdft.py
+           pyscf/pbc/dft/gen_grid.py
+           pyscf/pbc/dft/krks.py
+           pyscf/pbc/dft/kroks.py
+           pyscf/pbc/dft/kuks.py
+           pyscf/pbc/dft/multigrid.py
+           pyscf/pbc/dft/numint.py
+           pyscf/pbc/dft/rks.py
+           pyscf/pbc/dft/roks.py
+           pyscf/pbc/dft/test/test_gamma_vs_ks.py
+           pyscf/pbc/dft/test/test_gen_grid.py
+           pyscf/pbc/dft/test/test_krks.py
+           pyscf/pbc/dft/test/test_ks_noimport.py
+           pyscf/pbc/dft/test/test_kuks.py
+           pyscf/pbc/dft/test/test_multigrid.py
+           pyscf/pbc/dft/test/test_numint.py
+           pyscf/pbc/dft/test/test_rks.py
+           pyscf/pbc/dft/test/test_sampling.py
+           pyscf/pbc/dft/test/test_uks.py
+           pyscf/pbc/dft/uks.py
+           pyscf/pbc/eph/eph_fd.py
+           pyscf/pbc/geomopt/__init__.py
+           pyscf/pbc/geomopt/geometric_solver.py
+           pyscf/pbc/grad/__init__.py
+           pyscf/pbc/grad/krhf.py
+           pyscf/pbc/grad/krks.py
+           pyscf/pbc/grad/kuhf.py
+           pyscf/pbc/grad/kuks.py
+           pyscf/pbc/grad/test/test_krhf.py
+           pyscf/pbc/grad/test/test_krks.py
+           pyscf/pbc/grad/test/test_kuhf.py
+           pyscf/pbc/grad/test/test_kuks.py
+           pyscf/pbc/gto/__init__.py
+           pyscf/pbc/gto/_pbcintor.py
+           pyscf/pbc/gto/basis/__init__.py
+           pyscf/pbc/gto/basis/parse_cp2k.py
+           pyscf/pbc/gto/basis/split_BASIS_MOLOPT.py
+           pyscf/pbc/gto/basis/split_GTH_BASIS_SETS.py
+           pyscf/pbc/gto/basis/split_HFX_BASIS.py
+           pyscf/pbc/gto/cell.py
+           pyscf/pbc/gto/ecp.py
+           pyscf/pbc/gto/eval_gto.py
+           pyscf/pbc/gto/pseudo/__init__.py
+           pyscf/pbc/gto/pseudo/parse_cp2k.py
+           pyscf/pbc/gto/pseudo/pp.py
+           pyscf/pbc/gto/pseudo/pp_int.py
+           pyscf/pbc/gto/pseudo/split_GTH_POTENTIALS.py
+           pyscf/pbc/gto/pseudo/test/test_pp.py
+           pyscf/pbc/gto/test/test_cell.py
+           pyscf/pbc/gto/test/test_pbcintor.py
+           pyscf/pbc/gto/test/test_rcut.py
+           pyscf/pbc/lib/__init__.py
+           pyscf/pbc/lib/arnoldi.py
+           pyscf/pbc/lib/chkfile.py
+           pyscf/pbc/lib/kpts_helper.py
+           pyscf/pbc/lib/linalg_helper.py
+           pyscf/pbc/lib/test/test_kpts.py
+           pyscf/pbc/mp/__init__.py
+           pyscf/pbc/mp/kmp2.py
+           pyscf/pbc/mp/kump2.py
+           pyscf/pbc/mp/mp2.py
+           pyscf/pbc/mp/test/test_kpoint.py
+           pyscf/pbc/mpicc/__init__.py
+           pyscf/pbc/mpicc/kccsd_rhf.py
+           pyscf/pbc/mpicc/kintermediates_rhf.py
+           pyscf/pbc/mpicc/mpi_kpoint_helper.py
+           pyscf/pbc/mpitools/__init__.py
+           pyscf/pbc/mpitools/mpi.py
+           pyscf/pbc/mpitools/mpi_blksize.py
+           pyscf/pbc/mpitools/mpi_helper.py
+           pyscf/pbc/mpitools/mpi_load_balancer.py
+           pyscf/pbc/prop/efg/rhf.py
+           pyscf/pbc/prop/efg/test/test_integral.py
+           pyscf/pbc/scf/__init__.py
+           pyscf/pbc/scf/_response_functions.py
+           pyscf/pbc/scf/addons.py
+           pyscf/pbc/scf/chkfile.py
+           pyscf/pbc/scf/ghf.py
+           pyscf/pbc/scf/hf.py
+           pyscf/pbc/scf/kghf.py
+           pyscf/pbc/scf/khf.py
+           pyscf/pbc/scf/krohf.py
+           pyscf/pbc/scf/kuhf.py
+           pyscf/pbc/scf/newton_ah.py
+           pyscf/pbc/scf/rohf.py
+           pyscf/pbc/scf/scfint.py
+           pyscf/pbc/scf/stability.py
+           pyscf/pbc/scf/test/test_addons.py
+           pyscf/pbc/scf/test/test_band.py
+           pyscf/pbc/scf/test/test_hf.py
+           pyscf/pbc/scf/test/test_khf.py
+           pyscf/pbc/scf/test/test_newton.py
+           pyscf/pbc/scf/test/test_rohf.py
+           pyscf/pbc/scf/test/test_scfint.py
+           pyscf/pbc/scf/test/test_stability.py
+           pyscf/pbc/scf/test/test_uhf.py
+           pyscf/pbc/scf/uhf.py
+           pyscf/pbc/tddft/__init__.py
+           pyscf/pbc/tdscf/__init__.py
+           pyscf/pbc/tdscf/kuhf.py
+           pyscf/pbc/tdscf/kuks.py
+           pyscf/pbc/tdscf/rks.py
+           pyscf/pbc/tdscf/test/test_rhf.py
+           pyscf/pbc/tdscf/uhf.py
+           pyscf/pbc/tdscf/uks.py
+           pyscf/pbc/tools/__init__.py
+           pyscf/pbc/tools/k2gamma.py
+           pyscf/pbc/tools/lattice.py
+           pyscf/pbc/tools/pbc.py
+           pyscf/pbc/tools/pyscf_ase.py
+           pyscf/pbc/tools/pywannier90.py
+           pyscf/pbc/tools/test/test_k2gamma.py
+           pyscf/pbc/tools/test/test_pbc.py
+           pyscf/pbc/tools/tril.py
+           pyscf/pbc/x2c/__init__.py
+           pyscf/pbc/x2c/sfx2c1e.py
+           pyscf/pbc/x2c/test/test_x2c.py
+           pyscf/prop/__init__.py
+           pyscf/prop/efg/__init__.py
+           pyscf/prop/efg/dhf.py
+           pyscf/prop/efg/rhf.py
+           pyscf/prop/efg/test/test_dhf.py
+           pyscf/prop/efg/test/test_integral.py
+           pyscf/prop/esr/__init__.py
+           pyscf/prop/esr/uks.py
+           pyscf/prop/freq/__init__.py
+           pyscf/prop/freq/rhf.py
+           pyscf/prop/freq/rks.py
+           pyscf/prop/freq/uhf.py
+           pyscf/prop/freq/uks.py
+           pyscf/prop/gtensor/__init__.py
+           pyscf/prop/gtensor/dhf.py
+           pyscf/prop/gtensor/test/test_uhf.py
+           pyscf/prop/gtensor/test/test_uks.py
+           pyscf/prop/gtensor/uhf.py
+           pyscf/prop/gtensor/uks.py
+           pyscf/prop/hfc/__init__.py
+           pyscf/prop/hfc/dhf.py
+           pyscf/prop/hfc/test/test_uhf.py
+           pyscf/prop/hfc/uhf.py
+           pyscf/prop/hfc/uks.py
+           pyscf/prop/magnetizability/__init__.py
+           pyscf/prop/magnetizability/rhf.py
+           pyscf/prop/magnetizability/rks.py
+           pyscf/prop/magnetizability/uhf.py
+           pyscf/prop/magnetizability/uks.py
+           pyscf/prop/nmr/__init__.py
+           pyscf/prop/nmr/dhf.py
+           pyscf/prop/nmr/rhf.py
+           pyscf/prop/nmr/rks.py
+           pyscf/prop/nmr/test/test_dft_msc.py
+           pyscf/prop/nmr/test/test_hf_msc.py
+           pyscf/prop/nmr/uhf.py
+           pyscf/prop/nmr/uks.py
+           pyscf/prop/nsr/__init__.py
+           pyscf/prop/nsr/rhf.py
+           pyscf/prop/nsr/rks.py
+           pyscf/prop/nsr/test/test_rhf.py
+           pyscf/prop/nsr/uhf.py
+           pyscf/prop/nsr/uks.py
+           pyscf/prop/polarizability/rhf.py
+           pyscf/prop/polarizability/rks.py
+           pyscf/prop/polarizability/test/test_rhf.py
+           pyscf/prop/polarizability/uhf.py
+           pyscf/prop/polarizability/uks.py
+           pyscf/prop/rotational_gtensor/__init__.py
+           pyscf/prop/rotational_gtensor/rhf.py
+           pyscf/prop/rotational_gtensor/rks.py
+           pyscf/prop/rotational_gtensor/test/test_rhf.py
+           pyscf/prop/rotational_gtensor/uhf.py
+           pyscf/prop/rotational_gtensor/uks.py
+           pyscf/prop/ssc/__init__.py
+           pyscf/prop/ssc/rhf.py
+           pyscf/prop/ssc/rks.py
+           pyscf/prop/ssc/test/test_integral.py
+           pyscf/prop/ssc/uhf.py
+           pyscf/prop/ssc/uks.py
+           pyscf/prop/zfs/__init__.py
+           pyscf/prop/zfs/uhf.py
+           pyscf/qmmm/__init__.py
+           pyscf/qmmm/itrf.py
+           pyscf/qmmm/mm_mole.py
+           pyscf/qmmm/test/test_itrf.py
+           pyscf/rt/tdfields.py
+           pyscf/rt/test/00_rt_tdhf.py
+           pyscf/rt/test/01_rt_tddft.py
+           pyscf/scf/__init__.py
+           pyscf/scf/_response_functions.py
+           pyscf/scf/_vhf.py
+           pyscf/scf/addons.py
+           pyscf/scf/atom_hf.py
+           pyscf/scf/chkfile.py
+           pyscf/scf/cphf.py
+           pyscf/scf/dhf.py
+           pyscf/scf/diis.py
+           pyscf/scf/ghf.py
+           pyscf/scf/ghf_symm.py
+           pyscf/scf/hf.py
+           pyscf/scf/hf_symm.py
+           pyscf/scf/jk.py
+           pyscf/scf/newton_ah.py
+           pyscf/scf/rohf.py
+           pyscf/scf/stability.py
+           pyscf/scf/stability_slow.py
+           pyscf/scf/test/test_addons.py
+           pyscf/scf/test/test_bz.py
+           pyscf/scf/test/test_dhf.py
+           pyscf/scf/test/test_diis.py
+           pyscf/scf/test/test_ghf.py
+           pyscf/scf/test/test_h2o.py
+           pyscf/scf/test/test_h2o_vdz.py
+           pyscf/scf/test/test_he.py
+           pyscf/scf/test/test_jk.py
+           pyscf/scf/test/test_rhf.py
+           pyscf/scf/test/test_stability.py
+           pyscf/scf/test/test_uhf.py
+           pyscf/scf/test/test_vhf.py
+           pyscf/scf/ucphf.py
+           pyscf/scf/uhf.py
+           pyscf/scf/uhf_symm.py
+           pyscf/scf/x2c.py
+           pyscf/sgx/sgx.py
+           pyscf/sgx/sgx_jk.py
+           pyscf/sgx/test/test_sgx.py
+           pyscf/sgx/test/test_sgx_jk.py
+           pyscf/shciscf/__init__.py
+           pyscf/shciscf/examples/03_c2_diffsymm.py
+           pyscf/shciscf/examples/04_c2_state_avg.py
+           pyscf/shciscf/examples/05_custom_runtimedir.py
+           pyscf/shciscf/examples/06_spin_density.py
+           pyscf/shciscf/shci.py
+           pyscf/shciscf/test/test_shci.py
+           pyscf/solvent/__init__.py
+           pyscf/solvent/_attach_solvent.py
+           pyscf/solvent/_ddcosmo_tdscf_grad.py
+           pyscf/solvent/ddcosmo.py
+           pyscf/solvent/ddcosmo_grad.py
+           pyscf/solvent/ddpcm.py
+           pyscf/solvent/pol_embed.py
+           pyscf/solvent/test/test_ddcosmo.py
+           pyscf/solvent/test/test_ddcosmo_grad.py
+           pyscf/solvent/test/test_ddcosmo_tdscf_grad.py
+           pyscf/solvent/test/test_ddpcm.py
+           pyscf/solvent/test/test_pol_embed.py
+           pyscf/soscf/__init__.py
+           pyscf/soscf/ciah.py
+           pyscf/soscf/newton_ah.py
+           pyscf/soscf/test/test_newton_ah.py
+           pyscf/symm/Dmatrix.py
+           pyscf/symm/__init__.py
+           pyscf/symm/addons.py
+           pyscf/symm/basis.py
+           pyscf/symm/cg.py
+           pyscf/symm/param.py
+           pyscf/symm/sph.py
+           pyscf/symm/test/test_Dmatrix.py
+           pyscf/symm/test/test_addons.py
+           pyscf/symm/test/test_basis.py
+           pyscf/symm/test/test_geom.py
+           pyscf/symm/test/test_sph.py
+           pyscf/tddft/__init__.py
+           pyscf/tdscf/__init__.py
+           pyscf/tdscf/test/test_tdrks.py
+           pyscf/tdscf/test/test_tduks.py
+           pyscf/tdscf/uhf.py
+           pyscf/tdscf/uks.py
+           pyscf/tools/__init__.py
+           pyscf/tools/c60struct.py
+           pyscf/tools/chgcar.py
+           pyscf/tools/chkfile_util.py
+           pyscf/tools/cubegen.py
+           pyscf/tools/dump_mat.py
+           pyscf/tools/fcidump.py
+           pyscf/tools/mo_mapping.py
+           pyscf/tools/ring.py
+           pyscf/tools/test/test_cubegen.py
+           pyscf/tools/test/test_fcidump.py
+           pyscf/tools/test/test_mo_mapping.py
+           pyscf/tools/test/test_molden.py
+           pyscf/tools/wfn_format.py
+           pyscf/x2c/__init__.py
+           pyscf/x2c/sfx2c1e.py
+           pyscf/x2c/sfx2c1e_grad.py
+           pyscf/x2c/sfx2c1e_hess.py
+           pyscf/x2c/test/test_x2c.py
+           pyscf/x2c/test/test_x2c_grad.py
+           pyscf/x2c/test/test_x2c_hess.py
+           pyscf/x2c/x2c.py
+           pyscf/xianci/__init__.py
+           setup.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     .coveragerc
+           .flake8
+           .gitignore
+           .gitmodules
+           .style.yapf
+           .travis.yml
+           CHANGELOG
+           CONTRIBUTING.md
+           FEATURES
+           MANIFEST.in
+           doc_legacy/Makefile
+           doc_legacy/logo/logo-32x32.png
+           doc_legacy/logo/logo-64x64.png
+           doc_legacy/logo/pyscf-logo.png
+           doc_legacy/source/advanced.rst
+           doc_legacy/source/ao2mo.rst
+           doc_legacy/source/benchmark.rst
+           doc_legacy/source/cc.rst
+           doc_legacy/source/ci.rst
+           doc_legacy/source/code-rule.rst
+           doc_legacy/source/conf.py
+           doc_legacy/source/df.rst
+           doc_legacy/source/dft.rst
+           doc_legacy/source/dmrgscf.rst
+           doc_legacy/source/fci.rst
+           doc_legacy/source/fciqmcscf.rst
+           doc_legacy/source/grad.rst
+           doc_legacy/source/gto.rst
+           doc_legacy/source/hessian.rst
+           doc_legacy/source/index.rst
+           doc_legacy/source/install.rst
+           doc_legacy/source/lib.rst
+           doc_legacy/source/lo.rst
+           doc_legacy/source/mcscf.rst
+           doc_legacy/source/mrpt.rst
+           doc_legacy/source/nao.rst
+           doc_legacy/source/nao/comp_spatial_dens.rst
+           doc_legacy/source/nao/examples.rst
+           doc_legacy/source/nao/examples/C60_org.fdf
+           doc_legacy/source/nao/examples/ase.rst
+           doc_legacy/source/nao/examples/calc_polarizability.py
+           doc_legacy/source/nao/examples/create_qmmd.sh
+           doc_legacy/source/nao/examples/qmd_C60.rst
+           doc_legacy/source/nao/examples/script_pyscf_ase.py
+           doc_legacy/source/nao/examples/script_raman_pyscf.py
+           doc_legacy/source/nao/examples/siesta_C60.fdf
+           doc_legacy/source/nao/examples/siesta_C60_thermal.fdf
+           doc_legacy/source/nao/examples/submit_jobs.py
+           doc_legacy/source/nao/examples/xyz2fdf.py
+           doc_legacy/source/nao/tddft_iter.rst
+           doc_legacy/source/nao/tddft_tem.rst
+           doc_legacy/source/overview.rst
+           doc_legacy/source/pbc.rst
+           doc_legacy/source/pbc/cc.rst
+           doc_legacy/source/pbc/df.rst
+           doc_legacy/source/pbc/dft.rst
+           doc_legacy/source/pbc/gto.rst
+           doc_legacy/source/pbc/mix_mol.rst
+           doc_legacy/source/pbc/scf.rst
+           doc_legacy/source/pbc/tools.rst
+           doc_legacy/source/qmmm.rst
+           doc_legacy/source/scf.rst
+           doc_legacy/source/symm.rst
+           doc_legacy/source/tddft.rst
+           doc_legacy/source/tools.rst
+           doc_legacy/source/tutorial.rst
+           doc_legacy/source/version.rst
+           doc_legacy/whatsnew/1.2.rst
+           doc_legacy/whatsnew/1.3.rst
+           doc_legacy/whatsnew/1.4.rst
+           doc_legacy/whatsnew/1.5.rst
+           doc_legacy/whatsnew/1.6.rst
+           examples/0-readme.py
+           examples/1-advanced/002-input_script.py
+           examples/1-advanced/018-dmrg_casscf_for_feporph.py
+           examples/1-advanced/030-transition_dipole.py
+           examples/1-advanced/031-MEP.py
+           examples/1-advanced/031-density.py
+           examples/1-advanced/032-virial-ratio.py
+           examples/1-advanced/033-constrained_dft.py
+           examples/2-benchmark/atomic_configuration/atom_ecp.py
+           examples/2-benchmark/bz.py
+           examples/2-benchmark/c60.py
+           examples/2-benchmark/ccsd_iteration.py
+           examples/2-benchmark/fci_iteration.py
+           examples/2-benchmark/fock_multigrid.py
+           examples/2-benchmark/n2.py
+           examples/adc/01-closed_shell.py
+           examples/adc/02-open_shell.py
+           examples/adc/03-closed_shell_different_setup.py
+           examples/ao2mo/00-mo_integrals.py
+           examples/ao2mo/01-outcore.py
+           examples/ao2mo/04-dirac_hf_mo_integrals.py
+           examples/ao2mo/10-diff_orbs_for_ijkl.py
+           examples/ao2mo/11-ump2.py
+           examples/ao2mo/20-eri_grad_hess.py
+           examples/ao2mo/21-spin_orbit_coupling.py
+           examples/ao2mo/22-rkb_no_pair_ints.py
+           examples/cc/00-simple_ccsd.py
+           examples/cc/00-simple_ccsd_t.py
+           examples/cc/01-density_matrix.py
+           examples/cc/01-lambda.py
+           examples/cc/10-ao_direct_ccsd.py
+           examples/cc/11-frozen_core.py
+           examples/cc/12-reuse_integrals.py
+           examples/cc/13-standalone_ccsd_t.py
+           examples/cc/14-ccsd_diis.py
+           examples/cc/15-incore_mo_ccsd_t.py
+           examples/cc/20-ip_ea_eom_ccsd.py
+           examples/cc/21-dfccsd.py
+           examples/cc/22-fnoccsd.py
+           examples/cc/31-remove_linear_dep.py
+           examples/cc/32-restart.py
+           examples/cc/40-ccsd_custom_hamiltonian.py
+           examples/cc/41-ccsd_custom_hamiltonian_noscf.py
+           examples/cc/42-as_casci_fcisolver.py
+           examples/cc/43-ccd.py
+           examples/ci/00-simple_cisd.py
+           examples/ci/01-density_matrix.py
+           examples/ci/20-from_fci.py
+           examples/ci/32-wfn_overlap.py
+           examples/df/00-with_df.py
+           examples/df/01-auxbasis.py
+           examples/df/10-access_df_integrals.py
+           examples/df/11-access_df_tensor.py
+           examples/df/11-get_j_io_free.py
+           examples/df/40-precompute_df_integrals.py
+           examples/df/41-df_integrals_gradients.py
+           examples/df/42-overwrite_get_jk.py
+           examples/dft/00-simple_dft.py
+           examples/dft/02-gks.py
+           examples/dft/11-grid_scheme.py
+           examples/dft/12-camb3lyp.py
+           examples/dft/13-rsh_dft.py
+           examples/dft/24-custom_xc_functional.py
+           examples/dft/24-define_xc_functional.py
+           examples/dft/30-ao_value_on_grid.py
+           examples/dft/31-xc_value_on_grid.py
+           examples/dft/32-broken_symmetry_dft.py
+           examples/dft/32-xcfun_as_default.py
+           examples/dft/33-nlc_functionals.py
+           examples/dftd3/00-hf_with_dftd3.py
+           examples/dmrg/01-dmrg_casscf_with_stackblock.py
+           examples/dmrg/03-density_matrix.py
+           examples/dmrg/10-state_average.py
+           examples/dmrg/11-excited_states.py
+           examples/dmrg/30-dmrg_casscf_nevpt2_for_Cr2.py
+           examples/dmrg/31-cr2_scan/cr2-scan.py
+           examples/dmrg/32-dmrg_casscf_nevpt2_for_FeS.py
+           examples/doci/00-simple_doci_casscf.py
+           examples/extras/mbd/00-simple_mbd.py
+           examples/fci/00-simple_fci.py
+           examples/fci/01-given_h1e_h2e.py
+           examples/fci/02-selected_ci.py
+           examples/fci/10-spin.py
+           examples/fci/11-large_ci.py
+           examples/fci/12-multiple_roots.py
+           examples/fci/13-wfn_symmetry.py
+           examples/fci/14-density_matrix.py
+           examples/fci/15-FCI_hamiltonian.py
+           examples/fci/30-h6_scan.py
+           examples/fci/31-apply_2nd_quantized_op.py
+           examples/fci/32-wfn_overlap.py
+           examples/fci/33-rotate_wfn.py
+           examples/geomopt/01-geomeTRIC.py
+           examples/geomopt/01-pyberny.py
+           examples/geomopt/02-as_pyscf_method.py
+           examples/geomopt/10-with_qmmm.py
+           examples/geomopt/11-with_ghost_atom.py
+           examples/geomopt/12-excited_states.py
+           examples/geomopt/12-mcscf_excited_states.py
+           examples/geomopt/13-ccsd_t.py
+           examples/geomopt/14-with_solvent.py
+           examples/geomopt/20-callback.py
+           examples/grad/01-scf_grad.py
+           examples/grad/02-dft_grad.py
+           examples/grad/03-mp2_grad.py
+           examples/grad/04-cisd_grad.py
+           examples/grad/05-ccsd_grad.py
+           examples/grad/06-tddft_gradients.py
+           examples/grad/10-excited_state_cisd_grad.py
+           examples/grad/11-excited_state_casci_grad.py
+           examples/grad/16-scan_force.py
+           examples/gto/00-input_mole.py
+           examples/gto/01-input_geometry.py
+           examples/gto/02-dump_input.py
+           examples/gto/03-ghost_atom.py
+           examples/gto/04-input_basis.py
+           examples/gto/05-input_ecp.py
+           examples/gto/06-load_mol_from_chkfile.py
+           examples/gto/07-nucmod.py
+           examples/gto/09-apply_scf.py
+           examples/gto/10-atom_info.py
+           examples/gto/11-basis_info.py
+           examples/gto/12-serialization.py
+           examples/gto/13-symmetry.py
+           examples/gto/20-ao_integrals.py
+           examples/gto/20-ao_integrals_sph_to_spinor.py
+           examples/gto/20-soc_ao_integrals.py
+           examples/gto/20-soc_ecp.py
+           examples/gto/21-concatenate_molecules.py
+           examples/gto/22-range_separated_coulomb.py
+           examples/gto/23-orbitals_cart2sph.py
+           examples/gto/24-ao_value_on_grid.py
+           examples/gto/25-multipole-integrals.py
+           examples/gto/30-read_molpro_orb.py
+           examples/gto/h_sto3g.dat
+           examples/gw/00_pbc.py
+           examples/hci/00-simple_hci.py
+           examples/hci/10-spin.py
+           examples/hessian/01-scf_hessian.py
+           examples/hessian/10-thermochemistry.py
+           examples/local_orb/01-pop_with_meta_lowdin.py
+           examples/local_orb/01-pop_with_nao.py
+           examples/local_orb/02-pop_with_iao.py
+           examples/local_orb/03-split_localization.py
+           examples/local_orb/04-ibo_benzene_cubegen.py
+           examples/local_orb/05-ibo_periodic_diamond_cubegen.py
+           examples/local_orb/06-vvo_livvo_water_cubegen.py
+           examples/local_orb/07-pipek_mezey.py
+           examples/local_orb/10-modify_valence_space_for_meta_lowdin.py
+           examples/local_orb/40-hubbard_model_PM_localization.py
+           examples/mcscf/00-simple_casci.py
+           examples/mcscf/00-simple_casscf.py
+           examples/mcscf/01-for_expensive_fci.py
+           examples/mcscf/03-natural_orbital.py
+           examples/mcscf/04-density_matrix.py
+           examples/mcscf/10-define_cas_space.py
+           examples/mcscf/11-casscf_with_uhf_uks.py
+           examples/mcscf/12-c2_triplet_from_singlet_hf.py
+           examples/mcscf/13-load_chkfile.py
+           examples/mcscf/13-restart.py
+           examples/mcscf/14-project_init_guess.py
+           examples/mcscf/15-state_average.py
+           examples/mcscf/15-state_specific.py
+           examples/mcscf/15-transition_dm.py
+           examples/mcscf/16-density_fitting.py
+           examples/mcscf/17-approx_orbital_hessian.py
+           examples/mcscf/18-o2_spatial_spin_symmetry.py
+           examples/mcscf/18-spatial_spin_symmetry.py
+           examples/mcscf/19-frozen_core.py
+           examples/mcscf/20-change_symmetry.py
+           examples/mcscf/21-active_space_symmetry.py
+           examples/mcscf/21-nosymhf_then_symcasscf.py
+           examples/mcscf/22-x2c.py
+           examples/mcscf/23-local_spin.py
+           examples/mcscf/24-callback.py
+           examples/mcscf/30-hf_scan/hf-scan-ref.txt
+           examples/mcscf/30-hf_scan/hf-scan-triplet-ref.txt
+           examples/mcscf/30-hf_scan/hf-scan-triplet.py
+           examples/mcscf/30-hf_scan/hf-scan.py
+           examples/mcscf/31-cr2_scan/cr2-scan-ref.txt
+           examples/mcscf/31-cr2_scan/cr2-scan.py
+           examples/mcscf/32-beh2_scan/BeH2-scan.py
+           examples/mcscf/32-beh2_scan/BeH2-scan_ref.txt
+           examples/mcscf/33-make_init_guess/18-dmet_cas_for_feporph.py
+           examples/mcscf/34-init_guess_localization.py
+           examples/mcscf/40-customizing_hamiltonian.py
+           examples/mcscf/41-mcscf_custom_df_hamiltonian.py
+           examples/mcscf/41-state_average.py
+           examples/mcscf/41-state_average_custom_fci.py
+           examples/mcscf/42-compare_cas_space.py
+           examples/mcscf/43-PiOS-C8H10.py
+           examples/mcscf/43-avas.py
+           examples/mcscf/43-dmet_cas.py
+           examples/mcscf/44-mcscf_active_space_hamiltonian.py
+           examples/mcscf/50-casscf_then_dmrgscf.py
+           examples/mcscf/50-casscf_with_selected_ci.py
+           examples/mcscf/50-cornell_shci_casscf.py
+           examples/mcscf/50-dmrgscf_with_block.py
+           examples/mcscf/51-o2_triplet_by_various_fci.py
+           examples/mcscf/60-uhf_based_ucasscf.py
+           examples/mcscf/61-rcas_vs_ucas/o2-scan.py
+           examples/mcscf/61-rcas_vs_ucas/o2-scan_ref.txt
+           examples/mcscf/70-casscf_optimize_scheduler.py
+           examples/misc/02-chkfile.py
+           examples/misc/30-macro_call_in_background.py
+           examples/mp/00-simple_mp2.py
+           examples/mp/42-omp2.py
+           examples/mpi/00-pbc_df.py
+           examples/mrpt/02-cr2_nevpt2/cr2-scan-ref.txt
+           examples/mrpt/02-cr2_nevpt2/cr2-scan.py
+           examples/mrpt/41-for_state_average.py
+           examples/nmr/crco6-nr-msc.py
+           examples/pbc/00-input_cell.py
+           examples/pbc/04-input_basis.py
+           examples/pbc/05-input_pp.py
+           examples/pbc/06-input_ke_cutoff.py
+           examples/pbc/09-band_ase.py
+           examples/pbc/09-init_from_ase.py
+           examples/pbc/09-talk_to_ase.py
+           examples/pbc/10-gamma_point_scf.py
+           examples/pbc/11-gamma_point_all_electron_scf.py
+           examples/pbc/12-gamma_point_post_hf.py
+           examples/pbc/20-k_points_scf.py
+           examples/pbc/21-k_points_all_electron_scf.py
+           examples/pbc/22-k_points_ccsd.py
+           examples/pbc/22-k_points_mp2.py
+           examples/pbc/22-k_points_tddft.py
+           examples/pbc/23-smearing.py
+           examples/pbc/24-k_points_vs_gamma.py
+           examples/pbc/25-k_points_mpi_ccsd.py
+           examples/pbc/26-linear_dep.py
+           examples/pbc/27-multigrid.py
+           examples/pbc/28-charged_system.py
+           examples/pbc/29-eom_ccsd_Ta.py
+           examples/pbc/30-ao_integrals.py
+           examples/pbc/30-ao_value_on_grid.py
+           examples/pbc/30-mo_integrals.py
+           examples/pbc/30-overlap_periodic_cell.py
+           examples/pbc/31-low_dimensional_pbc.py
+           examples/pbc/31-pbc_0D_as_mol.py
+           examples/pbc/32-graphene.py
+           examples/pbc/33-soc_integrals.py
+           examples/pbc/34-pm_localization.py
+           examples/pbc/35-gaussian_density_fit.py
+           examples/pbc/36-ccsd_level_shift.py
+           examples/pbc/40-customize_kpts_hamiltonian.py
+           examples/pbc/41-pbc1d_real_space_sum.py
+           examples/pbc/42-k2gamma.py
+           examples/pbc/44-k_point_eom_ccsd_ghf.py
+           examples/pbc/46-k_point_eom_ccsd_rhf.py
+           examples/prop/01-freq.py
+           examples/prop/02-g_tensor.py
+           examples/prop/03-hfc.py
+           examples/prop/04-nmr.py
+           examples/prop/05-ssc.py
+           examples/qmmm/00-hf.py
+           examples/qmmm/01-dft.py
+           examples/qmmm/02-mcscf.py
+           examples/qmmm/03-ccsd.py
+           examples/qmmm/04-cisd.py
+           examples/qmmm/05-mp2.py
+           examples/qmmm/06-tddft.py
+           examples/qmmm/10-x2c.py
+           examples/qmmm/11-newton.py
+           examples/qmmm/11-soscf.py
+           examples/qmmm/20-grad.py
+           examples/qmmm/22-with_solvent.py
+           examples/qmmm/30-force_on_mm_particles.py
+           examples/scf/00-simple_hf.py
+           examples/scf/01-h2o.py
+           examples/scf/02-ghf.py
+           examples/scf/02-rohf_uhf.py
+           examples/scf/03-level_shift.py
+           examples/scf/04-dirac_hf.py
+           examples/scf/05-breit_gaunt.py
+           examples/scf/10-glycine.py
+           examples/scf/11-linear_dep.py
+           examples/scf/12-fast_newton.py
+           examples/scf/13-symmetry.py
+           examples/scf/14-restart.py
+           examples/scf/15-initial_guess.py
+           examples/scf/16-h2_scan.py
+           examples/scf/17-stability.py
+           examples/scf/20-density_fitting.py
+           examples/scf/21-x2c.py
+           examples/scf/22-newton.py
+           examples/scf/23-decorate_scf.py
+           examples/scf/24-callback.py
+           examples/scf/24-tune_diis.py
+           examples/scf/30-scan_pes.py
+           examples/scf/31-cr_atom_rohf_tune_init_guess.py
+           examples/scf/31-v_atom_rohf.py
+           examples/scf/32-break_spin_symm.py
+           examples/scf/33-convert_to_dft.py
+           examples/scf/40-apply_electric_field.py
+           examples/scf/40-customizing_hamiltonian.py
+           examples/scf/41-hf_with_given_densityfit_ints.py
+           examples/scf/42-remove_linear_dep.py
+           examples/scf/43-custom_get_jk.py
+           examples/scf/50-mom-deltaSCF.py
+           examples/scf/51-elecoup_mom.py
+           examples/scf/52-dynamically_control_level_shift.py
+           examples/scf/53-dynamic_sz.py
+           examples/scf/54-fractional_occupancy.py
+           examples/scf/55-overload_convergence_criteria.py
+           examples/scf/56-h2_symm_breaking.py
+           examples/scf/70-background_and_hot_tuning.py
+           examples/scf/71-patch_scf_kernel.py
+           examples/scf/glycine.xyz
+           examples/sgx/00-simple_sgx.py
+           examples/solvent/00-scf_with_ddcosmo.py
+           examples/solvent/01-casscf_with_ddcosmo.py
+           examples/solvent/02-casci_with_ddcosmo.py
+           examples/solvent/03-ccsd_with_ddcosmo.py
+           examples/solvent/04-pe_potfile_from_pyframe.py
+           examples/solvent/04-scf_with_pe.py
+           examples/solvent/20-state_specific_casci.py
+           examples/solvent/21-tddft_equilibrium_solvation.py
+           examples/solvent/21-tddft_geomopt.py
+           examples/symm/30-guess_symmetry.py
+           examples/symm/31-symmetrize_space.py
+           examples/symm/32-symmetrize_natural_orbital.py
+           examples/symm/33-lz_adaption.py
+           examples/tddft/00-simple_tddft.py
+           examples/tddft/01-nto_analysis.py
+           examples/tddft/02-tddft_for_camb3lyp.py
+           examples/tddft/21-matrix_A_B.py
+           examples/tddft/22-density.py
+           examples/tddft/30-change_xc_grids.py
+           examples/tddft/31-energy_transfer_coupling_matrix.py
+           examples/tools/01-fcidump.py
+           examples/tools/02-molden.py
+           examples/tools/03-print_mo_and_dm.py
+           examples/tools/04-analyze_local_orbitals.py
+           examples/tools/05-cubegen.py
+           examples/tools/06-chgcar.py
+           examples/tools/11-davidson_eigh.py
+           examples/tools/12-einsum.py
+           examples/tools/jmol_script.spt
+           examples/x2c/02-basis_for_x.py
+           examples/x2c/10-picture_change.py
+           pyscf/__all__.py
+           pyscf/__config__.py
+           pyscf/ccn/__init__.py
+           pyscf/cornell_shci/settings.py.example
+           pyscf/data/gyromagnetic_ratio.dat
+           pyscf/data/nuclear_g_factor.dat
+           pyscf/data/quadrupole_moment.txt
+           pyscf/data/solvents.dat
+           pyscf/df/grad/__init__.py
+           pyscf/df/grad/rhf.py
+           pyscf/df/grad/rks.py
+           pyscf/df/grad/uhf.py
+           pyscf/df/grad/uks.py
+           pyscf/df/hessian/__init__.py
+           pyscf/df/hessian/rhf.py
+           pyscf/df/hessian/rks.py
+           pyscf/df/hessian/uhf.py
+           pyscf/df/hessian/uks.py
+           pyscf/df/test/test_df_jk.pyc
+           pyscf/dft/test/dm_h4.npy
+           pyscf/dft/test/test_r_numint.py
+           pyscf/dft/xc/__init__.py
+           pyscf/dftd3/settings.py.example
+           pyscf/dmrgscf/settings.py.example
+           pyscf/doci/__init__.py
+           pyscf/doci/test/test_doci.py
+           pyscf/eph/__init__.py
+           pyscf/fci/test/spin_op_hamiltonian.h5
+           pyscf/fciqmcscf/settings.py.example
+           pyscf/geomopt/log.ini
+           pyscf/grad/test/test_casci.py
+           pyscf/grad/test/test_casscf.py
+           pyscf/gto/basis/Burkatzi-Filippi-Dolg-PP.dat
+           pyscf/gto/basis/DgaussA1_dft_cfit.dat
+           pyscf/gto/basis/DgaussA1_dft_xfit.dat
+           pyscf/gto/basis/DgaussA2_dft_cfit.dat
+           pyscf/gto/basis/DgaussA2_dft_xfit.dat
+           pyscf/gto/basis/adzp.dat
+           pyscf/gto/basis/ahlrichs_cfit.dat
+           pyscf/gto/basis/aqzp.dat
+           pyscf/gto/basis/atzp.dat
+           pyscf/gto/basis/aug-cc-pV5Z-PP.dat
+           pyscf/gto/basis/aug-cc-pV5Z_MP2FIT.dat
+           pyscf/gto/basis/aug-cc-pVDZ-PP.dat
+           pyscf/gto/basis/aug-cc-pVQZ-DK3.dat
+           pyscf/gto/basis/aug-cc-pVQZ-PP.dat
+           pyscf/gto/basis/aug-cc-pVQZ_MP2FIT.dat
+           pyscf/gto/basis/aug-cc-pVTZ-DK3.dat
+           pyscf/gto/basis/aug-cc-pVTZ-PP.dat
+           pyscf/gto/basis/aug-cc-pv5z-dk.dat
+           pyscf/gto/basis/aug-cc-pv5z-jkfit.dat
+           pyscf/gto/basis/aug-cc-pv5z.dat
+           pyscf/gto/basis/aug-cc-pvdz-dk.dat
+           pyscf/gto/basis/aug-cc-pvdz-jkfit.dat
+           pyscf/gto/basis/aug-cc-pvdz-ri.dat
+           pyscf/gto/basis/aug-cc-pvdz.dat
+           pyscf/gto/basis/aug-cc-pvdzp-jkfit.dat
+           pyscf/gto/basis/aug-cc-pvdzp-ri.dat
+           pyscf/gto/basis/aug-cc-pvqz-dk.dat
+           pyscf/gto/basis/aug-cc-pvqz-jkfit.dat
+           pyscf/gto/basis/aug-cc-pvqz-ri.dat
+           pyscf/gto/basis/aug-cc-pvqz.dat
+           pyscf/gto/basis/aug-cc-pvtz-dk.dat
+           pyscf/gto/basis/aug-cc-pvtz-jkfit.dat
+           pyscf/gto/basis/aug-cc-pvtz-ri.dat
+           pyscf/gto/basis/aug-cc-pvtz.dat
+           pyscf/gto/basis/aug-cc-pwCVQZ-DK.dat
+           pyscf/gto/basis/aug-cc-pwCVQZ-DK3.dat
+           pyscf/gto/basis/aug-cc-pwCVTZ-DK.dat
+           pyscf/gto/basis/aug-cc-pwCVTZ-DK3.dat
+           pyscf/gto/basis/aug-cc-pwCVTZ_MP2FIT.dat
+           pyscf/gto/basis/aug-cc-pwcv5z-dk.dat
+           pyscf/gto/basis/aug-cc-pwcv5z.dat
+           pyscf/gto/basis/aug-cc-pwcvdz.dat
+           pyscf/gto/basis/aug-cc-pwcvqz.dat
+           pyscf/gto/basis/aug-cc-pwcvtz.dat
+           pyscf/gto/basis/aug-pc-0.dat
+           pyscf/gto/basis/aug-pc-1.dat
+           pyscf/gto/basis/aug-pc-2.dat
+           pyscf/gto/basis/aug-pc-3.dat
+           pyscf/gto/basis/aug-pc-4.dat
+           pyscf/gto/basis/aug-pcseg-0.dat
+           pyscf/gto/basis/aug-pcseg-1.dat
+           pyscf/gto/basis/aug-pcseg-2.dat
+           pyscf/gto/basis/aug-pcseg-3.dat
+           pyscf/gto/basis/aug-pcseg-4.dat
+           pyscf/gto/basis/bfd_pp.dat
+           pyscf/gto/basis/bfd_v5z.dat
+           pyscf/gto/basis/bfd_vdz.dat
+           pyscf/gto/basis/bfd_vqz.dat
+           pyscf/gto/basis/bfd_vtz.dat
+           pyscf/gto/basis/cc-pCV5Z.dat
+           pyscf/gto/basis/cc-pCV6Z.dat
+           pyscf/gto/basis/cc-pCVDZ.dat
+           pyscf/gto/basis/cc-pCVQZ.dat
+           pyscf/gto/basis/cc-pCVTZ.dat
+           pyscf/gto/basis/cc-pV5Z_MP2FIT.dat
+           pyscf/gto/basis/cc-pVDZ-PP-NR.dat
+           pyscf/gto/basis/cc-pVQZ-DK3.dat
+           pyscf/gto/basis/cc-pVQZ_MP2FIT.dat
+           pyscf/gto/basis/cc-pVTZ-DK3.dat
+           pyscf/gto/basis/cc-pVTZ-PP-NR.dat
+           pyscf/gto/basis/cc-pv5z-dk.dat
+           pyscf/gto/basis/cc-pv5z-jkfit.dat
+           pyscf/gto/basis/cc-pv5z-pp.dat
+           pyscf/gto/basis/cc-pv5z-ri.dat
+           pyscf/gto/basis/cc-pv5z.dat
+           pyscf/gto/basis/cc-pvdz-dk.dat
+           pyscf/gto/basis/cc-pvdz-jkfit.dat
+           pyscf/gto/basis/cc-pvdz-pp.dat
+           pyscf/gto/basis/cc-pvdz-ri.dat
+           pyscf/gto/basis/cc-pvdz.dat
+           pyscf/gto/basis/cc-pvdz_fit.dat
+           pyscf/gto/basis/cc-pvqz-dk.dat
+           pyscf/gto/basis/cc-pvqz-jkfit.dat
+           pyscf/gto/basis/cc-pvqz-pp.dat
+           pyscf/gto/basis/cc-pvqz-ri.dat
+           pyscf/gto/basis/cc-pvqz.dat
+           pyscf/gto/basis/cc-pvtz-dk.dat
+           pyscf/gto/basis/cc-pvtz-jkfit.dat
+           pyscf/gto/basis/cc-pvtz-pp.dat
+           pyscf/gto/basis/cc-pvtz-ri.dat
+           pyscf/gto/basis/cc-pvtz.dat
+           pyscf/gto/basis/cc-pvtz_fit.dat
+           pyscf/gto/basis/cc-pwCV5Z-DK.dat
+           pyscf/gto/basis/cc-pwCV5Z-PP.dat
+           pyscf/gto/basis/cc-pwCV5Z.dat
+           pyscf/gto/basis/cc-pwCVDZ-DK.dat
+           pyscf/gto/basis/cc-pwCVDZ-PP.dat
+           pyscf/gto/basis/cc-pwCVDZ.dat
+           pyscf/gto/basis/cc-pwCVQZ-DK.dat
+           pyscf/gto/basis/cc-pwCVQZ-DK3.dat
+           pyscf/gto/basis/cc-pwCVQZ-PP.dat
+           pyscf/gto/basis/cc-pwCVQZ.dat
+           pyscf/gto/basis/cc-pwCVTZ-DK.dat
+           pyscf/gto/basis/cc-pwCVTZ-DK3.dat
+           pyscf/gto/basis/cc-pwCVTZ-PP.dat
+           pyscf/gto/basis/cc-pwCVTZ.dat
+           pyscf/gto/basis/cc-pwCVTZ_MP2FIT.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_aug-cc-pV5Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_aug-cc-pV6Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_aug-cc-pVDZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_aug-cc-pVQZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_aug-cc-pVTZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_cc-pV5Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_cc-pV6Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_cc-pVDZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_cc-pVQZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP/ccECP_cc-pVTZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_aug-cc-pV5Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_aug-cc-pV6Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_aug-cc-pVDZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_aug-cc-pVQZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_aug-cc-pVTZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_cc-pV5Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_cc-pV6Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_cc-pVDZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_cc-pVQZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_He_core/ccECP_cc-pVTZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_aug-cc-pV5Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_aug-cc-pVDZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_aug-cc-pVQZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_aug-cc-pVTZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_cc-pV5Z.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_cc-pVDZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_cc-pVQZ.dat
+           pyscf/gto/basis/ccecp-basis/ccECP_reg/ccECP_cc-pVTZ.dat
+           pyscf/gto/basis/crenbl.dat
+           pyscf/gto/basis/crenbs.dat
+           pyscf/gto/basis/crystal-cc-pvdz.dat
+           pyscf/gto/basis/def2-qzvp-ri.dat
+           pyscf/gto/basis/def2-qzvp.dat
+           pyscf/gto/basis/def2-qzvpd.dat
+           pyscf/gto/basis/def2-qzvpp-ri.dat
+           pyscf/gto/basis/def2-qzvpp.dat
+           pyscf/gto/basis/def2-qzvppd-ri.dat
+           pyscf/gto/basis/def2-qzvppd.dat
+           pyscf/gto/basis/def2-svp-ri.dat
+           pyscf/gto/basis/def2-svp.dat
+           pyscf/gto/basis/def2-svpd-ri.dat
+           pyscf/gto/basis/def2-svpd.dat
+           pyscf/gto/basis/def2-tzvp-ri.dat
+           pyscf/gto/basis/def2-tzvp.dat
+           pyscf/gto/basis/def2-tzvpd-ri.dat
+           pyscf/gto/basis/def2-tzvpd.dat
+           pyscf/gto/basis/def2-tzvpp-ri.dat
+           pyscf/gto/basis/def2-tzvpp.dat
+           pyscf/gto/basis/def2-tzvppd-ri.dat
+           pyscf/gto/basis/def2-tzvppd.dat
+           pyscf/gto/basis/def2-universal-jfit.dat
+           pyscf/gto/basis/def2-universal-jkfit.dat
+           pyscf/gto/basis/demon_cfit.dat
+           pyscf/gto/basis/dyall_dz.py
+           pyscf/gto/basis/dyall_qz.py
+           pyscf/gto/basis/dyall_tz.py
+           pyscf/gto/basis/dz.dat
+           pyscf/gto/basis/dzp-dkh.dat
+           pyscf/gto/basis/dzp.dat
+           pyscf/gto/basis/dzp_dunning.py
+           pyscf/gto/basis/dzvp.dat
+           pyscf/gto/basis/dzvp2.dat
+           pyscf/gto/basis/f12-basis/aug-cc-pV5Z-OptRI.dat
+           pyscf/gto/basis/f12-basis/aug-cc-pVDZ-OptRI.dat
+           pyscf/gto/basis/f12-basis/aug-cc-pVQZ-OptRI.dat
+           pyscf/gto/basis/f12-basis/aug-cc-pVTZ-OptRI.dat
+           pyscf/gto/basis/f12-basis/cc-pCVDZ-F12-OptRI.dat
+           pyscf/gto/basis/f12-basis/cc-pCVQZ-F12-OptRI.dat
+           pyscf/gto/basis/f12-basis/cc-pCVTZ-F12-OptRI.dat
+           pyscf/gto/basis/f12-basis/cc-pV5Z-F12.dat
+           pyscf/gto/basis/f12-basis/cc-pV5Z-F12rev2.dat
+           pyscf/gto/basis/f12-basis/cc-pVDZ-F12-OptRI.dat
+           pyscf/gto/basis/f12-basis/cc-pVDZ-F12-nZ.dat
+           pyscf/gto/basis/f12-basis/cc-pVDZ-F12rev2.dat
+           pyscf/gto/basis/f12-basis/cc-pVQZ-F12-OptRI.dat
+           pyscf/gto/basis/f12-basis/cc-pVQZ-F12-nZ.dat
+           pyscf/gto/basis/f12-basis/cc-pVQZ-F12rev2.dat
+           pyscf/gto/basis/f12-basis/cc-pVTZ-F12-OptRI.dat
+           pyscf/gto/basis/f12-basis/cc-pVTZ-F12-nZ.dat
+           pyscf/gto/basis/f12-basis/cc-pVTZ-F12rev2.dat
+           pyscf/gto/basis/faegre_dz.py
+           pyscf/gto/basis/heavy-aug-cc-pvdz-jkfit.dat
+           pyscf/gto/basis/heavy-aug-cc-pvtz-jkfit.dat
+           pyscf/gto/basis/iglo3.py
+           pyscf/gto/basis/lanl08.dat
+           pyscf/gto/basis/lanl2dz.dat
+           pyscf/gto/basis/lanl2tz.dat
+           pyscf/gto/basis/minao.py
+           pyscf/gto/basis/parse_ccECP.sh
+           pyscf/gto/basis/pc-0.dat
+           pyscf/gto/basis/pc-1.dat
+           pyscf/gto/basis/pc-2.dat
+           pyscf/gto/basis/pc-3.dat
+           pyscf/gto/basis/pc-4.dat
+           pyscf/gto/basis/pcseg-0.dat
+           pyscf/gto/basis/pcseg-1.dat
+           pyscf/gto/basis/pcseg-2.dat
+           pyscf/gto/basis/pcseg-3.dat
+           pyscf/gto/basis/pcseg-4.dat
+           pyscf/gto/basis/pob-tzvp.dat
+           pyscf/gto/basis/pob-tzvpp.dat
+           pyscf/gto/basis/pople-basis/3-21++G.dat
+           pyscf/gto/basis/pople-basis/3-21++Gs.dat
+           pyscf/gto/basis/pople-basis/3-21G-diffuse.dat
+           pyscf/gto/basis/pople-basis/3-21G-polarization.dat
+           pyscf/gto/basis/pople-basis/3-21G.dat
+           pyscf/gto/basis/pople-basis/3-21Gs.dat
+           pyscf/gto/basis/pople-basis/4-31G.dat
+           pyscf/gto/basis/pople-basis/6-31++G.dat
+           pyscf/gto/basis/pople-basis/6-31++Gs.dat
+           pyscf/gto/basis/pople-basis/6-31++Gss.dat
+           pyscf/gto/basis/pople-basis/6-31+G.dat
+           pyscf/gto/basis/pople-basis/6-31+Gs.dat
+           pyscf/gto/basis/pople-basis/6-31+Gss.dat
+           pyscf/gto/basis/pople-basis/6-311++G.dat
+           pyscf/gto/basis/pople-basis/6-311++Gs.dat
+           pyscf/gto/basis/pople-basis/6-311++Gss.dat
+           pyscf/gto/basis/pople-basis/6-311+G.dat
+           pyscf/gto/basis/pople-basis/6-311+Gs.dat
+           pyscf/gto/basis/pople-basis/6-311+Gss.dat
+           pyscf/gto/basis/pople-basis/6-311G-diffuse.dat
+           pyscf/gto/basis/pople-basis/6-311G-polarization-2d.dat
+           pyscf/gto/basis/pople-basis/6-311G-polarization-2p.dat
+           pyscf/gto/basis/pople-basis/6-311G-polarization-3d.dat
+           pyscf/gto/basis/pople-basis/6-311G-polarization-3p.dat
+           pyscf/gto/basis/pople-basis/6-311G-polarization-d.dat
+           pyscf/gto/basis/pople-basis/6-311G-polarization-f.dat
+           pyscf/gto/basis/pople-basis/6-311G-polarization-p.dat
+           pyscf/gto/basis/pople-basis/6-311G.dat
+           pyscf/gto/basis/pople-basis/6-311Gs.dat
+           pyscf/gto/basis/pople-basis/6-311Gss.dat
+           pyscf/gto/basis/pople-basis/6-31G-diffuse.dat
+           pyscf/gto/basis/pople-basis/6-31G-polarization-2d.dat
+           pyscf/gto/basis/pople-basis/6-31G-polarization-2p.dat
+           pyscf/gto/basis/pople-basis/6-31G-polarization-3d.dat
+           pyscf/gto/basis/pople-basis/6-31G-polarization-3p.dat
+           pyscf/gto/basis/pople-basis/6-31G-polarization-d.dat
+           pyscf/gto/basis/pople-basis/6-31G-polarization-f.dat
+           pyscf/gto/basis/pople-basis/6-31G-polarization-p.dat
+           pyscf/gto/basis/pople-basis/6-31G.dat
+           pyscf/gto/basis/pople-basis/6-31Gs.dat
+           pyscf/gto/basis/pople-basis/6-31Gss.dat
+           pyscf/gto/basis/qzp-dkh.dat
+           pyscf/gto/basis/qzp.dat
+           pyscf/gto/basis/roos-dz.dat
+           pyscf/gto/basis/roos-tz.dat
+           pyscf/gto/basis/sarc-dkh2.dat
+           pyscf/gto/basis/sbkjc.dat
+           pyscf/gto/basis/sto-3g.dat
+           pyscf/gto/basis/sto-6g.dat
+           pyscf/gto/basis/stuttgart_dz.dat
+           pyscf/gto/basis/stuttgart_rsc.dat
+           pyscf/gto/basis/tzp-dkh.dat
+           pyscf/gto/basis/tzp.dat
+           pyscf/gto/basis/tzv.dat
+           pyscf/gw/gw_slow.py
+           pyscf/gw/test/test_gw.py
+           pyscf/hessian/thermo.py
+           pyscf/lib/_runme_to_fix_dylib_osx10.11.sh
+           pyscf/lib/_runme_to_remove_rpath.sh
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-gnu
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-gnu-gpu
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-gnu-mkl
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-intelpython-gfortran
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-intelpython-ifort
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-nao-gnu
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-oberon.anaconda.gnu.mkl
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-oberon.anaconda.ifort.mkl
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-pgi-gpu
+           pyscf/lib/cmake_user_inc_examples/cmake.user.inc-singularity.anaconda.gnu.mkl
+           pyscf/lib/cmake_user_inc_examples/compile-atlas.sh
+           pyscf/lib/config.h.in
+           pyscf/lib/extras/mbd/CMakeLists.txt
+           pyscf/lib/libxcfun.patch
+           pyscf/lib/mpi/README.md
+           pyscf/lib/nao/README.md
+           pyscf/lib/nao/arch.inc.gfortran
+           pyscf/lib/nao/arch.inc.ifort
+           pyscf/lib/nao/m_comp_spatial.F90
+           pyscf/lib/nao/m_comp_vext_tem.F90
+           pyscf/lib/nao/m_conv_dims.F90
+           pyscf/lib/nao/m_conv_lims.F90
+           pyscf/lib/nao/m_tddft_tem.F90
+           pyscf/lib/nao/nao_gpu/CMakeLists.txt
+           pyscf/lib/nao/nao_gpu/README.md
+           pyscf/lib/nao/nao_gpu/m_iter_gpu_routines.cu
+           pyscf/lib/nao/nao_gpu/m_iter_gpu_routines.h
+           pyscf/lib/nao/nao_gpu/m_utils.cu
+           pyscf/lib/np_helper/as_einsum.cxx
+           pyscf/lib/semiempirical/repp.c
+           pyscf/lib/semiempirical/rotate.c
+           pyscf/lib/sparsetools/m_blas_wrapper.F90
+           pyscf/lib/sparsetools/m_sparse_blas.F90
+           pyscf/lib/test/test_einsum.py
+           pyscf/lib/test/test_numint_uniform_grid.py
+           pyscf/lo/out_iao
+           pyscf/lo/out_nao
+           pyscf/nao/basis/cc-pv5z-l2.dat
+           pyscf/nao/basis/cc-pvdz-l2.dat
+           pyscf/nao/basis/cc-pvqz-l2.dat
+           pyscf/nao/basis/cc-pvtz-l2.dat
+           pyscf/nao/bse_iter.py
+           pyscf/nao/chi0_matvec.py
+           pyscf/nao/coords2sort_order.py
+           pyscf/nao/examples/psf/Ac.gga.psf
+           pyscf/nao/examples/psf/Ac.lda.psf
+           pyscf/nao/examples/psf/Ag.gga.psf
+           pyscf/nao/examples/psf/Ag.lda.psf
+           pyscf/nao/examples/psf/Ag.psf
+           pyscf/nao/examples/psf/Al.gga.psf
+           pyscf/nao/examples/psf/Al.lda.psf
+           pyscf/nao/examples/psf/Al.psf
+           pyscf/nao/examples/psf/Am.lda.psf
+           pyscf/nao/examples/psf/Ar.gga.psf
+           pyscf/nao/examples/psf/Ar.lda.psf
+           pyscf/nao/examples/psf/As.gga.psf
+           pyscf/nao/examples/psf/As.lda.psf
+           pyscf/nao/examples/psf/At.gga.psf
+           pyscf/nao/examples/psf/At.lda.psf
+           pyscf/nao/examples/psf/Au.gga.psf
+           pyscf/nao/examples/psf/Au.lda.psf
+           pyscf/nao/examples/psf/B.gga.psf
+           pyscf/nao/examples/psf/B.lda.psf
+           pyscf/nao/examples/psf/B.psf
+           pyscf/nao/examples/psf/Ba.gga.psf
+           pyscf/nao/examples/psf/Ba.lda.psf
+           pyscf/nao/examples/psf/Be.gga.psf
+           pyscf/nao/examples/psf/Be.lda.psf
+           pyscf/nao/examples/psf/Be.psf
+           pyscf/nao/examples/psf/Bi.gga.psf
+           pyscf/nao/examples/psf/Bi.lda.psf
+           pyscf/nao/examples/psf/Bk.lda.psf
+           pyscf/nao/examples/psf/Br.gga.psf
+           pyscf/nao/examples/psf/Br.lda.psf
+           pyscf/nao/examples/psf/C.gga.psf
+           pyscf/nao/examples/psf/C.lda.psf
+           pyscf/nao/examples/psf/C.psf
+           pyscf/nao/examples/psf/Ca.gga.psf
+           pyscf/nao/examples/psf/Ca.lda.psf
+           pyscf/nao/examples/psf/Cd.gga.psf
+           pyscf/nao/examples/psf/Cd.lda.psf
+           pyscf/nao/examples/psf/Ce.gga.psf
+           pyscf/nao/examples/psf/Ce.lda.psf
+           pyscf/nao/examples/psf/Cf.lda.psf
+           pyscf/nao/examples/psf/Cl.gga.psf
+           pyscf/nao/examples/psf/Cl.lda.psf
+           pyscf/nao/examples/psf/Cm.lda.psf
+           pyscf/nao/examples/psf/Co.gga.psf
+           pyscf/nao/examples/psf/Co.lda.psf
+           pyscf/nao/examples/psf/Cr.gga.psf
+           pyscf/nao/examples/psf/Cr.lda.psf
+           pyscf/nao/examples/psf/Cs.gga.psf
+           pyscf/nao/examples/psf/Cs.lda.psf
+           pyscf/nao/examples/psf/Cu.gga.psf
+           pyscf/nao/examples/psf/Cu.lda.psf
+           pyscf/nao/examples/psf/Cu.psf
+           pyscf/nao/examples/psf/Es.lda.psf
+           pyscf/nao/examples/psf/F.gga.psf
+           pyscf/nao/examples/psf/F.lda.psf
+           pyscf/nao/examples/psf/F.psf
+           pyscf/nao/examples/psf/Fe.gga.psf
+           pyscf/nao/examples/psf/Fe.lda.psf
+           pyscf/nao/examples/psf/Ga.gga.psf
+           pyscf/nao/examples/psf/Ga.lda.psf
+           pyscf/nao/examples/psf/Gd.gga.psf
+           pyscf/nao/examples/psf/Gd.lda.psf
+           pyscf/nao/examples/psf/Ge.gga.psf
+           pyscf/nao/examples/psf/Ge.lda.psf
+           pyscf/nao/examples/psf/H.gga.psf
+           pyscf/nao/examples/psf/H.lda.psf
+           pyscf/nao/examples/psf/He.lda.psf
+           pyscf/nao/examples/psf/Hf.gga.psf
+           pyscf/nao/examples/psf/Hf.lda.psf
+           pyscf/nao/examples/psf/Hg.gga.psf
+           pyscf/nao/examples/psf/Hg.lda.psf
+           pyscf/nao/examples/psf/I.gga.psf
+           pyscf/nao/examples/psf/I.lda.psf
+           pyscf/nao/examples/psf/In.gga.psf
+           pyscf/nao/examples/psf/In.lda.psf
+           pyscf/nao/examples/psf/Ir.gga.psf
+           pyscf/nao/examples/psf/Ir.lda.psf
+           pyscf/nao/examples/psf/K.gga.psf
+           pyscf/nao/examples/psf/K.lda.psf
+           pyscf/nao/examples/psf/K.psf
+           pyscf/nao/examples/psf/Kr.gga.psf
+           pyscf/nao/examples/psf/Kr.lda.psf
+           pyscf/nao/examples/psf/Li.gga.psf
+           pyscf/nao/examples/psf/Li.lda.psf
+           pyscf/nao/examples/psf/Li.psf
+           pyscf/nao/examples/psf/Lu.gga.psf
+           pyscf/nao/examples/psf/Lu.lda.psf
+           pyscf/nao/examples/psf/Mg.gga.psf
+           pyscf/nao/examples/psf/Mg.lda.psf
+           pyscf/nao/examples/psf/Mg.psf
+           pyscf/nao/examples/psf/Mn.gga.psf
+           pyscf/nao/examples/psf/Mn.lda.psf
+           pyscf/nao/examples/psf/Mo.gga.psf
+           pyscf/nao/examples/psf/Mo.lda.psf
+           pyscf/nao/examples/psf/N.gga.psf
+           pyscf/nao/examples/psf/N.lda.psf
+           pyscf/nao/examples/psf/N.psf
+           pyscf/nao/examples/psf/Na.gga.psf
+           pyscf/nao/examples/psf/Na.lda.psf
+           pyscf/nao/examples/psf/Na.psf
+           pyscf/nao/examples/psf/Nb.gga.psf
+           pyscf/nao/examples/psf/Nb.lda.psf
+           pyscf/nao/examples/psf/Nd.gga.psf
+           pyscf/nao/examples/psf/Nd.lda.psf
+           pyscf/nao/examples/psf/Ne.gga.psf
+           pyscf/nao/examples/psf/Ne.lda.psf
+           pyscf/nao/examples/psf/Ni.gga.psf
+           pyscf/nao/examples/psf/Ni.lda.psf
+           pyscf/nao/examples/psf/Np.lda.psf
+           pyscf/nao/examples/psf/O.gga.psf
+           pyscf/nao/examples/psf/O.lda.psf
+           pyscf/nao/examples/psf/Os.gga.psf
+           pyscf/nao/examples/psf/Os.lda.psf
+           pyscf/nao/examples/psf/P.gga.psf
+           pyscf/nao/examples/psf/P.lda.psf
+           pyscf/nao/examples/psf/P.psf
+           pyscf/nao/examples/psf/Pa.lda.psf
+           pyscf/nao/examples/psf/Pb.gga.psf
+           pyscf/nao/examples/psf/Pb.lda.psf
+           pyscf/nao/examples/psf/Pd.gga.psf
+           pyscf/nao/examples/psf/Pd.lda.psf
+           pyscf/nao/examples/psf/Pm.gga.psf
+           pyscf/nao/examples/psf/Pm.lda.psf
+           pyscf/nao/examples/psf/Po.gga.psf
+           pyscf/nao/examples/psf/Po.lda.psf
+           pyscf/nao/examples/psf/Pt.gga.psf
+           pyscf/nao/examples/psf/Pt.lda.psf
+           pyscf/nao/examples/psf/Ra.gga.psf
+           pyscf/nao/examples/psf/Ra.lda.psf
+           pyscf/nao/examples/psf/Re.gga.psf
+           pyscf/nao/examples/psf/Re.lda.psf
+           pyscf/nao/examples/psf/Rh.gga.psf
+           pyscf/nao/examples/psf/Rh.lda.psf
+           pyscf/nao/examples/psf/Rn.gga.psf
+           pyscf/nao/examples/psf/Rn.lda.psf
+           pyscf/nao/examples/psf/Ru.gga.psf
+           pyscf/nao/examples/psf/Ru.lda.psf
+           pyscf/nao/examples/psf/S.gga.psf
+           pyscf/nao/examples/psf/S.lda.psf
+           pyscf/nao/examples/psf/S.psf
+           pyscf/nao/examples/psf/Sb.gga.psf
+           pyscf/nao/examples/psf/Sb.lda.psf
+           pyscf/nao/examples/psf/Sc.gga.psf
+           pyscf/nao/examples/psf/Sc.lda.psf
+           pyscf/nao/examples/psf/Se.gga.psf
+           pyscf/nao/examples/psf/Se.lda.psf
+           pyscf/nao/examples/psf/Si.gga.psf
+           pyscf/nao/examples/psf/Si.lda.psf
+           pyscf/nao/examples/psf/Si.psf
+           pyscf/nao/examples/psf/Sm.gga.psf
+           pyscf/nao/examples/psf/Sm.lda.psf
+           pyscf/nao/examples/psf/Sn.gga.psf
+           pyscf/nao/examples/psf/Sn.lda.psf
+           pyscf/nao/examples/psf/Sr.gga.psf
+           pyscf/nao/examples/psf/Sr.lda.psf
+           pyscf/nao/examples/psf/Ta.gga.psf
+           pyscf/nao/examples/psf/Ta.lda.psf
+           pyscf/nao/examples/psf/Tc.gga.psf
+           pyscf/nao/examples/psf/Tc.lda.psf
+           pyscf/nao/examples/psf/Te.gga.psf
+           pyscf/nao/examples/psf/Te.lda.psf
+           pyscf/nao/examples/psf/Ti.gga.psf
+           pyscf/nao/examples/psf/Ti.lda.psf
+           pyscf/nao/examples/psf/Tl.gga.psf
+           pyscf/nao/examples/psf/Tl.lda.psf
+           pyscf/nao/examples/psf/Tm.gga.psf
+           pyscf/nao/examples/psf/Tm.lda.psf
+           pyscf/nao/examples/psf/U.lda.psf
+           pyscf/nao/examples/psf/V.gga.psf
+           pyscf/nao/examples/psf/V.lda.psf
+           pyscf/nao/examples/psf/Xe.gga.psf
+           pyscf/nao/examples/psf/Xe.lda.psf
+           pyscf/nao/examples/psf/Y.gga.psf
+           pyscf/nao/examples/psf/Y.lda.psf
+           pyscf/nao/examples/psf/Yb.gga.psf
+           pyscf/nao/examples/psf/Yb.lda.psf
+           pyscf/nao/examples/psf/Zn.gga.psf
+           pyscf/nao/examples/psf/Zn.lda.psf
+           pyscf/nao/examples/psf/Zr.gga.psf
+           pyscf/nao/examples/psf/download_psf.py
+           pyscf/nao/gw.py
+           pyscf/nao/gw_iter.py
+           pyscf/nao/m_chi0_noxv.py
+           pyscf/nao/m_comp_spatial_distributions.py
+           pyscf/nao/m_comp_spatial_numba.py
+           pyscf/nao/m_comp_vext_tem.py
+           pyscf/nao/m_comp_vext_tem_numba.py
+           pyscf/nao/m_dos_pdos_eigenvalues.py
+           pyscf/nao/m_dos_pdos_ldos.py
+           pyscf/nao/m_fermi_energy.py
+           pyscf/nao/m_fft.py
+           pyscf/nao/m_fireball_get_HS_dat.py
+           pyscf/nao/m_fireball_get_cdcoeffs_dat.py
+           pyscf/nao/m_fireball_get_eigen_dat.py
+           pyscf/nao/m_fireball_hsx.py
+           pyscf/nao/m_fireball_import.py
+           pyscf/nao/m_log_interp.py
+           pyscf/nao/m_lorentzian.py
+           pyscf/nao/m_pb_ae.py
+           pyscf/nao/m_phonons.py
+           pyscf/nao/m_polariz_inter_ave.py
+           pyscf/nao/m_report.py
+           pyscf/nao/m_restart.py
+           pyscf/nao/m_rf0_den.py
+           pyscf/nao/m_rf_den.py
+           pyscf/nao/m_rf_den_pyscf.py
+           pyscf/nao/m_sf2f_rf.py
+           pyscf/nao/m_tools.py
+           pyscf/nao/m_valence.py
+           pyscf/nao/m_vhartree_pbc.py
+           pyscf/nao/m_x_zip.py
+           pyscf/nao/mesh_affine_equ.py
+           pyscf/nao/mf.py
+           pyscf/nao/nao.py
+           pyscf/nao/ndcoo.py
+           pyscf/nao/notebook/AWS/example-ase-siesta-pyscf-CH3COOH-dens-change.ipynb
+           pyscf/nao/notebook/AWS/example-ase-siesta-pyscf-ch4-dens-change-gpu.ipynb
+           pyscf/nao/notebook/AWS/example-ase-siesta-pyscf-ch4-dens-change.ipynb
+           pyscf/nao/notebook/AWS/example-ase-siesta-pyscf-ch4-eels.ipynb
+           pyscf/nao/notebook/AWS/example-ase-siesta-pyscf-ch4-pdos.ipynb
+           pyscf/nao/notebook/AWS/example-ase-siesta-pyscf-ch4.ipynb
+           pyscf/nao/notebook/AWS/example-ase-siesta-pyscf-h2o.ipynb
+           pyscf/nao/notebook/ase/example-ase-siesta-pyscf-h2o.ipynb
+           pyscf/nao/notebook/ase/example-ase-siesta-pyscf-h2o.py
+           pyscf/nao/pdos.py
+           pyscf/nao/prod_basis.py
+           pyscf/nao/qchem_inter_rf.py
+           pyscf/nao/scf.py
+           pyscf/nao/scf_dos.py
+           pyscf/nao/tddft_iter.py
+           pyscf/nao/tddft_iter_2ord.py
+           pyscf/nao/tddft_iter_x_zip.py
+           pyscf/nao/tddft_tem.py
+           pyscf/nao/test/Fdata/basis/001_400.ewf1
+           pyscf/nao/test/Fdata/basis/001_400.wf1
+           pyscf/nao/test/Fdata/basis/006_400.ewf1
+           pyscf/nao/test/Fdata/basis/006_400.wf1
+           pyscf/nao/test/Fdata/basis/006_450.ewf2
+           pyscf/nao/test/Fdata/basis/006_450.wf2
+           pyscf/nao/test/H.lih.psf
+           pyscf/nao/test/H.psf
+           pyscf/nao/test/H.water.psf
+           pyscf/nao/test/HS.dat
+           pyscf/nao/test/Li.li.psf
+           pyscf/nao/test/Li.lih.psf
+           pyscf/nao/test/N.gga.psf
+           pyscf/nao/test/O.oxygen.psf
+           pyscf/nao/test/O.psf
+           pyscf/nao/test/O.water.psf
+           pyscf/nao/test/S2_triplet/S.gga.psf
+           pyscf/nao/test/S2_triplet/S2.EIG
+           pyscf/nao/test/S2_triplet/S2.HSX
+           pyscf/nao/test/S2_triplet/S2.fdf
+           pyscf/nao/test/S2_triplet/S2.fullBZ.WFSX
+           pyscf/nao/test/S2_triplet/S2.py
+           pyscf/nao/test/Si.psf
+           pyscf/nao/test/ag54/dos.py
+           pyscf/nao/test/ag54/tddft_x_zip.py
+           pyscf/nao/test/ag54/x_zip.py
+           pyscf/nao/test/ag_s7l7_wonatoms.xyz
+           pyscf/nao/test/answer.bas
+           pyscf/nao/test/cdcoeffs.dat
+           pyscf/nao/test/eigen.dat
+           pyscf/nao/test/eigvals_gw_pyscf_f_0068.txt-ref
+           pyscf/nao/test/eigvals_gw_pyscf_he_0067.txt-ref
+           pyscf/nao/test/fireball.in
+           pyscf/nao/test/fireball.out
+           pyscf/nao/test/h2_gw_bse_iter.omega.inter.ave.txt-ref
+           pyscf/nao/test/h2_rpa_gto_0098.omega.inter.pxx.txt-ref
+           pyscf/nao/test/h2_rpa_nao_0098.omega.inter.pxx.txt-ref
+           pyscf/nao/test/h2_rpa_xpy_0098.omega.inter.pxx.txt-ref
+           pyscf/nao/test/ice/siesta.DIM
+           pyscf/nao/test/ice/siesta.PLD
+           pyscf/nao/test/ice/siesta.fdf
+           pyscf/nao/test/ice/siesta.out
+           pyscf/nao/test/li.HSX
+           pyscf/nao/test/li.fdf
+           pyscf/nao/test/li.fullBZ.WFSX
+           pyscf/nao/test/li.out
+           pyscf/nao/test/lih.DIM
+           pyscf/nao/test/lih.EIG
+           pyscf/nao/test/lih.HSX
+           pyscf/nao/test/lih.PLD
+           pyscf/nao/test/lih.fdf
+           pyscf/nao/test/lih.fullBZ.WFSX
+           pyscf/nao/test/lih.out
+           pyscf/nao/test/n2.HSX
+           pyscf/nao/test/n2.fdf
+           pyscf/nao/test/n2.fullBZ.WFSX
+           pyscf/nao/test/n2.out
+           pyscf/nao/test/na20_chain.tddft_iter_rpa.omega.inter.ave.txt-ref
+           pyscf/nao/test/na20_chain.tddft_iter_rpa.omega.inter.ave.x_zip.txt-ref
+           pyscf/nao/test/oxygen.HSX
+           pyscf/nao/test/oxygen.fdf
+           pyscf/nao/test/oxygen.fullBZ.WFSX
+           pyscf/nao/test/oxygen.out
+           pyscf/nao/test/report_precision.txt
+           pyscf/nao/test/si2.fdf
+           pyscf/nao/test/silver_55/geometry.siesta.fdf
+           pyscf/nao/test/silver_55/siesta.fdf
+           pyscf/nao/test/sodium_04/siesta.fdf
+           pyscf/nao/test/sodium_04/tddft_iter.omega.inter.pxx.txt-ref
+           pyscf/nao/test/sodium_20/Na.psf
+           pyscf/nao/test/sodium_20/siesta.DIM
+           pyscf/nao/test/sodium_20/siesta.EIG
+           pyscf/nao/test/sodium_20/siesta.HSX
+           pyscf/nao/test/sodium_20/siesta.PLD
+           pyscf/nao/test/sodium_20/siesta.fdf
+           pyscf/nao/test/sodium_20/siesta.fullBZ.WFSX
+           pyscf/nao/test/sodium_20/siesta.out
+           pyscf/nao/test/sodium_20/tddft_lr.inp
+           pyscf/nao/test/sodium_55/geometry.siesta.fdf
+           pyscf/nao/test/sodium_55/siesta.fdf
+           pyscf/nao/test/test2html.sh
+           pyscf/nao/test/test_0004_vna.py
+           pyscf/nao/test/test_0008_log_interp_vv.py
+           pyscf/nao/test/test_0017_tddft_iter_nao.py
+           pyscf/nao/test/test_0018_fermi_energy.py
+           pyscf/nao/test/test_0025_gpaw_vs_siesta_tddft_iter_nao.py
+           pyscf/nao/test/test_0027_dft_sv_nao.py
+           pyscf/nao/test/test_0033_fxc_nao.py
+           pyscf/nao/test/test_0041_rescf_scf.py
+           pyscf/nao/test/test_0045_tddft_load_kernel_nao.py
+           pyscf/nao/test/test_0046_tddft_gto_h2.py
+           pyscf/nao/test/test_0047_dens_elec_gto2nao.py
+           pyscf/nao/test/test_0048_bse_tdhf_gto_h2.py
+           pyscf/nao/test/test_0049_high_telec.py
+           pyscf/nao/test/test_0050_dos_pdos.py
+           pyscf/nao/test/test_0051_double_sparse.py
+           pyscf/nao/test/test_0052_gw_rf0_ref.py
+           pyscf/nao/test/test_0053_gw_si_ref.py
+           pyscf/nao/test/test_0054_gw_wmin_wmax.py
+           pyscf/nao/test/test_0055_gw_sf_gw_corr.py
+           pyscf/nao/test/test_0055_gw_sf_iter.py
+           pyscf/nao/test/test_0056_gw_int_corr.py
+           pyscf/nao/test/test_0057_gw_res_corr.py
+           pyscf/nao/test/test_0058_gw_contour.py
+           pyscf/nao/test/test_0060_gw_h2_ae.py
+           pyscf/nao/test/test_0061_gw_rescf_g0w0_h2o.py
+           pyscf/nao/test/test_0061_gw_rescf_siesta_S2_triplet.py
+           pyscf/nao/test/test_0062_gw_rescf_g0w0_n2.py
+           pyscf/nao/test/test_0063_gw_h2_ae_spin.py
+           pyscf/nao/test/test_0064_gw_h_chain.py
+           pyscf/nao/test/test_0065_gw_h_chain.py
+           pyscf/nao/test/test_0066_gw_al_atom.py
+           pyscf/nao/test/test_0067_gw_he_atom.py
+           pyscf/nao/test/test_0068_gw_f_atom.py
+           pyscf/nao/test/test_0070_tddft_upkc.py
+           pyscf/nao/test/test_0071_tddft_tem_gto_h2.py
+           pyscf/nao/test/test_0072_tddft_iter_dens_spatial.py
+           pyscf/nao/test/test_0073_vna_me.py
+           pyscf/nao/test/test_0073_vna_vnl_n2.py
+           pyscf/nao/test/test_0074_vna_me_lih.py
+           pyscf/nao/test/test_0080_scf_gw_h2o.py
+           pyscf/nao/test/test_0081_bse_nonin_gto_be.py
+           pyscf/nao/test/test_0082_bse_gw_gto_be.py
+           pyscf/nao/test/test_0083_gw_bse_h2_ae.py
+           pyscf/nao/test/test_0084_mn_mf.py
+           pyscf/nao/test/test_0085_mn_scf.py
+           pyscf/nao/test/test_0086_mn_gw.py
+           pyscf/nao/test/test_0087_o2_gw.py
+           pyscf/nao/test/test_0088_beh_gw.py
+           pyscf/nao/test/test_0089_ClO_gw.py
+           pyscf/nao/test/test_0090_h_atom.py
+           pyscf/nao/test/test_0091_tddft_x_zip_na20.py
+           pyscf/nao/test/test_0092_ag2_ae.py
+           pyscf/nao/test/test_0093_water_si_wght.py
+           pyscf/nao/test/test_0095_h2_ae_fp_rescf.py
+           pyscf/nao/test/test_0095_h2_ae_rescf.py
+           pyscf/nao/test/test_0096_h2_ae_qchem_irf.py
+           pyscf/nao/test/test_0100_fireball.py
+           pyscf/nao/test/test_0145_bse_h2o_rhf_nonin.py
+           pyscf/nao/test/test_0145_bse_h2o_rhf_nonin_nao.txt-ref
+           pyscf/nao/test/test_0145_bse_h2o_rhf_nonin_pyscf.txt-ref
+           pyscf/nao/test/test_0146_bse_h2o_rhf_rpa.py
+           pyscf/nao/test/test_0146_bse_h2o_rhf_rpa_nao.txt-ref
+           pyscf/nao/test/test_0146_bse_h2o_rhf_rpa_pyscf.txt-ref
+           pyscf/nao/test/test_0147_bse_h2o_rks_pz.py
+           pyscf/nao/test/test_0147_bse_h2o_rks_pz_nao.txt-ref
+           pyscf/nao/test/test_0147_bse_h2o_rks_pz_pyscf.txt-ref
+           pyscf/nao/test/test_0148_bse_h2o_rks_rpa.py
+           pyscf/nao/test/test_0148_bse_h2o_rks_rpa_nao.txt-ref
+           pyscf/nao/test/test_0148_bse_h2o_rks_rpa_pyscf.txt-ref
+           pyscf/nao/test/test_0149_bse_h2o_uhf_nonin.py
+           pyscf/nao/test/test_0149_bse_h2o_uhf_nonin_nao.txt-ref
+           pyscf/nao/test/test_0149_bse_h2o_uhf_nonin_pyscf.txt-ref
+           pyscf/nao/test/test_0150_bse_h2o_uhf_rpa.py
+           pyscf/nao/test/test_0150_bse_h2o_uhf_rpa_nao.txt-ref
+           pyscf/nao/test/test_0150_bse_h2o_uhf_rpa_pyscf.txt-ref
+           pyscf/nao/test/test_0151_bse_h2b_uhf_rpa_nao.txt-ref
+           pyscf/nao/test/test_0151_bse_h2b_uhf_rpa_pyscf.txt-ref
+           pyscf/nao/test/test_0152_bse_h2b_uks_pz_nao.txt-ref
+           pyscf/nao/test/test_0152_bse_h2b_uks_pz_pyscf.txt-ref
+           pyscf/nao/test/test_0153_bse_h2b_uks_rpa_nao.txt-ref
+           pyscf/nao/test/test_0153_bse_h2b_uks_rpa_pyscf.txt-ref
+           pyscf/nao/test/test_0154_bse_h2b_uks_nonin_matelem.txt-ref
+           pyscf/nao/test/test_0154_bse_h2b_uks_nonin_nao.txt-ref
+           pyscf/nao/test/test_0154_bse_h2b_uks_nonin_pyscf.txt-ref
+           pyscf/nao/test/test_0155_tddft_h2b_uks_nonin_matelem.txt-ref
+           pyscf/nao/test/test_0155_tddft_h2b_uks_nonin_nao.txt-ref
+           pyscf/nao/test/test_0155_tddft_h2b_uks_nonin_pyscf.txt-ref
+           pyscf/nao/test/test_0156_bse_h2b_uhf_nonin_matelem.txt-ref
+           pyscf/nao/test/test_0156_bse_h2b_uhf_nonin_nao.txt-ref
+           pyscf/nao/test/test_0156_bse_h2b_uhf_nonin_pyscf.txt-ref
+           pyscf/nao/test/test_0157_bse_h2o_rhf_cis_nao.txt-ref
+           pyscf/nao/test/test_0157_bse_h2o_rhf_cis_pyscf.txt-ref
+           pyscf/nao/test/test_0158_bse_h2o_uhf_cis_nao.txt-ref
+           pyscf/nao/test/test_0158_bse_h2o_uhf_cis_pyscf.txt-ref
+           pyscf/nao/test/test_0159_bse_h2b_uhf_cis_nao.txt-ref
+           pyscf/nao/test/test_0160_bse_h2b_uhf_gw_nao.txt-ref
+           pyscf/nao/test/test_0163_bse_h2o_spin2_uhf_rpa_nao.txt-ref
+           pyscf/nao/test/test_0163_bse_h2o_spin2_uhf_rpa_pyscf.txt-ref
+           pyscf/nao/test/test_0164_bse_h2o_spin2_uhf_nonin.py
+           pyscf/nao/test/test_0164_bse_h2o_spin2_uhf_nonin_matelem.txt-ref
+           pyscf/nao/test/test_0164_bse_h2o_spin2_uhf_nonin_nao.txt-ref
+           pyscf/nao/test/test_0164_bse_h2o_spin2_uhf_nonin_pyscf.txt-ref
+           pyscf/nao/test/test_0165_bse_h2b_spin1_uhf_rpa_nao.txt-ref
+           pyscf/nao/test/test_0165_bse_h2b_spin1_uhf_rpa_pyscf.txt-ref
+           pyscf/nao/test/test_0166_cn_uhf_spin_contam.py
+           pyscf/nao/test/test_0167_cn_ugw_spin_contam.py
+           pyscf/nao/test/test_0168_cn_rohf.py
+           pyscf/nao/test/test_0169_cn_uks_b3lyp.py
+           pyscf/nao/test/test_0201_sparse_matmul.py
+           pyscf/nao/test/test_0202_log_interp_vv.py
+           pyscf/nao/test/test_0203_log_interp_speed_ram.py
+           pyscf/nao/test/test_0204_ao_eval_speed.py
+           pyscf/nao/test/test_0205_matelem_ram.py
+           pyscf/nao/test/test_0206_ao_eval_ram.py
+           pyscf/nao/test/test_130_h2b_uhf_nonin.txt-ref
+           pyscf/nao/test/test_131_h2b_uhf_nonin_pb.txt-ref
+           pyscf/nao/test/test_132_h2o_uhf_nonin_pb.txt-ref
+           pyscf/nao/test/test_133_h2o_rhf_nonin_pb.txt-ref
+           pyscf/nao/test/test_134_h2o_rhf_rpa_pb.txt-ref
+           pyscf/nao/test/test_135_h2o_uhf_rpa_pb.txt-ref
+           pyscf/nao/test/test_136_h2o_rks_rpa_pb.txt-ref
+           pyscf/nao/test/test_137_h2o_rks_nonin_pb.txt-ref
+           pyscf/nao/test/test_138_h2o_rks_pz_pb.txt-ref
+           pyscf/nao/test/test_139_h2o_uks_nonin_pb.txt-ref
+           pyscf/nao/test/test_140_h2o_uks_rpa_pb.txt-ref
+           pyscf/nao/test/test_141_h2o_uks_pz_pb.txt-ref
+           pyscf/nao/test/test_142_h2b_uhf_rpa_pb.txt-ref
+           pyscf/nao/test/test_143_h2b_uks_rpa_pb.txt-ref
+           pyscf/nao/test/test_144_h2b_uks_pz_pb.txt-ref
+           pyscf/nao/test/test_ag13_ghost/Ag.psf
+           pyscf/nao/test/test_ag13_ghost/Ags.psf
+           pyscf/nao/test/test_ag13_ghost/FORCE_STRESS
+           pyscf/nao/test/test_ag13_ghost/geometry.siesta.fdf
+           pyscf/nao/test/test_ag13_ghost/siesta.DIM
+           pyscf/nao/test/test_ag13_ghost/siesta.EIG
+           pyscf/nao/test/test_ag13_ghost/siesta.KP
+           pyscf/nao/test/test_ag13_ghost/siesta.PLD
+           pyscf/nao/test/test_ag13_ghost/siesta.STRUCT_OUT
+           pyscf/nao/test/test_ag13_ghost/siesta.XV
+           pyscf/nao/test/test_ag13_ghost/siesta.fdf
+           pyscf/nao/test/test_ag13_ghost/siesta.fullBZ.WFSX
+           pyscf/nao/test/test_ag13_ghost/siesta.out
+           pyscf/nao/test/test_ag13_noghost/Ag.psf
+           pyscf/nao/test/test_ag13_noghost/geometry.siesta.fdf
+           pyscf/nao/test/test_ag13_noghost/siesta.DIM
+           pyscf/nao/test/test_ag13_noghost/siesta.EIG
+           pyscf/nao/test/test_ag13_noghost/siesta.FA
+           pyscf/nao/test/test_ag13_noghost/siesta.HSX
+           pyscf/nao/test/test_ag13_noghost/siesta.KP
+           pyscf/nao/test/test_ag13_noghost/siesta.PLD
+           pyscf/nao/test/test_ag13_noghost/siesta.STRUCT_OUT
+           pyscf/nao/test/test_ag13_noghost/siesta.XV
+           pyscf/nao/test/test_ag13_noghost/siesta.fdf
+           pyscf/nao/test/test_ag13_noghost/siesta.fullBZ.WFSX
+           pyscf/nao/test/test_ag13_noghost/siesta.out
+           pyscf/nao/test/test_ag13_noghost/siesta.xyz
+           pyscf/nao/test/vna_lih_0004.txt-ref
+           pyscf/nao/test/vna_n2_0004.txt-ref
+           pyscf/nao/test/water.DIM
+           pyscf/nao/test/water.EIG
+           pyscf/nao/test/water.HSX
+           pyscf/nao/test/water.PLD
+           pyscf/nao/test/water.bse_iter_rpa.omega.inter.pxx.txt-ref
+           pyscf/nao/test/water.bse_iter_rpa.omega.nonin.pxx.txt-ref
+           pyscf/nao/test/water.dos.txt-ref
+           pyscf/nao/test/water.fdf
+           pyscf/nao/test/water.fullBZ.WFSX
+           pyscf/nao/test/water.pdos.txt-ref
+           pyscf/nao/test/water.scfout
+           pyscf/nao/test/water.tddft_iter.omega.inter.pxx.txt-ref
+           pyscf/nao/test/water.tddft_iter.omega.pxx.txt-ref
+           pyscf/nao/test/water.tddft_iter.telec-0.03.omega-nonin.pav.txt-ref
+           pyscf/nao/test/water.tddft_iter_fm_0097.omega.nonin.pxx.txt-ref
+           pyscf/nao/test/water.tddft_iter_lda.omega.inter.pxx.txt-ref
+           pyscf/nao/test/water.tddft_iter_rf_0097.omega.inter.pxx.txt-ref
+           pyscf/nao/test/water.tddft_iter_rpa.telec-0.03.omega.inter.pav.txt-ref
+           pyscf/nao/test/water_sz.HSX
+           pyscf/nao/test/water_sz.fdf
+           pyscf/nao/test/water_sz.fullBZ.WFSX
+           pyscf/pbc/TODO
+           pyscf/pbc/__all__.py
+           pyscf/pbc/cc/kccsd_t.py
+           pyscf/pbc/cc/kccsd_t_rhf.py
+           pyscf/pbc/cc/kccsd_t_rhf_slow.py
+           pyscf/pbc/cc/kintermediates_uhf.py
+           pyscf/pbc/cc/test/test_eom_kgccsd.py
+           pyscf/pbc/cc/test/test_eom_kgccsd_diag.py
+           pyscf/pbc/cc/test/test_eom_krccsd.py
+           pyscf/pbc/cc/test/test_eom_kuccsd.py
+           pyscf/pbc/cc/test/test_eom_kuccsd_diag.py
+           pyscf/pbc/cc/test/test_h_2x2x1.out
+           pyscf/pbc/cc/test/test_h_2x2x1.py
+           pyscf/pbc/cc/test/test_h_3x3x1.out
+           pyscf/pbc/cc/test/test_h_3x3x1.py
+           pyscf/pbc/cc/test/test_kuccsd_openshell.py
+           pyscf/pbc/cc/test/test_kuccsd_supercell_vs_kpts.py
+           pyscf/pbc/ci/test/test_ci.py
+           pyscf/pbc/eph/__init__.py
+           pyscf/pbc/geomopt/log.ini
+           pyscf/pbc/gto/basis/BASIS_MOLOPT
+           pyscf/pbc/gto/basis/GTH_BASIS_SETS
+           pyscf/pbc/gto/basis/HFX_BASIS
+           pyscf/pbc/gto/basis/README
+           pyscf/pbc/gto/basis/gth-aug-dzvp.dat
+           pyscf/pbc/gto/basis/gth-aug-qzv2p.dat
+           pyscf/pbc/gto/basis/gth-aug-qzv3p.dat
+           pyscf/pbc/gto/basis/gth-aug-tzv2p.dat
+           pyscf/pbc/gto/basis/gth-aug-tzvp.dat
+           pyscf/pbc/gto/basis/gth-cc-dzvp.dat
+           pyscf/pbc/gto/basis/gth-cc-qzvp.dat
+           pyscf/pbc/gto/basis/gth-cc-tzvp.dat
+           pyscf/pbc/gto/basis/gth-dzv.dat
+           pyscf/pbc/gto/basis/gth-dzvp-molopt-sr-q9.dat
+           pyscf/pbc/gto/basis/gth-dzvp-molopt-sr.dat
+           pyscf/pbc/gto/basis/gth-dzvp-molopt.dat
+           pyscf/pbc/gto/basis/gth-dzvp.dat
+           pyscf/pbc/gto/basis/gth-qzv2p.dat
+           pyscf/pbc/gto/basis/gth-qzv3p.dat
+           pyscf/pbc/gto/basis/gth-szv-molopt-sr-q9.dat
+           pyscf/pbc/gto/basis/gth-szv-molopt-sr.dat
+           pyscf/pbc/gto/basis/gth-szv-molopt.dat
+           pyscf/pbc/gto/basis/gth-szv.dat
+           pyscf/pbc/gto/basis/gth-szvp-molopt-sr-q9.dat
+           pyscf/pbc/gto/basis/gth-tzv2p-molopt.dat
+           pyscf/pbc/gto/basis/gth-tzv2p.dat
+           pyscf/pbc/gto/basis/gth-tzv2px-molopt.dat
+           pyscf/pbc/gto/basis/gth-tzvp-molopt.dat
+           pyscf/pbc/gto/basis/gth-tzvp.dat
+           pyscf/pbc/gto/pseudo/GTH_POTENTIALS
+           pyscf/pbc/gto/pseudo/HF_POTENTIALS
+           pyscf/pbc/gto/pseudo/gth-blyp.dat
+           pyscf/pbc/gto/pseudo/gth-bp.dat
+           pyscf/pbc/gto/pseudo/gth-hcth120.dat
+           pyscf/pbc/gto/pseudo/gth-hcth407.dat
+           pyscf/pbc/gto/pseudo/gth-hf.dat
+           pyscf/pbc/gto/pseudo/gth-olyp.dat
+           pyscf/pbc/gto/pseudo/gth-pade.dat
+           pyscf/pbc/gto/pseudo/gth-pbe.dat
+           pyscf/pbc/gto/pseudo/gth-pbesol.dat
+           pyscf/pbc/gw/__init__.py
+           pyscf/pbc/gw/gw_slow.py
+           pyscf/pbc/gw/kgw_slow.py
+           pyscf/pbc/gw/kgw_slow_supercell.py
+           pyscf/pbc/gw/test/test_kgw_slow.py
+           pyscf/pbc/gw/test/test_kgw_slow_supercell.py
+           pyscf/pbc/mp/test/test_mask.py
+           pyscf/pbc/mp/test/test_mask_uhf.py
+           pyscf/pbc/prop/__init__.py
+           pyscf/pbc/prop/efg/__init__.py
+           pyscf/pbc/tdscf/kproxy.py
+           pyscf/pbc/tdscf/kproxy_supercell.py
+           pyscf/pbc/tdscf/krhf_slow.py
+           pyscf/pbc/tdscf/krhf_slow_gamma.py
+           pyscf/pbc/tdscf/krhf_slow_supercell.py
+           pyscf/pbc/tdscf/proxy.py
+           pyscf/pbc/tdscf/rhf_slow.py
+           pyscf/pbc/tdscf/test/frozen_test_cderi.h5
+           pyscf/pbc/tdscf/test/test_common.py
+           pyscf/pbc/tdscf/test/test_kproxy_hf.py
+           pyscf/pbc/tdscf/test/test_kproxy_ks.py
+           pyscf/pbc/tdscf/test/test_kproxy_supercell_hf.py
+           pyscf/pbc/tdscf/test/test_kproxy_supercell_ks.py
+           pyscf/pbc/tdscf/test/test_krhf_slow.py
+           pyscf/pbc/tdscf/test/test_krhf_slow_gamma.py
+           pyscf/pbc/tdscf/test/test_krhf_slow_supercell.py
+           pyscf/pbc/tdscf/test/test_proxy.py
+           pyscf/pbc/tdscf/test/test_rhf_slow.py
+           pyscf/pbc/testall.sh
+           pyscf/post_scf.py
+           pyscf/prop/efg/uhf.py
+           pyscf/prop/esr/uhf.py
+           pyscf/prop/polarizability/__init__.py
+           pyscf/semiempirical/__init__.py
+           pyscf/semiempirical/am1.py
+           pyscf/semiempirical/mindo3.py
+           pyscf/semiempirical/rmindo3_grad.py
+           pyscf/semiempirical/umindo3_grad.py
+           pyscf/sgx/__init__.py
+           pyscf/shciscf/README.md
+           pyscf/solvent/test/pna_6w.potential
+           pyscf/tdscf/common_slow.py
+           pyscf/tdscf/proxy.py
+           pyscf/tdscf/rhf_slow.py
+           pyscf/tdscf/test/test_proxy.py
+           pyscf/tdscf/test/test_rhf_slow.py
+           pyscf/tools/Molpro2Pyscf/example_Pd_atom.out
+           pyscf/xianci/settings.py.example
+           setup.cfg
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:   __NO_COPYRIGHT_NOR_LICENSE__
+
+Files:     pyscf/lib/ao2mo/nr_ao2mo.c
+           pyscf/lib/ao2mo/nr_ao2mo.h
+           pyscf/lib/ao2mo/nr_incore.c
+           pyscf/lib/ao2mo/nr_incore.h
+           pyscf/lib/ao2mo/r_ao2mo.c
+           pyscf/lib/ao2mo/r_ao2mo.h
+           pyscf/lib/ao2mo/restore_eri.c
+           pyscf/lib/cc/ccsd_grad.c
+           pyscf/lib/cc/ccsd_pack.c
+           pyscf/lib/cc/ccsd_t.c
+           pyscf/lib/cc/uccsd_t.c
+           pyscf/lib/dft/grid_basis.c
+           pyscf/lib/dft/grid_basis.h
+           pyscf/lib/dft/nr_numint.c
+           pyscf/lib/dft/r_numint.c
+           pyscf/lib/dft/vxc.h
+           pyscf/lib/gto/deriv1.c
+           pyscf/lib/gto/deriv2.c
+           pyscf/lib/gto/fill_int2c.c
+           pyscf/lib/gto/fill_int2e.c
+           pyscf/lib/gto/fill_nr_3c.c
+           pyscf/lib/gto/fill_r_3c.c
+           pyscf/lib/gto/fill_r_4c.c
+           pyscf/lib/gto/ft_ao.h
+           pyscf/lib/gto/ft_ao_deriv.c
+           pyscf/lib/gto/grid_ao_drv.c
+           pyscf/lib/gto/grid_ao_drv.h
+           pyscf/lib/gto/moleintor.c
+           pyscf/lib/gto/nr_ecp.c
+           pyscf/lib/gto/nr_ecp_deriv.c
+           pyscf/lib/mcscf/fci.h
+           pyscf/lib/mcscf/fci_4pdm.c
+           pyscf/lib/mcscf/fci_contract.c
+           pyscf/lib/mcscf/fci_rdm.c
+           pyscf/lib/mcscf/fci_string.c
+           pyscf/lib/mcscf/nevpt_contract.c
+           pyscf/lib/np_helper/condense.c
+           pyscf/lib/np_helper/np_helper.h
+           pyscf/lib/np_helper/npdot.c
+           pyscf/lib/np_helper/omp_reduce.c
+           pyscf/lib/np_helper/pack_tril.c
+           pyscf/lib/np_helper/transpose.c
+           pyscf/lib/pbc/fill_ints.c
+           pyscf/lib/pbc/ft_ao.c
+           pyscf/lib/pbc/grid_ao.c
+           pyscf/lib/pbc/optimizer.c
+           pyscf/lib/pbc/optimizer.h
+           pyscf/lib/ri/r_df_incore.c
+           pyscf/lib/vhf/cvhf.h
+           pyscf/lib/vhf/fill_nr_s8.c
+           pyscf/lib/vhf/hessian_screen.c
+           pyscf/lib/vhf/nr_direct.c
+           pyscf/lib/vhf/nr_direct.h
+           pyscf/lib/vhf/nr_sgx_direct.c
+           pyscf/lib/vhf/optimizer.c
+           pyscf/lib/vhf/optimizer.h
+           pyscf/lib/vhf/r_direct_dot.c
+           pyscf/lib/vhf/r_direct_dot.h
+           pyscf/lib/vhf/r_direct_o1.c
+           pyscf/lib/vhf/rkb_screen.c
+           pyscf/lib/vhf/time_rev.c
+           pyscf/lib/vhf/time_rev.h
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Qiming Sun <osirpt.sun@gmail.com>
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/gto/autocode/auto_eval.cl
+           pyscf/lib/gto/autocode/auto_eval1.c
+           pyscf/lib/gto/autocode/derivator.cl
+           pyscf/lib/gto/autocode/gen-code.cl
+           pyscf/lib/gto/autocode/utility.cl
+           pyscf/lib/mpi/extensions.h
+           pyscf/lib/mpi/m_blacs.c
+           pyscf/lib/mpi/m_mpi.c
+           pyscf/lib/mpi/m_utilities.c
+           pyscf/lib/mpi/mympi.h
+Copyright: 2003-2007 CAMP
+           2003-2007 CAMP Please see the accompanying LICENSE file for further information.
+           2005-2009 CSC - IT Center for Science Ltd. Please see the accompanying LICENSE file for further information.
+           2007-2009 CAMd
+           2008-2010 CSC - IT Center for Science Ltd.
+           2010-2011 Argonne National Laboratory Please see the accompanying LICENSE file for further information.
+           2014 Qiming Sun <osirpt.sun@gmail.com> Description: code generated   gen-code.cl
+           2014-2018 Qiming Sun <osirpt.sun@gmail.com>
+License:   __NO_LICENSE__
+
+Files:     pyscf/grad/tdrhf.py
+           pyscf/grad/tdrks.py
+           pyscf/grad/tduhf.py
+           pyscf/grad/tduks.py
+Copyright: 2014-2019 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Ref:
+ J. Chem. Phys. 117, 7433
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/pbc/tdscf/krhf.py
+           pyscf/pbc/tdscf/krks.py
+           pyscf/pbc/tdscf/rhf.py
+           pyscf/tdscf/rks.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Ref:
+ Chem Phys Lett, 256, 454
+ J. Mol. Struct. THEOCHEM, 914, 3
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/shciscf/examples/01_O2_PT.py
+           pyscf/shciscf/examples/02_O2_int_rot.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ All diatomic bond lengths taken from:
+ http://cccbdb.nist.gov/diatomicexpbondx.asp
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/vhf/rah_direct_dot.c
+           pyscf/lib/vhf/rha_direct_dot.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/tools/rhf_newtonraphson.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Date: May 18, 2015
+ .
+ Augmented Hessian Newton-Raphson optimization of the RHF energy
+ .
+ The gradient and hessian were determined from the equations in
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/tools/Molpro2Pyscf/wmme.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 1. code style
+ * Indent: 3 -> 4
+ * Constant should be all uppercase
+ * Function/method should be all lowercase
+ * Line wrap around 80 columns
+ * Use either double quote or single quote, not mix
+ .
+ 2. Conventions required by PySCF
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/mcscf/select_ci.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Select CI
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/tools/Molpro2Pyscf/MolproXml.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 1. code style
+ * Indent space: 3 -> 4
+ * Function/method should be all lowercase
+ * Line wrap around 80 columns
+ * Use either double quote or single quote, not mix
+ .
+ 2. Conventions required by PySCF
+ * Use proper logger function for debug messages
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/ccn/cc.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Auto-generated coupled-cluster equations of arbitrary order
+ .
+ Initial implementation includes ground-state, lambda, IP-EOM and EA-EOM kernels for CCS, CCSD, CCD and CCSDT
+ unrestricted (general) theory.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/hci/hci.h
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Alexander Sokolov <alexander.y.sokolov@gmail.com>
+ *
+ *  C functions for Heat-Bath CI implementation
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/rt/tdscf.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 3. Use proper functions provided by PySCF
+ * Switch between df.incore and df.outcore according to system memory
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/gto/ft_ao.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Fourier transformed AO pair
+ * \int e^{-i Gv \cdot r}  i(r) * j(r) dr^3
+ *
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/xianci/xianci.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Contact "Bingbing Suo" <bsuo@nwu.edu.cn> to download and install Xian-CI
+ program.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/pbc/cc/kintermediates.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ import numpy as np
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/extras/mbd/dipole.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Jan Hermann <dev@hermann.in>
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/rt/__init__.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 1. code style
+ * Remove the unused modules: numpy, scipy, gto, dft, ...
+ .
+ We should get the lib import working for now let's just do a quick TDSCF.
+ from pyscf.tdscf import bo
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     examples/local_orb/ulocal.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Localization based on ALPHA orbitals from UHF/UKS check files
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/vhf/fblas.h
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Qiming Sun <osirpt.sun@gmail.com>
+ *
+ * blas interface and blas-like functions
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/icmpspt/icmpspt.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Sandeep Sharma
+ *
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/prop/ssc/dhf.py
+Copyright: 2014-2019 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ JCP 112, 3493 (2000); DOI:10.1063/1.480504
+ JCC 20, 1262 (1999); DOI:10.1002/(SICI)1096-987X(199909)20:12<1262::AID-JCC6>3.0.CO;2-H
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/dft/xcfun_itrf.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Qiming Sun <osirpt.sun@gmail.com>
+ *
+ * xcfun Library from
+ * https://github.com/dftlibs/xcfun
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/vhf/nr_incore.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Incore version of non-relativistic integrals JK contraction
+ * ic in CVHFic... is short for incore
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/nao/cputime.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ #include "elapse.h"
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/pbc/mpitools/mpi_pool.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Modified from  https://github.com/adrn/mpipool
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/hci/hci.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Alexander Sokolov <alexander.y.sokolov@gmail.com>
+ *
+ * Slater-Condon rule implementation for Heat-Bath CI
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     examples/local_orb/pmloc.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Localization funciton: pmloc.loc(mol,mocoeff)
+ .
+ -ZL@20151227- Add Boys. Note that to view LMOs
+ in jmol, 'orbital energies' need
+ to be defined and used to reorder
+ LMOs.
+ -ZL@20151225- Pipek-Mezey localizaiton
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     examples/local_orb/nlocal.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Localization based on UNO from UHF/UKS check files
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/tools/molden.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ MOLDEN format:
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/localizer/hessian.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Sebastian Wouters <sebastianwouters@gmail.com>
+ *
+ *  Date: August 3, 2015
+ *
+ *  Augmented Hessian Newton-Raphson optimization of
+ *     1. either the Edmiston-Ruedenberg localization cost function
+ *     2. or the Boys localization cost function
+ *  in both cases with an analytic gradient and hessian
+ *
+ *  Reference: C. Edmiston and K. Ruedenberg, Reviews of Modern Physics 35, 457-464 (1963). http://dx.doi.org/10.1103/RevModPhys.35.457
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/tools/Molpro2Pyscf/MolproXmlToPyscf.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 1. code style
+ * Indent space: 3 -> 4
+ * Function/method should be all lowercase
+ * Line wrap around 80 columns
+ * Use either double quote or single quote, not mix
+ .
+ 2. Use proper functions provided by PySCF
+ .
+ Developed by Elvira Sayfutyarova:
+ using wmme program provided by Gerald Knizia
+ .
+ Comment: you need to get .xml file after running SCF or MCSCF in Molpro before running this program
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/dft/CxLebedevGrid.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * This code was modified from CxLebedevGrid.cpp (from Gerald Knizia).
+ * The following comments are copied from the header file CxLebedevGrid.h
+ *
+ .
+ ccgk: This code generates Lebedev grids. It is based on C files from
+ ccgk: Dmitri Laikov, which were converted to Fortran by Christoph van Wuellen.
+ ccgk: I (Gerald Knizia) subsequently converted them back to C++.
+ ccgk:
+ ccgk: The original distribution contained the following readme file:
+ ccgk:
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/mcscf/fci_contract_nosym.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: Qiming Sun <osirpt.sun@gmail.com>
+ *
+ * Paticle permutation symmetry for 2e Hamiltonian only
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/dft/libxc_itrf.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Authors: Qiming Sun <osirpt.sun@gmail.com>
+ *          Susi Lehtola <susi.lehtola@gmail.com>
+ *
+ * libxc from
+ * http://www.tddft.org/programs/octopus/wiki/index.php/Libxc:manual
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/nao/m_siesta.F90
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ /*
+ * Author: Peter Koval <koval.peter@gmail.com>
+ */
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/adc/__init__.py
+Copyright: 2014-2019 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ TODO: Add description of the module
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/dft/numint_uniform_grid.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Fast numerical integration on uniform grids.
+ * (See also cp2k multigrid algorithm)
+ *
+ * Author: Qiming Sun <osirpt.sun@gmail.com>
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/shciscf/libSHCITools.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * Author: James E. T. Smith james.e.smith@colorado.edu (2/7/17)
+ *
+ * This is a shared library for use interfacing the pyscf package with the Dice
+ * package.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/mcscf/chkfile.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Contributor(s):
+ - Wirawan Purwanto
+ - Qiming Sun <osirpt.sun@gmail.com>
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/tools/Molpro2Pyscf/example_Pd_atom.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 1. code style
+ * Indent: 3 -> 4
+ * Line wrap around 80 columns
+ .
+ 2. Move to pyscf/examples/tools
+ .
+ Developed by Elvira Sayfutyarova:
+ using wmme program provided by Gerald Knizia
+ .
+ Comment: you need to get .xml file after running SCF or MCSCF in Molpro before running this program
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/gto/fastexp.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ *      Fast exp(x) computation (with SSE2 optimizations).
+ *
+ * Copyright (c) 2010, Naoaki Okazaki
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the names of the authors nor the names of its contributors
+ *       may be used to endorse or promote products derived from this
+ *       software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+ * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ .
+ Modified from   http://www.chokkan.org/blog/archives/352
+ http://www.chokkan.org/software/dist/fastexp.c
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/tdscf/rhf.py
+Copyright: 2014-2020 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ Ref:
+ Chem Phys Lett, 256, 454
+ J. Mol. Struct. THEOCHEM, 914, 3
+ Recent Advances in Density Functional Methods, Chapter 5, M. E. Casida
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/symm/geom.py
+Copyright: 2014-2019 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ The symmetry detection method implemented here is not strictly follow the
+ point group detection flowchart.  The detection is based on the degeneracy
+ of cartesian basis of multipole momentum, eg
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/lib/vhf/nr_direct_dot.c
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ *
+ * JKoperator
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     pyscf/pbc/tools/make_test_cell.py
+Copyright: 2014-2018 The PySCF Developers.
+License:   Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ import unittest
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+  can be found in `/usr/share/common-licenses/Apache-2.0'.
+
+Files:     NOTICE
+Copyright: 2014-2020 The PySCF Developers. PySCF (www.pyscf.org) was developed :
+License:   __UNKNOWN__
+ Qiming Sun (Princeton University; Caltech; Tencent America LLC)
+ Sandeep Sharma (University of Colorado Boulder)
+ Alexander Sokolov (Caltech; Ohio State University)
+ George H. Booth (Cambridge University)
+ Wirawan Purwanto (William & Mary)
+ Sheng Guo (Caltech)
+ Sebastian Wouters (Ghent University)
+ Zhendong Li (Princeton University; Caltech)
+ Carlos Jimenez-Hoyos (Wesleyan University)
+ Junzi Liu (John Hopkins)
+ Garnet Chan (Princeton University; Caltech)
+ Timothy Berkelbach (Princeton University; University of Chicago; CCQ)
+ James D. McClain (Princeton University; Caltech)
+ Nick Blunt (LBNL)
+ Elvira Sayfutyarova (Princeton University; Yale University)
+ Jan Hermann (MPI)
+ Peter Koval (Donostia International Physics Center)
+ Marc Barbry (CFM Materials Physics Center; Simbeyond)
+ Susi Lehtola (LBNL; University of Helsinki)
+ Paul J. Robinson (UCLA)
+ Narbe Mardirossian (Caltech)
+ Lucas Wagner (University of Illinois)
+ Mark J. Williamson (Cambridge University)
+ Boxiao Zheng (Princeton University)
+ Bastien Mussard (University of Colorado Boulder)
+ Kevin Koh (University of Notre dame)
+ Janus Juul Eriksen (Johannes Gutenberg University Mainz)
+ Li Chen (University of Illinois)
+ Junhao Li (Cornell University)
+ Vijay Gopal Chilkuri (LPCQ)
+ Zhihao Cui (Caltech)
+ Nikolay Bogdanov (Max Planck Institute)
+ Artem Pulkin (Caltech)
+ James Smith (University of Colorado Boulder)
+ Chong Sun (Caltech)
+ Jason Yu (Caltech)
+ Shining Sun (Caltech)
+ Alec White (Caltech)
+ Bryan Lau (University of Chicago)
+ Matthew R. Hermes (University of Minnesota)
+ Gao Yang (Caltech)
+ Xiao Wang (CCQ)
+ Henry Schurkus (Caltech)
+ Jia Chen (University of Florida)
+ Henrik Larsson (Caltech)
+ Shiv Upadhyay (University of Pittsburgh)
+ Samragni Banerjee (Ohio University)
+ Xing Zhang (Caltech)
+ Tianyu Zhu (Caltech)
+ Lee-Ping Wang (UC Davis)
+ Kevin Gasperich (University of Pittsburgh)
+ Jesse Gorzinski (IBM)
+ Zhi Wang (University of Chicago)
+ Max Scheurer (Ruprecht-Karls University)
+ Peng Bao (Chinese Academy of Sciences)
+ Jun Yang (Hong Kong University)
+ Peter Pinski (HQS Quantum Simulations)
+
+Files:     pyscf/data/nucprop.py
+Copyright: 9999-20142018 The PySCF Developers.
+License:   __UNKNOWN__
+ Licensed under the Apache License, Version 2.0 the "License";
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+Files:     pyscf/shciscf/settings.py.example
+Copyright: __NO_COPYRIGHT__ in: pyscf/shciscf/settings.py.example
+License:   __UNKNOWN__
+ This file is an example to set the environment.
+ The configs will be used in shciscf.py
+
+Files:     pyscf/semiempirical/mopac_param.py
+Copyright: 2004 Richard P. Muller.
+License:   __UNKNOWN__
+ PyQuante version 1.2 and later is covered by the modified BSD
+ license. Please see the file LICENSE that is part of this
+ distribution.
+
+Files:     pyscf/lib/gto/autocode/parser.cl
+Copyright: 2014-2017 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ parse the expression such as ( op,op |h| op,op )
+
+Files:     pyscf/dft/sap.py
+Copyright: 2020 Susi Lehtola
+License:   BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ * Neither the name of the <organization> nor the
+ names of its contributors may be used to endorse or promote products
+ derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+ .
+ Routines for the implementation of the superposition of atomic
+ potentials guess for electronic structure calculations, see
+ .
+ S. Lehtola, "Assessment of Initial Guesses for Self-Consistent Field
+ Calculations. Superposition of Atomic Potentials: Simple yet
+ Efficient", J. Chem. Theory Comput. 15, 1593 (2019).
+ DOI: 10.1021/acs.jctc.8b01089
+ .
+ This function evaluates the effective charge of a neutral atom,
+ given by exchange-only LDA on top of spherically symmetric
+ unrestricted Hartree-Fock calculations as described in
+ .
+ S. Lehtola, L. Visscher, E. Engel, Efficient implementation of the
+ superposition of atomic potentials initial guess for electronic
+ structure calculations in Gaussian basis sets, J. Chem. Phys., in
+ press (2020).
+ .
+ The potentials have been calculated for the ground-states of
+ spherically symmetric atoms at the non-relativistic level of theory
+ as described in
+ .
+ S. Lehtola, "Fully numerical calculations on atoms with fractional
+ occupations and range-separated exchange functionals", Phys. Rev. A
+ 101, 012516 (2020). DOI: 10.1103/PhysRevA.101.012516
+ .
+ using accurate finite-element calculations as described in
+ .
+ S. Lehtola, "Fully numerical Hartree-Fock and density functional
+ calculations. I. Atoms", Int. J. Quantum Chem. e25945 (2019).
+ DOI: 10.1002/qua.25945
+ .
+ On Debian systems, the complete text of the BSD 3-clause "New" or "Revised"
+ License can be found in `/usr/share/common-licenses/BSD'.
+
+#----------------------------------------------------------------------------
+# xml and html files (skipped):
+#         README.md
+#         doc_legacy/logo/pyscf-logo-inkscape.svg
+#         pyscf/ccn/log_lambda_d.svg
+#         pyscf/ccn/log_gs_d.svg
+#         pyscf/ccn/log_lambda_s.svg
+#         pyscf/ccn/log_lambda_sd.svg
+#         pyscf/ccn/log_ea_s.svg
+#         pyscf/ccn/log_ip_sd.svg
+#         pyscf/ccn/log_lambda_sdt.svg
+#         pyscf/ccn/log_gs_s.svg
+#         pyscf/ccn/log_ea_d.svg
+#         pyscf/ccn/log_ip_sdt.svg
+#         pyscf/ccn/log_ea_sdt.svg
+#         pyscf/ccn/log_gs_sdt.svg
+#         pyscf/ccn/log_ea_sd.svg
+#         pyscf/ccn/log_gs_sd.svg
+#         pyscf/ccn/log_ip_d.svg
+#         pyscf/ccn/log_ip_s.svg
+#         pyscf/nao/test/H.water.ion
+#         pyscf/nao/test/O.water.ion.xml
+#         pyscf/nao/test/Si.ion
+#         pyscf/nao/test/H.ion
+#         pyscf/nao/test/O.ion.xml
+#         pyscf/nao/test/oxygen.xml
+#         pyscf/nao/test/O.water.ion
+#         pyscf/nao/test/H.lih.ion
+#         pyscf/nao/test/H.water.ion.xml
+#         pyscf/nao/test/water.xml
+#         pyscf/nao/test/Li.lih.ion
+#         pyscf/nao/test/Li.ion
+#         pyscf/nao/test/O.ion
+#         pyscf/nao/test/H.lih.ion.xml
+#         pyscf/nao/test/lih.xml
+#         pyscf/nao/test/si2.xml
+#         pyscf/nao/test/li.xml
+#         pyscf/nao/test/N.gga.ion.xml
+#         pyscf/nao/test/O.oxygen.ion.xml
+#         pyscf/nao/test/Li.li.ion.xml
+#         pyscf/nao/test/Li.ion.xml
+#         pyscf/nao/test/n2.xml
+#         pyscf/nao/test/Si.ion.xml
+#         pyscf/nao/test/O.oxygen.ion
+#         pyscf/nao/test/H.ion.xml
+#         pyscf/nao/test/Li.lih.ion.xml
+#         pyscf/nao/test/sodium_20/Na.ion.xml
+#         pyscf/nao/test/sodium_20/siesta.xml
+#         pyscf/nao/test/sodium_20/Na.ion
+#         pyscf/nao/test/test_ag13_noghost/Ag.ion.xml
+#         pyscf/nao/test/test_ag13_noghost/siesta.xml
+#         pyscf/nao/test/test_ag13_noghost/Ag.ion
+#         pyscf/nao/test/S2_triplet/S2.xml
+#         pyscf/nao/test/S2_triplet/S.gga.ion.xml
+#         pyscf/nao/test/ice/O.ion.xml
+#         pyscf/nao/test/ice/siesta.xml
+#         pyscf/nao/test/ice/H.ion.xml
+#         pyscf/nao/test/test_ag13_ghost/Ag.ion.xml
+#         pyscf/nao/test/test_ag13_ghost/siesta.xml
+#         pyscf/nao/test/test_ag13_ghost/Ag.ion
+#         pyscf/nao/test/test_ag13_ghost/Ags.ion.xml
+#         pyscf/tools/Molpro2Pyscf/pd_3d.xml
+
+#----------------------------------------------------------------------------
+# huge files   (skipped):
+#         pyscf/gto/basis/ano.dat
+#         pyscf/dft/sap_data.py
+#         pyscf/nao/test/tddft_iter_output_water_ref.hdf5
+#         pyscf/nao/test/ice/siesta.fullBZ.WFSX
+#         pyscf/nao/test/ice/siesta.HSX
+#         pyscf/nao/test/test_ag13_ghost/siesta.HSX
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.
+
+#----------------------------------------------------------------------------
+# License file: LICENSE
+                                  Apache License
+                            Version 2.0, January 2004
+                         http://www.apache.org/licenses/
+ .
+    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+ .
+    1. Definitions.
+ .
+       "License" shall mean the terms and conditions for use, reproduction,
+       and distribution as defined by Sections 1 through 9 of this document.
+ .
+       "Licensor" shall mean the copyright owner or entity authorized by
+       the copyright owner that is granting the License.
+ .
+       "Legal Entity" shall mean the union of the acting entity and all
+       other entities that control, are controlled by, or are under common
+       control with that entity. For the purposes of this definition,
+       "control" means (i) the power, direct or indirect, to cause the
+       direction or management of such entity, whether by contract or
+       otherwise, or (ii) ownership of fifty percent (50%) or more of the
+       outstanding shares, or (iii) beneficial ownership of such entity.
+ .
+       "You" (or "Your") shall mean an individual or Legal Entity
+       exercising permissions granted by this License.
+ .
+       "Source" form shall mean the preferred form for making modifications,
+       including but not limited to software source code, documentation
+       source, and configuration files.
+ .
+       "Object" form shall mean any form resulting from mechanical
+       transformation or translation of a Source form, including but
+       not limited to compiled object code, generated documentation,
+       and conversions to other media types.
+ .
+       "Work" shall mean the work of authorship, whether in Source or
+       Object form, made available under the License, as indicated by a
+       copyright notice that is included in or attached to the work
+       (an example is provided in the Appendix below).
+ .
+       "Derivative Works" shall mean any work, whether in Source or Object
+       form, that is based on (or derived from) the Work and for which the
+       editorial revisions, annotations, elaborations, or other modifications
+       represent, as a whole, an original work of authorship. For the purposes
+       of this License, Derivative Works shall not include works that remain
+       separable from, or merely link (or bind by name) to the interfaces of,
+       the Work and Derivative Works thereof.
+ .
+       "Contribution" shall mean any work of authorship, including
+       the original version of the Work and any modifications or additions
+       to that Work or Derivative Works thereof, that is intentionally
+       submitted to Licensor for inclusion in the Work by the copyright owner
+       or by an individual or Legal Entity authorized to submit on behalf of
+       the copyright owner. For the purposes of this definition, "submitted"
+       means any form of electronic, verbal, or written communication sent
+       to the Licensor or its representatives, including but not limited to
+       communication on electronic mailing lists, source code control systems,
+       and issue tracking systems that are managed by, or on behalf of, the
+       Licensor for the purpose of discussing and improving the Work, but
+       excluding communication that is conspicuously marked or otherwise
+       designated in writing by the copyright owner as "Not a Contribution."
+ .
+       "Contributor" shall mean Licensor and any individual or Legal Entity
+       on behalf of whom a Contribution has been received by Licensor and
+       subsequently incorporated within the Work.
+ .
+    2. Grant of Copyright License. Subject to the terms and conditions of
+       this License, each Contributor hereby grants to You a perpetual,
+       worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+       copyright license to reproduce, prepare Derivative Works of,
+       publicly display, publicly perform, sublicense, and distribute the
+       Work and such Derivative Works in Source or Object form.
+ .
+    3. Grant of Patent License. Subject to the terms and conditions of
+       this License, each Contributor hereby grants to You a perpetual,
+       worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+       (except as stated in this section) patent license to make, have made,
+       use, offer to sell, sell, import, and otherwise transfer the Work,
+       where such license applies only to those patent claims licensable
+       by such Contributor that are necessarily infringed by their
+       Contribution(s) alone or by combination of their Contribution(s)
+       with the Work to which such Contribution(s) was submitted. If You
+       institute patent litigation against any entity (including a
+       cross-claim or counterclaim in a lawsuit) alleging that the Work
+       or a Contribution incorporated within the Work constitutes direct
+       or contributory patent infringement, then any patent licenses
+       granted to You under this License for that Work shall terminate
+       as of the date such litigation is filed.
+ .
+    4. Redistribution. You may reproduce and distribute copies of the
+       Work or Derivative Works thereof in any medium, with or without
+       modifications, and in Source or Object form, provided that You
+       meet the following conditions:
+ .
+       (a) You must give any other recipients of the Work or
+           Derivative Works a copy of this License; and
+ .
+       (b) You must cause any modified files to carry prominent notices
+           stating that You changed the files; and
+ .
+       (c) You must retain, in the Source form of any Derivative Works
+           that You distribute, all copyright, patent, trademark, and
+           attribution notices from the Source form of the Work,
+           excluding those notices that do not pertain to any part of
+           the Derivative Works; and
+ .
+       (d) If the Work includes a "NOTICE" text file as part of its
+           distribution, then any Derivative Works that You distribute must
+           include a readable copy of the attribution notices contained
+           within such NOTICE file, excluding those notices that do not
+           pertain to any part of the Derivative Works, in at least one
+           of the following places: within a NOTICE text file distributed
+           as part of the Derivative Works; within the Source form or
+           documentation, if provided along with the Derivative Works; or,
+           within a display generated by the Derivative Works, if and
+           wherever such third-party notices normally appear. The contents
+           of the NOTICE file are for informational purposes only and
+           do not modify the License. You may add Your own attribution
+           notices within Derivative Works that You distribute, alongside
+           or as an addendum to the NOTICE text from the Work, provided
+           that such additional attribution notices cannot be construed
+           as modifying the License.
+ .
+       You may add Your own copyright statement to Your modifications and
+       may provide additional or different license terms and conditions
+       for use, reproduction, or distribution of Your modifications, or
+       for any such Derivative Works as a whole, provided Your use,
+       reproduction, and distribution of the Work otherwise complies with
+       the conditions stated in this License.
+ .
+    5. Submission of Contributions. Unless You explicitly state otherwise,
+       any Contribution intentionally submitted for inclusion in the Work
+       by You to the Licensor shall be under the terms and conditions of
+       this License, without any additional terms or conditions.
+       Notwithstanding the above, nothing herein shall supersede or modify
+       the terms of any separate license agreement you may have executed
+       with Licensor regarding such Contributions.
+ .
+    6. Trademarks. This License does not grant permission to use the trade
+       names, trademarks, service marks, or product names of the Licensor,
+       except as required for reasonable and customary use in describing the
+       origin of the Work and reproducing the content of the NOTICE file.
+ .
+    7. Disclaimer of Warranty. Unless required by applicable law or
+       agreed to in writing, Licensor provides the Work (and each
+       Contributor provides its Contributions) on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+       implied, including, without limitation, any warranties or conditions
+       of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+       PARTICULAR PURPOSE. You are solely responsible for determining the
+       appropriateness of using or redistributing the Work and assume any
+       risks associated with Your exercise of permissions under this License.
+ .
+    8. Limitation of Liability. In no event and under no legal theory,
+       whether in tort (including negligence), contract, or otherwise,
+       unless required by applicable law (such as deliberate and grossly
+       negligent acts) or agreed to in writing, shall any Contributor be
+       liable to You for damages, including any direct, indirect, special,
+       incidental, or consequential damages of any character arising as a
+       result of this License or out of the use or inability to use the
+       Work (including but not limited to damages for loss of goodwill,
+       work stoppage, computer failure or malfunction, or any and all
+       other commercial damages or losses), even if such Contributor
+       has been advised of the possibility of such damages.
+ .
+    9. Accepting Warranty or Additional Liability. While redistributing
+       the Work or Derivative Works thereof, You may choose to offer,
+       and charge a fee for, acceptance of support, warranty, indemnity,
+       or other liability obligations and/or rights consistent with this
+       License. However, in accepting such obligations, You may act only
+       on Your own behalf and on Your sole responsibility, not on behalf
+       of any other Contributor, and only if You agree to indemnify,
+       defend, and hold each Contributor harmless for any liability
+       incurred by, or claims asserted against, such Contributor by reason
+       of your accepting any such warranty or additional liability.
+ .
+    END OF TERMS AND CONDITIONS
+ .
+    APPENDIX: How to apply the Apache License to your work.
+ .
+       To apply the Apache License to your work, attach the following
+       boilerplate notice, with the fields enclosed by brackets "[]"
+       replaced with your own identifying information. (Don't include
+       the brackets!)  The text should be enclosed in the appropriate
+       comment syntax for the file format. We also recommend that a
+       file or class name and description of purpose be included on the
+       same "printed page" as the copyright notice for easier
+       identification within third-party archives.
+ .
+    Copyright [yyyy] [name of copyright owner]
+ .
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+ .
+        http://www.apache.org/licenses/LICENSE-2.0
+ .
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.

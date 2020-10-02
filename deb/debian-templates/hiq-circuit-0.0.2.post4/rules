@@ -21,3 +21,6 @@ override_dh_auto_clean:
 	rm -rf .cache
 	rm -rf .pytest_cache
 	rm -rf tmp penmp
+
+override_dh_dwz:
+	echo "Pass"

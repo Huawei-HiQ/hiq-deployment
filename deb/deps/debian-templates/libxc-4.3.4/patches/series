@@ -1,0 +1,3 @@
+testsuite_support_tmpdir.patch
+fix_static_initialisation.patch
+disable_lda_c_pk09.patch

@@ -1,0 +1,49 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-pie
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+debroot = debian/python3-pyscf/
+py3_sitearch = "/usr/lib/python3/dist-packages"
+
+%:
+	dh $@ --buildsystem cmake
+
+override_dh_auto_configure:
+	dh_auto_configure --sourcedirectory pyscf/lib/ -- \
+		-DBUILD_LIBXC=OFF \
+		-DENABLE_XCFUN=OFF \
+		-DBUILD_XCFUN=OFF \
+		-DBUILD_LIBCINT=OFF \
+		-DCMAKE_SKIP_BUILD_RPATH=1 \
+		-DCMAKE_VERBOSE_MAKEFILE=1
+
+override_dh_auto_test:
+	echo "Pass"
+
+override_dh_auto_install:
+	set -e; \
+	for f in $$(find pyscf -name \*.py); do \
+		install -D -p -m 644 $$f $(debroot)$(py3_sitearch)/$$f; \
+	done
+	set -e; \
+	for f in $$(find pyscf -name \*.dat); do \
+		install -D -p -m 644 $$f $(debroot)$(py3_sitearch)/$$f; \
+	done
+	set -e; \
+	for f in $$(find pyscf -name \*.so); do \
+		install -D -p -m 644 $$f $(debroot)$(py3_sitearch)/$$f; \
+	done
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f build/config.h
+	rm -rf pyscf/lib/build
+	rm -rf pyscf/lib/*.so
+	rm -rf src/pyscf.egg-info
+	rm -rf .cache
+	rm -rf .pybuild
+	rm -rf .pytest_cache

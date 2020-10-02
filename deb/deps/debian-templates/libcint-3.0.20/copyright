@@ -1,0 +1,213 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libcint
+Upstream-Contact: Qiming Sun
+Source: https://github.com/sunqm/libcint
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     scripts/auto_intor.cl
+           scripts/derivator.cl
+           scripts/gen-code.cl
+           scripts/utility.cl
+           src/autocode/breit1.c
+           src/autocode/dkb.c
+           src/autocode/gaunt1.c
+           src/autocode/grad1.c
+           src/autocode/grad2.c
+           src/autocode/hess.c
+           src/autocode/int3c1e.c
+           src/autocode/int3c2e.c
+           src/autocode/intor1.c
+           src/autocode/intor2.c
+           src/autocode/intor3.c
+           src/autocode/intor4.c
+           src/c2f.h
+           src/cint1e.h
+           src/cint1e_a.c
+           src/cint2c2e_gtg.c
+           src/cint2e.h
+           src/cint2e_coulerf.c
+           src/cint2e_f12.c
+           src/cint2e_gtg.c
+           src/cint3c1e_a.c
+           src/cint3c2e_gtg.c
+           src/g1e.c
+           src/g1e.h
+           src/g2c2e.c
+           src/g2e.c
+           src/g2e_coulerf.c
+           src/g2e_gtg.c
+           src/g3c1e.c
+           src/g3c2e.c
+           src/g4c1e.c
+           src/optimizer.c
+           src/optimizer.h
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+           2013 Qiming Sun <osirpt.sun@gmail.com> Description:
+           2013 Qiming Sun <osirpt.sun@gmail.com> Description: code generated   gen-code.cl
+           2013 Qiming Sun <osirpt.sun@gmail.com> Description: dump to output file
+License:   __NO_LICENSE__
+
+Files:     .gitignore
+           .travis.yml
+           AUTHORS
+           CMakeLists.txt
+           README
+           cmake/FindQUADMATH.cmake
+           doc/compile.sh
+           doc/program_ref.pdf
+           doc/program_ref.tex
+           doc/program_ref.txt
+           examples/CMakeLists.txt
+           examples/c_call_cartesian.c
+           examples/c_call_spheric.c
+           examples/c_call_spinor.c
+           examples/fortran_call_cartesian.F90
+           examples/fortran_call_spheric.F90
+           examples/fortran_call_spinor.F90
+           examples/python_call.py
+           examples/time_c2h6.c
+           examples/time_c60.c
+           src/breit.c
+           src/config.h.in
+           src/fmt.c
+           src/g3c1e.h
+           src/rys_roots.c
+           src/rys_roots.h
+           src/stg_roots.c
+           testsuite/test_3c2e.py
+           testsuite/test_cint.py
+           testsuite/test_cint4c1e.py
+           testsuite/test_f12_with_aft.py
+           testsuite/test_int1e.py
+           testsuite/test_int2c2e.py
+           testsuite/test_int2e.py
+           testsuite/test_int2e_f12_etc.py
+           testsuite/test_int3c1e.py
+           testsuite/test_int3c2e.py
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:   __NO_COPYRIGHT_NOR_LICENSE__
+
+Files:     src/cint_bas.c
+           src/cint_bas.h
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ basic cGTO function
+
+Files:     src/misc.c
+           src/misc.h
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ basic functions
+
+Files:     src/cint1e.c
+           src/cint2e.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ basic cGTO integrals
+
+Files:     src/cint_const.h
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ This macro define the parameters for cgto bas
+ .
+ global parameters in env
+
+Files:     scripts/parser.cl
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com> Description: translate the short expression to the expression which is suitable for derivator
+License:   __UNKNOWN__
+ TODO: the sum of several integrals
+ merge these integrals if they
+ 1. have the same sequence of operators like r, p, rinv, ...
+ 2. have the same rank of tensor
+ 3. for each component, have the same types, i.e. cells/quaternions
+ .
+ parse the expression such as ( op,op |h| op,op )
+
+Files:     src/cart2sph.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ Cartisen GTO to spheric or spinor GTO transformation
+
+Files:     src/cint3c2e.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ 3-center 2-electron integrals
+
+Files:     include/cint.h.in
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ Parameters and function signature for libcint.
+
+Files:     src/fblas.h
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ blas interface and blas-like functions
+
+Files:     src/g2e.h
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ Provide the intermediate variable g(nroots,i,j,k,l,[xyz])
+
+Files:     src/cint3c1e.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ 3-center 1-electron integrals
+
+Files:     src/cint4c1e.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ 4-center 1-electron integrals
+
+Files:     include/cint_funcs.h
+Copyright: 2019 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ Function signature
+
+Files:     src/g2e_f12.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ Yukawa potential and Slater-type geminal
+
+Files:     src/cint2c2e.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ 2-center 2-electron integrals
+
+Files:     src/cart2sph.h
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ Cartisen GTO to spheric or spinor GTO transformation
+ .
+ transform matrix
+
+Files:     src/fblas.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ blas-like functions
+
+Files:     src/c2f.c
+Copyright: 2013 Qiming Sun <osirpt.sun@gmail.com>
+License:   __UNKNOWN__
+ c to fortran interface
+
+#----------------------------------------------------------------------------
+# huge files   (skipped):
+#         src/roots_xw.dat
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.
+
+#----------------------------------------------------------------------------
+# License file: LICENSE
+ Copyright (c) 2012, Qiming Sun
+ All rights reserved.
+ .
+ Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

@@ -1,0 +1,59 @@
+Index: libxc/src/Makefile.am
+===================================================================
+--- libxc.orig/src/Makefile.am
++++ libxc/src/Makefile.am
+@@ -37,7 +37,7 @@ libxc_la_FUNC_SOURCES = \
+ 	lda_x.c lda_x_1d.c lda_x_2d.c lda_c_wigner.c lda_c_gombas.c	\
+ 	lda_c_rpa.c lda_c_hl.c lda_c_vwn.c lda_c_vwn_1.c lda_c_vwn_2.c  \
+ 	lda_c_vwn_3.c lda_c_vwn_4.c lda_c_vwn_rpa.c lda_c_pz.c          \
+-	lda_c_pw.c lda_c_pk09.c lda_c_lp96.c \
++	lda_c_pw.c lda_c_lp96.c \
+ 	lda_c_ml1.c lda_c_rc04.c lda_xc_teter93.c lda_c_1d_csc.c	\
+ 	lda_c_1d_loos.c lda_c_2d_amgb.c lda_c_2d_prm.c		\
+ 	lda_k_tf.c lda_xc_zlp.c lda_xc_ksdt.c lda_c_chachiyo.c          \
+Index: libxc/CMakeLists.txt
+===================================================================
+--- libxc.orig/CMakeLists.txt
++++ libxc/CMakeLists.txt
+@@ -209,7 +209,6 @@ lda_c_gombas.c
+ lda_c_hl.c
+ lda_c_lp96.c
+ lda_c_ml1.c
+-lda_c_pk09.c
+ lda_c_pw.c
+ lda_c_pz.c
+ lda_c_rc04.c
+Index: libxc/src/lda_c_pk09.c
+===================================================================
+--- libxc.orig/src/lda_c_pk09.c
++++ /dev/null
+@@ -1,29 +0,0 @@
+-/*
+- Copyright (C) 2006-2007 M.A.L. Marques
+-
+- This Source Code Form is subject to the terms of the Mozilla Public
+- License, v. 2.0. If a copy of the MPL was not distributed with this
+- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-*/
+-
+-#include "util.h"
+-
+-#define XC_LDA_C_PK09   554   /* Proynov and Kong 2009 */
+-
+-#include "maple2c/lda_c_pk09.c"
+-
+-#define func maple2c_func
+-#include "work_lda.c"
+-
+-const xc_func_info_type xc_func_info_lda_c_pk09 = {
+-  XC_LDA_C_PK09,
+-  XC_CORRELATION,
+-  "Proynov and Kong 2009",
+-  XC_FAMILY_LDA,
+-  {&xc_ref_Proynov2009_014103, &xc_ref_Proynov2017_059904, NULL, NULL, NULL},
+-  XC_FLAGS_3D | XC_FLAGS_HAVE_EXC | XC_FLAGS_HAVE_VXC | XC_FLAGS_HAVE_FXC | XC_FLAGS_HAVE_KXC,
+-  5e-24,
+-  0, NULL, NULL,
+-  NULL, NULL,
+-  work_lda, NULL, NULL
+-};

@@ -1,0 +1,14 @@
+Name: LibXC
+Homepage: https://libxc.gitlab.io/
+Repository: https://gitlab.com/libxc/libxc
+Repository-Browse: https://gitlab.com/libxc/libxc/tree/master
+Reference:
+ - Author: M. A. L. Marques and M. J. T. Oliveira and and Tobias Burnus
+   Title: "Libxc: a library of exchange and correlation functionals for density functional theory"
+   Journal: Comp. Phys. Comm.
+   Year: 2012
+   Volume: 183
+   Pages: 2272-2281
+   DOI: 10.1016/j.cpc.2012.05.007
+   URL: http://www.sciencedirect.com/science/article/pii/S0010465512001750
+   eprint: http://arxiv.org/pdf/1203.1739v2

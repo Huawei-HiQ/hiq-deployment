@@ -1,0 +1,42 @@
+Source: pyscf
+Section: python
+Priority: optional
+Maintainer: amien Nguyen <damien1@huawei.com>
+Build-Depends: debhelper-compat (= 12),
+	       dh-make,
+	       cmake,
+	       python3-all-dev,
+	       python3-setuptools,
+	       python3-numpy,
+	       libopenblas-openmp-dev | libopenblas-dev,
+	       libxc-dev,
+	       libcint-dev,
+Standards-Version: 4.5.0
+Homepage: https://github.com/pyscf/pyscf/
+X-Python3-Version: >= 3.2
+
+Package: python3-pyscf
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+	 python3,
+	 libopenblas0-openmp | libopenblas-base,
+	 libxc,
+	 libcint3,
+	 python3-numpy,
+	 python3-h5py (>> 2.2),
+	 python3-scipy (<< 1.5.0),
+Description: Python‐based simulations of chemistry framework (PySCF) is a
+ general‐purpose electronic structure platform designed from the ground up to
+ emphasize code simplicity, so as to facilitate new method development and
+ enable flexible computational workflows. The package provides a wide range of
+ tools to support simulations of finite‐size systems, extended systems with
+ periodic boundary conditions, low‐dimensional periodic systems, and custom
+ Hamiltonians, using mean‐field and post‐mean‐field methods with standard
+ Gaussian basis functions. To ensure ease of extensibility, PySCF uses the
+ Python language to implement almost all of its features, while
+ computationally critical paths are implemented with heavily optimized C
+ routines. Using this combined Python/C implementation, the package is as
+ efficient as the best existing C or Fortran‐based quantum chemistry programs.
+ .
+ This package installs the library for Python 3.

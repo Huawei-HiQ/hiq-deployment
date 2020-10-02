@@ -1,6 +1,20 @@
-ppa_rev=5
+ppa_rev=2
 
 # ==============================================================================
+
+function pkg_download()
+{
+    local pkg_name=$1
+    
+    orig_tar_gz=$root/${pkg_name}_$pkg_ver.orig.tar.gz
+    if [ ! -f $orig_tar_gz ]; then
+	wget https://github.com/${pkg_name}/${pkg_name}/archive/v${pkg_ver}.tar.gz 1>&2
+	mv -v v${pkg_ver}.tar.gz $orig_tar_gz 1>&2
+    fi
+    echo $orig_tar_gz
+}
+
+# ------------------------------------------------------------------------------
 
 function pkg_prepare()
 {
@@ -18,12 +32,10 @@ EOF
 EOF
 	sed -i -e 's/debhelper-compat (= 12)/debhelper/' \
 	    $pkg_dir/debian/control
-
-	sed -i -e '/DEB_BUILD_MAINT_OPTIONS/a export DEB_BUILD_OPTIONS += nocheck' \
-	    $pkg_dir/debian/rules
     else
 	rm -rf $pkg_dir/debian/compat
     fi
 }
 
 # ==============================================================================
+

@@ -1,0 +1,6 @@
+/usr/lib/*/libxc*.a
+/usr/lib/*/libxc*.so
+/usr/lib/*/pkgconfig/*.pc
+/usr/include
+/usr/share/cmake
+/usr/bin/xc-*
