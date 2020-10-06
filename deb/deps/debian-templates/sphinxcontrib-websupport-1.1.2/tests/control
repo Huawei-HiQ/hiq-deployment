@@ -1,0 +1,6 @@
+Tests: python3-sphinxcontrib.websupport
+Depends: python3-sphinxcontrib.websupport,
+         python3-pytest,
+         python3-sqlalchemy,
+         python3-whoosh,
+         python3-xapian

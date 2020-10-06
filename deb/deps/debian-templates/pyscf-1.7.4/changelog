@@ -1,3 +1,9 @@
+pyscf (1.7.4-2) unstable; urgency=medium
+
+  * Add dependency to libxcfun2 and libxcfun-dev
+
+ -- Damien Nguyen <damien1@huawei.com>  Tue, 06 Oct 2020 21:34:35 +0200
+
 pyscf (1.7.4-1) unstable; urgency=medium
 
   * Initial release.

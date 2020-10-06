@@ -1,0 +1,65 @@
+Source: libxcfun
+Section: science
+Priority: optional
+Maintainer: Damien Nguyen <damien1@huawei.com>
+Build-Depends: cmake,
+	       debhelper-compat (= 12),
+	       dh-python,
+	       libopenblas-openmp-dev | libopenblas-dev,
+	       python3-all-dev,
+	       python3-pybind11,
+	       python3-numpy <!nocheck>,
+	       python3-recommonmark <!nodoc>,
+	       python3-sphinx <!nodoc>,
+	       python3-sphinx-rtd-theme <!nodoc>,
+	       python3-breathe <!nodoc>,
+	       python3-pytest <!nocheck>,
+Standards-Version: 4.5.0
+Homepage: https://github.com/dftlibs/xcfun/
+
+Package: libxcfun2
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Library of exchange-correlation functionals with
+ arbitrary-order derivatives
+ .
+ This package contains the shared library.
+
+Package: libxcfun-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libxcfun2 (= ${binary:Version}), ${misc:Depends}
+Description: Library of exchange-correlation functionals with
+ arbitrary-order derivatives
+ .
+ This package contains the development files.
+
+Package: python3-xcfun
+Section: python
+Architecture: any
+Multi-Arch: foreign
+Depends: libxcfun2 (= ${binary:Version}),
+	 ${python3:Depends},
+	 ${misc:Depends},
+	 ${shlibs:Depends},
+	 python3-numpy,
+Description: Library of exchange-correlation functionals with
+ arbitrary-order derivatives
+ .
+ This package contains the xcfun files for Python 3.
+
+Package: python-xcfun-doc
+Section: doc
+Architecture: all
+Depends: libjs-mathjax,
+	 ${misc:Depends},
+	 ${sphinxdoc:Depends}
+Build-Profiles: <!nodoc>
+Description: Library of exchange-correlation functionals with
+ arbitrary-order derivatives
+ .
+ This package contains the documentation for python3-xcfun.

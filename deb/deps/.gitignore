@@ -1,4 +1,6 @@
+breathe-4.20.0/
 chardet-3.0.4/
+cmake-3.16.3/
 cycler-0.10.0/
 cython-0.29.21/
 decorator-4.4.2/
@@ -6,8 +8,11 @@ h5py-2.9.0/
 idna-2.10/
 imagesize-1.2.0/
 kiwisolver-1.0.1/
+libarchive-3.4.3/
 libcint-3.0.20/
+libuv1-1.18.0/
 libxc-4.3.4/
+libxcfun-2.1.0/
 matplotlib-3.0.2/
 mpi4py-3.0.3/
 mpmath-1.1.0/
@@ -18,12 +23,14 @@ openfermionprojectq-0.2/
 pandas-0.24.2/
 pubchempy-1.0.4/
 pybind11-2.5.0/
-pyscf-1.7.4/
 pygments-2.3.1/
+pyscf-1.7.4/
 requests-2.23.0+dfsg*/
 scipy-1.4.1/
 six-1.12.0/
 snowballstemmer-2.0.0/
 sphinx-3.2.1/
+sphinxcontrib-qthelp-1.0.3/
+sphinxcontrib-websupport-1.1.2/
 sympy-1.6.2/
 urllib3-1.25.9/

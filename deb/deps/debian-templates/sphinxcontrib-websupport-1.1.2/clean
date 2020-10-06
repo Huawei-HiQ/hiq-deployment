@@ -1,0 +1,3 @@
+.pytest_cache/
+PKG-INFO
+sphinxcontrib_websupport.egg-info/

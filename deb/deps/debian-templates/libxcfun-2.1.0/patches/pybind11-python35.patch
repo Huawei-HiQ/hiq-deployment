@@ -1,0 +1,8 @@
+--- a/external/upstream/fetch_pybind11.cmake
++++ b/external/upstream/fetch_pybind11.cmake
+@@ -1,4 +1,4 @@
+-set(PYBIND11_PYTHON_VERSION 3.6)
++set(PYBIND11_PYTHON_VERSION 3.5)
+ 
+ if(MSVC)
+   set(PYBIND11_CPP_STANDARD "/std:c++14")

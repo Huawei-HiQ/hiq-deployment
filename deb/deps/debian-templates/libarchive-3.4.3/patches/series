@@ -1,0 +1,10 @@
+typos.patch
+upstream-cpio-hardlink-type.patch
+upstream-cpio-rdev.patch
+upstream-isint-w.patch
+upstream-unneeded-strlen.patch
+upstream-hardlink-to-self.patch
+upstream-set-format-error.patch
+upstream-rar-read-format.patch
+upstream-memory-stdlib.patch
+upstream-max-comp-level.patch

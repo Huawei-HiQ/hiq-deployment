@@ -1,0 +1,61 @@
+Source: libuv1
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Luca Bruno <lucab@debian.org>
+Build-Depends: debhelper (>= 9.20160114),
+               dh-autoreconf,
+               dh-exec (>=0.3),
+               libkvm-dev [kfreebsd-any],
+               pkg-config
+Standards-Version: 4.1.2
+Section: libs
+Homepage: https://github.com/libuv/libuv
+Vcs-Browser: https://anonscm.debian.org/git/pkg-javascript/libuv1.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-javascript/libuv1.git
+
+Package: libuv1-dev
+Section: libdevel
+Architecture: any
+Depends: libkvm-dev [kfreebsd-any],
+         libuv1 (= ${binary:Version}),
+         ${misc:Depends}
+Multi-Arch: same
+Replaces: libuv-dev
+Conflicts: libuv-dev, libuv0.10-dev
+Description: asynchronous event notification library - development files
+ Libuv is the asynchronous library behind Node.js. Very similar to libevent or
+ libev, it provides the main elements for event driven systems: watching and
+ waiting for availability in a set of sockets, and some other events like timers
+ or asynchronous messages. However, libuv also comes with some other extras
+ like:
+  * files watchers and asynchronous operations
+  * a portable TCP and UDP API, as well as asynchronous DNS resolution
+  * processes and threads management, and a portable inter-process
+    communications mechanism, with pipes and work queues
+  * a plugins mechanism for loading libraries dynamically
+  * interface with external libraries that also need to access the I/O.
+ .
+ Install this package if you wish to develop your own programs using the
+ libuv engine.
+
+Package: libuv1
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: same
+Description: asynchronous event notification library - runtime library
+ Libuv is the asynchronous library behind Node.js. Very similar to libevent or
+ libev, it provides the main elements for event driven systems: watching and
+ waiting for availability in a set of sockets, and some other events like timers
+ or asynchronous messages. However, libuv also comes with some other extras
+ like:
+  * files watchers and asynchronous operations
+  * a portable TCP and UDP API, as well as asynchronous DNS resolution
+  * processes and threads management, and a portable inter-process
+    communications mechanism, with pipes and work queues
+  * a plugins mechanism for loading libraries dynamically
+  * interface with external libraries that also need to access the I/O.
+ .
+ This package includes the dynamic library against which you can link
+ your program.
+

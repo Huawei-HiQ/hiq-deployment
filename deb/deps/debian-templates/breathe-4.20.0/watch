@@ -1,0 +1,6 @@
+version=3
+opts=filenamemangle=s/.+\/v?(\d+.*)\.tar\.gz/breathe-$1\.tar\.gz/ \
+https://github.com/michaeljones/breathe/releases .*/v(\d+.*)\.tar\.gz
+# The tarball on pypi is missing a bunch of files (LICENSE, all the examples),
+# so we take the one from github for now.
+# https://pypi.python.org/packages/source/b/breathe/breathe-(\d+.*)\.tar\.gz

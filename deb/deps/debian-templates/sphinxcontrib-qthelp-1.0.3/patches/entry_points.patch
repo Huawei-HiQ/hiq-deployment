@@ -1,0 +1,9 @@
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -28,3 +28,6 @@ exclude = .git,.tox,.venv
+ [mypy]
+ ignore_missing_imports = True
+ 
++[options.entry_points]
++sphinx.builders =
++    qthelp = sphinxcontrib.qthelp

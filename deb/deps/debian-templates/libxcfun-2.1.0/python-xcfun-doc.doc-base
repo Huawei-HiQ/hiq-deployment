@@ -1,0 +1,10 @@
+Document: python-xcfun-doc
+Title: Python XCFun documentation
+Author: XCFun Developers
+Abstract: Library of exchange-correlation functionals with arbitrary-order
+ derivatives
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-xcfun-doc/html/index.html
+Files: /usr/share/doc/python-xcfun-doc/html/*

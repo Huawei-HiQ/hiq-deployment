@@ -1,0 +1,3 @@
+pybind11-no-external.patch
+docs-use-local-mathjax.patch
+pybind11-python35.patch

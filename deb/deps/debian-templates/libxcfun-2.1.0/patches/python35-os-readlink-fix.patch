@@ -1,0 +1,10 @@
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -103,6 +103,7 @@
+         "@DOXYGEN_DOT_PATH@": str(shutil.which("dot")),
+     })
+     doxy_in = (pathlib.Path(__file__).parent / "Doxyfile.in").resolve()
++    pathlib.Path("_build/Doxyfile").touch()
+     doxy_out = pathlib.Path("_build/Doxyfile").resolve()
+     with doxy_in.open("r") as f, doxy_out.open("w") as g:
+         doxy = f.read()

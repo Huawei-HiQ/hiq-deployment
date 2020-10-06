@@ -1,0 +1,12 @@
+Disable this specific test as it seems to always fail on Docker
+
+--- a/Source/kwsys/CTestCustom.cmake.in
++++ b/Source/kwsys/CTestCustom.cmake.in
+@@ -12,3 +12,7 @@
+ list(APPEND CTEST_CUSTOM_MEMCHECK_IGNORE
+   kwsys.testProcess-10
+   )
++
++list(APPEND CTEST_CUSTOM_TESTS_IGNORE
++  kwsys.testSystemTools
++  )

@@ -1,0 +1,25 @@
+From: Sebastian Ramacher <sramacher@debian.org>
+Date: Wed, 24 Jun 2020 23:10:27 +0200
+Subject: Hardcode version instead of running git describe --tags
+
+Last-Update: 2015-04-03
+---
+ documentation/source/conf.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/documentation/source/conf.py b/documentation/source/conf.py
+index d631432..7794ed6 100644
+--- a/documentation/source/conf.py
++++ b/documentation/source/conf.py
+@@ -35,10 +35,7 @@ read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+ travis_build = os.environ.get('TRAVIS_CI', None) == 'True'
+ 
+ # Get a description of the current position. Use Popen for 2.6 compat
+-git_tag = subprocess.Popen(['git', 'describe', '--tags'], stdout=subprocess.PIPE).communicate()[0]
+-
+-# convert from bytes to string
+-git_tag = git_tag.decode('ascii')
++git_tag = "v4.19.0"
+ 
+ if travis_build:
+ 

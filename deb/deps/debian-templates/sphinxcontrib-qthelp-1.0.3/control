@@ -1,0 +1,25 @@
+Source: sphinxcontrib-qthelp
+Section: python
+Priority: optional
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Dmitry Shachnev <mitya57@debian.org>,
+           Sandro Tosi <morph@debian.org>,
+Build-Depends: debhelper-compat (= 12),
+               dh-python,
+               python3-all,
+               python3-pytest <!nocheck>,
+               python3-setuptools,
+               python3-sphinx (>= 2.0),
+Standards-Version: 4.5.0
+Homepage: https://github.com/sphinx-doc/sphinxcontrib-qthelp/
+Vcs-Browser: https://salsa.debian.org/python-team/modules/sphinxcontrib-qthelp
+Vcs-Git: https://salsa.debian.org/python-team/modules/sphinxcontrib-qthelp.git
+
+Package: python3-sphinxcontrib.qthelp
+Architecture: all
+Depends: python3-sphinx (>= 2.0),
+         ${misc:Depends},
+         ${python3:Depends},
+Description: sphinx extension which outputs QtHelp document
+ This module contains a Sphinx builder which produces Qt help collection support
+ files that allow the Qt collection generator to compile them.

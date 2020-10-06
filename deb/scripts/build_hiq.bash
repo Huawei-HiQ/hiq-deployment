@@ -106,7 +106,7 @@ args=("$@")
 
 # Get Ubuntu distro name and version number
 if [ -z "$ubuntu_distro" ]; then
-    die "Missing -u,--ubuntu!"
+    die "Missing -d,--distro!"
 fi
 ubuntu_distro_num=${ubuntu_versions[$ubuntu_distro]}
 if [ -z "$ubuntu_distro_num" ]; then
@@ -245,13 +245,33 @@ for i in {1..4}; do
     unmet_deps=$(dpkg-checkbuilddeps 2>&1 \
 		     | sed -e 's/dpkg-checkbuilddeps: error: Unmet build dependencies://' \
 			   -e 's/(.*)//g')
-    if [ -n "$unmet_deps" ]; then
-	echo "Unmet dependencies: $unmet_deps"
-	if ! apt install -y $unmet_deps; then
+
+    if [ -z "$unmet_deps" ]; then
+	break
+    fi
+
+    simple_unmet_deps=$(echo $unmet_deps | sed 's/\([^ ]\+ | [^ ]\+\)//g' \
+			    | sed 's/[ ]\+/ /' | awk '{ print length, $0 }' \
+			    | sort -nr | cut -d' ' -f2- | tr '\n' ' ')
+
+    complex_unmet_deps=$unmet_deps
+    for dep in $simple_unmet_deps; do
+	complex_unmet_deps=$(echo $complex_unmet_deps | sed "s/$dep//g")
+    done
+    complex_unmet_deps=$(echo $complex_unmet_deps | tr -d '|' \
+			     | sed 's/[ ]\+/ /')
+
+    deps=()
+    for dep in $complex_unmet_deps; do
+	if [ -z "$(apt-cache showsrc $dep 2>&1 > /dev/null)" ]; then
+	   deps+=($dep)
+	fi
+    done
+
+    if [ -n "$simple_unmet_deps${deps[*]}" ]; then
+	if ! apt install -y $simple_unmet_deps "${deps[@]}"; then
 	    exit 1
 	fi
-    else
-	break
     fi
 done
 popd > /dev/null

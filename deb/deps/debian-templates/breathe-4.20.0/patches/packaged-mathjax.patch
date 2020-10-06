@@ -1,0 +1,24 @@
+From: Sebastian Ramacher <sramacher@debian.org>
+Date: Wed, 24 Jun 2020 23:10:27 +0200
+Subject: Use packaged copy of MathJax
+
+Forwarded: not-needed
+Last-Update: 2014-11-16
+---
+ documentation/source/conf.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/documentation/source/conf.py b/documentation/source/conf.py
+index 95d46d2..d631432 100644
+--- a/documentation/source/conf.py
++++ b/documentation/source/conf.py
+@@ -123,8 +123,7 @@ spelling_lang='en_US'
+ # Set path for mathjax js to a https URL as sometimes the Breathe docs are displayed under https
+ # and we can't load an http mathjax file from an https view of the docs. So we change to a https
+ # mathjax file which we can load from http or https. We break the url over two lines.
+-mathjax_path = 'https://c328740.ssl.cf1.rackcdn.com/' \
+-               'mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
++mathjax_path = 'mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+ 
+ 
+ # Add any paths that contain templates here, relative to this directory.

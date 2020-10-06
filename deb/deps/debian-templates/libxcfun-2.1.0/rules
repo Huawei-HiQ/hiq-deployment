@@ -1,0 +1,46 @@
+#!/usr/bin/make -f
+# You must remove unused comment lines for the released package.
+#export DH_VERBOSE = 1
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-pie
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+
+install_prefix = /usr
+py3_sitearch_suffix := $(shell python3 debian/get_python_path.py $(install_prefix)/lib)
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=cmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=1 \
+		-DXCFUN_MAX_ORDER=6 -DENABLE_TESTALL=ON \
+		-DXCFUN_PYTHON_INTERFACE=ON \
+		-DCMAKE_INSTALL_PREFIX=$(install_prefix) \
+		-DPYMOD_INSTALL_LIBDIR=$(py3_sitearch_suffix) \
+		-DCMAKE_BUILD_TYPE=Release
+
+override_dh_sphinxdoc:
+ifeq (,$(findstring nodocs, $(DEB_BUILD_OPTIONS)))
+	make -C docs html
+	cp -auxf docs/_build/html debian/python-xcfun-doc/usr/share/doc/python-xcfun-doc/html
+
+	rm -rf debian/python-xcfun-doc/usr/share/doc/python-xcfun-doc/html/_static/jquery.js
+	dh_link -ppython-xcfun-doc /usr/share/javascript/jquery/jquery.js /usr/share/doc/python-xcfun-doc/html/_static/jquery.js
+	dh_link -ppython-xcfun-doc /usr/share/javascript/mathjax/MathJax.js /usr/share/doc/python-xcfun-doc/html/_static/MathJax.js
+
+	dh_sphinxdoc
+endif
+
+override_dh_dwz:
+	echo "Pass"
+
+override_dh_fixperms:
+	dh_fixperms
+	find debian/python3-xcfun -name '*.py' -exec chmod 0644 {} +
+
+override_dh_installchangelogs:
+	dh_installchangelogs
+	install -D -p -m 644 CHANGELOG.md  debian/libxcfun2/usr/share/doc/libxcfun2/changelog
+	install -D -p -m 644 CHANGELOG.md  debian/libxcfun-dev/usr/share/doc/libxcfun-dev/changelog

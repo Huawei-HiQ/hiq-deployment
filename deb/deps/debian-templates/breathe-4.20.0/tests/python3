@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+export SPHINXBUILD=/usr/share/sphinx/scripts/python3/sphinx-build
+
+cp -r documentation examples Makefile "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP"
+make

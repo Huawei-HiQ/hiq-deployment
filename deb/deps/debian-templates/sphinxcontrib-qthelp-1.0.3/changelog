@@ -1,0 +1,13 @@
+sphinxcontrib-qthelp (1.0.3-2) unstable; urgency=medium
+
+  * debian/python3-sphinxcontrib.qthelp.pyremove
+    - dont ship locales/.tx directory
+  * upload to unstable
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 15 Apr 2020 21:14:00 -0400
+
+sphinxcontrib-qthelp (1.0.3-1) experimental; urgency=medium
+
+  * Initial release; Closes: #955243
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 28 Mar 2020 22:31:21 -0400

@@ -11,6 +11,7 @@ Build-Depends: debhelper-compat (= 12),
 	       libopenblas-openmp-dev | libopenblas-dev,
 	       libxc-dev,
 	       libcint-dev,
+	       libxcfun-dev,
 Standards-Version: 4.5.0
 Homepage: https://github.com/pyscf/pyscf/
 X-Python3-Version: >= 3.2
@@ -23,6 +24,7 @@ Depends: ${misc:Depends},
 	 libopenblas0-openmp | libopenblas-base,
 	 libxc,
 	 libcint3,
+	 libxcfun2,
 	 python3-numpy,
 	 python3-h5py (>> 2.2),
 	 python3-scipy (<< 1.5.0),
