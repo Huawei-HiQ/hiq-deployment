@@ -16,7 +16,7 @@ elif [ "$os_name" == "fedora" ]; then
     else
 	build_and_install=()
     fi
-    build+=(pubchempy openfermion)
+    build+=(pubchempy openfermion jupyter-react)
 elif [ "$os_name" == "opensuse-leap" ]; then
     build_and_install=()
     if [ "$os_ver" == "15.1" ]; then
@@ -28,11 +28,11 @@ elif [ "$os_name" == "opensuse-leap" ]; then
     else
 	echo "Unsupported OpenSUSE/leap version: $os_ver"
     fi
-    build+=(pubchempy openfermion pyscf)
+    build+=(pubchempy openfermion pyscf jupyter-react)
 elif [ "$os_name" == "opensuse-tumbleweed" ]; then
     # Take care of potentially incompatible scipy version for HiQ-Fermion?
     build_and_install=()
-    build+=(pubchempy openfermion pyscf)
+    build+=(pubchempy openfermion pyscf jupyter-react)
 else
     echo "Unsupported distribution found: $os_name"
     exit 1
