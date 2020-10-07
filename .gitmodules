@@ -17,3 +17,6 @@
 [submodule "Formula"]
 	path = Formula
 	url = ssh://git@code-cbu.huawei.com:2233/huawei-hiq/deployment/homebrew.git
+[submodule "aur/jupyter-react"]
+	path = aur/jupyter-react
+	url = ssh://aur@aur.archlinux.org/python-jupyter-react
