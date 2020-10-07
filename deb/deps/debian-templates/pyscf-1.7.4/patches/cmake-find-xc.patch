@@ -1,0 +1,28 @@
+--- a/pyscf/lib/CMakeLists.txt
++++ b/pyscf/lib/CMakeLists.txt
+@@ -178,6 +178,25 @@
+ #          CC=${CMAKE_C_COMPILER} CXX=${CMAKE_CXX_COMPILER}
+   )
+ endif()
++elseif(ENABLE_LIBXC)
++find_library(LIBXC_LIB xc PATH_SUFFIXES lib64 lib lib/x86_64-linux-gnu)
++find_path(LIBXC_INC xc.h PATH_SUFFIXES x86_64-linux-gnu)
++if(LIBXC_LIB AND LIBXC_INC)
++  get_filename_component(LIB_EXT "${LIBXC_LIB}" EXT)
++    if(LIB_EXT STREQUAL ".a" OR LIB_EXT STREQUAL ".lib")
++      set(LIB_TYPE STATIC)
++    else()
++      set(LIB_TYPE SHARED)
++    endif()
++
++  add_library(xc ${LIB_TYPE} IMPORTED)
++  set_target_properties(
++    xc
++    PROPERTIES IMPORTED_LOCATION "${LIBXC_LIB}"
++               INTERFACE_INCLUDE_DIRECTORIES "${LIBXC_INC}")
++else()
++  message(ERROR "Unable to find libxc on this system!")
++endif()  
+ endif() # ENABLE_LIBXC
+ 
+ #if(NOT EXISTS "${PROJECT_SOURCE_DIR}/deps/include/xcfun.h" AND

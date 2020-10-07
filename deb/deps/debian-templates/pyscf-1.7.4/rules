@@ -2,12 +2,13 @@
 
 export DH_VERBOSE=1
 
+export DEB_BUILD_OPTIONS += noddebs
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-pie
 #export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
-debroot = debian/python3-pyscf/
-py3_sitearch = "/usr/lib/python3/dist-packages"
+debroot = debian/python3-pyscf
+py3_sitearch = /usr/lib/python3/dist-packages
 
 %:
 	dh $@ --buildsystem cmake
@@ -28,15 +29,15 @@ override_dh_auto_test:
 override_dh_auto_install:
 	set -e; \
 	for f in $$(find pyscf -name \*.py); do \
-		install -D -p -m 644 $$f $(debroot)$(py3_sitearch)/$$f; \
+		install -D -p -m 644 $$f $(debroot)/$(py3_sitearch)/$$f; \
 	done
 	set -e; \
 	for f in $$(find pyscf -name \*.dat); do \
-		install -D -p -m 644 $$f $(debroot)$(py3_sitearch)/$$f; \
+		install -D -p -m 644 $$f $(debroot)/$(py3_sitearch)/$$f; \
 	done
 	set -e; \
 	for f in $$(find pyscf -name \*.so); do \
-		install -D -p -m 644 $$f $(debroot)$(py3_sitearch)/$$f; \
+		install -D -p -m 644 $$f $(debroot)/$(py3_sitearch)/$$f; \
 	done
 
 override_dh_auto_clean:
@@ -48,3 +49,9 @@ override_dh_auto_clean:
 	rm -rf .cache
 	rm -rf .pybuild
 	rm -rf .pytest_cache
+
+override_dh_dwz:
+	echo "dh_dwz is currently deactivated since it generates an error: \".debug_line reference above end of section\""
+
+override_dh_shlibdeps:
+	dh_shlibdeps -l $(CURDIR)/$(debroot)/$(py3_sitearch)/pyscf/lib

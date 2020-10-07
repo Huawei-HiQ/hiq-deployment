@@ -20,6 +20,7 @@ Package: python3-pyscf
 Architecture: any
 Multi-Arch: foreign
 Depends: ${misc:Depends},
+	 ${shlibs:Depends},
 	 python3,
 	 libopenblas0-openmp | libopenblas-base,
 	 libxc,

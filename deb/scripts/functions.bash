@@ -64,7 +64,7 @@ function backup_files()
     pkg_dir=$1
     shift
 
-    backup_dir=$root/backup/$(basename $pkg_dir)
+    backup_dir=$backup_dir/$(basename $pkg_dir)
     mkdir -p $backup_dir
     
     for f in "$@"; do
@@ -175,9 +175,9 @@ function pkg_sign()
 function pkg_move_results()
 {
     local pkg=$1 output_dir=$2
-    pkg_dir=$(basename $(ls -d $root/debian-templates/* | grep $pkg))
+    pkg_dir=$(basename $(ls -d $templates_dir/* | grep $pkg))
     if [ -z "$pkg_dir" ]; then
-	die "Missing folder in $root/debian-templates!"
+	die "Missing folder in $templates_dir!"
     fi
     pkg_name=$pkg
     pkg_ver=${pkg_dir##$pkg-}

@@ -1,0 +1,28 @@
+--- a/pyscf/lib/CMakeLists.txt
++++ b/pyscf/lib/CMakeLists.txt
+@@ -196,6 +196,25 @@
+             -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
+             -DENABLE_FORTRAN_INTERFACE=OFF
+   )
++elseif(ENABLE_XCFUN)
++find_library(LIBXCFUN_LIB xcfun PATH_SUFFIXES lib64 lib lib/x86_64-linux-gnu)
++find_path(LIBXCFUN_INC xcfun.h PATH_SUFFIXES XCFun x86_64-linux-gnu/XCFun)
++if(LIBXCFUN_LIB AND LIBXCFUN_INC)
++  get_filename_component(LIB_EXT "${LIBXCFUN_LIB}" EXT)
++    if(LIB_EXT STREQUAL ".a" OR LIB_EXT STREQUAL ".lib")
++      set(LIB_TYPE STATIC)
++    else()
++      set(LIB_TYPE SHARED)
++    endif()
++
++  add_library(xcfun ${LIB_TYPE} IMPORTED)
++  set_target_properties(
++    xcfun
++    PROPERTIES IMPORTED_LOCATION "${LIBXCFUN_LIB}"
++               INTERFACE_INCLUDE_DIRECTORIES "${LIBXCFUN_INC}")
++else()
++  message(ERROR "Unable to find libxcfun on this system!")
++endif()
+ endif() # ENABLE_XCFUN
+ add_subdirectory(dft)
+ endif() # DISABLE_DFT

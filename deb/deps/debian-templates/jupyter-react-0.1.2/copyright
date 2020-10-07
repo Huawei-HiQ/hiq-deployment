@@ -1,0 +1,21 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: jupyter-react
+Upstream-Contact: Christopher Helm
+Source: https://github.com/timbr-io/jupyter-react
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     MANIFEST.in
+           PKG-INFO
+           jupyter_react.egg-info/PKG-INFO
+           jupyter_react.egg-info/SOURCES.txt
+           jupyter_react.egg-info/dependency_links.txt
+           jupyter_react.egg-info/not-zip-safe
+           jupyter_react.egg-info/requires.txt
+           jupyter_react.egg-info/top_level.txt
+           jupyter_react/__init__.py
+           jupyter_react/component.py
+           setup.cfg
+           setup.py
+Copyright: Christopher Helm
+License:   MIT License

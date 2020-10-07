@@ -1,1 +1,4 @@
 pyscf-1.7.0-rpath.patch
+cmake-find-xcfun.patch
+cmake-find-xc.patch
+xcfun-new-api.patch
