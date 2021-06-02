@@ -41,6 +41,7 @@ else
 fi
 
 pkg_sha256=$(sha256sum $pkg_targz | cut -d ' ' -f1)
+pkg_sha512=$(sha512sum $pkg_targz | cut -d ' ' -f1)
 
 # ==============================================================================
 # AUR package
@@ -48,7 +49,8 @@ pkg_sha256=$(sha256sum $pkg_targz | cut -d ' ' -f1)
 fname_aur=$HERE/aur/${pkg_name}/PKGBUILD
 if [ -f $fname_aur ]; then
     sed_args_aur=(-e "/pkgver=/c pkgver=$pkg_ver"
-		  -e "/sha256sums=/c sha256sums=('$pkg_sha256')")
+		  -e "/sha256sums=/c sha256sums=('$pkg_sha256')"
+		  -e "/sha512sums=/c sha512sums=('$pkg_sha512')")
 
     echo '========== AUR =========='
     sed "${sed_args_aur[@]}" $fname_aur | $DIFF_CMD -U1 $fname_aur -
@@ -67,7 +69,8 @@ if [ -f $fname_brew ]; then
     url_new="$url_main/$pkg_targz"
 
     sed_args_brew=(-e "/url \"https:\/\/pypi.io\/packages\/source/c\  url \"$url_new\""
-		   -e "/sha256 \"/c\  sha256 \"$pkg_sha256\"")
+		   -e "/sha256 \"/c\  sha256 \"$pkg_sha256\""
+		   -e "/sha512 \"/c\  sha512 \"$pkg_sha512\"")
 
     has_version=$(cat $fname_brew | grep version)
     if [ -n "$has_version" ]; then
@@ -83,9 +86,11 @@ fi
 # ------------------------------------------------------------------------------
 # DEB package
 
-dname_deb=$HERE/deb/${pkg_name}
+dname_deb=$HERE/deb/debian-templates/${pkg_name}-${pkg_ver}
 if [ ! -d $dname_deb ]; then
-    dname_deb=$HERE/deb/${pkg_name}-*
+    old_dir=$(ls $HERE/deb/debian-templates/${pkg_name}-* | sort | tail -n1)
+    cp -r $HERE/deb/debian-templates/$old_dir \
+       $HERE/deb/debian-templates/${pkg_name}-${pkg_ver}
 fi
 
 # ------------------------------------------------------------------------------
