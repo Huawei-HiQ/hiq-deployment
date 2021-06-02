@@ -13,6 +13,8 @@ if [ "$os_name" == "centos" ]; then
 elif [ "$os_name" == "fedora" ]; then
     if [ $os_ver -lt 32 ]; then
 	build_and_install=(cython numpy)
+    elif [ $os_ver -lt 34 ]; then
+        build+=(cmake)
     else
 	build_and_install=()
     fi

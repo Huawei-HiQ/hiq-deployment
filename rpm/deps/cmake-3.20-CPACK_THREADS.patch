@@ -1,0 +1,11 @@
+diff -up cmake-3.20.0/Tests/RunCMake/CPack/tests/THREADED_ALL/test.cmake.CPACK_THREADS cmake-3.20.0/Tests/RunCMake/CPack/tests/THREADED_ALL/test.cmake
+--- cmake-3.20.0/Tests/RunCMake/CPack/tests/THREADED_ALL/test.cmake.CPACK_THREADS	2021-03-23 10:43:17.000000000 -0500
++++ cmake-3.20.0/Tests/RunCMake/CPack/tests/THREADED_ALL/test.cmake	2021-03-23 13:29:14.539434722 -0500
+@@ -1,6 +1,6 @@
+ install(FILES CMakeLists.txt DESTINATION foo COMPONENT test)
+ 
+-set(CPACK_THREADS 0)
++set(CPACK_THREADS 4)
+ 
+ if(PACKAGING_TYPE STREQUAL "COMPONENT")
+   set(CPACK_COMPONENTS_ALL test)
