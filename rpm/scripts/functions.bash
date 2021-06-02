@@ -219,7 +219,7 @@ function pkg_copy_patches()
     if [ -n "$patches" ];then
 	src_dir=$(rpmspec --eval '%_sourcedir')
 	mkdir -p $src_dir
-	/bin/cp -v $root/$pkg*.patch $src_dir
+	/bin/cp -v $root/$pkg* $src_dir
     fi
 }
 

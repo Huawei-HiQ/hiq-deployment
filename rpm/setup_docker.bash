@@ -7,6 +7,7 @@ YUM=yum
 
 if [ "$os_name" == "centos" ]; then
     if [ $os_ver -eq 7 ]; then
+        YUM=yum
 	yum install -y epel-release
 	yum install -y centos-release-scl
 	yum install -y devtoolset-8
@@ -14,10 +15,11 @@ if [ "$os_name" == "centos" ]; then
 	echo 'source scl_source enable devtoolset-8' >> ~/.bashrc
 	source scl_source enable devtoolset-8
     elif [ $os_ver -eq 8 ]; then
+        YUM=dnf
 	dnf install -y 'dnf-command(config-manager)'
-	dnf config-manager --set-enabled PowerTools
-	yum install -y epel-release
-	yum update -y
+	dnf config-manager --set-enabled powertools
+	dnf install -y epel-release
+	dnf update -y
     else
 	echo "Unsupported CentOS version: $os_ver"
     fi
@@ -28,7 +30,7 @@ elif [ "$os_name" == "fedora" ]; then
     dnf install -y dnf-utils
 elif [ "$os_name" == "opensuse-leap" ]; then
     YUM=zypper
-    if [[ "$os_ver" == "15.1" || "$os_ver" == "15.2" ]]; then
+    if [[ "$os_ver" == "15.1" || "$os_ver" == "15.2" || "$os_ver" == "15.3" ]]; then
 	zypper update -y
 	zypper install -y python3-pip wget
 	python3 -m pip install python-rpm-spec

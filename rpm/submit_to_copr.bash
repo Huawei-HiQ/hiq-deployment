@@ -164,31 +164,40 @@ declare -A centos fedora opensuse
 centos[7]='epel-7-x86_64'
 centos[8]='epel-8-x86_64'
 
-fedora[31]='fedora-31-x86_64'
+# fedora[31]='fedora-31-x86_64'
 fedora[32]='fedora-32-x86_64'
 fedora[33]='fedora-33-x86_64'
+fedora[34]='fedora-34-x86_64'
 fedora[rawhide]='fedora-rawhide-x86_64 '
 
-opensuse[15.1]='opensuse-leap-15.1-x86_64'
+# opensuse[15.1]='opensuse-leap-15.1-x86_64'
 opensuse[15.2]='opensuse-leap-15.2-x86_64'
-
+opensuse[15.3]='opensuse-leap-15.3-x86_64'
 
 repo_chroot=("${opensuse[@]}")
 os_name='opensuse-leap'
-os_ver=15.1
+os_ver=15.2
 copr_build rpm_extra_macros
 
-repo_chroot=("${centos[@]}" "${fedora[31]}" "${opensuse[15.1]}")
+repo_chroot=("${centos[@]}" "${fedora[32]}" "${opensuse[@]}")
+os_name='centos'
+os_ver=7
+copr_build cmake
+
+# repo_chroot=("${centos[@]}" "${fedora[31]}" "${opensuse[15.1]}")
+repo_chroot=("${centos[@]}")
 os_name='centos'
 os_ver=7
 copr_build cython
 
-repo_chroot=("${centos[@]}" "${fedora[31]}" "${opensuse[@]}")
+# repo_chroot=("${centos[@]}" "${fedora[31]}" "${opensuse[@]}")
+repo_chroot=("${centos[@]}" "${opensuse[@]}")
 os_name='centos'
 os_ver=7
 copr_build numpy
 
-repo_chroot=("${centos[@]}" "${opensuse[15.1]}")
+# repo_chroot=("${centos[@]}" "${opensuse[15.1]}")
+repo_chroot=("${centos[@]}")
 os_name='centos'
 os_ver=7
 copr_build --parallel --background networkx mpi4py sympy

@@ -2,6 +2,7 @@
 # others
 build=()
 if [ "$os_name" == "centos" ]; then
+    build+=(cmake)
     if [ $os_ver -eq 7 ]; then
 	build_and_install=(cython pybind11 numpy scipy cycler kiwisolver qhull matplotlib pandas)
     elif [ $os_ver -eq 8 ]; then
@@ -20,6 +21,7 @@ elif [ "$os_name" == "fedora" ]; then
     fi
     build+=(pubchempy openfermion jupyter-react)
 elif [ "$os_name" == "opensuse-leap" ]; then
+    build+=(cmake)
     build_and_install=()
     if [ "$os_ver" == "15.1" ]; then
 	build_and_install+=(cython numpy pybind11)
