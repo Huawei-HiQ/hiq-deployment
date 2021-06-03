@@ -1,3 +1,73 @@
+cmake (3.18.4-2ubuntu1) hirsute; urgency=low
+
+  * Merge from Debian unstable. Remaining changes:
+    - add support for PostgreSQL 13 (LP: #1907680)
+    - Unset proxy settings during autopkgtest. Tests try to resolve
+      no-site and match stderr, with bad network on armhf autopkgtest
+      runners instead the stderr is failing to resolve squid.internal.
+    - Append -latomic on RISCV, as some atomics need libatomic support. LP:
+      #1876814
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sun, 07 Feb 2021 19:07:02 +0100
+
+cmake (3.18.4-2) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Drop unused Build-Depends: libbz2-dev and liblzma-dev. (Closes: #981135)
+    Compression support is handled via libarchive.
+
+  [ Felix Geyer ]
+  * Mark cmake-data as Multi-Arch: foreign. (Closes: #973392)
+
+ -- Felix Geyer <fgeyer@debian.org>  Sun, 07 Feb 2021 10:23:34 +0100
+
+cmake (3.18.4-1ubuntu3) hirsute; urgency=medium
+
+  * debian/patches/f3f09f1c96e8cbd614a7f22da4055f2f8b5aa55a.patch:
+    - add support for PostgreSQL 13 (LP: #1907680)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 12 Dec 2020 19:10:12 +0100
+
+cmake (3.18.4-1ubuntu2) hirsute; urgency=medium
+
+  * Rebuild against new libjsoncpp24.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 07 Dec 2020 15:21:15 +0100
+
+cmake (3.18.4-1ubuntu1) hirsute; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Unset proxy settings during autopkgtest. Tests try to resolve
+      no-site and match stderr, with bad network on armhf autopkgtest
+      runners instead the stderr is failing to resolve squid.internal.
+    - Append -latomic on RISCV, as some atomics need libatomic support. LP:
+      #1876814
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 13 Nov 2020 10:52:33 +0100
+
+cmake (3.18.4-1) unstable; urgency=medium
+
+  [ Tobias Frost ]
+  * B-D on libarchive >=3.3.3 (Closes: #972252)
+
+  [ Kyle Edwards ]
+  * Set --docdir to actual destination
+
+  [ Felix Geyer ]
+  * New upstream release
+  * Cherry-pick commit to build with -D_FILE_OFFSET_BITS=64 on 32bit archs.
+    - Add Compile_with_FILE_OFFSET_BITS_64_on_32-bit_Linux.patch
+    - Closes: #965046
+
+ -- Felix Geyer <fgeyer@debian.org>  Mon, 19 Oct 2020 16:20:14 +0200
+
+cmake (3.18.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop FindPkgConfig_also_handle_isystem.patch, applied upstream.
+
+ -- Felix Geyer <fgeyer@debian.org>  Sun, 30 Aug 2020 14:41:24 +0200
+
 cmake (3.16.3-3ubuntu2) groovy; urgency=medium
 
   * Append -latomic on RISCV, as some atomics need libatomic support. LP:
@@ -1768,7 +1838,6 @@ cmake (0.96-1) unstable; urgency=low
 
  -- A. Maitland Bottoms <bottoms@debian.org>  Wed, 28 Nov 2001 08:45:22 -0500
 
-
 cmake (2.0.5-1) unstable; urgency=low
 
   * New upstream release
@@ -1912,5 +1981,3 @@ cmake (0.96-1) unstable; urgency=low
     (Closes: #121610)
 
  -- A. Maitland Bottoms <bottoms@debian.org>  Wed, 28 Nov 2001 08:45:22 -0500
-
-
