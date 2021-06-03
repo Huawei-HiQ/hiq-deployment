@@ -9,15 +9,12 @@
 %undefine _disable_source_fetch
 
 Name:    pybind11
-Version: 2.5.0
-Release: 5%{?dist}
+Version: 2.6.2
+Release: 0%{?dist}
 Summary: Seamless operability between C++11 and Python
 License: BSD
 URL:	 https://github.com/pybind/pybind11
 Source0: https://github.com/pybind/pybind11/archive/v%{version}/%{name}-%{version}.tar.gz
-
-# Patch out header path
-Patch1:  pybind11-2.5.0-hpath.patch
 
 # Needed to build the python libraries
 BuildRequires: python3-devel
@@ -47,14 +44,9 @@ C++ code.
 Summary:  Development headers for pybind11
 # https://fedoraproject.org/wiki/Packaging:Guidelines#Packaging_Header_Only_Libraries
 Provides: %{name}-static = %{version}-%{release}
-# For dir ownership
-%if 0%{?rhel} && 0%{?rhel} < 8
-# CentOS 7
-BuildRequires:  cmake3
-%else
-# Fedora > 30 && CentOS > 7 && OpenSUSE/leap
+
+# Requires recent CMake version!
 BuildRequires: cmake
-%endif
 
 %description devel
 %{base_description}
@@ -77,7 +69,6 @@ This package contains the Python 3 files.
 
 %prep
 %setup -q
-%patch1 -p1 -b .hpath
 
 %build
 
@@ -118,15 +109,19 @@ PYBIND11_USE_CMAKE=true %py3_install "--install-purelib" "%{python3_sitearch}"
 
 %files devel
 %license LICENSE
-%doc README.md
+%doc README.rst
 %{_includedir}/pybind11/
 %{_datadir}/cmake/pybind11/
 
 %files -n python3-%{name}
+%{_bindir}/pybind11-config
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Jun 3 2021 Damien Nguyen <damien1@huawei.com> - 2.6.2-0
+- Update to pybind11 2.6.2
+
 * Wed Aug 12 2020 Merlin Mathesius <mmathesi@redhat.com> - 2.5.0-5
 - Drop Python 2 support for ELN and RHEL9+
 

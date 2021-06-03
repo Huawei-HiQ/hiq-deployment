@@ -1,16 +1,18 @@
 # Packages that need to be built first and then installed in order to build the
 # others
-build=()
+build=(pybind11)
 if [ "$os_name" == "centos" ]; then
     build+=(cmake)
-    if [ $os_ver -eq 7 ]; then
+    if [ "$os_ver" == "stream" ]; then
+	build_and_install=(cython pybind11 numpy scipy)
+    elif [ $os_ver -eq 7 ]; then
 	build_and_install=(cython pybind11 numpy scipy cycler kiwisolver qhull matplotlib pandas)
     elif [ $os_ver -eq 8 ]; then
-	build_and_install=(cython numpy scipy)
-	build+=(openfermion pubchempy networkx sympy pyscf)
+	build_and_install=(cython pybind11 numpy scipy)
     else
 	echo "Unsupported CentOS version: $os_ver"
     fi
+    build+=(openfermion pubchempy networkx sympy pyscf)
 elif [ "$os_name" == "fedora" ]; then
     if [ $os_ver -lt 32 ]; then
 	build_and_install=(cython numpy)
