@@ -26,7 +26,17 @@ srpms_root=$HERE/srpms
 os_name=$(cat /etc/os-release | grep ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
 os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 
-if [ "$os_name" == "fedora" ]; then
+if [ "$os_name" == "centos" ]; then
+    if [ -n "$(cat /etc/os-release | grep ^NAME= | sort | head -n1 | cut -d '=' -f2 | tr -d '"' | grep -i stream)" ]; then
+        os_ver=stream
+    elif [ $os_ver -eq 8 ]; then
+        :
+    else
+        echo "Unsupported distribution found: $os_name"
+        exit 1
+    fi
+    dnf install -y copr-cli
+elif [ "$os_name" == "fedora" ]; then
     if ! rpm -q copr-cli > /dev/null; then
 	dnf install -y copr-cli
     fi
@@ -163,6 +173,7 @@ function array_intersection()
 declare -A centos fedora opensuse
 centos[7]='epel-7-x86_64'
 centos[8]='epel-8-x86_64'
+centos[stream]='centos-stream-8-x86_64'
 
 # fedora[31]='fedora-31-x86_64'
 fedora[32]='fedora-32-x86_64'

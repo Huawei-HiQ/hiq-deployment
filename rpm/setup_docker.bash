@@ -6,7 +6,18 @@ os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 YUM=yum
 
 if [ "$os_name" == "centos" ]; then
-    if [ $os_ver -eq 7 ]; then
+    if [ -n "$(cat /etc/os-release | grep ^NAME= | sort | head -n1 | cut -d '=' -f2 | tr -d '"' | grep -i stream)" ]; then
+        os_ver=stream
+    fi
+
+    if [[ "$os_ver" == "stream" || $os_ver -eq 8 ]]; then
+        YUM=dnf
+	dnf install -y 'dnf-command(config-manager)'
+	dnf config-manager --set-enabled powertools
+	dnf install -y epel-release
+	dnf update -y
+        dnf install -y dnf-utils
+    elif [ $os_ver -eq 7 ]; then
         YUM=yum
 	yum install -y epel-release
 	yum install -y centos-release-scl
@@ -14,16 +25,10 @@ if [ "$os_name" == "centos" ]; then
 	yum update -y
 	echo 'source scl_source enable devtoolset-8' >> ~/.bashrc
 	source scl_source enable devtoolset-8
-    elif [ $os_ver -eq 8 ]; then
-        YUM=dnf
-	dnf install -y 'dnf-command(config-manager)'
-	dnf config-manager --set-enabled powertools
-	dnf install -y epel-release
-	dnf update -y
+        yum install -y yum-utils
     else
 	echo "Unsupported CentOS version: $os_ver"
     fi
-    yum install -y yum-utils
 elif [ "$os_name" == "fedora" ]; then
     YUM=dnf
     dnf update -y

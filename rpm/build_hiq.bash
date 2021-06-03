@@ -29,7 +29,13 @@ os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 arch_name=$(get_arch_name)
 py=3
 if [ "$os_name" == "centos" ]; then
-    if [ $os_ver -eq 7 ]; then
+    if [ -n "$(cat /etc/os-release | grep ^NAME= | sort | head -n1 | cut -d '=' -f2 | tr -d '"' | grep -i stream)" ]; then
+        os_ver=stream
+    fi
+
+    if [ "$os_ver" == "stream" ]; then
+        :
+    elif [ $os_ver -eq 7 ]; then
 	py=36
     elif [ $os_ver -eq 8 ]; then
 	:

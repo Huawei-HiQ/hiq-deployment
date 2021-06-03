@@ -2,17 +2,17 @@
 # others
 build=(pybind11)
 if [ "$os_name" == "centos" ]; then
-    build+=(cmake)
     if [ "$os_ver" == "stream" ]; then
 	build_and_install=(cython pybind11 numpy scipy)
     elif [ $os_ver -eq 7 ]; then
 	build_and_install=(cython pybind11 numpy scipy cycler kiwisolver qhull matplotlib pandas)
+	build+=(networkx sympy mpi4py matplotlib)
     elif [ $os_ver -eq 8 ]; then
 	build_and_install=(cython pybind11 numpy scipy)
     else
 	echo "Unsupported CentOS version: $os_ver"
     fi
-    build+=(openfermion pubchempy networkx sympy pyscf)
+    build+=(cmake openfermion pubchempy networkx sympy pyscf)
 elif [ "$os_name" == "fedora" ]; then
     if [ $os_ver -lt 32 ]; then
 	build_and_install=(cython numpy)

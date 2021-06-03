@@ -31,6 +31,12 @@ if [ -z "$(rpm --eval '%{?dist:%dist}')" ]; then
     alias pkg_build="pkg_build -D 'dist $arch_name'"
 fi
 
+if [ "$os_name" == "centos" ]; then
+    if [ -n "$(cat /etc/os-release | grep ^NAME= | sort | head -n1 | cut -d '=' -f2 | tr -d '"' | grep -i stream)" ]; then
+        os_ver=stream
+    fi
+fi
+
 # ==============================================================================
 
 source $HERE/scripts/packages.bash
