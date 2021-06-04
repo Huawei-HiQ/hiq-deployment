@@ -14,7 +14,7 @@ function pkg_download()
 
     orig_tar_xz=$root/${pkg_name}_$pkg_ver.orig.tar.xz
     if [ ! -f $orig_tar_xz ]; then
-	wget http://archive.ubuntu.com/ubuntu/pool/main/r/${pkg_name}/${pkg_name}_2.23.0+dfsg.orig.tar.xz
+	wget http://archive.ubuntu.com/ubuntu/pool/main/r/${pkg_name}/${pkg_name}_2.23.0+dfsg.orig.tar.xz -P $root 1>&2
     fi
     echo $orig_tar_xz
 }

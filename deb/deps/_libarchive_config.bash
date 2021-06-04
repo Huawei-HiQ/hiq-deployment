@@ -5,10 +5,10 @@ ppa_rev=1
 function pkg_download()
 {
     local pkg_name=$1
-    
+
     orig_tar_xz=$root/${pkg_name}_${pkg_ver}.orig.tar.xz
     if [ ! -f $orig_tar_xz ]; then
-	wget http://archive.ubuntu.com/ubuntu/pool/main/liba/${pkg_name}/${pkg_name}_${pkg_ver}.orig.tar.xz 1>&2	
+	wget http://archive.ubuntu.com/ubuntu/pool/main/liba/${pkg_name}/${pkg_name}_${pkg_ver}.orig.tar.xz -P $root 1>&2
     fi
     echo $orig_tar_xz
 }
