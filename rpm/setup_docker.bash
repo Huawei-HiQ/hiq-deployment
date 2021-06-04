@@ -17,6 +17,7 @@ if [ "$os_name" == "centos" ]; then
 	dnf install -y epel-release
 	dnf update -y
         dnf install -y dnf-utils
+        dnf copr enable -y huaweihiq/Huawei-HiQ
     elif [ $os_ver -eq 7 ]; then
         YUM=yum
 	yum install -y epel-release
@@ -25,7 +26,8 @@ if [ "$os_name" == "centos" ]; then
 	yum update -y
 	echo 'source scl_source enable devtoolset-8' >> ~/.bashrc
 	source scl_source enable devtoolset-8
-        yum install -y yum-utils
+        yum install -y yum-utils yum-plugin-copr
+        yum copr enable -y huaweihiq/Huawei-HiQ
     else
 	echo "Unsupported CentOS version: $os_ver"
     fi
@@ -33,6 +35,7 @@ elif [ "$os_name" == "fedora" ]; then
     YUM=dnf
     dnf update -y
     dnf install -y dnf-utils
+    dnf copr enable -y huaweihiq/Huawei-HiQ
 elif [ "$os_name" == "opensuse-leap" ]; then
     YUM=zypper
     if [[ "$os_ver" == "15.1" || "$os_ver" == "15.2" || "$os_ver" == "15.3" ]]; then
