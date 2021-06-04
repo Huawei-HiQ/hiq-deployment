@@ -164,3 +164,6 @@ pristine-tar = True
 # Use color when on a terminal, alternatives: on/true, off/false or auto
 color = auto
 EOF
+
+add-apt-repository -y ppa:huawei-hiq/ppa
+apt-get update
