@@ -29,13 +29,15 @@ os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 if [ "$os_name" == "centos" ]; then
     if [ -n "$(cat /etc/os-release | grep ^NAME= | sort | head -n1 | cut -d '=' -f2 | tr -d '"' | grep -i stream)" ]; then
         os_ver=stream
+        dnf install -y copr-cli
     elif [ $os_ver -eq 8 ]; then
-        :
+        dnf install -y copr-cli
+    elif [ $os_ver -eq 7 ]; then
+        yum install -y copr-cli
     else
         echo "Unsupported distribution found: $os_name"
         exit 1
     fi
-    dnf install -y copr-cli
 elif [ "$os_name" == "fedora" ]; then
     if ! rpm -q copr-cli > /dev/null; then
 	dnf install -y copr-cli
