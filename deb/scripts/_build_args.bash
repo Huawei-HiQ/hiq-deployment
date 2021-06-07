@@ -3,7 +3,8 @@ declare -A ubuntu_versions=(["xenial"]="16.04"
 			    ["bionic"]="18.04"
 			    ["eoan"]="19.10"
 			    ["focal"]="20.04"
-			    ["groovy"]="20.10")
+			    ["groovy"]="20.10"
+			    ["hirsute"]="21.04")
 assume_yes=0
 clean_dirs=0
 clean_only=0
@@ -27,7 +28,7 @@ help_message() {
     echo '  -c,--clean         (optional) start from clean folder'
     echo '  --clean-only       (optional) only perform clean step'
     echo '  -d,--distro [rel]  Specify for which Ubuntu distro the package is'
-    echo '                     designed for (e.g. xenial, bionic, eoan, focal)'
+    echo '                     designed for (supported are: ${!ubuntu_versions[@]})'
     echo '  -o,--output [dir]  (optional) Specify output directory for generated'
     echo '                     files (*.changes, *.dsc, etc.)'
     echo "                     Defaults to: $(realpath $root)"
