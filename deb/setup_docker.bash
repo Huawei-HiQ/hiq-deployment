@@ -25,17 +25,18 @@ os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 . setup_env.bash
 
 apt update
+
+ln -snf /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
+apt install -y tzdata
+
 apt upgrade -y
 apt dist-upgrade -y
 
 apt install -y curl software-properties-common
 add-apt-repository -y -u ppa:huawei-hiq/ppa
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9071AE544115FB0C
+
 apt update
-
-ln -snf /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
-apt install -y tzdata
-
 apt install -y build-essential devscripts pbuilder lintian sbuild cdbs debhelper quilt dh-make dh-python fakeroot apt-src python3-pip equivs git
 
 if [[ "$os_name" == "ubuntu" ]]; then
