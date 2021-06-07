@@ -1,6 +1,7 @@
 # ==============================================================================
 
-pkg_dir=$(basename $(ls -d $templates_dir/* | grep $pkg))
+
+pkg_dir=$(basename $(ls -d $templates_dir/* | grep $pkg | sort | tr ' ' '\n' | tail -n1))
 if [ -z "$pkg_dir" ]; then
     die "Missing folder in $templates_dir!"
 fi

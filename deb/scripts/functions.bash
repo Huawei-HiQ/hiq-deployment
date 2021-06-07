@@ -175,7 +175,7 @@ function pkg_sign()
 function pkg_move_results()
 {
     local pkg=$1 output_dir=$2
-    pkg_dir=$(basename $(ls -d $templates_dir/* | grep $pkg))
+    pkg_dir=$(basename $(ls -d $templates_dir/* | grep $pkg | sort | tr ' ' '\n' | tail -n1))
     if [ -z "$pkg_dir" ]; then
 	die "Missing folder in $templates_dir!"
     fi
