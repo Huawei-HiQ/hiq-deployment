@@ -1,0 +1,518 @@
+# DP: updates from the 10 branch upto 20201011 (documentation).
+
+LANG=C git diff --no-renames --src-prefix=a/src/ --dst-prefix=b/src/ \
+	ee5c3db6c5b2c3332912fb4c9cfa2864569ebd9a f16af0e32f9019f1e392fafb8f93dd5391301b6a \
+	| awk '/^diff .*\.texi/ {skip=0; print; next} /^diff / {skip=1; next} skip==0' \
+        | grep -v -E '^(diff|index)'
+
+--- a/src/gcc/doc/cpp.texi
++++ b/src/gcc/doc/cpp.texi
+@@ -1631,7 +1631,7 @@ a function can.  The syntax for defining the macro is similar to that of
+ a function.  Here is an example:
+ 
+ @smallexample
+-#define eprintf(@dots{}) fprintf (stderr, __VA_ARGS__)
++#define eprintf(...) fprintf (stderr, __VA_ARGS__)
+ @end smallexample
+ 
+ This kind of macro is called @dfn{variadic}.  When the macro is invoked,
+@@ -1655,11 +1655,11 @@ below for an important special case for @samp{##}.)
+ If your macro is complicated, you may want a more descriptive name for
+ the variable argument than @code{@w{__VA_ARGS__}}.  CPP permits
+ this, as an extension.  You may write an argument name immediately
+-before the @samp{@dots{}}; that name is used for the variable argument.
++before the @samp{...}; that name is used for the variable argument.
+ The @code{eprintf} macro above could be written
+ 
+ @smallexample
+-#define eprintf(args@dots{}) fprintf (stderr, args)
++#define eprintf(args...) fprintf (stderr, args)
+ @end smallexample
+ 
+ @noindent
+@@ -1670,7 +1670,7 @@ You can have named arguments as well as variable arguments in a variadic
+ macro.  We could define @code{eprintf} like this, instead:
+ 
+ @smallexample
+-#define eprintf(format, @dots{}) fprintf (stderr, format, __VA_ARGS__)
++#define eprintf(format, ...) fprintf (stderr, format, __VA_ARGS__)
+ @end smallexample
+ 
+ @noindent
+@@ -1709,7 +1709,7 @@ invocation expands to its argument; but if the variable argument does
+ not have any tokens, the @code{@w{__VA_OPT__}} expands to nothing:
+ 
+ @smallexample
+-#define eprintf(format, @dots{}) \
++#define eprintf(format, ...) \
+   fprintf (stderr, format __VA_OPT__(,) __VA_ARGS__)
+ @end smallexample
+ 
+@@ -1722,7 +1722,7 @@ the introduction of @code{@w{__VA_OPT__}}, this extension remains
+ supported in GNU CPP, for backward compatibility.  If you write
+ 
+ @smallexample
+-#define eprintf(format, @dots{}) fprintf (stderr, format, ##__VA_ARGS__)
++#define eprintf(format, ...) fprintf (stderr, format, ##__VA_ARGS__)
+ @end smallexample
+ 
+ @noindent
+@@ -1758,7 +1758,7 @@ replacement list of a variadic macro.
+ Variadic macros became a standard part of the C language with C99.  
+ GNU CPP previously supported them
+ with a named variable argument
+-(@samp{args@dots{}}, not @samp{@dots{}} and @code{@w{__VA_ARGS__}}), which
++(@samp{args...}, not @samp{...} and @code{@w{__VA_ARGS__}}), which
+ is still supported for backward compatibility.
+ 
+ @node Predefined Macros
+--- a/src/gcc/doc/extend.texi
++++ b/src/gcc/doc/extend.texi
+@@ -2446,6 +2446,7 @@ GCC plugins may provide their own attributes.
+ * ARM Function Attributes::
+ * AVR Function Attributes::
+ * Blackfin Function Attributes::
++* BPF Function Attributes::
+ * CR16 Function Attributes::
+ * C-SKY Function Attributes::
+ * Epiphany Function Attributes::
+@@ -3715,6 +3716,7 @@ Function Attributes}, @ref{PowerPC Function Attributes},
+ for details.
+ 
+ @item symver ("@var{name2}@@@var{nodename}")
++@cindex @code{symver} function attribute
+ On ELF targets this attribute creates a symbol version.  The @var{name2} part
+ of the parameter is the actual name of the symbol by which it will be
+ externally referenced.  The @code{nodename} portion should be the name of a
+@@ -4648,6 +4650,24 @@ all registers except the stack pointer should be saved in the prologue
+ regardless of whether they are used or not.
+ @end table
+ 
++@node BPF Function Attributes
++@subsection BPF Function Attributes
++
++These function attributes are supported by the BPF back end:
++
++@table @code
++@item kernel_helper
++@cindex @code{kernel helper}, function attribute, BPF
++use this attribute to indicate the specified function declaration is a
++kernel helper.  The helper function is passed as an argument to the
++attribute.  Example:
++
++@smallexample
++int bpf_probe_read (void *dst, int size, const void *unsafe_ptr)
++  __attribute__ ((kernel_helper (4)));
++@end smallexample
++@end table
++
+ @node CR16 Function Attributes
+ @subsection CR16 Function Attributes
+ 
+@@ -13753,7 +13773,6 @@ instructions, but allow the compiler to schedule those calls.
+ * AVR Built-in Functions::
+ * Blackfin Built-in Functions::
+ * BPF Built-in Functions::
+-* BPF Kernel Helpers::
+ * FR-V Built-in Functions::
+ * MIPS DSP Built-in Functions::
+ * MIPS Paired-Single Support::
+@@ -14570,12 +14589,12 @@ long long __builtin_arm_wzero ()
+ 
+ GCC implements extensions for C as described in the ARM C Language
+ Extensions (ACLE) specification, which can be found at
+-@uref{http://infocenter.arm.com/help/topic/com.arm.doc.ihi0053c/IHI0053C_acle_2_0.pdf}.
++@uref{https://developer.arm.com/documentation/ihi0053/latest/}.
+ 
+ As a part of ACLE, GCC implements extensions for Advanced SIMD as described in
+ the ARM C Language Extensions Specification.  The complete list of Advanced SIMD
+ intrinsics can be found at
+-@uref{http://infocenter.arm.com/help/topic/com.arm.doc.ihi0073a/IHI0073A_arm_neon_intrinsics_ref.pdf}.
++@uref{https://developer.arm.com/documentation/ihi0073/latest/}.
+ The built-in intrinsics for the Advanced SIMD extension are available when
+ NEON is enabled.
+ 
+@@ -14606,7 +14625,7 @@ void __builtin_arm_set_fpscr (unsigned int)
+ GCC implements the ARMv8-M Security Extensions as described in the ARMv8-M
+ Security Extensions: Requirements on Development Tools Engineering
+ Specification, which can be found at
+-@uref{http://infocenter.arm.com/help/topic/com.arm.doc.ecm0359818/ECM0359818_armv8m_security_extensions_reqs_on_dev_tools_1_0.pdf}.
++@uref{https://developer.arm.com/documentation/ecm0359818/latest/}.
+ 
+ As part of the Security Extensions GCC implements two new function attributes:
+ @code{cmse_nonsecure_entry} and @code{cmse_nonsecure_call}.
+@@ -14768,158 +14787,6 @@ Load 16-bits from the @code{struct sk_buff} packet data pointed by the register
+ Load 32-bits from the @code{struct sk_buff} packet data pointed by the register @code{%r6} and return it.
+ @end deftypefn
+ 
+-@node BPF Kernel Helpers
+-@subsection BPF Kernel Helpers
+-
+-These built-in functions are available for calling kernel helpers, and
+-they are available depending on the kernel version selected as the
+-CPU.
+-
+-Rather than using the built-ins directly, it is preferred for programs
+-to include @file{bpf-helpers.h} and use the wrappers defined there.
+-
+-For a full description of what the helpers do, the arguments they
+-take, and the returned value, see the
+-@file{linux/include/uapi/linux/bpf.h} in a Linux source tree.
+-
+-@smallexample
+-void *__builtin_bpf_helper_map_lookup_elem (void *map, void *key)
+-int   __builtin_bpf_helper_map_update_elem (void *map, void *key,
+-                                            void *value,
+-                                            unsigned long long flags)
+-int   __builtin_bpf_helper_map_delete_elem (void *map, const void *key)
+-int   __builtin_bpf_helper_map_push_elem (void *map, const void *value,
+-                                          unsigned long long flags)
+-int   __builtin_bpf_helper_map_pop_elem (void *map, void *value)
+-int   __builtin_bpf_helper_map_peek_elem (void *map, void *value)
+-int __builtin_bpf_helper_clone_redirect (void *skb,
+-                                         unsigned int ifindex,
+-                                         unsigned long long flags)
+-int __builtin_bpf_helper_skb_get_tunnel_key (void *ctx, void *key, int size, int flags)
+-int __builtin_bpf_helper_skb_set_tunnel_key (void *ctx, void *key, int size, int flags)
+-int __builtin_bpf_helper_skb_get_tunnel_opt (void *ctx, void *md, int size)
+-int __builtin_bpf_helper_skb_set_tunnel_opt (void *ctx, void *md, int size)
+-int __builtin_bpf_helper_skb_get_xfrm_state (void *ctx, int index, void *state,
+-				     int size, int flags)
+-static unsigned long long __builtin_bpf_helper_skb_cgroup_id (void *ctx)
+-static unsigned long long __builtin_bpf_helper_skb_ancestor_cgroup_id
+-                                         (void *ctx, int level)
+-int __builtin_bpf_helper_skb_vlan_push (void *ctx, __be16 vlan_proto, __u16 vlan_tci)
+-int __builtin_bpf_helper_skb_vlan_pop (void *ctx)
+-int __builtin_bpf_helper_skb_ecn_set_ce (void *ctx)
+-
+-int __builtin_bpf_helper_skb_load_bytes (void *ctx, int off, void *to, int len)
+-int __builtin_bpf_helper_skb_load_bytes_relative (void *ctx, int off, void *to, int len, __u32 start_header)
+-int __builtin_bpf_helper_skb_store_bytes (void *ctx, int off, void *from, int len, int flags)
+-int __builtin_bpf_helper_skb_under_cgroup (void *ctx, void *map, int index)
+-int __builtin_bpf_helper_skb_change_head (void *, int len, int flags)
+-int __builtin_bpf_helper_skb_pull_data (void *, int len)
+-int __builtin_bpf_helper_skb_change_proto (void *ctx, __be16 proto, __u64 flags)
+-int __builtin_bpf_helper_skb_change_type (void *ctx, __u32 type)
+-int __builtin_bpf_helper_skb_change_tail (void *ctx, __u32 len, __u64 flags)
+-int __builtin_bpf_helper_skb_adjust_room (void *ctx, __s32 len_diff, __u32 mode,
+-    				  unsigned long long flags)
+-@end smallexample
+-
+-Other helpers:
+-
+-@smallexample
+-int __builtin_bpf_helper_probe_read (void *dst, unsigned int size, void *src)
+-unsigned long long __builtin_bpf_helper_ktime_get_ns (void)
+-int __builtin_bpf_helper_trace_printk (const char *fmt, unsigned int fmt_size, ...)
+-void __builtin_bpf_helper_tail_call (void *ctx, void *prog_array_map, unsigned int index)
+-unsigned int __builtin_bpf_helper_get_smp_processor_id (void)
+-unsigned long long __builtin_bpf_helper_get_current_pid_tgid (void)
+-unsigned long long __builtin_bpf_helper_get_current_uid_gid (void)
+-int __builtin_bpf_helper_get_current_comm (void *buf, unsigned int size_of_buf)
+-unsigned long long __builtin_bpf_helper_perf_event_read (void *map, unsigned long long flags)
+-
+-int __builtin_bpf_helper_redirect (unsigned int ifindex, unsigned long long flags)
+-int __builtin_bpf_helper_redirect_map (void *map, unsigned int key, unsigned long long flags)
+-int __builtin_bpf_helper_perf_event_output (void *ctx,void *map, unsigned long long flags, void *data, unsigned long long size)
+-int __builtin_bpf_helper_get_stackid (void *ctx, void *map, unsigned long long flags)
+-int __builtin_bpf_helper_probe_write_user (void *dst, const void *src, unsigned int len)
+-int __builtin_bpf_helper_current_task_under_cgroup (void *map, unsigned int index)
+-
+-static unsigned long long __builtin_bpf_helper_get_prandom_u32 (void)
+-int __builtin_bpf_helper_xdp_adjust_head (void *ctx, int offset)
+-int __builtin_bpf_helper_xdp_adjust_meta (void *ctx, int offset)
+-int __builtin_bpf_helper_get_socket_cookie (void *ctx)
+-int __builtin_bpf_helper_setsockopt (void *ctx, int level, int optname, void *optval,
+-			     int optlen)
+-int __builtin_bpf_helper_getsockopt (void *ctx, int level, int optname, void *optval,
+-			     int optlen)
+-int __builtin_bpf_helper_sock_ops_cb_flags_set (void *ctx, int flags)
+-int __builtin_bpf_helper_sk_redirect_map (void *ctx, void *map, int key, int flags)
+-int __builtin_bpf_helper_sk_redirect_hash (void *ctx, void *map, void *key, int flags)
+-int __builtin_bpf_helper_sock_map_update (void *map, void *key, void *value,
+-				  unsigned long long flags)
+-int __builtin_bpf_helper_sock_hash_update (void *map, void *key, void *value,
+-				   unsigned long long flags)
+-int __builtin_bpf_helper_perf_event_read_value (void *map, unsigned long long flags,
+-					void *buf, unsigned int buf_size)
+-int __builtin_bpf_helper_perf_prog_read_value (void *ctx, void *buf,
+-				       unsigned int buf_size)
+-
+-int __builtin_bpf_helper_override_return (void *ctx, unsigned long rc)
+-int __builtin_bpf_helper_msg_redirect_map (void *ctx, void *map, int key, int flags)
+-int __builtin_bpf_helper_msg_redirect_hash (void *ctx,
+-				    void *map, void *key, int flags)
+-int __builtin_bpf_helper_msg_apply_bytes (void *ctx, int len)
+-int __builtin_bpf_helper_msg_cork_bytes (void *ctx, int len)
+-int __builtin_bpf_helper_msg_pull_data (void *ctx, int start, int end, int flags)
+-int __builtin_bpf_helper_msg_push_data (void *ctx, int start, int end, int flags)
+-int __builtin_bpf_helper_msg_pop_data (void *ctx, int start, int cut, int flags)
+-int __builtin_bpf_helper_bind (void *ctx, void *addr, int addr_len)
+-int __builtin_bpf_helper_xdp_adjust_tail (void *ctx, int offset)
+-int __builtin_bpf_helper_sk_select_reuseport (void *ctx, void *map, void *key, __u32 flags)
+-int __builtin_bpf_helper_get_stack (void *ctx, void *buf, int size, int flags)
+-int __builtin_bpf_helper_fib_lookup (void *ctx, struct bpf_fib_lookup *params,
+-			     int plen, __u32 flags)
+-
+-int __builtin_bpf_helper_lwt_push_encap (void *ctx, unsigned int type, void *hdr,
+-				 unsigned int len)
+-int __builtin_bpf_helper_lwt_seg6_store_bytes (void *ctx, unsigned int offset,
+-				       void *from, unsigned int len)
+-int __builtin_bpf_helper_lwt_seg6_action (void *ctx, unsigned int action, void *param,
+-				  unsigned int param_len)
+-int __builtin_bpf_helper_lwt_seg6_adjust_srh (void *ctx, unsigned int offset,
+-				      unsigned int len)
+-int __builtin_bpf_helper_rc_repeat (void *ctx)
+-int __builtin_bpf_helper_rc_keydown (void *ctx, unsigned int protocol,
+-			     unsigned long long scancode, unsigned int toggle)
+-static unsigned long long __builtin_bpf_helper_get_current_cgroup_id (void)
+-static void *__builtin_bpf_helper_get_local_storage (void *map, unsigned long long flags)
+-static struct bpf_sock *__builtin_bpf_helper_sk_lookup_tcp (void *ctx, void *tuple, int size, unsigned long long netns_id, unsigned long long flags)
+-static struct bpf_sock *__builtin_bpf_helper_sk_lookup_udp (void *ctx, void *tuple, int size, unsigned long long netns_id, unsigned long long flags)
+-int __builtin_bpf_helper_sk_release (struct bpf_sock *sk)
+-int __builtin_bpf_helper_rc_pointer_rel (void *ctx, int rel_x, int rel_y)
+-static void __builtin_bpf_helper_spin_lock (struct bpf_spin_lock *lock)
+-static void __builtin_bpf_helper_spin_unlock (struct bpf_spin_lock *lock)
+-
+-static struct bpf_sock *__builtin_bpf_helper_sk_fullsock (struct bpf_sock *sk)
+-static struct bpf_tcp_sock *__builtin_bpf_helper_tcp_sock (struct bpf_sock *sk)
+-static struct bpf_sock *__builtin_bpf_helper_get_listener_sock (struct bpf_sock *sk)
+-
+-int __builtin_bpf_helper_l3_csum_replace (void *ctx, int off, int from, int to, int flags)
+-int __builtin_bpf_helper_l4_csum_replace (void *ctx, int off, int from, int to, int flags)
+-int __builtin_bpf_helper_csum_diff (void *from, int from_size, void *to, int to_size, int seed)
+-
+-static unsigned int __builtin_bpf_helper_get_cgroup_classid (void *ctx)
+-static unsigned int __builtin_bpf_helper_get_route_realm (void *ctx)
+-static unsigned int __builtin_bpf_helper_get_hash_recalc (void *ctx)
+-static unsigned long long __builtin_bpf_helper_get_current_task (void *ctx)
+-
+-static long long __builtin_bpf_helper_csum_update (void *ctx, __u32 csum)
+-static void __builtin_bpf_helper_set_hash_invalid (void *ctx)
+-int __builtin_bpf_helper_get_numa_node_id (void)
+-int __builtin_bpf_helper_probe_read_str (void *ctx, __u32 size,
+-				 const void *unsafe_ptr)
+-static unsigned int __builtin_bpf_helper_get_socket_uid (void *ctx)
+-static unsigned int __builtin_bpf_helper_set_hash (void *ctx, __u32 hash)
+-@end smallexample
+-
+-
+ @node FR-V Built-in Functions
+ @subsection FR-V Built-in Functions
+ 
+@@ -21092,7 +20959,7 @@ void __builtin_mma_assemble_pair (__vector_pair *, vec_t, vec_t);
+ void __builtin_mma_disassemble_pair (void *, __vector_pair *);
+ 
+ vec_t __builtin_vsx_xvcvspbf16 (vec_t);
+-vec_t __builtin_vsx_xvcvbf16sp (vec_t);
++vec_t __builtin_vsx_xvcvbf16spn (vec_t);
+ @end smallexample
+ 
+ @node RX Built-in Functions
+--- a/src/gcc/doc/invoke.texi
++++ b/src/gcc/doc/invoke.texi
+@@ -551,11 +551,12 @@ Objective-C and Objective-C++ Dialects}.
+ -fprofile-dir=@var{path}  -fprofile-generate  -fprofile-generate=@var{path} @gol
+ -fprofile-note=@var{path} -fprofile-prefix-path=@var{path} @gol
+ -fprofile-update=@var{method} -fprofile-filter-files=@var{regex} @gol
+--fprofile-exclude-files=@var{regex} -fprofile-reproducibility @gol
++-fprofile-exclude-files=@var{regex} @gol
++-fprofile-reproducible=@r{[}multithreaded@r{|}parallel-runs@r{|}serial@r{]} @gol
+ -fsanitize=@var{style}  -fsanitize-recover  -fsanitize-recover=@var{style} @gol
+ -fasan-shadow-offset=@var{number}  -fsanitize-sections=@var{s1},@var{s2},... @gol
+ -fsanitize-undefined-trap-on-error  -fbounds-check @gol
+--fcf-protection=@r{[}full@r{|}branch@r{|}return@r{|}none@r{]} @gol
++-fcf-protection=@r{[}full@r{|}branch@r{|}return@r{|}none@r{|}check@r{]} @gol
+ -fstack-protector  -fstack-protector-all  -fstack-protector-strong @gol
+ -fstack-protector-explicit  -fstack-check @gol
+ -fstack-limit-register=@var{reg}  -fstack-limit-symbol=@var{sym} @gol
+@@ -696,6 +697,7 @@ Objective-C and Objective-C++ Dialects}.
+ -msign-return-address=@var{scope} @gol
+ -mbranch-protection=@var{none}|@var{standard}|@var{pac-ret}[+@var{leaf}
+ +@var{b-key}]|@var{bti} @gol
++-mharden-sls=@var{opts} @gol
+ -march=@var{name}  -mcpu=@var{name}  -mtune=@var{name}  @gol
+ -moverride=@var{string}  -mverbose-cost-dump @gol
+ -mstack-protector-guard=@var{guard} -mstack-protector-guard-reg=@var{sysreg} @gol
+@@ -862,7 +864,7 @@ Objective-C and Objective-C++ Dialects}.
+ 
+ @emph{eBPF Options}
+ @gccoptlist{-mbig-endian -mlittle-endian -mkernel=@var{version}
+--mframe-limit=@var{bytes}}
++-mframe-limit=@var{bytes} -mxbpf}
+ 
+ @emph{FR30 Options}
+ @gccoptlist{-msmall-model  -mno-lsim}
+@@ -13478,14 +13480,14 @@ all the regular expressions (separated by a semi-colon).
+ For example, @option{-fprofile-exclude-files=/usr/*} will prevent instrumentation
+ of all files that are located in @file{/usr/} folder.
+ 
+-@item -fprofile-reproducible
++@item -fprofile-reproducible=@r{[}multithreaded@r{|}parallel-runs@r{|}serial@r{]}
+ @opindex fprofile-reproducible
+ Control level of reproducibility of profile gathered by
+ @code{-fprofile-generate}.  This makes it possible to rebuild program
+ with same outcome which is useful, for example, for distribution
+ packages.
+ 
+-With @option{-fprofile-reproducibility=serial} the profile gathered by
++With @option{-fprofile-reproducible=serial} the profile gathered by
+ @option{-fprofile-generate} is reproducible provided the trained program
+ behaves the same at each invocation of the train run, it is not
+ multi-threaded and profile data streaming is always done in the same
+@@ -13500,7 +13502,7 @@ Such non-reproducible part of programs may be annotated by
+ @option{-l} can be used to dump gathered data and verify that they are
+ indeed reproducible.
+ 
+-With @option{-fprofile-reproducibility=parallel-runs} collected profile
++With @option{-fprofile-reproducible=parallel-runs} collected profile
+ stays reproducible regardless the order of streaming of the data into
+ gcda files.  This setting makes it possible to run multiple instances of
+ instrumented program in parallel (such as with @code{make -j}). This
+@@ -13831,7 +13833,7 @@ operand constant, @code{__sanitizer_cov_trace_cmpf} or
+ @code{__sanitizer_cov_trace_cmpd} for float or double comparisons and
+ @code{__sanitizer_cov_trace_switch} for switch statements.
+ 
+-@item -fcf-protection=@r{[}full@r{|}branch@r{|}return@r{|}none@r{]}
++@item -fcf-protection=@r{[}full@r{|}branch@r{|}return@r{|}none@r{|}check@r{]}
+ @opindex fcf-protection
+ Enable code instrumentation of control-flow transfers to increase
+ program security by checking that target addresses of control-flow
+@@ -13849,6 +13851,11 @@ function.  The value @code{full} is an alias for specifying both
+ @code{branch} and @code{return}. The value @code{none} turns off
+ instrumentation.
+ 
++The value @code{check} is used for the final link with link-time
++optimization (LTO).  An error is issued if LTO object files are
++compiled with different @option{-fcf-protection} values.  The
++value @code{check} is ignored at the compile time.
++
+ The macro @code{__CET__} is defined when @option{-fcf-protection} is
+ used.  The first bit of @code{__CET__} is set to 1 for the value
+ @code{branch} and the second bit of @code{__CET__} is set to 1 for
+@@ -16969,13 +16976,14 @@ performance of the code.  Permissible values for this option are:
+ @samp{cortex-a57}, @samp{cortex-a72}, @samp{cortex-a73}, @samp{cortex-a75},
+ @samp{cortex-a76}, @samp{cortex-a76ae}, @samp{cortex-a77},
+ @samp{cortex-a65}, @samp{cortex-a65ae}, @samp{cortex-a34},
+-@samp{ares}, @samp{exynos-m1}, @samp{emag}, @samp{falkor},
+-@samp{neoverse-e1},@samp{neoverse-n1},@samp{qdf24xx}, @samp{saphira},
+-@samp{phecda}, @samp{xgene1}, @samp{vulcan}, @samp{octeontx},
++@samp{ares}, @samp{exynos-m1}, @samp{emag}, @samp{falkor}, @samp{neoverse-e1},
++@samp{neoverse-n1}, @samp{neoverse-n2}, @samp{neoverse-v1}, @samp{qdf24xx},
++@samp{saphira}, @samp{phecda}, @samp{xgene1}, @samp{vulcan}, @samp{octeontx},
+ @samp{octeontx81},  @samp{octeontx83},
+ @samp{octeontx2}, @samp{octeontx2t98}, @samp{octeontx2t96}
+ @samp{octeontx2t93}, @samp{octeontx2f95}, @samp{octeontx2f95n},
+-@samp{octeontx2f95mm}
++@samp{octeontx2f95mm},
++@samp{a64fx},
+ @samp{thunderx}, @samp{thunderxt88},
+ @samp{thunderxt88p1}, @samp{thunderxt81}, @samp{tsv110},
+ @samp{thunderxt83}, @samp{thunderx2t99}, @samp{thunderx3t110}, @samp{zeus},
+@@ -17065,6 +17073,17 @@ functions.  The optional argument @samp{b-key} can be used to sign the functions
+ with the B-key instead of the A-key.
+ @samp{bti} turns on branch target identification mechanism.
+ 
++@item -mharden-sls=@var{opts}
++@opindex mharden-sls
++Enable compiler hardening against straight line speculation (SLS).
++@var{opts} is a comma-separated list of the following options:
++@table @samp
++@item retbr
++@item blr
++@end table
++In addition, @samp{-mharden-sls=all} enables all SLS hardening while
++@samp{-mharden-sls=none} disables all SLS hardening.
++
+ @item -msve-vector-bits=@var{bits}
+ @opindex msve-vector-bits
+ Specify the number of bits in an SVE vector register.  This option only has
+@@ -18805,9 +18824,9 @@ Permissible names are: @samp{arm7tdmi}, @samp{arm7tdmi-s}, @samp{arm710t},
+ @samp{cortex-m35p}, @samp{cortex-m55},
+ @samp{cortex-m1.small-multiply}, @samp{cortex-m0.small-multiply},
+ @samp{cortex-m0plus.small-multiply}, @samp{exynos-m1}, @samp{marvell-pj4},
+-@samp{neoverse-n1}, @samp{xscale}, @samp{iwmmxt}, @samp{iwmmxt2},
+-@samp{ep9312}, @samp{fa526}, @samp{fa626}, @samp{fa606te}, @samp{fa626te},
+-@samp{fmp626}, @samp{fa726te}, @samp{xgene1}.
++@samp{neoverse-n1}, @samp{neoverse-n2}, @samp{neoverse-v1}, @samp{xscale},
++@samp{iwmmxt}, @samp{iwmmxt2}, @samp{ep9312}, @samp{fa526}, @samp{fa626},
++@samp{fa606te}, @samp{fa626te}, @samp{fmp626}, @samp{fa726te}, @samp{xgene1}.
+ 
+ Additionally, this option can specify that GCC should tune the performance
+ of the code for a big.LITTLE system.  Permissible names are:
+@@ -19197,7 +19216,7 @@ is only available when generating non-pic code for M-profile targets.
+ @opindex mcmse
+ Generate secure code as per the "ARMv8-M Security Extensions: Requirements on
+ Development Tools Engineering Specification", which can be found on
+-@url{http://infocenter.arm.com/help/topic/com.arm.doc.ecm0359818/ECM0359818_armv8m_security_extensions_reqs_on_dev_tools_1_0.pdf}.
++@url{https://developer.arm.com/documentation/ecm0359818/latest/}.
+ 
+ @item -mfdpic
+ @itemx -mno-fdpic
+@@ -21032,6 +21051,14 @@ Generate code for a big-endian target.
+ @item -mlittle-endian
+ @opindex mlittle-endian
+ Generate code for a little-endian target.  This is the default.
++
++@item -mxbpf
++Generate code for an expanded version of BPF, which relaxes some of
++the restrictions imposed by the BPF architecture:
++@itemize @minus
++@item Save and restore callee-saved registers at function entry and
++exit, respectively.
++@end itemize
+ @end table
+ 
+ @node FR30 Options
+@@ -27019,7 +27046,7 @@ system representing a certain processor type.  Possible values for
+ @var{cpu-type} are @samp{z900}/@samp{arch5}, @samp{z990}/@samp{arch6},
+ @samp{z9-109}, @samp{z9-ec}/@samp{arch7}, @samp{z10}/@samp{arch8},
+ @samp{z196}/@samp{arch9}, @samp{zEC12}, @samp{z13}/@samp{arch11},
+-@samp{z14}/@samp{arch12}, and @samp{native}.
++@samp{z14}/@samp{arch12}, @samp{z15}/@samp{arch13}, and @samp{native}.
+ 
+ The default is @option{-march=z900}.
+ 
+--- a/src/gcc/doc/sourcebuild.texi
++++ b/src/gcc/doc/sourcebuild.texi
+@@ -1244,6 +1244,18 @@ This DejaGnu directive compares @var{regexp} to the combined output
+ that the test executable writes to @file{stdout} and @file{stderr}.
+ @end table
+ 
++@subsubsection Specify environment variables for a test
++
++@table @code
++@item @{ dg-set-compiler-env-var @var{var_name} "@var{var_value}" @}
++Specify that the environment variable @var{var_name} needs to be set
++to @var{var_value} before invoking the compiler on the test file.
++
++@item @{ dg-set-target-env-var @var{var_name} "@var{var_value}" @}
++Specify that the environment variable @var{var_name} needs to be set
++to @var{var_value} before execution of the program created by the test.
++@end table
++
+ @subsubsection Specify additional files for a test
+ 
+ @table @code
+@@ -2030,6 +2042,9 @@ whether it does so by default).
+ @itemx aarch64_sve2048_hw
+ Like @code{aarch64_sve_hw}, but also test for an exact hardware vector length.
+ 
++@item aarch64_fjcvtzs_hw
++AArch64 target that is able to generate and execute armv8.3-a FJCVTZS
++instruction.
+ @end table
+ 
+ @subsubsection MIPS-specific attributes
+--- a/src/gcc/fortran/intrinsic.texi
++++ b/src/gcc/fortran/intrinsic.texi
+@@ -6154,7 +6154,8 @@ END PROGRAM
+ @item @emph{Description}:
+ Determines the location of the element in the array with the value
+ given in the @var{VALUE} argument, or, if the @var{DIM} argument is
+-supplied, determines the locations of the maximum element along each
++supplied, determines the locations of the elements equal to the
++@var{VALUE} argument element along each
+ row of the array in the @var{DIM} direction.  If @var{MASK} is
+ present, only the elements for which @var{MASK} is @code{.TRUE.} are
+ considered.  If more than one element in the array has the value

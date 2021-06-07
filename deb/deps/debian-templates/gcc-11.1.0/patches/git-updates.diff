@@ -1,0 +1,7 @@
+# DP: updates from the 10 branch upto 20201111 (46b6825161db).
+
+LANG=C git diff --no-renames --src-prefix=a/src/ --dst-prefix=b/src/ \
+	ee5c3db6c5b2c3332912fb4c9cfa2864569ebd9a 46b6825161db9c644231c25b736fdf5a15cd16f3 \
+	| awk '/^diff .*\.texi/ {skip=1; next} /^diff / { skip=0 } skip==0' \
+	| grep -v -E '^(diff|index)'
+
