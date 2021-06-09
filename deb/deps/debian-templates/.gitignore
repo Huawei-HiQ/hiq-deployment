@@ -4,6 +4,7 @@
 !cmake-3.18.4/
 !cycler-0.10.0/
 !cython-0.29.21/
+!debhelper-12.10/
 !decorator-4.4.2/
 !h5py-2.9.0/
 !idna-2.10/
