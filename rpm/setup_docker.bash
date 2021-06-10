@@ -1,6 +1,6 @@
 #! /bin/bash
 
-os_name=$(cat /etc/os-release | grep ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
+os_name=$(cat /etc/os-release | grep ^ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
 os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 
 YUM=yum
@@ -36,6 +36,52 @@ elif [ "$os_name" == "fedora" ]; then
     dnf update -y
     dnf install -y dnf-utils
     dnf copr enable -y huaweihiq/Huawei-HiQ
+elif [ "$os_name" == "openmandriva" ]; then
+    YUM=dnf
+    dnf update -y
+    dnf install -y dnf-utils
+    dnf copr enable -y huaweihiq/Huawei-HiQ
+
+    dnf install -y python3-pip wget
+    python3 -m pip install python-rpm-spec
+
+	cat << EOF > /usr/local/bin/get_sources
+#! /usr/bin/python3
+
+import subprocess
+import sys
+from pyrpm.spec import Spec, replace_macros
+
+spec = Spec.from_file(sys.argv[1])
+
+for idx, source in enumerate(spec.sources):
+    if 'pypi_source' in source:
+        data = subprocess.check_output(
+            ('rpmspec', '--parse', sys.argv[1])).decode()
+        sources = [line for line in data.split('\n') if 'Source' in line]
+        for source in sources:
+            print(source.split()[-1])
+    else:
+        print(replace_macros(source, spec))
+
+for patch in spec.patches:
+    print(replace_macros(patch, spec))
+EOF
+	cat << \EOF > /usr/local/bin/download_sources
+#! /bin/bash
+
+src_dir=$(rpmspec --eval '%_sourcedir')
+sources=$(get_sources "$@")
+mkdir -p $src_dir
+if [ -n "$sources" ]; then
+    for file in "$sources"; do
+    	wget -NP "$src_dir" $file
+    done
+fi
+EOF
+	chmod 755 /usr/local/bin/get_sources
+	chmod 755 /usr/local/bin/download_sources
+
 elif [ "$os_name" == "opensuse-leap" ]; then
     YUM=zypper
     if [[ "$os_ver" == "15.1" || "$os_ver" == "15.2" || "$os_ver" == "15.3" ]]; then

@@ -22,6 +22,9 @@ elif [ "$os_name" == "fedora" ]; then
 	build_and_install=()
     fi
     build+=(pubchempy openfermion jupyter-react)
+elif [ "$os_name" == "openmandriva" ]; then
+    build+=(mpi4py)
+    build+=(pubchempy openfermion pyscf jupyter-react)
 elif [ "$os_name" == "opensuse-leap" ]; then
     build+=(cmake)
     build_and_install=()

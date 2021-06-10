@@ -23,7 +23,7 @@ root=$HERE/deps
 
 source $HERE/scripts/functions.bash
 
-os_name=$(cat /etc/os-release | grep ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
+os_name=$(cat /etc/os-release | grep ^ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
 os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 arch_name=$(get_arch_name)
 

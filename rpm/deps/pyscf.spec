@@ -6,11 +6,16 @@
 %global blaslib flexiblas
 %global blasvar %{nil}
 %else
+%if 0%{?mdkver}
+%global blaslib blas
+%global blasvar %{nil}
+%else
 %global blaslib openblas
 %if 0%{?is_opensuse}
 %global blasvar _openmp
 %else
 %global blasvar o
+%endif
 %endif
 %endif
 
@@ -79,8 +84,13 @@ BuildRequires:  python3-setuptools
 # Fedora > 30 && CentOS 8
 BuildRequires:  python3dist(setuptools)
 %endif
+%if 0%{?mdkver}
+BuildRequires:  clang
+BuildRequires:  glibc-devel
+%else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  cmake
 %endif
 
@@ -188,6 +198,10 @@ export PYTHONPATH=$PWD
 %license LICENSE
 %doc CHANGELOG CONTRIBUTING.md FEATURES NOTICE README.md
 %{python3_sitearch}/pyscf/
+%if 0%{?mdkver}
+%exclude /usr/lib/debug/
+%exclude /usr/src/debug/
+%endif
 
 %changelog
 * Sun Aug 16 2020 Iñaki Úcar <iucar@fedoraproject.org> - 1.7.4-2

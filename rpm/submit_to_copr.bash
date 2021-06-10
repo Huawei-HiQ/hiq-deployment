@@ -23,7 +23,7 @@ HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 dry_run=0
 srpms_root=$HERE/srpms
 
-os_name=$(cat /etc/os-release | grep ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
+os_name=$(cat /etc/os-release | grep ^ID= | sort | head -n1 | cut -d '=' -f2 | tr -d '"')
 os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 
 if [ "$os_name" == "centos" ]; then
@@ -42,6 +42,8 @@ elif [ "$os_name" == "fedora" ]; then
     if ! rpm -q copr-cli > /dev/null; then
 	dnf install -y copr-cli
     fi
+elif [ "$os_name" == "openmandriva" ]; then
+    dnf install -y copr-cli
 else
     echo "Unsupported distribution found: $os_name"
     exit 1
