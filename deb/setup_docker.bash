@@ -33,6 +33,7 @@ apt upgrade -y
 apt dist-upgrade -y
 
 apt install -y curl software-properties-common
+add-apt-repository -y -u ppa:huawei-hiq/base-packages
 add-apt-repository -y -u ppa:huawei-hiq/ppa
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9071AE544115FB0C
 
