@@ -1,4 +1,4 @@
-ppa_rev=1
+ppa_rev=2
 
 # ==============================================================================
 
@@ -30,12 +30,6 @@ function pkg_prepare()
 10
 EOF
 	sed -i -e 's/debhelper-compat (= 13)/debhelper/' \
-	    -e '/libboost-dev/d' \
-	    -e '/libeigen3-dev/d' \
-	    -e '/python3-dev/d' \
-	    -e '/python3-numpy/d' \
-	    -e '/python3-pytest/d' \
-	    -e '/python3-scipy/d' \
 	    $pkg_dir/debian/control
 	sed -i -e '/export PYBUILD_NAME=pybind11/a export DEB_BUILD_OPTIONS+=nocheck' \
 	    $pkg_dir/debian/rules

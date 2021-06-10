@@ -1,0 +1,18 @@
+debian/images
+-------------
+
+To avoid privacy breaches, badge image files in docs have been predownloaded
+and stored in debian/images, for installation in html/_images.
+
+pybind11_conda.svg                  https://img.shields.io/conda/vn/conda-forge/pybind11.svg
+pybind11_pypi.svg                   https://img.shields.io/pypi/v/pybind11.svg
+pybind11_pyversions.svg             https://img.shields.io/pypi/pyversions/pybind11.svg
+pybind11_lastest.svg                https://repology.org/badge/latest-versions/python:pybind11.svg
+pybind11-logo.png                   https://github.com/pybind/pybind11/raw/master/docs/pybind11-logo.png
+build_passing_riaj54pn4h08xy40.svg  https://ci.appveyor.com/api/projects/status/riaj54pn4h08xy40?svg=true
+badge.svg                           https://github.com/pybind/pybind11/workflows/ci/badge.svg
+gitter.svg                          https://img.shields.io/gitter/room/gitterhq/gitter.svg
+docspassing.svg                     https://readthedocs.org/projects/pybind11/badge?version=latest
+docs-stable.svg                     https://img.shields.io/badge/docs-stable-blue
+
+The images can be refreshed using get_images.sh.

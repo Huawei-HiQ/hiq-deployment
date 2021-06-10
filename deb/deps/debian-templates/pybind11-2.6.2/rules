@@ -1,0 +1,64 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# Prevent install of headers by setup.py.
+export PYBIND11_USE_CMAKE=1
+
+export PYBUILD_NAME=pybind11
+
+CONFIGURE_ARGS=-DPYBIND11_INSTALL:BOOL=ON
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+CONFIGURE_ARGS+=-DPYBIND11_TEST:BOOL=ON \
+	-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/$(shell py3versions -d)
+else
+CONFIGURE_ARGS+=-DPYBIND11_TEST:BOOL=OFF
+endif
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=cmake
+
+override_dh_auto_clean:
+	dh_auto_clean
+	dh_auto_clean --buildsystem=pybuild
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
+	$(MAKE) -C docs clean
+endif
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(CONFIGURE_ARGS)
+	dh_auto_configure --buildsystem=pybuild
+
+override_dh_auto_build: export http_proxy=127.0.0.1:9
+override_dh_auto_build: export https_proxy=127.0.0.1:9
+override_dh_auto_build:
+	dh_auto_build
+	dh_auto_build --buildsystem=pybuild
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
+	$(MAKE) -C docs html
+endif
+
+override_dh_auto_install:
+	dh_auto_install
+	dh_auto_install --buildsystem=pybuild
+
+override_dh_installchangelogs:
+	dh_installchangelogs docs/changelog.rst
+
+override_dh_installdocs:
+	dh_installdocs
+	cp debian/images/* debian/pybind11-doc/usr/share/doc/pybind11-doc/html/_images
+	sed "s|src=\"https://github.com/pybind/pybind11/raw/master/docs/pybind11-logo.png|src=\"_images/pybind11-logo.png|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://ci.appveyor.com/api/projects/status/riaj54pn4h08xy40?svg=true|src=\"_images/build_passing_riaj54pn4h08xy40.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://github.com/pybind/pybind11/workflows/CI/badge.svg|src=\"_images/badge.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://img.shields.io/gitter/room/gitterHQ/gitter.svg|src=\"_images/gitter.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://readthedocs.org/projects/pybind11/badge?version=latest|src=\"_images/docspassing.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://img.shields.io/badge/docs-stable-blue|src=\"_images/docs-stable.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://img.shields.io/conda/vn/conda-forge/pybind11.svg|src=\"_images/pybind11_conda.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://img.shields.io/pypi/v/pybind11.svg|src=\"_images/pybind11_pypi.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://img.shields.io/pypi/pyversions/pybind11.svg|src=\"_images/pybind11_pyversions.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+	sed "s|src=\"https://repology.org/badge/latest-versions/python:pybind11.svg|src=\"_images/pybind11_lastest.svg|g" -i debian/pybind11-doc/usr/share/doc/pybind11-doc/html/*.html
+
+get-orig-source:
+	uscan --download-current-version --force-download --no-symlink
