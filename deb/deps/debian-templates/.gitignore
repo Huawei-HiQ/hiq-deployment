@@ -19,6 +19,7 @@
 !libuv1-1.18.0/
 !libxc-4.3.4/
 !libxcfun-2.1.0/
+!libzstd-1.4.4/
 !matplotlib-3.0.2/
 !mpi4py-3.0.3/
 !mpmath-1.1.0/
