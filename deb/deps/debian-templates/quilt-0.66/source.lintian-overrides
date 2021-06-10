@@ -1,0 +1,8 @@
+# handled via diversions
+binutils source: binaries-have-file-conflict
+
+# wrong positive
+binutils source: license-problem-gfdl-invariants
+
+# yes, we know what we are doing
+debian-rules-sets-dpkg-architecture-variable

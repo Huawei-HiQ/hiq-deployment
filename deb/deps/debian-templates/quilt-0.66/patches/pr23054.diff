@@ -1,0 +1,144 @@
+# DP: Fix PR binutils/23054, memory corruption in as.
+
+gas/
+
+2018-04-16  Nick Clifton  <nickc@redhat.com>
+
+	PR 23054
+	* cond.c (s_ifsef): Replace use of obstack_copy with obstack_alloc
+	followed by memcpy.
+	(s_if, s_ifb, s_ifc, s_ifeqs): Likewise.
+	* obj-elf.c (elf_adjust_symtab): Check for local symbols before
+	attempting to dereference the sy_next field of a symbol.
+	* stabs.c (get_stab_string_offset): Fail if there is no string
+	following the stab directive.
+
+diff --git a/gas/cond.c b/gas/cond.c
+index b74bde7436..71680a5abc 100644
+--- a/gas/cond.c
++++ b/gas/cond.c
+@@ -28,7 +28,8 @@
+    scanned.  */
+ struct obstack cond_obstack;
+ 
+-struct file_line {
++struct file_line
++{
+   const char *file;
+   unsigned int line;
+ };
+@@ -36,7 +37,8 @@ struct file_line {
+ /* We push one of these structures for each .if, and pop it at the
+    .endif.  */
+ 
+-struct conditional_frame {
++struct conditional_frame
++{
+   /* The source file & line number of the "if".  */
+   struct file_line if_file_line;
+   /* The source file & line of the "else".  */
+@@ -108,9 +110,9 @@ s_ifdef (int test_defined)
+       cframe.ignoring = ! (test_defined ^ is_defined);
+     }
+ 
+-  current_cframe = ((struct conditional_frame *)
+-		    obstack_copy (&cond_obstack, &cframe,
+-				  sizeof (cframe)));
++  current_cframe =
++    (struct conditional_frame *) obstack_alloc (&cond_obstack, sizeof cframe);
++  memcpy (current_cframe, &cframe, sizeof cframe);
+ 
+   if (LISTING_SKIP_COND ()
+       && cframe.ignoring
+@@ -166,8 +168,9 @@ s_if (int arg)
+      using an undefined result.  No big deal.  */
+   initialize_cframe (&cframe);
+   cframe.ignoring = cframe.dead_tree || ! t;
+-  current_cframe = ((struct conditional_frame *)
+-		    obstack_copy (&cond_obstack, &cframe, sizeof (cframe)));
++  current_cframe =
++    (struct conditional_frame *) obstack_alloc (&cond_obstack, sizeof cframe);
++  memcpy (current_cframe, & cframe, sizeof cframe);
+ 
+   if (LISTING_SKIP_COND ()
+       && cframe.ignoring
+@@ -202,9 +205,9 @@ s_ifb (int test_blank)
+       cframe.ignoring = (test_blank == !is_eol);
+     }
+ 
+-  current_cframe = ((struct conditional_frame *)
+-		    obstack_copy (&cond_obstack, &cframe,
+-				  sizeof (cframe)));
++  current_cframe =
++    (struct conditional_frame *) obstack_alloc (&cond_obstack, sizeof cframe);
++  memcpy (current_cframe, &cframe, sizeof cframe);
+ 
+   if (LISTING_SKIP_COND ()
+       && cframe.ignoring
+@@ -283,10 +286,11 @@ s_ifc (int arg)
+ 
+   initialize_cframe (&cframe);
+   cframe.ignoring = cframe.dead_tree || ! (res ^ arg);
+-  current_cframe = ((struct conditional_frame *)
+-		    obstack_copy (&cond_obstack, &cframe, sizeof (cframe)));
+-
+-  if (LISTING_SKIP_COND ()
++  current_cframe =
++    (struct conditional_frame *) obstack_alloc (&cond_obstack, sizeof cframe);
++  memcpy (current_cframe, &cframe, sizeof cframe);
++  
++ if (LISTING_SKIP_COND ()
+       && cframe.ignoring
+       && (cframe.previous_cframe == NULL
+ 	  || ! cframe.previous_cframe->ignoring))
+@@ -477,8 +481,9 @@ s_ifeqs (int arg)
+ 
+   initialize_cframe (&cframe);
+   cframe.ignoring = cframe.dead_tree || ! (res ^ arg);
+-  current_cframe = ((struct conditional_frame *)
+-		    obstack_copy (&cond_obstack, &cframe, sizeof (cframe)));
++  current_cframe =
++    (struct conditional_frame *) obstack_alloc (&cond_obstack, sizeof cframe);
++  memcpy (current_cframe, &cframe, sizeof cframe);
+ 
+   if (LISTING_SKIP_COND ()
+       && cframe.ignoring
+@@ -548,6 +553,7 @@ cond_finish_check (int nest)
+ 	as_bad (_("end of macro inside conditional"));
+       else
+ 	as_bad (_("end of file inside conditional"));
++
+       as_bad_where (current_cframe->if_file_line.file,
+ 		    current_cframe->if_file_line.line,
+ 		    _("here is the start of the unterminated conditional"));
+diff --git a/gas/config/obj-elf.c b/gas/config/obj-elf.c
+index 38b79f8e82..5870447d37 100644
+--- a/gas/config/obj-elf.c
++++ b/gas/config/obj-elf.c
+@@ -2471,7 +2471,8 @@ elf_adjust_symtab (void)
+       sy = symbol_find_exact (group_name);
+       if (!sy
+ 	  || (sy != symbol_lastP
+-	      && (sy->sy_next == NULL
++	      && (sy->sy_flags.sy_local_symbol
++		  || sy->sy_next == NULL
+ 		  || sy->sy_next->sy_previous != sy)))
+ 	{
+ 	  /* Create the symbol now.  */
+diff --git a/gas/stabs.c b/gas/stabs.c
+index 73d1361423..d82de31543 100644
+--- a/gas/stabs.c
++++ b/gas/stabs.c
+@@ -202,6 +202,12 @@ s_stab_generic (int          what,
+       int length;
+ 
+       string = demand_copy_C_string (&length);
++      if (string == NULL)
++	{
++	  as_warn (_(".stab%c: missing string"), what);
++	  ignore_rest_of_line ();
++	  return;
++	}
+       /* FIXME: We should probably find some other temporary storage
+ 	 for string, rather than leaking memory if someone else
+ 	 happens to use the notes obstack.  */

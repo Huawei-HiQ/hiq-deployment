@@ -1,0 +1,17 @@
+Description: Fix intermittently failing test
+ Due to an exchanged output order of stdout and stderr,
+ the test sometimes fails.
+Author: Simon McVittie <smcv@debian.org>
+Bug-Debian: https://bugs.debian.org/913246
+
+--- a/test/faildiff.test
++++ b/test/faildiff.test
+@@ -27,7 +27,7 @@
+ 	> File test.bin added to patch %{P}test.diff
+ 
+ 	$ printf "\\003\\000\\001" > test.bin
+-	$ quilt diff -pab --no-index
++	$ quilt diff -pab --no-index 2>&1
+ 	>~ (Files|Binary files) a/test\.bin and b/test\.bin differ
+ 	> Diff failed on file 'test.bin', aborting
+ 	$ echo %{?}

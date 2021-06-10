@@ -1,0 +1,32 @@
+Description: Manpage typo
+--- a/quilt/header.in
++++ b/quilt/header.in
+@@ -29,7 +29,7 @@
+ Print or change the header of the topmost or specified patch.
+ 
+ -a, -r, -e
+-	Append to (-a) or replace (-r) the exiting patch header, or
++	Append to (-a) or replace (-r) the existing patch header, or
+ 	edit (-e) the header in \$EDITOR (%s). If none of these options is
+ 	given, print the patch header.
+ 
+--- a/doc/quilt.1.in
++++ b/doc/quilt.1.in
+@@ -161,7 +161,7 @@
+ well as the order in which it should be applied.
+ 
+ The .pc/ directory contains some metadata about the current state of
+-your patch serie. Changing its content is not advised. This directory
++your patch series. Changing its content is not advised. This directory
+ can usually be regenerated from the initial files and the
+ content of the patches/ directory (provided that all patches were
+ regenerated before the removal).
+@@ -208,7 +208,7 @@
+ You may also want to add the "-E" option if you have issues with quilt
+ not deleting empty files when you think it should. The documentation of
+ GNU patch says that "normally this option is unnecessary", but when patch
+-is in POSIX mode or if the patch format doesn't allow to distinguish
++is in POSIX mode or if the patch format doesn't allow one to distinguish
+ empty files from deleted files, patch deletes empty files only if the
+ -E option is given. Beware that when passing -E to patch, quilt will
+ no longer be able to deal with empty files, which is why using -E is

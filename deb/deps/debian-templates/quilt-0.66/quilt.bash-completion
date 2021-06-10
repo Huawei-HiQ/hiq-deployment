@@ -1,0 +1,2 @@
+# Install the upstream bash_completion script as "quilt"
+bash_completion quilt

@@ -1,0 +1,1 @@
+rm_conffile /etc/bash_completion.d/quilt 0.65-1~

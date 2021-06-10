@@ -1,0 +1,154 @@
+From 48390a9e113ca10fe1094f914127920c4722bdb6 Mon Sep 17 00:00:00 2001
+From: James Cowgill <james.cowgill@mips.com>
+Date: Thu, 1 Mar 2018 11:55:18 +0000
+Subject: [PATCHv3] [gold] PR22770: MIPS: Fix GOT page counter in multi-got links
+
+The record_got_page_entry function records and updates the maximum
+number of GOT page entries which may be required by an object. In the
+case where an existing GOT page entry was expanded, only the entry
+belonging to the master GOT would have its page count updated. This leaves
+the entry belonging to the object GOT with the num_pages count of 1 it
+was originally initialized with. Later on when GOTs are being merged in a
+multi-got link, this causes the value of entry->num_pages in
+add_got_page_entries to always be 1 and underestimates the number of pages
+required for the new entry. This in turn leads to an assertion failure in
+get_got_page_offset where we run out of pages.
+
+Fix by not inserting Got_page_entrys into the object's GOT at all and
+later on adding the total number of page entries recorded for the
+object's GOT into the new merged GOT. This is safe because
+got_page_entries_ is used for no other purpose in the object's GOT, and
+page_gotno_ for the object's GOT should already be incremented by the correct
+amount in record_got_page_entry. Remove Got_page_entry::num_pages which
+is now unused.
+
+gold/
+2018-03-01  James Cowgill  <james.cowgill@mips.com>
+
+	PR gold/22770
+	* mips.cc (Mips_got_info::record_got_page_entry): Don't insert
+	Got_page_entry for object's GOT.
+	(Mips_got_info::add_got_page_entries): Add all pages from from's GOT.
+	Rename to add_got_page_count.
+	(Got_page_entry): Remove num_pages.
+---
+ gold/mips.cc | 42 ++++++++----------------------------------
+ 1 file changed, 8 insertions(+), 34 deletions(-)
+
+diff --git a/gold/mips.cc b/gold/mips.cc
+index 543a23462f..b4de79b946 100644
+--- a/gold/mips.cc
++++ b/gold/mips.cc
+@@ -631,11 +631,11 @@ struct Got_page_range
+ struct Got_page_entry
+ {
+   Got_page_entry()
+-    : object(NULL), symndx(-1U), ranges(NULL), num_pages(0)
++    : object(NULL), symndx(-1U), ranges(NULL)
+   { }
+ 
+   Got_page_entry(Object* object_, unsigned int symndx_)
+-    : object(object_), symndx(symndx_), ranges(NULL), num_pages(0)
++    : object(object_), symndx(symndx_), ranges(NULL)
+   { }
+ 
+   // The input object that needs the GOT page entry.
+@@ -644,8 +644,6 @@ struct Got_page_entry
+   unsigned int symndx;
+   // The ranges for this page entry.
+   Got_page_range* ranges;
+-  // The maximum number of page entries needed for RANGES.
+-  unsigned int num_pages;
+ };
+ 
+ // Hash for Got_page_entry.
+@@ -775,7 +773,7 @@ class Mips_got_info
+ 
+   // Add FROM's GOT page entries.
+   void
+-  add_got_page_entries(Mips_got_info<size, big_endian>* from);
++  add_got_page_count(Mips_got_info<size, big_endian>* from);
+ 
+   // Return GOT size.
+   unsigned int
+@@ -928,7 +926,7 @@ class Mips_got_info
+   Global_got_entry_set global_got_symbols_;
+   // A hash table holding GOT entries.
+   Got_entry_set got_entries_;
+-  // A hash table of GOT page entries.
++  // A hash table of GOT page entries (only used in master GOT).
+   Got_page_entry_set got_page_entries_;
+   // The offset of first GOT page entry for this GOT.
+   unsigned int got_page_offset_start_;
+@@ -5794,14 +5792,8 @@ Mips_got_info<size, big_endian>::record_got_page_entry(
+   else
+     this->got_page_entries_.insert(entry);
+ 
+-  // Add the same entry to the OBJECT's GOT.
+-  Got_page_entry* entry2 = NULL;
++  // Get the object's GOT, but we don't need to insert an entry here.
+   Mips_got_info<size, big_endian>* g2 = object->get_or_create_got_info();
+-  if (g2->got_page_entries_.find(entry) == g2->got_page_entries_.end())
+-    {
+-      entry2 = new Got_page_entry(*entry);
+-      g2->got_page_entries_.insert(entry2);
+-    }
+ 
+   // Skip over ranges whose maximum extent cannot share a page entry
+   // with ADDEND.
+@@ -5821,9 +5813,6 @@ Mips_got_info<size, big_endian>::record_got_page_entry(
+       range->max_addend = addend;
+ 
+       *range_ptr = range;
+-      ++entry->num_pages;
+-      if (entry2 != NULL)
+-        ++entry2->num_pages;
+       ++this->page_gotno_;
+       ++g2->page_gotno_;
+       return;
+@@ -5851,9 +5840,6 @@ Mips_got_info<size, big_endian>::record_got_page_entry(
+   new_pages = range->get_max_pages();
+   if (old_pages != new_pages)
+     {
+-      entry->num_pages += new_pages - old_pages;
+-      if (entry2 != NULL)
+-        entry2->num_pages += new_pages - old_pages;
+       this->page_gotno_ += new_pages - old_pages;
+       g2->page_gotno_ += new_pages - old_pages;
+     }
+@@ -6353,22 +6339,10 @@ Mips_got_info<size, big_endian>::add_got_entries(
+ 
+ template<int size, bool big_endian>
+ void
+-Mips_got_info<size, big_endian>::add_got_page_entries(
++Mips_got_info<size, big_endian>::add_got_page_count(
+     Mips_got_info<size, big_endian>* from)
+ {
+-  for (typename Got_page_entry_set::iterator
+-       p = from->got_page_entries_.begin();
+-       p != from->got_page_entries_.end();
+-       ++p)
+-    {
+-      Got_page_entry* entry = *p;
+-      if (this->got_page_entries_.find(entry) == this->got_page_entries_.end())
+-        {
+-          Got_page_entry* entry2 = new Got_page_entry(*entry);
+-          this->got_page_entries_.insert(entry2);
+-          this->page_gotno_ += entry->num_pages;
+-        }
+-    }
++  this->page_gotno_ += from->page_gotno_;
+ }
+ 
+ // Mips_output_data_got methods.
+@@ -6569,7 +6543,7 @@ Mips_output_data_got<size, big_endian>::merge_got_with(
+ 
+   // Transfer the object's GOT information from FROM to TO.
+   to->add_got_entries(from);
+-  to->add_got_page_entries(from);
++  to->add_got_page_count(from);
+ 
+   // Record that OBJECT should use output GOT TO.
+   object->set_got_info(to);
+-- 
+2.16.2

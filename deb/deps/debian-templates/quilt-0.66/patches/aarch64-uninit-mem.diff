@@ -1,0 +1,31 @@
+opcodes/
+
+2018-05-01  Tamar Christina  <tamar.christina@arm.com>
+
+	* aarch64-dis.c (aarch64_opcode_decode): Moved memory clear code.
+
+ 
+diff --git a/opcodes/aarch64-dis.c b/opcodes/aarch64-dis.c
+index c63f595f68..e7bece9c1a 100644
+--- a/opcodes/aarch64-dis.c
++++ b/opcodes/aarch64-dis.c
+@@ -2733,6 +2733,9 @@ aarch64_opcode_decode (const aarch64_opcode *opcode, const aarch64_insn code,
+ 
+   assert (opcode && inst);
+ 
++  /* Clear inst.  */
++  memset (inst, '\0', sizeof (aarch64_inst));
++
+   /* Check the base opcode.  */
+   if ((code & opcode->mask) != (opcode->opcode & opcode->mask))
+     {
+@@ -2740,9 +2743,6 @@ aarch64_opcode_decode (const aarch64_opcode *opcode, const aarch64_insn code,
+       goto decode_fail;
+     }
+ 
+-  /* Clear inst.  */
+-  memset (inst, '\0', sizeof (aarch64_inst));
+-
+   inst->opcode = opcode;
+   inst->value = code;
+ 

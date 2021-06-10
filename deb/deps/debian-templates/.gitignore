@@ -33,6 +33,7 @@
 !pybind11-2.5.0/
 !pygments-2.3.1/
 !pyscf-1.7.4/
+!quilt-0.66/
 !requests-2.23.0+dfsg*/
 !scipy-1.4.1/
 !six-1.12.0/

@@ -1,0 +1,24 @@
+Description: verbose error message when the series file does not exist
+ patchfns.in(cat_series): Displays an error message when the $SERIES
+ file does not exist, and when run in verbose mode.
+Bug-Debian: https://bugs.debian.org/369908
+Upstream-status: submitted https://lists.nongnu.org/archive/html/quilt-dev/2020-03/msg00000.html
+
+---
+ quilt/scripts/patchfns.in |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: b/quilt/scripts/patchfns.in
+===================================================================
+--- a/quilt/scripts/patchfns.in
++++ b/quilt/scripts/patchfns.in
+@@ -358,6 +358,9 @@ cat_series()
+ 		sed -e '/^#/d' -e 's/^[ '$'\t'']*//' \
+ 		    -e 's/[ '$'\t''].*//' -e '/^$/d' "$SERIES"
+ 	else
++		if [ "$opt_verbose" ]; then
++			printf $"No series file found\n" >&2
++		fi
+ 		return 1
+ 	fi
+ }

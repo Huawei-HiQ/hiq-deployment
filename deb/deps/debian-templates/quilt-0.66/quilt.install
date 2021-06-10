@@ -1,0 +1,8 @@
+debian/deb3              usr/bin
+debian/dh_quilt_patch    usr/bin
+debian/dh_quilt_unpatch  usr/bin
+debian/dpatch2quilt      usr/bin
+debian/patchsys-quilt.mk usr/share/cdbs/1/rules
+debian/quilt.debbuild.mk usr/share/quilt
+debian/quilt.make        usr/share/quilt
+debian/quilt.pm          usr/share/perl5/Debian/Debhelper/Sequence

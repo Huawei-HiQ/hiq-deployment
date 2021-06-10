@@ -1,0 +1,9 @@
+Tests: build
+Depends: build-essential
+Restrictions: build-needed
+
+Tests: libc-link
+Depends: build-essential
+
+Tests: shlib-build
+Depends: build-essential

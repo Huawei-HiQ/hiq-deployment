@@ -1,0 +1,132 @@
+Description: Prevent GOT access rewrite for certain symbols.
+Author: Ilya Leoshkevich <iii@de.ibm.com>
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=18960
+Bug-Debian: http://bugs.debian.org/961736
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/binutils/+bug/1903814
+Applied-Upstream: https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=e6213e09ed0e
+Forwarded: not-needed
+Last-Update: 2020-11-23
+
+---
+diff --git a/bfd/elf64-s390.c b/bfd/elf64-s390.c
+index 7549971463..90aaa54995 100644
+--- a/bfd/elf64-s390.c
++++ b/bfd/elf64-s390.c
+@@ -2313,6 +2313,9 @@ elf_s390_relocate_section (bfd *output_bfd,
+ 			   && SYMBOL_REFERENCES_LOCAL (info, h))
+ 		       || resolved_to_zero)
+ 		{
++		  Elf_Internal_Sym *isym;
++		  asection *sym_sec;
++
+ 		  /* This is actually a static link, or it is a
+ 		     -Bsymbolic link and the symbol is defined
+ 		     locally, or the symbol was forced to be local
+@@ -2334,6 +2337,10 @@ elf_s390_relocate_section (bfd *output_bfd,
+ 		      h->got.offset |= 1;
+ 		    }
+ 
++		  /* When turning a GOT slot dereference into a direct
++		     reference using larl we have to make sure that
++		     the symbol is 1. properly aligned and 2. it is no
++		     ABS symbol or will become one.  */
+ 		  if ((h->def_regular
+ 		       && bfd_link_pic (info)
+ 		       && SYMBOL_REFERENCES_LOCAL (info, h))
+@@ -2348,8 +2355,17 @@ elf_s390_relocate_section (bfd *output_bfd,
+ 					      contents + rel->r_offset - 2)
+ 				  & 0xff00f000) == 0xe300c000
+ 			      && bfd_get_8 (input_bfd,
+-					    contents + rel->r_offset + 3) == 0x04)))
+-
++					    contents + rel->r_offset + 3) == 0x04))
++		      && (isym = bfd_sym_from_r_symndx (&htab->sym_cache,
++							input_bfd, r_symndx))
++		      && isym->st_shndx != SHN_ABS
++		      && h != htab->elf.hdynamic
++		      && h != htab->elf.hgot
++		      && h != htab->elf.hplt
++		      && !(isym->st_value & 1)
++		      && (sym_sec = bfd_section_from_elf_index (input_bfd,
++								isym->st_shndx))
++		      && sym_sec->alignment_power)
+ 		    {
+ 		      unsigned short new_insn =
+ 			(0xc000 | (bfd_get_8 (input_bfd,
+diff --git a/ld/testsuite/ld-s390/gotreloc-1.s b/ld/testsuite/ld-s390/gotreloc-1.s
+index b60d6c1381..0e1f6f7715 100644
+--- a/ld/testsuite/ld-s390/gotreloc-1.s
++++ b/ld/testsuite/ld-s390/gotreloc-1.s
+@@ -1,4 +1,4 @@
+-	.text
++.text
+ 	.globl foo
+ foo:
+ 	lgrl	%r1,bar@GOTENT
+@@ -6,6 +6,14 @@ foo:
+ 	lrl	%r1,bar@GOTENT
+ 	l	%r1,bar@GOT(%r12)
+ 	ly	%r1,bar@GOT(%r12)
++	lgrl	%r1,_GLOBAL_OFFSET_TABLE_@GOTENT
++	lgrl	%r1,misaligned_sym@GOTENT
+ 
++.data
+ .globl	bar
+-bar:	.long	0x123
++bar:	.quad	0x123
++
++.globl  misaligned_sym
++	.byte	1
++misaligned_sym:
++	.quad	42
+diff --git a/ld/testsuite/ld-s390/gotreloc-1.ver b/ld/testsuite/ld-s390/gotreloc-1.ver
+index 1cb06d6986..0eb6096d94 100644
+--- a/ld/testsuite/ld-s390/gotreloc-1.ver
++++ b/ld/testsuite/ld-s390/gotreloc-1.ver
+@@ -1 +1 @@
+-{ local: bar; };
++{ local: bar; misaligned_sym; };
+diff --git a/ld/testsuite/ld-s390/gotreloc_31-1.dd b/ld/testsuite/ld-s390/gotreloc_31-1.dd
+index 0eaaa39c69..dd8cfd6f55 100644
+--- a/ld/testsuite/ld-s390/gotreloc_31-1.dd
++++ b/ld/testsuite/ld-s390/gotreloc_31-1.dd
+@@ -4,10 +4,10 @@ tmpdir/gotreloc_31-1:     file format elf32-s390
+ Disassembly of section .text:
+ 
+ .* <foo>:
+-.*:	c4 18 00 00 08 4e [	 ]*lgrl	%r1,11e8 <_GLOBAL_OFFSET_TABLE_\+0xc>
+-.*:	e3 10 c0 0c 00 04 [	 ]*lg	%r1,12\(%r12\)
+-.*:	c0 10 00 00 00 08 [	 ]*larl	%r1,168 <bar>
+-.*:	58 10 c0 0c [	 ]*l	%r1,12\(%r12\)
+-.*:	c0 10 00 00 00 03 [	 ]*larl	%r1,168 <bar>
+-.* <bar>:
+-.*:	00 00 01 23       	.long	0x00000123
++.*:	c4 18 00 00 08 56 [	 ]*lgrl	%r1,1210 <_GLOBAL_OFFSET_TABLE_\+0x14>
++.*:	e3 10 c0 14 00 04 [	 ]*lg	%r1,20\(%r12\)
++.*:	c0 10 00 00 08 52 [	 ]*larl	%r1,1214 <bar>
++.*:	58 10 c0 14 [	 ]*l	%r1,20\(%r12\)
++.*:	c0 10 00 00 08 4d [	 ]*larl	%r1,1214 <bar>
++.*:	c4 18 00 00 08 46 [	 ]*lgrl	%r1,120c <_GLOBAL_OFFSET_TABLE_\+0x10>
++.*:	c4 18 00 00 08 41 [	 ]*lgrl	%r1,1208 <_GLOBAL_OFFSET_TABLE_\+0xc>
+diff --git a/ld/testsuite/ld-s390/gotreloc_64-1.dd b/ld/testsuite/ld-s390/gotreloc_64-1.dd
+index 8c8c619edf..6b42b15a3c 100644
+--- a/ld/testsuite/ld-s390/gotreloc_64-1.dd
++++ b/ld/testsuite/ld-s390/gotreloc_64-1.dd
+@@ -3,10 +3,10 @@ tmpdir/gotreloc_64-1:     file format elf64-s390
+ Disassembly of section .text:
+ 
+ .* <foo>:
+-.*:	c0 10 00 00 00 0e [	 ]*larl	%r1,.* <bar>
+-.*:	c0 10 00 00 00 0b [	 ]*larl	%r1,.* <bar>
+-.*:	c4 1d 00 00 08 86 [	 ]*lrl	%r1,.* <_GLOBAL_OFFSET_TABLE_\+0x18>
+-.*:	58 10 c0 18 [	 ]*l	%r1,24\(%r12\)
+-.*:	e3 10 c0 18 00 58 [	 ]*ly	%r1,24\(%r12\)
+-.* <bar>:
+-.*:	00 00 01 23       	.long	0x00000123
++.*:	c0 10 00 00 08 9c [	 ]*larl	%r1,1370 <bar>
++.*:	c0 10 00 00 08 99 [	 ]*larl	%r1,1370 <bar>
++.*:	c4 1d 00 00 08 92 [	 ]*lrl	%r1,1368 <_GLOBAL_OFFSET_TABLE_\+0x28>
++.*:	58 10 c0 28 [	 ]*l	%r1,40\(%r12\)
++.*:	e3 10 c0 28 00 58 [	 ]*ly	%r1,40\(%r12\)
++.*:	c4 18 00 00 08 86 [	 ]*lgrl	%r1,1360 <_GLOBAL_OFFSET_TABLE_\+0x20>
++.*:	c4 18 00 00 08 7f [	 ]*lgrl	%r1,1358 <_GLOBAL_OFFSET_TABLE_\+0x18>

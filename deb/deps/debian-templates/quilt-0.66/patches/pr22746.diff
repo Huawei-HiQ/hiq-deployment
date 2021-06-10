@@ -1,0 +1,32 @@
+From 38e64b0ecc7f4ee64a02514b8d532782ac057fa2 Mon Sep 17 00:00:00 2001
+From: Alan Modra <amodra@gmail.com>
+Date: Thu, 25 Jan 2018 21:47:41 +1030
+Subject: [PATCH] PR22746, crash when running 32-bit objdump on corrupted file
+
+Avoid unsigned int overflow by performing bfd_size_type multiplication.
+
+	PR 22746
+	* elfcode.h (elf_object_p): Avoid integer overflow.
+
+diff --git a/bfd/elfcode.h b/bfd/elfcode.h
+index 00a9001..ea1388d 100644
+--- a/bfd/elfcode.h
++++ b/bfd/elfcode.h
+@@ -680,7 +680,7 @@ elf_object_p (bfd *abfd)
+       if (i_ehdrp->e_shnum > ((bfd_size_type) -1) / sizeof (*i_shdrp))
+ 	goto got_wrong_format_error;
+ #endif
+-      amt = sizeof (*i_shdrp) * i_ehdrp->e_shnum;
++      amt = sizeof (*i_shdrp) * (bfd_size_type) i_ehdrp->e_shnum;
+       i_shdrp = (Elf_Internal_Shdr *) bfd_alloc (abfd, amt);
+       if (!i_shdrp)
+ 	goto got_no_match;
+@@ -776,7 +776,7 @@ elf_object_p (bfd *abfd)
+       if (i_ehdrp->e_phnum > ((bfd_size_type) -1) / sizeof (*i_phdr))
+ 	goto got_wrong_format_error;
+ #endif
+-      amt = i_ehdrp->e_phnum * sizeof (*i_phdr);
++      amt = (bfd_size_type) i_ehdrp->e_phnum * sizeof (*i_phdr);
+       elf_tdata (abfd)->phdr = (Elf_Internal_Phdr *) bfd_alloc (abfd, amt);
+       if (elf_tdata (abfd)->phdr == NULL)
+ 	goto got_no_match;

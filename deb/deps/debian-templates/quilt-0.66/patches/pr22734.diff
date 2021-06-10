@@ -1,0 +1,35 @@
+# DP: Fix PR binutils/22734, taken from the trunk.
+
+2018-01-30  Nick Clifton  <nickc@redhat.com>
+
+	PR 22734
+	* doc/binutils.texi (nm): Update description to point out that
+	zero-initialized values can also be shown as type B, b, S or s
+	since they can be stored in the BSS section.
+
+ 
+diff --git a/binutils/doc/binutils.texi b/binutils/doc/binutils.texi
+index b862a79f96..35f672f3ff 100644
+--- a/binutils/doc/binutils.texi
++++ b/binutils/doc/binutils.texi
+@@ -802,7 +802,9 @@ linking.
+ 
+ @item B
+ @itemx b
+-The symbol is in the uninitialized data section (known as BSS).
++The symbol is in the BSS data section.  This section typically
++contains zero-initialized or uninitialized data, although the exact
++behavior is system dependent.
+ 
+ @item C
+ The symbol is common.  Common symbols are uninitialized data.  When
+@@ -848,7 +850,8 @@ The symbol is in a read only data section.
+ 
+ @item S
+ @itemx s
+-The symbol is in an uninitialized data section for small objects.
++The symbol is in an uninitialized or zero-initialized data section
++for small objects.
+ 
+ @item T
+ @itemx t
