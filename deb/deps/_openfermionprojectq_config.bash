@@ -1,5 +1,5 @@
 pkg_archive_name=OpenFermion-ProjectQ
-ppa_rev=1
+ppa_rev=2
 
 # ==============================================================================
 
