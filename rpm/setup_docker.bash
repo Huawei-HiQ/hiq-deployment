@@ -36,7 +36,7 @@ elif [ "$os_name" == "fedora" ]; then
     dnf update -y
     dnf install -y dnf-utils
     dnf copr enable -y huaweihiq/Huawei-HiQ
-elif [ "$os_name" == "openmandriva" ]; then
+elif [[ "$os_name" == "openmandriva" || "$os_name" == "mageia" ]]; then
     YUM=dnf
     dnf update -y
     dnf install -y dnf-utils

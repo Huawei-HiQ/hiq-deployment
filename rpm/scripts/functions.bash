@@ -55,6 +55,8 @@ function get_arch_name()
 	arch_name="fc$os_ver"
     elif [ "$os_name" == "openmandriva" ]; then
 	arch_name=omv4050
+    elif [ "$os_name" == "mageia" ]; then
+	arch_name="mga$os_ver"
     elif [ "$os_name" == "opensuse-leap" ]; then
 	arch_name="lp$(echo $os_ver | tr -d '.')"
     else
@@ -135,7 +137,7 @@ function pkg_builddep()
 	yum-builddep -y "$@"
     elif [ "$os_name" == "fedora" ]; then
 	dnf builddep -y "$@"
-    elif [ "$os_name" == "openmandriva" ]; then
+    elif [[ "$os_name" == "openmandriva" || "$os_name" == "mageia" ]]; then
 	dnf builddep -y "$@"
 	sources=$(get_sources "$@" | grep http)
 	if [ -n "$sources" ]; then
@@ -177,7 +179,7 @@ function pkg_install()
 {
     if [ "$os_name" == "centos" ]; then
 	yum install -y "$@"
-    elif [["$os_name" == "fedora" || "$os_name" == "openmandriva" ]]; then
+    elif [["$os_name" == "fedora" || "$os_name" == "openmandriva" || "$os_name" == "mageia" ]]; then
 	dnf install -y "$@"
     elif [ "$os_name" == "opensuse-leap" ]; then
 	local fargs zargs rpm

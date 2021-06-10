@@ -44,6 +44,8 @@ if [ "$os_name" == "centos" ]; then
     fi
 elif [ "$os_name" == "fedora" ]; then
     :
+elif [ "$os_name" == "mageia" ]; then
+    :
 elif [ "$os_name" == "opensuse-leap" ]; then
     :
 else

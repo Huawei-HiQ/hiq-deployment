@@ -38,12 +38,13 @@ if [ "$os_name" == "centos" ]; then
         echo "Unsupported distribution found: $os_name"
         exit 1
     fi
-elif [ "$os_name" == "fedora" ]; then
+elif [[ "$os_name" == "fedora" || "$os_name" == "mageia" ]]; then
     if ! rpm -q copr-cli > /dev/null; then
 	dnf install -y copr-cli
     fi
 elif [ "$os_name" == "openmandriva" ]; then
-    dnf install -y copr-cli
+    echo "Error $os_name does not currently support copr-cli!"
+    exit 1
 else
     echo "Unsupported distribution found: $os_name"
     exit 1
@@ -174,7 +175,7 @@ function array_intersection()
 
 # ==============================================================================
 
-declare -A centos fedora opensuse
+declare -A centos fedora opensuse mageia
 centos[7]='epel-7-x86_64'
 centos[8]='epel-8-x86_64'
 centos[stream]='centos-stream-8-x86_64'
@@ -188,6 +189,10 @@ fedora[rawhide]='fedora-rawhide-x86_64 '
 # opensuse[15.1]='opensuse-leap-15.1-x86_64'
 opensuse[15.2]='opensuse-leap-15.2-x86_64'
 opensuse[15.3]='opensuse-leap-15.3-x86_64'
+
+mageia[7]='mageia-7-x86_64'
+mageia[8]='mageia-8-x86_64'
+mageia[cauldron]='mageia-cauldron-x86_64'
 
 repo_chroot=("${opensuse[@]}")
 os_name='opensuse-leap'
@@ -250,16 +255,16 @@ repo_chroot=("${centos[7]}")
 copr_build --parallel --background pandas
 
 
-repo_chroot=("${centos[@]}" "${fedora[@]}" "${opensuse[@]}")
+repo_chroot=("${centos[@]}" "${fedora[@]}" "${opensuse[@]}"  "${mageia[@]}")
 copr_build pubchempy
-copr_build --parallel openfermion
+copr_build --parallel openfermion jupyter-react
 
-repo_chroot=("${centos[@]}" "${opensuse[@]}")
+repo_chroot=("${centos[@]}" "${opensuse[@]}" "${mageia[@]}")
 copr_build --parallel pyscf
 
 # ==============================================================================
 
-repo_chroot=("${centos[@]}" "${fedora[@]}" "${opensuse[@]}")
+repo_chroot=("${centos[@]}" "${fedora[@]}" "${opensuse[@]}" "${mageia[@]}")
 copr_build hiq-projectq
 copr_build --parallel --background hiq-circuit hiq-fermion hiq-pulse
 

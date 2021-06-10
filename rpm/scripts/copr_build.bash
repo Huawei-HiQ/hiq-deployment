@@ -81,7 +81,7 @@ shift
 
 source $HERE/functions.bash
 
-chroots_known=$(copr-cli list-chroots)
+chroots_known=$(copr-cli list-chroots 2> /dev/null)
 
 args=()
 if [ $nowait -eq 1 ]; then
@@ -93,9 +93,13 @@ fi
 
 args+=($copr_repo)
 for chroot in ${repo_chroot[@]}; do
-    for name in $(echo "$chroots_known" | grep $chroot); do
-	args+=(-r $name)
-    done
+    if [ -n "$chroots_known" ]; then
+        for name in $(echo "$chroots_known" | grep $chroot); do
+	    args+=(-r $name)
+        done
+    else
+	args+=(-r $chroot)
+    fi
 done
 
 arch_name=$(get_arch_name)
