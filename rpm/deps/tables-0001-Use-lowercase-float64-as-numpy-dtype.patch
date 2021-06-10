@@ -1,0 +1,33 @@
+From cf4aa744be67583acb14b4471101b2b3e011f718 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Sun, 24 Jan 2021 16:36:21 +0100
+Subject: [PATCH] Use lowercase "float64" as numpy dtype
+
+Float64 is gone with numpy 1.20:
+
+>>> numpy.__version__
+'1.19.4'
+>>> [k for k in numpy.sctypeDict.keys() if str(k).lower().startswith('float')]
+['float16', 'Float16', 'float32', 'Float32', 'float64', 'Float64', 'float128', 'Float128', 'float_', 'float']
+
+>>> numpy.__version__
+'1.20.0rc2'
+>>> [k for k in numpy.sctypeDict.keys() if str(k).lower().startswith('float')]
+['float16', 'float32', 'float64', 'float128', 'float_', 'float']
+---
+ tables/atom.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tables/atom.py b/tables/atom.py
+index 81d37c5483..0a25ddf360 100644
+--- a/tables/atom.py
++++ b/tables/atom.py
+@@ -336,7 +336,7 @@ class Atom(metaclass=MetaAtom):
+             Traceback (most recent call last):
+             ...
+             ValueError: unknown NumPy scalar type: 'S5'
+-            >>> Atom.from_sctype('Float64')
++            >>> Atom.from_sctype('float64')
+             Float64Atom(shape=(), dflt=0.0)
+ 
+         """

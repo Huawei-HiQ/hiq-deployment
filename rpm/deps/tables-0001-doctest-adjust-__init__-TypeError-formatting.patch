@@ -1,0 +1,39 @@
+From 4a056cc5627698e6e9ad4e710b80f10b309059e9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Mon, 16 Nov 2020 10:53:05 +0100
+Subject: [PATCH] doctest: adjust __init__ TypeError formatting
+
+Python3.10 includes the class name in the TypeError string
+for __init__(). This change allows the tests to pass in the new version,
+but obviously breaks with older Pythons.
+---
+ tables/atom.py    | 2 +-
+ tables/filters.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tables/atom.py b/tables/atom.py
+index 55726e0c18..34141f6d85 100644
+--- a/tables/atom.py
++++ b/tables/atom.py
+@@ -576,7 +576,7 @@ class Atom(six.with_metaclass(MetaAtom, object)):
+             >>> atom1.copy(foobar=42)
+             Traceback (most recent call last):
+             ...
+-            TypeError: __init__() got an unexpected keyword argument 'foobar'
++            TypeError: _create_numeric_class.<locals>.__init__() got an unexpected keyword argument 'foobar'
+ 
+         """
+         newargs = self._get_init_args()
+diff --git a/tables/filters.py b/tables/filters.py
+index 199e26d80b..65cb9db1f6 100644
+--- a/tables/filters.py
++++ b/tables/filters.py
+@@ -441,7 +441,7 @@ class Filters(object):
+             >>> filters1.copy(foobar=42)
+             Traceback (most recent call last):
+             ...
+-            TypeError: __init__() got an unexpected keyword argument 'foobar'
++            TypeError: Filters.__init__() got an unexpected keyword argument 'foobar'
+ 
+         """
+ 

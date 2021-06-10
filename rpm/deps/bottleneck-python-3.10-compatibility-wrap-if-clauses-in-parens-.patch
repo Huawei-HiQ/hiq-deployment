@@ -1,0 +1,104 @@
+From 65fc90154b702ebac22738fe8ecbafc520223408 Mon Sep 17 00:00:00 2001
+From: Tomas Hrnciar <thrnciar@redhat.com>
+Date: Wed, 19 May 2021 12:56:24 +0200
+Subject: [PATCH] python 3.10 compatibility - wrap if clauses in parens in C
+
+---
+ bottleneck/src/move_template.c           | 4 ++--
+ bottleneck/src/nonreduce_axis_template.c | 4 ++--
+ bottleneck/src/nonreduce_template.c      | 4 ++--
+ bottleneck/src/reduce_template.c         | 4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/bottleneck/src/move_template.c b/bottleneck/src/move_template.c
+index 552d706..0215018 100644
+--- a/bottleneck/src/move_template.c
++++ b/bottleneck/src/move_template.c
+@@ -923,7 +923,7 @@ mover(char *name,
+     }
+ 
+     /* convert to array if necessary */
+-    if PyArray_Check(a_obj) {
++    if (PyArray_Check(a_obj)) {
+         a = (PyArrayObject *)a_obj;
+     }
+     else {
+@@ -934,7 +934,7 @@ mover(char *name,
+     }
+ 
+     /* check for byte swapped input array */
+-    if PyArray_ISBYTESWAPPED(a) {
++    if (PyArray_ISBYTESWAPPED(a)) {
+         return slow(name, args, kwds);
+     }
+ 
+diff --git a/bottleneck/src/nonreduce_axis_template.c b/bottleneck/src/nonreduce_axis_template.c
+index ebbb4ab..e901b70 100644
+--- a/bottleneck/src/nonreduce_axis_template.c
++++ b/bottleneck/src/nonreduce_axis_template.c
+@@ -664,7 +664,7 @@ nonreducer_axis(char *name,
+     }
+ 
+     /* convert to array if necessary */
+-    if PyArray_Check(a_obj) {
++    if (PyArray_Check(a_obj)) {
+         a = (PyArrayObject *)a_obj;
+     }
+     else {
+@@ -675,7 +675,7 @@ nonreducer_axis(char *name,
+     }
+ 
+     /* check for byte swapped input array */
+-    if PyArray_ISBYTESWAPPED(a) {
++    if (PyArray_ISBYTESWAPPED(a)) {
+         return slow(name, args, kwds);
+     }
+ 
+diff --git a/bottleneck/src/nonreduce_template.c b/bottleneck/src/nonreduce_template.c
+index af4d514..efa8967 100644
+--- a/bottleneck/src/nonreduce_template.c
++++ b/bottleneck/src/nonreduce_template.c
+@@ -205,7 +205,7 @@ nonreducer(char *name,
+     if (!parse_args(args, kwds, &a_obj, &old_obj, &new_obj)) return NULL;
+ 
+     /* convert to array if necessary */
+-    if PyArray_Check(a_obj) {
++    if (PyArray_Check(a_obj)) {
+         a = (PyArrayObject *)a_obj;
+     } else {
+         if (inplace) {
+@@ -220,7 +220,7 @@ nonreducer(char *name,
+     }
+ 
+     /* check for byte swapped input array */
+-    if PyArray_ISBYTESWAPPED(a) {
++    if (PyArray_ISBYTESWAPPED(a)) {
+         return slow(name, args, kwds);
+     }
+ 
+diff --git a/bottleneck/src/reduce_template.c b/bottleneck/src/reduce_template.c
+index 031e1eb..366fedf 100644
+--- a/bottleneck/src/reduce_template.c
++++ b/bottleneck/src/reduce_template.c
+@@ -1231,7 +1231,7 @@ reducer(char *name,
+     }
+ 
+     /* convert to array if necessary */
+-    if PyArray_Check(a_obj) {
++    if (PyArray_Check(a_obj)) {
+         a = (PyArrayObject *)a_obj;
+     } else {
+         a = (PyArrayObject *)PyArray_FROM_O(a_obj);
+@@ -1241,7 +1241,7 @@ reducer(char *name,
+     }
+ 
+     /* check for byte swapped input array */
+-    if PyArray_ISBYTESWAPPED(a) {
++    if (PyArray_ISBYTESWAPPED(a)) {
+         return slow(name, args, kwds);
+     }
+ 
+-- 
+2.31.1
+
+

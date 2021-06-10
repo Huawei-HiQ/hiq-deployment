@@ -1,0 +1,14 @@
+--- PyTables-v.3.2.0/tables/utilsextension.pyx~	2015-05-06 10:10:43.000000000 -0400
++++ PyTables-v.3.2.0/tables/utilsextension.pyx	2015-05-07 19:03:11.439144042 -0400
+@@ -276,11 +276,6 @@
+ # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=661286).
+ # This function has been written by Julian Taylor <jtaylor@ubuntu.com>.
+ def _arch_without_blosc():
+-  import platform
+-  arch = platform.machine().lower()
+-  for a in ("arm", "sparc", "mips", "aarch64"):
+-    if a in arch:
+-      return True
+   return False
+ 
+ if blosc_version and blosc_version < ('1', '4') and _arch_without_blosc():
