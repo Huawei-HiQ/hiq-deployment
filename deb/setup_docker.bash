@@ -25,6 +25,7 @@ os_ver=$(cat /etc/os-release | grep VERSION_ID | cut -d '=' -f2 | tr -d '"')
 . setup_env.bash
 
 apt update
+apt install -y curl
 
 ln -snf /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
 apt install -y tzdata
