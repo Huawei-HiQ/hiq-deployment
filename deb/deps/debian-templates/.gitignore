@@ -6,6 +6,7 @@
 !cython-0.29.21/
 !debhelper-12.10/
 !decorator-4.4.2/
+!dh-autoreconf-19/
 !h5py-2.9.0/
 !idna-2.10/
 !imagesize-1.2.0/
