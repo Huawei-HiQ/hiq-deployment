@@ -38,5 +38,6 @@
 !sphinx-3.2.1/
 !sphinxcontrib-qthelp-1.0.3/
 !sphinxcontrib-websupport-1.1.2/
+!strip-nondeterminism-1.7.0/
 !sympy-1.6.2/
 !urllib3-1.25.9/
