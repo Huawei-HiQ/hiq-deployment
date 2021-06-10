@@ -26,7 +26,9 @@ declare -A ubuntu_versions=(["xenial"]="16.04"
 			    ["bionic"]="18.04"
 			    ["eoan"]="19.10"
 			    ["focal"]="20.04"
-			    ["groovy"]="20.10")
+			    ["groovy"]="20.10"
+			    ["hirsute"]="21.04"
+			    ["impish"]="21.10")
 
 root=$HERE/deps
 
@@ -45,7 +47,7 @@ BUILD_CMD=$HERE/scripts/build_dep.bash
 xenial=(chardet idna urllib3 mpmath pybind11 requests sympy)
 xenial_bionic=(cython decorator h5py matplotlib mpi4py networkx pandas scipy six)
 xenial_bionic_focal=(numpy)
-all=(pubchempy openfermion openfermionprojectq)
+all=(pubchempy openfermion openfermionprojectq pyscf jupyter-react)
 
 if [[ "$os_name" != "ubuntu" ]]; then
     echo 'Need to run under Ubuntu' 1>&2
@@ -71,6 +73,8 @@ elif [[ "$os_ver" == 20.04 ]]; then
     grp4+=(focal)
 else
     grp4+=(groovy)
+    grp4+=(hirsute)
+    grp4+=(impish)
 fi
 
 for pkg in "${xenial[@]}"; do

@@ -4,7 +4,8 @@ declare -A ubuntu_versions=(["xenial"]="16.04"
 			    ["eoan"]="19.10"
 			    ["focal"]="20.04"
 			    ["groovy"]="20.10"
-			    ["hirsute"]="21.04")
+			    ["hirsute"]="21.04"
+			    ["impish"]="21.10")
 assume_yes=0
 clean_dirs=0
 clean_only=0
