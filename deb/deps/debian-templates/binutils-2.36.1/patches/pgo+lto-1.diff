@@ -1,0 +1,495 @@
+Subject: V2 [PATCH 1/3] GCC: Pass --plugin to AR and RANLIB
+
+Detect GCC LTO plugin.  Pass --plugin to AR and RANLIB to support LTO
+build.
+
+	* Makefile.tpl (AR): Add @AR_PLUGIN_OPTION@
+	(RANLIB): Add @RANLIB_PLUGIN_OPTION@.
+	* configure.ac: Include config/gcc-plugin.m4.
+	AC_SUBST AR_PLUGIN_OPTION and RANLIB_PLUGIN_OPTION.
+	* libtool.m4 (_LT_CMD_OLD_ARCHIVE): Pass --plugin to AR and
+	RANLIB if possible.
+	* Makefile.in: Regenerated.
+	* configure: Likewise.
+
+config/
+
+	* gcc-plugin.m4 (GCC_PLUGIN_OPTION): New.
+
+libiberty/
+
+	* Makefile.in (AR): Add @AR_PLUGIN_OPTION@
+	(RANLIB): Add @RANLIB_PLUGIN_OPTION@.
+	(configure_deps): Depend on ../config/gcc-plugin.m4.
+	* aclocal.m4: Include ../config/gcc-plugin.m4.
+	* configure.ac: AC_SUBST AR_PLUGIN_OPTION and
+	RANLIB_PLUGIN_OPTION.
+	* configure: Regenerated.
+
+zlib/
+
+	* configure: Regenerated.
+---
+ Makefile.in            |   5 +-
+ Makefile.tpl           |   5 +-
+ config/gcc-plugin.m4   |  28 ++++++
+ configure              |  39 ++++++++
+ configure.ac           |  15 +++
+ libiberty/Makefile.in  |   5 +-
+ libiberty/aclocal.m4   |   1 +
+ libiberty/configure    |  37 ++++++++
+ libiberty/configure.ac |  12 +++
+ libtool.m4             |  25 ++++-
+ zlib/configure         | 206 ++++++++++++++++++++++++++++++++++++++++-
+ 11 files changed, 368 insertions(+), 10 deletions(-)
+
+--- a/config/gcc-plugin.m4
++++ b/config/gcc-plugin.m4
+@@ -124,3 +124,31 @@ AC_DEFUN([GCC_ENABLE_PLUGINS],
+      fi
+    fi
+ ])
++
++dnl
++dnl
++dnl GCC_PLUGIN_OPTION
++dnl    (SHELL-CODE_HANDLER)
++dnl
++AC_DEFUN([GCC_PLUGIN_OPTION],[dnl
++AC_MSG_CHECKING([for -plugin option])
++
++plugin_names="liblto_plugin.so liblto_plugin-0.dll cyglto_plugin-0.dll"
++plugin_option=
++for plugin in $plugin_names; do
++  plugin_so=`${CC} ${CFLAGS} --print-prog-name $plugin`
++  if test x$plugin_so = x$plugin; then
++    plugin_so=`${CC} ${CFLAGS} --print-file-name $plugin`
++  fi
++  if test x$plugin_so != x$plugin; then
++    plugin_option="--plugin $plugin_so"
++    break
++  fi
++done
++if test -n "$plugin_option"; then
++  $1="$plugin_option"
++  AC_MSG_RESULT($plugin_option)
++else
++  AC_MSG_RESULT([no])
++fi
++])
+--- a/configure
++++ b/configure
+@@ -616,6 +616,8 @@ GFORTRAN_FOR_TARGET
+ GCC_FOR_TARGET
+ CXX_FOR_TARGET
+ CC_FOR_TARGET
++RANLIB_PLUGIN_OPTION
++AR_PLUGIN_OPTION
+ READELF
+ OBJDUMP
+ OBJCOPY
+@@ -10007,6 +10009,43 @@ fi
+ 
+ 
+ 
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for -plugin option" >&5
++$as_echo_n "checking for -plugin option... " >&6; }
++
++plugin_names="liblto_plugin.so liblto_plugin-0.dll cyglto_plugin-0.dll"
++plugin_option=
++for plugin in $plugin_names; do
++  plugin_so=`${CC} ${CFLAGS} --print-prog-name $plugin`
++  if test x$plugin_so = x$plugin; then
++    plugin_so=`${CC} ${CFLAGS} --print-file-name $plugin`
++  fi
++  if test x$plugin_so != x$plugin; then
++    plugin_option="--plugin $plugin_so"
++    break
++  fi
++done
++if test -n "$plugin_option"; then
++  PLUGIN_OPTION="$plugin_option"
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $plugin_option" >&5
++$as_echo "$plugin_option" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++AR_PLUGIN_OPTION=
++RANLIB_PLUGIN_OPTION=
++if test -n "$PLUGIN_OPTION"; then
++  if $AR --help 2>&1 | grep -q "\--plugin"; then
++    AR_PLUGIN_OPTION="$PLUGIN_OPTION"
++  fi
++  if $RANLIB --help 2>&1 | grep -q "\--plugin"; then
++    RANLIB_PLUGIN_OPTION="$PLUGIN_OPTION"
++  fi
++fi
++
++
++
+ # Target tools.
+ 
+ # Check whether --with-build-time-tools was given.
+--- a/configure.ac
++++ b/configure.ac
+@@ -23,6 +23,7 @@ m4_include(config/acx.m4)
+ m4_include(config/override.m4)
+ m4_include(config/proginstall.m4)
+ m4_include(config/elf.m4)
++m4_include(config/gcc-plugin.m4)
+ m4_include([libtool.m4])
+ m4_include([ltoptions.m4])
+ m4_include([ltsugar.m4])
+@@ -3376,6 +3377,20 @@ AC_SUBST(CXX)
+ AC_SUBST(CFLAGS)
+ AC_SUBST(CXXFLAGS)
+ 
++GCC_PLUGIN_OPTION(PLUGIN_OPTION)
++AR_PLUGIN_OPTION=
++RANLIB_PLUGIN_OPTION=
++if test -n "$PLUGIN_OPTION"; then
++  if $AR --help 2>&1 | grep -q "\--plugin"; then
++    AR_PLUGIN_OPTION="$PLUGIN_OPTION"
++  fi
++  if $RANLIB --help 2>&1 | grep -q "\--plugin"; then
++    RANLIB_PLUGIN_OPTION="$PLUGIN_OPTION"
++  fi
++fi
++AC_SUBST(AR_PLUGIN_OPTION)
++AC_SUBST(RANLIB_PLUGIN_OPTION)
++
+ # Target tools.
+ AC_ARG_WITH([build-time-tools], 
+   [AS_HELP_STRING([--with-build-time-tools=PATH],
+--- a/libiberty/aclocal.m4
++++ b/libiberty/aclocal.m4
+@@ -1,6 +1,7 @@
+ sinclude(../config/acx.m4)
+ sinclude(../config/cet.m4)
+ sinclude(../config/enable.m4)
++sinclude(../config/gcc-plugin.m4)
+ sinclude(../config/no-executables.m4)
+ sinclude(../config/override.m4)
+ sinclude(../config/picflag.m4)
+--- a/libiberty/configure
++++ b/libiberty/configure
+@@ -645,6 +645,8 @@ CPPFLAGS
+ LDFLAGS
+ CFLAGS
+ CC
++RANLIB_PLUGIN_OPTION
++AR_PLUGIN_OPTION
+ RANLIB
+ AR
+ host_os
+@@ -2932,6 +2934,41 @@ else
+ fi
+ 
+ 
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for -plugin option" >&5
++$as_echo_n "checking for -plugin option... " >&6; }
++
++plugin_names="liblto_plugin.so liblto_plugin-0.dll cyglto_plugin-0.dll"
++plugin_option=
++for plugin in $plugin_names; do
++  plugin_so=`${CC} ${CFLAGS} --print-prog-name $plugin`
++  if test x$plugin_so = x$plugin; then
++    plugin_so=`${CC} ${CFLAGS} --print-file-name $plugin`
++  fi
++  if test x$plugin_so != x$plugin; then
++    plugin_option="--plugin $plugin_so"
++    break
++  fi
++done
++if test -n "$plugin_option"; then
++  PLUGIN_OPTION="$plugin_option"
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $plugin_option" >&5
++$as_echo "$plugin_option" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++if test -n "$PLUGIN_OPTION"; then
++  if $AR --help 2>&1 | grep -q "\--plugin"; then
++    AR_PLUGIN_OPTION="$PLUGIN_OPTION"
++
++  fi
++  if $RANLIB --help 2>&1 | grep -q "\--plugin"; then
++    RANLIB_PLUGIN_OPTION="$PLUGIN_OPTION"
++
++  fi
++fi
++
+ # Add --enable-multilib to configure.
+ # Default to --enable-multilib
+ # Check whether --enable-multilib was given.
+--- a/libiberty/configure.ac
++++ b/libiberty/configure.ac
+@@ -108,6 +108,18 @@ dnl to call AC_CHECK_PROG.
+ AC_CHECK_TOOL(AR, ar)
+ AC_CHECK_TOOL(RANLIB, ranlib, :)
+ 
++GCC_PLUGIN_OPTION(PLUGIN_OPTION)
++if test -n "$PLUGIN_OPTION"; then
++  if $AR --help 2>&1 | grep -q "\--plugin"; then
++    AR_PLUGIN_OPTION="$PLUGIN_OPTION"
++    AC_SUBST(AR_PLUGIN_OPTION)
++  fi
++  if $RANLIB --help 2>&1 | grep -q "\--plugin"; then
++    RANLIB_PLUGIN_OPTION="$PLUGIN_OPTION"
++    AC_SUBST(RANLIB_PLUGIN_OPTION)
++  fi
++fi
++
+ dnl When switching to automake, replace the following with AM_ENABLE_MULTILIB.
+ # Add --enable-multilib to configure.
+ # Default to --enable-multilib
+--- a/libiberty/Makefile.in
++++ b/libiberty/Makefile.in
+@@ -49,13 +49,13 @@ mkinstalldirs = $(SHELL) $(libiberty_top
+ # Some compilers can't handle cc -c blah.c -o foo/blah.o.
+ OUTPUT_OPTION = @OUTPUT_OPTION@
+ 
+-AR = @AR@
++AR = @AR@ @AR_PLUGIN_OPTION@
+ AR_FLAGS = rc
+ 
+ CC = @CC@
+ CFLAGS = @CFLAGS@
+ CPPFLAGS = @CPPFLAGS@
+-RANLIB = @RANLIB@
++RANLIB = @RANLIB@ @RANLIB_PLUGIN_OPTION@
+ MAKEINFO = @MAKEINFO@
+ PERL = @PERL@
+ 
+@@ -485,6 +485,7 @@ configure_deps = $(srcdir)/aclocal.m4 \
+ 	$(srcdir)/../config/acx.m4 \
+ 	$(srcdir)/../config/cet.m4 \
+ 	$(srcdir)/../config/enable.m4 \
++	$(srcdir)/../config/gcc-plugin.m4 \
+ 	$(srcdir)/../config/no-executables.m4 \
+ 	$(srcdir)/../config/override.m4 \
+ 	$(srcdir)/../config/picflag.m4 \
+--- a/libtool.m4
++++ b/libtool.m4
+@@ -1323,8 +1323,26 @@ need_locks="$enable_libtool_lock"
+ # _LT_CMD_OLD_ARCHIVE
+ # -------------------
+ m4_defun([_LT_CMD_OLD_ARCHIVE],
+-[AC_CHECK_TOOL(AR, ar, false)
++[plugin_option=
++plugin_names="liblto_plugin.so liblto_plugin-0.dll cyglto_plugin-0.dll"
++for plugin in $plugin_names; do
++  plugin_so=`${CC} ${CFLAGS} --print-prog-name $plugin`
++  if test x$plugin_so = x$plugin; then
++    plugin_so=`${CC} ${CFLAGS} --print-file-name $plugin`
++  fi
++  if test x$plugin_so != x$plugin; then
++    plugin_option="--plugin $plugin_so"
++    break
++  fi
++done
++
++AC_CHECK_TOOL(AR, ar, false)
+ test -z "$AR" && AR=ar
++if test -n "$plugin_option"; then
++  if $AR --help 2>&1 | grep -q "\--plugin"; then
++    AR="$AR $plugin_option"
++  fi
++fi
+ test -z "$AR_FLAGS" && AR_FLAGS=cru
+ _LT_DECL([], [AR], [1], [The archiver])
+ _LT_DECL([], [AR_FLAGS], [1])
+@@ -1335,6 +1353,11 @@ _LT_DECL([], [STRIP], [1], [A symbol str
+ 
+ AC_CHECK_TOOL(RANLIB, ranlib, :)
+ test -z "$RANLIB" && RANLIB=:
++if test -n "$plugin_option" && test "$RANLIB" != ":"; then
++  if $RANLIB --help 2>&1 | grep -q "\--plugin"; then
++    RANLIB="$RANLIB $plugin_option"
++  fi
++fi
+ _LT_DECL([], [RANLIB], [1],
+     [Commands used to install an old-style archive])
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -387,7 +387,7 @@ MAKEINFOFLAGS = --split-size=5000000
+ # ---------------------------------------------
+ 
+ AS = @AS@
+-AR = @AR@
++AR = @AR@ @AR_PLUGIN_OPTION@
+ AR_FLAGS = rc
+ CC = @CC@
+ CXX = @CXX@
+@@ -396,7 +396,7 @@ LD = @LD@
+ LIPO = @LIPO@
+ NM = @NM@
+ OBJDUMP = @OBJDUMP@
+-RANLIB = @RANLIB@
++RANLIB = @RANLIB@ @RANLIB_PLUGIN_OPTION@
+ READELF = @READELF@
+ STRIP = @STRIP@
+ WINDRES = @WINDRES@
+@@ -52647,6 +52647,7 @@ AUTOCONF = autoconf
+ $(srcdir)/configure: @MAINT@ $(srcdir)/configure.ac $(srcdir)/config/acx.m4 \
+ 	$(srcdir)/config/override.m4 $(srcdir)/config/proginstall.m4 \
+ 	$(srcdir)/config/elf.m4 $(srcdir)/config/isl.m4 \
++	$(srcdir)/config/gcc-plugin.m4 \
+ 	$(srcdir)/libtool.m4 $(srcdir)/ltoptions.m4 $(srcdir)/ltsugar.m4 \
+ 	$(srcdir)/ltversion.m4 $(srcdir)/lt~obsolete.m4
+ 	cd $(srcdir) && $(AUTOCONF)
+--- a/Makefile.tpl
++++ b/Makefile.tpl
+@@ -390,7 +390,7 @@ MAKEINFOFLAGS = --split-size=5000000
+ # ---------------------------------------------
+ 
+ AS = @AS@
+-AR = @AR@
++AR = @AR@ @AR_PLUGIN_OPTION@
+ AR_FLAGS = rc
+ CC = @CC@
+ CXX = @CXX@
+@@ -399,7 +399,7 @@ LD = @LD@
+ LIPO = @LIPO@
+ NM = @NM@
+ OBJDUMP = @OBJDUMP@
+-RANLIB = @RANLIB@
++RANLIB = @RANLIB@ @RANLIB_PLUGIN_OPTION@
+ READELF = @READELF@
+ STRIP = @STRIP@
+ WINDRES = @WINDRES@
+@@ -1967,6 +1967,7 @@ AUTOCONF = autoconf
+ $(srcdir)/configure: @MAINT@ $(srcdir)/configure.ac $(srcdir)/config/acx.m4 \
+ 	$(srcdir)/config/override.m4 $(srcdir)/config/proginstall.m4 \
+ 	$(srcdir)/config/elf.m4 $(srcdir)/config/isl.m4 \
++	$(srcdir)/config/gcc-plugin.m4 \
+ 	$(srcdir)/libtool.m4 $(srcdir)/ltoptions.m4 $(srcdir)/ltsugar.m4 \
+ 	$(srcdir)/ltversion.m4 $(srcdir)/lt~obsolete.m4
+ 	cd $(srcdir) && $(AUTOCONF)
+--- a/zlib/configure
++++ b/zlib/configure
+@@ -740,6 +740,7 @@ infodir
+ docdir
+ oldincludedir
+ includedir
++runstatedir
+ localstatedir
+ sharedstatedir
+ sysconfdir
+@@ -820,6 +821,7 @@ datadir='${datarootdir}'
+ sysconfdir='${prefix}/etc'
+ sharedstatedir='${prefix}/com'
+ localstatedir='${prefix}/var'
++runstatedir='${localstatedir}/run'
+ includedir='${prefix}/include'
+ oldincludedir='/usr/include'
+ docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
+@@ -1072,6 +1074,15 @@ do
+   | -silent | --silent | --silen | --sile | --sil)
+     silent=yes ;;
+ 
++  -runstatedir | --runstatedir | --runstatedi | --runstated \
++  | --runstate | --runstat | --runsta | --runst | --runs \
++  | --run | --ru | --r)
++    ac_prev=runstatedir ;;
++  -runstatedir=* | --runstatedir=* | --runstatedi=* | --runstated=* \
++  | --runstate=* | --runstat=* | --runsta=* | --runst=* | --runs=* \
++  | --run=* | --ru=* | --r=*)
++    runstatedir=$ac_optarg ;;
++
+   -sbindir | --sbindir | --sbindi | --sbind | --sbin | --sbi | --sb)
+     ac_prev=sbindir ;;
+   -sbindir=* | --sbindir=* | --sbindi=* | --sbind=* | --sbin=* \
+@@ -1209,7 +1220,7 @@ fi
+ for ac_var in	exec_prefix prefix bindir sbindir libexecdir datarootdir \
+ 		datadir sysconfdir sharedstatedir localstatedir includedir \
+ 		oldincludedir docdir infodir htmldir dvidir pdfdir psdir \
+-		libdir localedir mandir
++		libdir localedir mandir runstatedir
+ do
+   eval ac_val=\$$ac_var
+   # Remove trailing slashes.
+@@ -1362,6 +1373,7 @@ Fine tuning of the installation director
+   --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+   --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
++  --runstatedir=DIR       modifiable per-process data [LOCALSTATEDIR/run]
+   --libdir=DIR            object code libraries [EPREFIX/lib]
+   --includedir=DIR        C header files [PREFIX/include]
+   --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+@@ -5407,6 +5419,19 @@ test -z "$deplibs_check_method" && depli
+ 
+ 
+ 
++plugin_option=
++plugin_names="liblto_plugin.so liblto_plugin-0.dll cyglto_plugin-0.dll"
++for plugin in $plugin_names; do
++  plugin_so=`${CC} ${CFLAGS} --print-prog-name $plugin`
++  if test x$plugin_so = x$plugin; then
++    plugin_so=`${CC} ${CFLAGS} --print-file-name $plugin`
++  fi
++  if test x$plugin_so != x$plugin; then
++    plugin_option="--plugin $plugin_so"
++    break
++  fi
++done
++
+ if test -n "$ac_tool_prefix"; then
+   # Extract the first word of "${ac_tool_prefix}ar", so it can be a program name with args.
+ set dummy ${ac_tool_prefix}ar; ac_word=$2
+@@ -5500,6 +5525,11 @@ else
+ fi
+ 
+ test -z "$AR" && AR=ar
++if test -n "$plugin_option"; then
++  if $AR --help 2>&1 | grep -q "\--plugin"; then
++    AR="$AR $plugin_option"
++  fi
++fi
+ test -z "$AR_FLAGS" && AR_FLAGS=cru
+ 
+ 
+@@ -5704,6 +5734,11 @@ else
+ fi
+ 
+ test -z "$RANLIB" && RANLIB=:
++if test -n "$plugin_option" && test "$RANLIB" != ":"; then
++  if $RANLIB --help 2>&1 | grep -q "\--plugin"; then
++    RANLIB="$RANLIB $plugin_option"
++  fi
++fi
+ 
+ 
+ 
+@@ -10634,7 +10669,7 @@ else
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<_LT_EOF
+-#line 10637 "configure"
++#line 10672 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -10740,7 +10775,7 @@ else
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<_LT_EOF
+-#line 10743 "configure"
++#line 10778 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -11318,6 +11353,8 @@ main ()
+     if (*(data + i) != *(data3 + i))
+       return 14;
+   close (fd);
++  free (data);
++  free (data3);
+   return 0;
+ }
+ _ACEOF

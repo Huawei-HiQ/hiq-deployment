@@ -1,0 +1,3 @@
+libctf.so.0 libctf0 #MINVER#
+ (symver)LIBCTF_1.0 2.34
+ (symver)LIBCTF_1.1 2.36

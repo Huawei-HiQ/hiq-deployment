@@ -1,4 +1,4 @@
-ppa_rev=10
+ppa_rev=6
 
 # ==============================================================================
 
@@ -27,23 +27,20 @@ function pkg_prepare()
 EOF
         sed -i -e 's/debhelper (>= 11)/debhelper/' \
             -e '/g++-i686-linux-gnu/d' \
-            -e '/Package: binutils-i686-linux-gnu/,/ This package provides debug symbols for binutils-i686-linux-gnu./d' \
-            -e '/Package: binutils-i686-gnu/,/This package provides debug symbols for binutils-i686-gnu./d' \
-            -e '/Package: binutils-i686-kfreebsd-gnu/,/This package provides debug symbols for binutils-i686-kfreebsd-gnu./d' \
             $pkg_dir/debian/control
 
         sed -i -e 's/debhelper (>= 11)/debhelper/' \
             -e '/g++-i686-linux-gnu/d' \
             $pkg_dir/debian/control.in
 
-        sed -i -e 's/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf) -v2.33.50 -l$(d_lib)/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf) -v2.33.50/' \
+        sed -i -e 's/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf) -l$(d_lib)/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf)/' \
             $pkg_dir/debian/rules
 
     elif [ "$ubuntu_distro_num" == "18.04" ]; then
         cat << EOF > $pkg_dir/debian/compat
 11
 EOF
-        sed -i -e 's/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf) -v2.33.50 -l$(d_lib)/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf) -v2.33.50/' \
+        sed -i -e 's/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf) -l$(d_lib)/dpkg-gensymbols -P$(d_ctf) -p$(p_ctf)/' \
             $pkg_dir/debian/rules
     else
         rm -f $pkg_dir/debian/compat
