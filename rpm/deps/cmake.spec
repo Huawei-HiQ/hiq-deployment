@@ -133,11 +133,19 @@ BuildRequires:  findutils
 BuildRequires:	devtoolset-8-gcc-c++
 BuildRequires:	devtoolset-8-gcc-gfortran
 %else
+%if 0%{?mdkver} && ! 0%{?mgaver}
+# OpenMandriva
+BuildRequires:  clang
+BuildRequires:  glibc-devel
+BuildRequires:	gcc-fortran
+%else
+# Everything else
 BuildRequires:  gcc-c++
 %if 0%{?is_opensuse}
 BuildRequires:	gcc-fortran
 %else
 BuildRequires:	gcc-gfortran
+%endif
 %endif
 %endif
 BuildRequires:  sed
@@ -148,7 +156,11 @@ BuildRequires:  git
 BuildConflicts: git-core
 %endif
 %if %{with X11_test}
+%if 0%{?mdkver} || 0%{?mgaver}
+BuildRequires:  libx11-devel
+%else
 BuildRequires:  libX11-devel
+%endif
 %endif
 %if %{with ncurses}
 BuildRequires:  ncurses-devel
