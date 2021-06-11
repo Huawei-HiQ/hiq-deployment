@@ -1,0 +1,13 @@
+--- pybind11-2.6.2/setup.py	2021-01-27 02:26:45.000000000 +0000
++++ pybind11-2.6.2.new/setup.py	2021-06-11 14:24:50.598650029 +0000
+@@ -40,8 +40,8 @@
+ version = loc["__version__"]
+ 
+ # Verify that the version matches the one in C++
+-with open("include/pybind11/detail/common.h") as f:
+-    matches = dict(VERSION_REGEX.findall(f.read()))
++with open("include/pybind11/detail/common.h", "rb") as f:
++    matches = dict(VERSION_REGEX.findall(f.read().decode()))
+ cpp_version = "{MAJOR}.{MINOR}.{PATCH}".format(**matches)
+ if version != cpp_version:
+     msg = "Python version {} does not match C++ version {}!".format(
