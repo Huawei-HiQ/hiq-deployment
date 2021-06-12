@@ -162,3 +162,7 @@ cat << EOF > ~/.rpmmacros
 %_build_parallel --parallel=4
 EOF
 fi
+
+if [ -d /etc/dnf/dnf.conf ]; then
+    echo fastestmirror=1 >> /etc/dnf/dnf.conf
+fi
