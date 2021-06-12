@@ -1,15 +1,3 @@
-%global srcname Cython
-%global upname cython
-
-%if 0%{?rhel} && 0%{?rhel} < 8
-%define __python %{__python3}
-%else
-%if 0%{?py_byte_compile}
-# Turn off the brp-python-bytecompile automagic
-%global _python_bytecompile_extra 0
-%endif
-%endif
-
 # Enable automatic download
 %undefine _disable_source_fetch
 
@@ -28,7 +16,8 @@
 # or architecture
 %bcond_without bootstrap
 
-%if 0%{?is_opensuse}
+%bcond_without vim
+%if 0%{?mdkver} || 0%{?mgaver} || 0%{?is_opensuse}
 %bcond_with emacs
 %else
 %bcond_without emacs
@@ -37,7 +26,7 @@
 # Run git tests
 %bcond_without git_test
 
-%bcond_with gui
+%bcond_without gui
 
 # Use ncurses for colorful output
 %bcond_without ncurses
@@ -84,12 +73,18 @@
 
 %global cmake_version 3.20.3
 %global upver %{cmake_version}
+%global release 2
 
 # ==============================================================================
 
 Name:           cmake
 Version:        %{cmake_version}
-Release:        0%{?dist}
+%if 0%{?mgaver}
+Epoch:          1
+Release:        %mkrel %{release}
+%else
+Release:        %{release}%{?dist}
+%endif
 Summary:        Cross-platform make system
 
 License:        BSD and MIT and zlib
@@ -190,7 +185,9 @@ BuildRequires:  rhash-devel
 %endif
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+%if %{with vim} && ! 0%{?mgaver}
 BuildRequires:  vim-filesystem
+%endif
 %endif
 %if %{with emacs}
 BuildRequires:  emacs
@@ -205,7 +202,7 @@ BuildRequires:  python2-devel
 %endif
 %endif
 %if %{with gui}
-%if 0%{?fedora} || 0%{?rhel} > 7
+%if 0%{?fedora} || 0%{?rhel} > 7 || %{?mgaver}
 BuildRequires: pkgconfig(Qt5Widgets)
 %else
 BuildRequires: pkgconfig(QtGui)
@@ -222,15 +219,23 @@ BuildRequires:  %{name}-rpm-macros
 %endif
 BuildRequires: make
 
-Requires:       %{name}-data = %{version}-%{release}
-Requires:       %{name}-rpm-macros = %{version}-%{release}
-Requires:       %{name}-filesystem%{?_isa} = %{version}-%{release}
+%if 0%{?mgaver}
+Requires:	rpm-mageia-setup
+%endif
+
+Requires:       %{name}-data = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       %{name}-rpm-macros = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       %{name}-filesystem%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 
 # Explicitly require make.  (rhbz#1862014)
 Requires:       make
 
+
 # Provide the major version name
 Provides: cmake%{major_version} = %{version}-%{release}
+%if 0%{?epoch}
+Provides: cmake%{major_version} = %{?epoch:%{epoch}:}%{version}-%{release}
+%endif
 
 # Source/kwsys/MD5.c
 # see https://fedoraproject.org/wiki/Packaging:No_Bundled_Libraries
@@ -250,15 +255,17 @@ generation, code generation, and template instantiation.
 
 %package        data
 Summary:        Common data-files for %{name}
-Requires:       %{name} = %{version}-%{release}
-Requires:       %{name}-filesystem = %{version}-%{release}
-Requires:       %{name}-rpm-macros = %{version}-%{release}
+Requires:       %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       %{name}-filesystem = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:       %{name}-rpm-macros = %{?epoch:%{epoch}:}%{version}-%{release}
 %if %{with emacs}
 %if 0%{?fedora} || 0%{?rhel} >= 7
 Requires:       emacs-filesystem%{?_emacs_version: >= %{_emacs_version}}
 %endif
 %endif
+%if %{with vim} && ! 0%{?mgaver}
 Requires:       vim-filesystem
+%endif
 
 BuildArch:      noarch
 
@@ -285,7 +292,7 @@ This package owns all directories used by CMake modules.
 %package        gui
 Summary:        Qt GUI for %{name}
 
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 Requires:       hicolor-icon-theme
 Requires:       shared-mime-info%{?_isa}
 
@@ -338,7 +345,7 @@ FCFLAGS="${FCFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}}" ; export FCFLAGS
 %{?__global_ldflags:LDFLAGS="${LDFLAGS:-%__global_ldflags}" ; export LDFLAGS ;}
 %endif
 SRCDIR="$(/usr/bin/pwd)"
-mkdir %{_vpath_builddir}
+mkdir -p %{_vpath_builddir}
 pushd %{_vpath_builddir}
 $SRCDIR/bootstrap --prefix=%{_prefix} --datadir=/share/%{name} \
                   --docdir=/share/doc/%{name} --mandir=/share/man \
@@ -374,6 +381,10 @@ find %{buildroot}%{_datadir}/%{name}/Modules -type f | xargs chmod -x
   exit 1
 # Install major_version name links
 %{!?name_suffix:for f in ccmake cmake cpack ctest; do ln -s $f %{buildroot}%{_bindir}/${f}%{major_version}; done}
+
+%if ! %{with vim}
+rm -vrf %{buildroot}/usr/share/vim/
+%endif
 
 %if %{with emacs}
 # Install emacs cmake mode
@@ -541,12 +552,14 @@ EOF
 %{_emacs_sitestartdir}
 %endif
 %endif
-%if 0%{?rhel} || (0%{?fedora} && 0%{?fedora} < 34) || 0%{?is_opensuse}
-/usr/share/vim/vimfiles/indent/%{name}.vim
-/usr/share/vim/vimfiles/syntax/%{name}.vim
-%else
+%if %{with vim}
+%if 0%{?fedora} && 0%{?fedora} >= 34
 %{vimfiles_root}/indent/%{name}.vim
 %{vimfiles_root}/syntax/%{name}.vim
+%else
+/usr/share/vim/vimfiles/indent/%{name}.vim
+/usr/share/vim/vimfiles/syntax/%{name}.vim
+%endif
 %endif
 
 %files doc
