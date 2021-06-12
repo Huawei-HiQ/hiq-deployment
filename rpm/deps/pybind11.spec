@@ -10,15 +10,13 @@
 
 Name:    pybind11
 Version: 2.6.2
-Release: 0%{?dist}
+Release: 1%{?dist}
 Summary: Seamless operability between C++11 and Python
 License: BSD
 URL:	 https://github.com/pybind/pybind11
 Source0: https://github.com/pybind/pybind11/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:  pybind11-fix-html-generation-file-encoding.patch
-%if 0%{?rhel} && 0%{?rhel} < 8
 Patch1:  pybind11-fix-read-encoding-setup.patch
-%endif
 
 # Needed to build the python libraries
 BuildRequires: python3-devel
