@@ -163,6 +163,6 @@ cat << EOF > ~/.rpmmacros
 EOF
 fi
 
-if [ -d /etc/dnf/dnf.conf ]; then
+if [ -f /etc/dnf/dnf.conf ]; then
     echo fastestmirror=1 >> /etc/dnf/dnf.conf
 fi
